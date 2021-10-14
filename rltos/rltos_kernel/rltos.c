@@ -37,6 +37,7 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_to
 void Rltos_task_sleep(const rltos_uint tick_count)
 {
 	/* TODO: Implement sleep code*/
+	RLTOS_UNUSED(tick_count);
 }
 /* END OF FUNCTION*/
 

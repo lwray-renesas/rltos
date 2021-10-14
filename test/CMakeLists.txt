@@ -12,6 +12,7 @@ set(RLTOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../rltos/)
 ##### List RLTOS source files #####
 set(RLTOS_SOURCE_FILES
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_scheduler_asm_dummy.c
+${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.c
 ${RLTOS_DIR}/rltos_kernel/rltos.c
 ${RLTOS_DIR}/rltos_kernel/task_list/rltos_task_list.c
 ${RLTOS_DIR}/rltos_kernel/event_flags/rltos_event_flags.c

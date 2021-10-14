@@ -22,6 +22,9 @@
 #define RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name)						\
 	Rltos_task_create(&task_name##_str, &task_name##_stack[stack_size_bytes/2U], &task_func_name)
 
+/** @brief Utility macro for unused arguments*/
+#define RLTOS_UNUSED(e)	((void)(e))
+
 /** @brief Dummy task structure guaranteed to be the same size as a task control structure.
  * This is used to hide the implementation of a real task control structure - but also allow static allocation of tasks.
  */
