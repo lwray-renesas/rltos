@@ -24,7 +24,7 @@ void Rltos_kernel_enter(void)
 void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void))
 {
 	/* Initialise the stack*/
-	Rltos_task_stack_init(p_stack_top, p_task_func);
+	p_stack_top = Rltos_task_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
 	Init_task((p_task_ctl_t)(task_to_add), (stack_type)p_stack_top, p_task_func);

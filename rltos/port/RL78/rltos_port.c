@@ -1,6 +1,6 @@
 #include "rltos_port.h"
 
-void Rltos_task_stack_init(p_stack_type p_stack_top, void(* const p_task_func)(void))
+p_stack_type Rltos_task_stack_init(p_stack_type p_stack_top, void(* const p_task_func)(void))
 {
     /* msn = most significant nibble (top 4 bits of 20bit address)*/
 	stack_type p_task_f_msn = (stack_type) ((((uint32_t)(p_task_func)) & 0xF0000UL) >> 16U);
@@ -27,5 +27,7 @@ void Rltos_task_stack_init(p_stack_type p_stack_top, void(* const p_task_func)(v
 	/* Init ES & CS*/
 	--p_stack_top;
 	*p_stack_top = 0x000FU; /* ES & CS*/
+
+	return p_stack_top;
 }
 /* END OF FUNCTION*/
