@@ -35,7 +35,7 @@
  * @note This can only be used if the RLTOS_DECLARE_TASK utility macro has been used.
  */
 #define RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name)						\
-	Rltos_create_task(&task_name##_str, &task_name##_stack[stack_size_bytes/2U], &task_func_name)
+	Rltos_task_create(&task_name##_str, &task_name##_stack[stack_size_bytes/2U], &task_func_name)
 
 /** @brief Dummy task structure guaranteed to be the same size as a task control structure.
  * This is used to hide the implementation of a real task control structure - but also allow static allocation of tasks.
@@ -61,19 +61,16 @@ typedef dummy_task_t MEM_TYPE * p_dummy_task_t;
 /** @brief typedef pointer to dummy task list structure*/
 typedef dummy_task_list_t MEM_TYPE * p_dummy_task_list_t;
 
+/** @brief Enters RLTOS kernel and starts scheduler timer. */
+void Rltos_kernel_enter(void);
+
 /** @brief Initialises task control structure, stack & appends to task list.
  * @param[in] task_to_add - pointer to dummy task structure from which to create the task.
  * @param[in] p_stack_top - pointer to the top of the stack.
  * @param[in] p_task_f - function pointer to the task entry function.*/
-void Rltos_create_task(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void));
-
-/** @brief Enters RLTOS kernel and starts scheduler timer. */
-void Rltos_enter_kernel(void);
-
-/** @brief Defined in rltos_kernel.asm - function to immediately yield ask and reschedule to next available task. */
-extern void Rltos_yield(void);
+void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void));
 
 /** @brief Puts the current thread to sleep for a minimum of the given number of ticks*/
-void Rltos_sleep(const rltos_uint tick_count);
+void Rltos_task_sleep(const rltos_uint tick_count);
 
 #endif /* RLTOS_RLTOS_H_ */

@@ -47,5 +47,7 @@ typedef uint16_t rltos_uint;
 /** @brief macro used to enable interrupts*/
 #define RLTOS_EXIT_CRITICAL_SECTION()	asm("ei")
 
+/** @brief macro used to yield a task - typically implemented with inline asm or intrinsic*/
+#define Rltos_task_yield()  asm("brk")
 
 #endif /* RLTOS_PORT_H_ */

@@ -24,10 +24,12 @@ typedef uint32_t rltos_uint;
 #define RLTOS_UINT_MAX	(0xFFFFFFFFU)
 
 /** @brief macro used to disable interrupts*/
-#define RLTOS_ENTER_CRITICAL_SECTION()
+#define RLTOS_ENTER_CRITICAL_SECTION() (void)
 
 /** @brief macro used to enable interrupts*/
-#define RLTOS_EXIT_CRITICAL_SECTION()
+#define RLTOS_EXIT_CRITICAL_SECTION() (void)
 
+/** @brief macro used to yield a task - typically implemented with inline asm or intrinsic*/
+#define Rltos_task_yield()  (void)
 
 #endif /* RLTOS_PORT_H_ */

@@ -14,7 +14,14 @@
  */
 extern void Rltos_enter_first_task(void);
 
-void Rltos_create_task(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void))
+void Rltos_kernel_enter(void)
+{
+	Init_current_task();
+	Rltos_enter_first_task();
+}
+/* END OF FUNCTION*/
+
+void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void))
 {
 	/* msn = most significant nibble (top 4 bits of 20bit address)*/
 	stack_type p_task_f_msn = (stack_type) ((((uint32_t)(p_task_func)) & 0xF0000UL) >> 16U);
@@ -49,14 +56,7 @@ void Rltos_create_task(p_dummy_task_t const task_to_add, p_stack_type p_stack_to
 }
 /* END OF FUNCTION*/
 
-void Rltos_enter_kernel(void)
-{
-	Init_current_task();
-	Rltos_enter_first_task();
-}
-/* END OF FUNCTION*/
-
-void Rltos_sleep(const rltos_uint tick_count)
+void Rltos_task_sleep(const rltos_uint tick_count)
 {
 	/* TODO: Implement sleep code*/
 }
