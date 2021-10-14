@@ -66,3 +66,7 @@ The testing folder should contain a CMakeLists.txt file for CMAKE to generate th
 - Break RLTOS into seperate repo from ut_rl78
 - Write install guide for RL78 port.
 - Write instruction for getting up and running with unit testing this project.
+- Explain the setings.JSON
+	- How the cmake.sourceDirectory sets the testing CMakeLists.
+	- How C_Cpp.default.configurationProvider - takes the config from cmake tools and provides it to the c/c++ information for intellisense.
+	- Testing only supported currently in on MSVC.
