@@ -8,21 +8,6 @@
 #ifndef RLTOS_RLTOS_H_
 #define RLTOS_RLTOS_H_
 
-/** The following definitions MUST be provided:
- * - uint8_t
- * - int8_t
- * - uint16_t
- * - int16_t
- * - uint32_t
- * - int32_t
- * - bool
- * - true
- * - false
- * - NULL
- */
-#include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
 #include "rltos_port.h"
 
 /** @brief Utility macro for declaring a task.*/
