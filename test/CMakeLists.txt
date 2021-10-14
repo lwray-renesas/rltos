@@ -72,3 +72,6 @@ winmm.lib)
 # Group source
 source_group(TREE ${RLTOS_DIR} PREFIX rltos FILES ${RLTOS_HEADER_FILES} ${RLTOS_SOURCE_FILES})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} PREFIX test FILES ${TEST_HEADER_FILES} ${TEST_SOURCE_FILES})
+
+# To compensate for C++'s lack of designated initializers, we must use msvc flag /std:c++latest
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")

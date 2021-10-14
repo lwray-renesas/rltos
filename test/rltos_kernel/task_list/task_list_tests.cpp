@@ -1,17 +1,12 @@
 /*
  * task_list_tests.c
  *
- *  Created on: 22 Apr 2021
+ *  Created on: 14 Oct 2021
  *      Author: Louis Wray
  */
 
 #include "CppUTest/TestHarness.h"
 
-TEST_GROUP(TaskListTestGroup)
-{
-};
+/* Including the source file allows us to finely test the internal workings of the rltos_task_list module*/
+#include "rltos_kernel/task_list/rltos_task_list.c"
 
-TEST(TaskListTestGroup, FirstTest)
-{
-	FAIL("Task Lists Failed!");
-}
