@@ -14,6 +14,9 @@
  */
 extern void Rltos_enter_first_task(void);
 
+/** Get stack initialisation function from port file*/
+extern p_stack_type Rltos_stack_init(p_stack_type p_stack_top, void(* const p_task_func)(void));
+
 void Rltos_kernel_enter(void)
 {
 	Scheduler_init();
@@ -24,7 +27,7 @@ void Rltos_kernel_enter(void)
 void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void))
 {
 	/* Initialise the stack*/
-	p_stack_top = Rltos_task_stack_init(p_stack_top, p_task_func);
+	p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
 	Task_init((p_task_ctl_t)(task_to_add), (stack_type)p_stack_top, p_task_func);
