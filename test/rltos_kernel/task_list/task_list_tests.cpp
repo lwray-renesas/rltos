@@ -10,3 +10,16 @@
 /* Including the source file allows us to finely test the internal workings of the rltos_task_list module*/
 #include "rltos_kernel/task_list/rltos_task_list.c"
 
+TEST_GROUP(FirstTestGroup)
+{
+};
+
+TEST(FirstTestGroup, FirstTest)
+{
+   CHECK_TEXT(false, "This is a failing test!");
+}
+
+TEST(FirstTestGroup, SecondTest)
+{
+   CHECK_TEXT(true, "This is a passing test!");
+}

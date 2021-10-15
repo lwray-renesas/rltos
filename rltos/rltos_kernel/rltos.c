@@ -16,7 +16,7 @@ extern void Rltos_enter_first_task(void);
 
 void Rltos_kernel_enter(void)
 {
-	Init_current_task();
+	Scheduler_init();
 	Rltos_enter_first_task();
 }
 /* END OF FUNCTION*/
@@ -27,10 +27,10 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_to
 	p_stack_top = Rltos_task_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
-	Init_task((p_task_ctl_t)(task_to_add), (stack_type)p_stack_top, p_task_func);
+	Task_init((p_task_ctl_t)(task_to_add), (stack_type)p_stack_top, p_task_func);
 
 	/* Add task to running list*/
-	Append_task_to_list(&running_task_list, (p_task_ctl_t )task_to_add);
+	Task_append_to_list(&running_task_list, (p_task_ctl_t )task_to_add);
 }
 /* END OF FUNCTION*/
 

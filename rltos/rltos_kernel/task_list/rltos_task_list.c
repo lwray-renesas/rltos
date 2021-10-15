@@ -43,7 +43,13 @@ MEM_TYPE struct Task_list_t idle_task_list = {
 /** Pointer to current running task*/
 p_task_ctl_t p_current_task_ctl	= NULL;
 
-void Init_task(p_task_ctl_t const task_to_init, const stack_type init_sp, void(* const init_task_func)(void))
+void Scheduler_init(void)
+{
+	p_current_task_ctl = running_task_list.p_head;
+}
+/* END OF FUNCTION*/
+
+void Task_init(p_task_ctl_t const task_to_init, const stack_type init_sp, void(* const init_task_func)(void))
 {
 	task_to_init->p_task_func = init_task_func;
 	task_to_init->stored_sp = init_sp;
@@ -52,13 +58,7 @@ void Init_task(p_task_ctl_t const task_to_init, const stack_type init_sp, void(*
 }
 /* END OF FUNCTION*/
 
-void Init_current_task(void)
-{
-	p_current_task_ctl = running_task_list.p_head;
-}
-/* END OF FUNCTION*/
-
-void Append_task_to_list(p_task_list_t const list_to_append, p_task_ctl_t const task_to_append)
+void Task_append_to_list(p_task_list_t const list_to_append, p_task_ctl_t const task_to_append)
 {
 	if(0U == list_to_append->size)
 	{
@@ -79,7 +79,7 @@ void Append_task_to_list(p_task_list_t const list_to_append, p_task_ctl_t const 
 }
 /* END OF FUNCTION*/
 
-void Remove_task_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove)
+void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove)
 {
 	if(list_for_remove->size > 0U)
 	{

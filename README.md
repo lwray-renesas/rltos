@@ -52,6 +52,11 @@ The unit testing port should work for most host based compilers - testing will o
 The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
 
 ## TODO NEXT
+- Explain the setings.JSON
+	- How the cmake.sourceDirectory sets the testing CMakeLists.
+	- How C_Cpp.default.configurationProvider - takes the config from cmake tools and provides it to the c/c++ information for intellisense.
+	- Testing only supported currently in on MSVC.
+- Provide Task_list init function.
 - Write sleep function and make use of idle task list in scheduler.
 
 ## TODO
@@ -63,10 +68,5 @@ The testing folder should contain a CMakeLists.txt file for CMAKE to generate th
 - Setup doxyfile and provide doc folder.
 - Create example project + documentation to setup two tasks.
 - Implement co-operative scheduling
-- Break RLTOS into seperate repo from ut_rl78
 - Write install guide for RL78 port.
 - Write instruction for getting up and running with unit testing this project.
-- Explain the setings.JSON
-	- How the cmake.sourceDirectory sets the testing CMakeLists.
-	- How C_Cpp.default.configurationProvider - takes the config from cmake tools and provides it to the c/c++ information for intellisense.
-	- Testing only supported currently in on MSVC.
