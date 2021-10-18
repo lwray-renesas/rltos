@@ -24,14 +24,26 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+/** Check for eclipse environment*/
+#ifdef __CDT_PARSER__
+#define __far
+#define __near
+#endif
+
+/** Check for intellisense environment*/
+#ifdef __INTELLISENSE__
+#define __far
+#define __near
+#endif
+
 /*! Empty definition - no memory model used here*/
 #define MEM_TYPE
 
 /** @brief data type the stack pointer points at*/
 typedef uint32_t stack_type;
 
-/** @brief data type the stack pointer points at*/
-typedef uint32_t MEM_TYPE * p_stack_type;
+/** @brief the stack pointer data type*/
+typedef uint32_t * stack_ptr_type;
 
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint32_t rltos_uint;
@@ -46,6 +58,6 @@ typedef uint32_t rltos_uint;
 #define RLTOS_EXIT_CRITICAL_SECTION() (void)
 
 /** @brief macro used to yield a task - typically implemented with inline asm or intrinsic*/
-#define Rltos_task_yield()  (void)
+#define Rltos_task_yield() (void)
 
 #endif /* RLTOS_PORT_H_ */

@@ -51,12 +51,21 @@ The port for unit testing contains a rltos_scheduler_asm_dummy c file which impl
 The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio.
 The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
 
+## Note for vs code
+The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.
+### "cmake.sourceDirectory": "${workspaceFolder}/test"
+This entry sets the cmake extension to work from the test folder.
+### "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.
+### Extenions required
+- C/C++ by Microsoft
+- CMake Tools by Microsoft
+
+## Requirements for unit testing (only currently supports MSVC and windows)
+- [CppUtest](https://cpputest.github.io/)
+- [CMake](https://cmake.org/)
+
 ## TODO NEXT
-- Explain the setings.JSON
-	- How the cmake.sourceDirectory sets the testing CMakeLists.
-	- How C_Cpp.default.configurationProvider - takes the config from cmake tools and provides it to the c/c++ information for intellisense.
-	- Testing only supported currently in on MSVC.
-- Provide Task_list init function.
 - Write sleep function and make use of idle task list in scheduler.
 
 ## TODO
@@ -70,3 +79,4 @@ The testing folder should contain a CMakeLists.txt file for CMAKE to generate th
 - Implement co-operative scheduling
 - Write install guide for RL78 port.
 - Write instruction for getting up and running with unit testing this project.
+- Tidy code banners with license and proper descriptions +  author used for dosygen.

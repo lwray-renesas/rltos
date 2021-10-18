@@ -30,7 +30,7 @@
  */
 typedef struct
 {
-	stack_type dummy0;
+	stack_ptr_type dummy0;
 	void * dummy1[3];
 }dummy_task_t;
 
@@ -39,7 +39,7 @@ typedef struct
  */
 typedef struct
 {
-	stack_type dummy0;
+	stack_ptr_type dummy0;
 	void * dummy1[2];
 }dummy_task_list_t;
 
@@ -56,7 +56,7 @@ void Rltos_kernel_enter(void);
  * @param[in] task_to_add - pointer to dummy task structure from which to create the task.
  * @param[in] p_stack_top - pointer to the top of the stack.
  * @param[in] p_task_f - function pointer to the task entry function.*/
-void Rltos_task_create(p_dummy_task_t const task_to_add, p_stack_type p_stack_top, void(* const p_task_func)(void));
+void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_top, void(* const p_task_func)(void));
 
 /** @brief Puts the current thread to sleep for a minimum of the given number of ticks*/
 void Rltos_task_sleep(const rltos_uint tick_count);

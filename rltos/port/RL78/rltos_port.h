@@ -49,7 +49,7 @@
 typedef uint16_t stack_type;
 
 /** @brief data type the stack pointer points at*/
-typedef uint16_t MEM_TYPE * p_stack_type;
+typedef uint16_t MEM_TYPE * stack_ptr_type;
 
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint16_t rltos_uint;

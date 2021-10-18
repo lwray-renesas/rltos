@@ -28,7 +28,13 @@ void Scheduler_init(void);
  * @param[in] init_sp - initial stack pointer value (after stack initialisation).
  * @param[in] init_task_func - function pointer to tasks entry function.
  */
-void Task_init(p_task_ctl_t const task_to_init, const stack_type init_sp, void(* const init_task_func)(void));
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void));
+
+/** @brief Function used to initialise a task list.
+ * @param[in] list_to_init - pointer to a list for initialisation.
+ * @param[in] first_task - optional first task to add - if NULL, no task is added.
+ */
+void Task_list_init(p_task_list_t const list_to_init, p_task_ctl_t const first_task);
 
 /** @brief Function used to append task to a task list
  * @param[in] list_to_append - pointer to a task list for which the task should be appended.
