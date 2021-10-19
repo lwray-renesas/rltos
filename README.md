@@ -65,8 +65,12 @@ This entry ensures that the cmake extension provides all necessary configuration
 - [CppUtest](https://cpputest.github.io/)
 - [CMake](https://cmake.org/)
 
-## TODO NEXT
-- Write sleep function and make use of idle task list in scheduler.
+## TODO NEXT (in order - unit test as we go)
+- Think about how to decide from calling code, what metric to use when sorting the list.
+- On insert, sort the lists according to their sorting value (head = smallest number).
+- Include a priority metric, used currently only to order the list, not in the scheduling algorithm.
+- Write sleep function and make use of idle task list in the scheduler.
+- Integrate [Cppcheck](https://cppcheck.sourceforge.io/) in both unit tests and rlots main code (for each port).
 
 ## TODO
 - Implement event_flags

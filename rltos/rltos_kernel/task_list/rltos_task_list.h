@@ -16,6 +16,13 @@
 typedef struct Task_ctl_t MEM_TYPE * p_task_ctl_t;
 typedef struct Task_list_t MEM_TYPE * p_task_list_t;
 
+/** Provide enumerated type to index task item lists*/
+typedef enum
+{
+    state_list = 0U,    /* Index of list where the item exists in the running or idle list*/
+    aux_list            /* Index of list where the item exists waiting on an object*/
+}list_index_t;
+
 /** Pointer to running task list*/
 extern struct Task_list_t running_task_list;
 extern struct Task_list_t idle_task_list;
@@ -33,19 +40,22 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, vo
 /** @brief Function used to initialise a task list.
  * @param[in] list_to_init - pointer to a list for initialisation.
  * @param[in] first_task - optional first task to add - if NULL, no task is added.
+ * @param[in] list_index - index of the list to in which to add the first task (ignored in the case first_task is NULL).
  */
-void Task_list_init(p_task_list_t const list_to_init, p_task_ctl_t const first_task);
+void Task_list_init(p_task_list_t const list_to_init, p_task_ctl_t const first_task, const list_index_t list_index);
 
 /** @brief Function used to append task to a task list
- * @param[in] list_to_append - pointer to a task list for which the task should be appended.
- * @param[in] task_to_append - task to append to list.
+ * @param[in] list_for_insert - pointer to a task list for which the task should be inserted.
+ * @param[in] task_to_insert - task to insert in list.
+ * @param[in] list_index - index of the list to in which to insert the task.
  */
-void Task_append_to_list(p_task_list_t const list_to_append, p_task_ctl_t const task_to_append);
+void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_t const task_to_insert, const list_index_t list_index);
 
 /** @brief Function used to remove task from a task list
  * @param[in] list_for_remove - pointer to a task list from which the task should be removed.
  * @param[in] task_to_remove - task to remove from list.
+ * @param[in] list_index - index of the list to in which to remove the task.
  */
-void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove);
+void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
 
 #endif /* RLTOS_TASK_LIST_H_ */

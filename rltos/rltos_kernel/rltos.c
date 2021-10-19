@@ -33,7 +33,7 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_
 	Task_init((p_task_ctl_t)(task_to_add), p_stack_top, p_task_func);
 
 	/* Add task to running list*/
-	Task_append_to_list(&running_task_list, (p_task_ctl_t )task_to_add);
+	Task_insert_in_list(&running_task_list, (p_task_ctl_t )task_to_add, state_list);
 }
 /* END OF FUNCTION*/
 

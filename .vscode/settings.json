@@ -1,8 +1,4 @@
 {
     "cmake.sourceDirectory": "${workspaceFolder}/test",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "files.associations": {
-        "rltos_task_list.c": "cpp",
-        "memory": "cpp"
-    }
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

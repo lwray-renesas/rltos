@@ -31,7 +31,10 @@
 typedef struct
 {
 	stack_ptr_type dummy0;
-	void * dummy1[3];
+	void * dummy1;
+	rltos_uint dummy2;
+	void * dummy3[4];
+	rltos_uint dummy4[2];
 }dummy_task_t;
 
 /** @brief Dummy task list structure guaranteed to be the same size as a task list structure.
@@ -39,8 +42,8 @@ typedef struct
  */
 typedef struct
 {
-	stack_ptr_type dummy0;
 	void * dummy1[2];
+	rltos_uint dummy0;
 }dummy_task_list_t;
 
 /** @brief typedef pointer to dummy task structure*/
