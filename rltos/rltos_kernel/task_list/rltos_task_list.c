@@ -45,10 +45,10 @@ MEM_TYPE struct Task_list_t idle_task_list = {
 };
 
 /** Pointer to current running task*/
-p_task_ctl_t p_current_task_ctl = NULL;
+volatile p_task_ctl_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
-rltos_uint	rltos_system_tick = 0U;
+volatile rltos_uint	rltos_system_tick = 0U;
 
 void Scheduler_init(void)
 {
