@@ -17,9 +17,13 @@ extern void Rltos_enter_first_task(void);
 /** Get stack initialisation function from port file*/
 extern stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void(* const p_task_func)(void));
 
+/** Get timer initialsation and start function from user application*/
+extern Rltos_start_tick_timer(void);
+
 void Rltos_kernel_enter(void)
 {
 	Scheduler_init();
+	Rltos_start_tick_timer();
 	Rltos_enter_first_task();
 }
 /* END OF FUNCTION*/

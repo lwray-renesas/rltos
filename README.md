@@ -28,6 +28,8 @@ The folder structure for a minimal project containing just the task scheduler fo
 	|		|
 	|		+-- rltos_port.h
 	|		|
+	|		+-- rltos_port.c
+	|		|
 	|		+-- <compiler>
 	|			|
 	|			+-- <CLANG>
@@ -61,17 +63,14 @@ This entry ensures that the cmake extension provides all necessary configuration
 - C/C++ by Microsoft
 - CMake Tools by Microsoft
 
+## Note on CLANG
+Only supports near data model - awaiting compiler update to support.
+
 ## Requirements for unit testing (only currently supports MSVC and windows)
 - [CppUtest](https://cpputest.github.io/)
 - [CMake](https://cmake.org/)
 
 ## TODO NEXT (in order - unit test as we go)
-- Can we add an "owner" in the task ctl stucture to indicate which list owns the task (twice for each possible list)
-	- This owner will allow us to verify quickly if the task is contained within the list
-	- This way the scheduler can remove the task from any pending auxillary lists when a timeout has occured and deterministicly.
-	- Also the auxillary object can remove the task from the idle list easily to and deterministicly.
-	- At the moment allow walking the list in the scehduler only for insertion and look into imporvements later!
-- Think about how to decide from calling code, what metric to use when sorting the list.
 - On insert, sort the lists according to their sorting value (head = smallest number).
 - Include a priority metric, used currently only to order the list, not in the scheduling algorithm.
 - Write sleep function and make use of idle task list in the scheduler.

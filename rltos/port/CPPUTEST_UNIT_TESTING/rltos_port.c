@@ -11,3 +11,10 @@ stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void(* const p_task_
 	return p_stack_top;
 }
 /* END OF FUNCTION*/
+
+/** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
+void Rltos_start_tick_timer(void)
+{
+	/* Do Nothing*/
+}
+/* END OF FUNCTION*/
