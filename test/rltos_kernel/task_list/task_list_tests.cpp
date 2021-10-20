@@ -18,23 +18,27 @@ void Dummy_task_func(void);
 TEST_GROUP(TaskListInitTestGroup)
 {
    /* Global variables for use in tests - provide a list, task, stack and function for every test*/
-   p_task_list_t p_dummy_task_list;
+   p_task_list_t p_aux_task_list;
    p_task_ctl_t p_dummy_task;
    stack_type dummy_stack[32];
 
    void setup(void)
    {
+      /* Setup initialises a dummy task to the running list.
+      * Also initialises a dummy tasklist to contain a dummy task in the aux list
+      */
       p_dummy_task = new struct Task_ctl_t;
-      p_dummy_task_list = new struct Task_list_t;
-      Task_init(p_dummy_task, dummy_stack, &Dummy_task_func);
-      Task_list_init(p_dummy_task_list, p_dummy_task, state_list);
+      p_aux_task_list = new struct Task_list_t;
+      Task_init(p_dummy_task, dummy_stack, &Dummy_task_func, true);
+      Task_list_init(p_aux_task_list, NULL, (list_index_t) 0);
    }
    /* END OF FUNCTION*/
 
    void teardown(void)
    {
+      Task_deinit(p_dummy_task);
       delete p_dummy_task;
-      delete p_dummy_task_list;
+      delete p_aux_task_list;
    }
    /* END OF FUNCTION*/
 };
@@ -48,11 +52,9 @@ void Dummy_task_func(void)
 TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
 {
    std::unique_ptr<struct Task_ctl_t> l_task_under_test = std::make_unique<struct Task_ctl_t>();
-   Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func);
+   Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func, true);
 
    CHECK_TEXT((l_task_under_test.get()->stored_sp == dummy_stack), "Task_init failed to initialise stack pointer");
-   CHECK_TEXT((l_task_under_test.get()->p_next_tctl[state_list] == NULL), "Task_init failed to initialise pointer to next task to NULL");
-   CHECK_TEXT((l_task_under_test.get()->p_prev_tctl[state_list] == NULL), "Task_init failed to initialise pointer to previous task to NULL");
    CHECK_TEXT((l_task_under_test.get()->p_task_func == Dummy_task_func), "Task_init failed to initialise pointer to task function correctly");
 }
 /* END OF TEST*/
@@ -62,11 +64,11 @@ TEST(TaskListInitTestGroup, Test_TaskListInit_ValuesOk)
    /* Task_init done in setup*/
    /* Task_list_init done in setup*/
 
-   CHECK_TEXT((p_dummy_task_list->p_head == p_dummy_task), "Task_list_init failed to initialise head pointer");
-   CHECK_TEXT((p_dummy_task_list->p_index == p_dummy_task), "Task_list_init failed to initialise index pointer");
-   CHECK_TEXT((p_dummy_task_list->size == 1U), "Task_list_init failed to initialise size correctly");
-   CHECK_TEXT((p_dummy_task_list->p_index->p_next_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks next task");
-   CHECK_TEXT((p_dummy_task_list->p_index->p_prev_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks prev task");
+   CHECK_TEXT((p_aux_task_list->p_head == p_dummy_task), "Task_list_init failed to initialise head pointer");
+   CHECK_TEXT((p_aux_task_list->p_index == p_dummy_task), "Task_list_init failed to initialise index pointer");
+   CHECK_TEXT((p_aux_task_list->size == 1U), "Task_list_init failed to initialise size correctly");
+   CHECK_TEXT((p_aux_task_list->p_index->p_next_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks next task");
+   CHECK_TEXT((p_aux_task_list->p_index->p_prev_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks prev task");
 }
 /* END OF TEST*/
 
@@ -74,28 +76,28 @@ TEST(TaskListInitTestGroup, Test_TaskAppend)
 {
    std::unique_ptr<struct Task_ctl_t> p_local_task = std::make_unique<struct Task_ctl_t>();
 
-   Task_insert_in_list(p_dummy_task_list, p_local_task.get(), state_list);
+   Task_insert_in_list(p_aux_task_list, p_local_task.get(), state_list);
 
-   CHECK_TEXT((p_dummy_task_list->p_head == p_dummy_task_list->p_index), "Task_insert_in_list editted p_head or p_index without cause");
-   CHECK_TEXT((p_dummy_task_list->p_head == p_dummy_task), "Task_insert_in_list editted p_head without cause");
-   CHECK_TEXT((p_dummy_task_list->p_index == p_dummy_task), "Task_insert_in_list editted p_index without cause");
-   CHECK_TEXT((p_dummy_task_list->size == 2U), "Task_insert_in_list failed to update size correctly");
-   CHECK_TEXT((p_local_task->p_next_tctl[state_list] == p_dummy_task_list->p_head), "Task_insert_in_list failed to place task in right order");
-   CHECK_TEXT((p_local_task->p_prev_tctl[state_list] == p_dummy_task_list->p_head), "Task_insert_in_list failed to place task in right order");
-   CHECK_TEXT((p_dummy_task_list->p_head->p_prev_tctl[state_list] == p_local_task.get()), "Task_insert_in_list failed to place task in right order");
-   CHECK_TEXT((p_dummy_task_list->p_index->p_prev_tctl[state_list] == p_local_task.get()), "Task_insert_in_list failed to place task in right order");
+   CHECK_TEXT((p_aux_task_list->p_head == p_aux_task_list->p_index), "Task_insert_in_list editted p_head or p_index without cause");
+   CHECK_TEXT((p_aux_task_list->p_head == p_dummy_task), "Task_insert_in_list editted p_head without cause");
+   CHECK_TEXT((p_aux_task_list->p_index == p_dummy_task), "Task_insert_in_list editted p_index without cause");
+   CHECK_TEXT((p_aux_task_list->size == 2U), "Task_insert_in_list failed to update size correctly");
+   CHECK_TEXT((p_local_task->p_next_tctl[state_list] == p_aux_task_list->p_head), "Task_insert_in_list failed to place task in right order");
+   CHECK_TEXT((p_local_task->p_prev_tctl[state_list] == p_aux_task_list->p_head), "Task_insert_in_list failed to place task in right order");
+   CHECK_TEXT((p_aux_task_list->p_head->p_prev_tctl[state_list] == p_local_task.get()), "Task_insert_in_list failed to place task in right order");
+   CHECK_TEXT((p_aux_task_list->p_index->p_prev_tctl[state_list] == p_local_task.get()), "Task_insert_in_list failed to place task in right order");
 }
 /* END OF TEST*/
 
 TEST(TaskListInitTestGroup, Test_TaskRemove)
 {
-   Task_remove_from_list(p_dummy_task_list, p_dummy_task, state_list);
+   Task_remove_from_list(p_aux_task_list, p_dummy_task, aux_list);
 
-   CHECK_TEXT((p_dummy_task_list->p_head == NULL), "Task_remove_from_list did not reset p_head");
-   CHECK_TEXT((p_dummy_task_list->p_index == NULL), "Task_remove_from_list did not reset p_index");
-   CHECK_TEXT((p_dummy_task_list->size == 0U), "Task_remove_from_list did not reset size");
-   CHECK_TEXT((p_dummy_task->p_next_tctl[state_list] == NULL), "Task_remove_from_list did not reset tasks next task pointer");
-   CHECK_TEXT((p_dummy_task->p_prev_tctl[state_list] == NULL), "Task_remove_from_list did not reset tasks previous task pointer");
+   CHECK_TEXT((p_aux_task_list->p_head == NULL), "Task_remove_from_list did not reset p_head");
+   CHECK_TEXT((p_aux_task_list->p_index == NULL), "Task_remove_from_list did not reset p_index");
+   CHECK_TEXT((p_aux_task_list->size == 0U), "Task_remove_from_list did not reset size");
+   CHECK_TEXT((p_dummy_task->p_next_tctl[aux_list] == NULL), "Task_remove_from_list did not reset tasks next task pointer");
+   CHECK_TEXT((p_dummy_task->p_prev_tctl[aux_list] == NULL), "Task_remove_from_list did not reset tasks previous task pointer");
 }
 /* END OF TEST*/
 

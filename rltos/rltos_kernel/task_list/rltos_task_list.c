@@ -67,6 +67,8 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, vo
 	task_to_init->p_next_tctl[aux_list] = NULL;
 	task_to_init->p_prev_tctl[state_list] = NULL;
 	task_to_init->p_prev_tctl[aux_list] = NULL;
+	task_to_init->p_owners[state_list] = NULL;
+	task_to_init->p_owners[aux_list] = NULL;
 
 	/* Set the state list ownership*/
 	if(task_is_running)
@@ -76,6 +78,22 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, vo
 	else
 	{
 		Task_set_idle(task_to_init);
+	}
+}
+/* END OF FUNCTION*/
+
+void Task_deinit(p_task_ctl_t const task_to_deinit)
+{
+	/* Set the task function and stack pointer - then NULL init the list parameters*/
+	task_to_deinit->p_task_func = NULL;
+	task_to_deinit->stored_sp = NULL;
+	/* Task always exists in a state list - no need to check for NULL*/
+	Task_remove_from_list(task_to_deinit->p_owners[state_list], task_to_deinit, state_list);
+
+	/* Aux task will be NULL if not in one*/
+	if(NULL != task_to_deinit->p_owners[aux_list])
+	{
+		Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
 	}
 }
 /* END OF FUNCTION*/
@@ -142,8 +160,8 @@ void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_t const
 
 void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index)
 {
-	/* Only operate on a list with non-zero size and where the task is garunteed to be owned by that list*/
-	if ((list_for_remove->size > 0U) && (task_to_remove->p_owners[list_index] == list_for_remove))
+	/* Only operate on a list where the task is garuanteed to be owned by that list*/
+	if (task_to_remove->p_owners[list_index] == list_for_remove)
 	{
 		list_for_remove->size -= 1U;
 

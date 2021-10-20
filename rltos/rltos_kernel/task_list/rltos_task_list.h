@@ -34,6 +34,11 @@ void Scheduler_init(void);
  */
 void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void), bool task_is_running);
 
+/** @brief Function used to set deinit a task and removes from both running and idle lists.
+ * @param[in] task_to_deinit - pointer to a task for deinitialisation.
+ */
+void Task_deinit(p_task_ctl_t const task_to_deinit);
+
 /** @brief Function used to initialise a task list.
  * @param[in] list_to_init - pointer to a list for initialisation.
  * @param[in] first_task - optional first task to add - if NULL, no task is added.
