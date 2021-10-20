@@ -54,9 +54,11 @@ _Rltos_enter_first_task:
 
 ; START OF FUNCTION - void Rltos_yield(void)
 	PUBLIC _Rltos_yield
+        PUBLIC  ___interrupt_0x7E
 	EXTERN _Rltos_scheduler_impl
 	SECTION CODE:CODE
 _Rltos_yield:
+___interrupt_0x7E:
 	SAVE_CONTEXT
 	CALL	_Rltos_scheduler_impl ; Runs RLTOS scheduling algorithm
 	RESTORE_CONTEXT
@@ -66,11 +68,14 @@ _Rltos_yield:
 
 ; START OF FUNCTION - void Rltos_tick(void)
 	PUBLIC _Rltos_tick
+        PUBLIC  ___interrupt_0x38
 	EXTERN _Rltos_scheduler_impl
 	SECTION CODE:CODE
 _Rltos_tick:
+___interrupt_0x38:
 	SAVE_CONTEXT
 	CALL	_Rltos_scheduler_impl ; Runs RLTOS scheduling algorithm
 	RESTORE_CONTEXT
 	reti
 ; END OF FUNCTION - void Rltos_tick(void)
+

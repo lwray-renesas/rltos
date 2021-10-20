@@ -24,21 +24,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-/** Check for eclipse environment*/
-#ifdef __CDT_PARSER__
-#define __far
-#define __near
-#endif
-
-/** Check for intellisense environment*/
-#ifdef __INTELLISENSE__
-#define __far
-#define __near
-#endif
-
-/*! Empty definition - no memory model used here*/
-#define MEM_TYPE
-
 /** @brief data type the stack pointer points at*/
 typedef uint32_t stack_type;
 

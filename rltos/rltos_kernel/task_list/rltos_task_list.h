@@ -13,8 +13,8 @@
 #endif
 
 /** Declare pointers to opaque data types*/
-typedef struct Task_ctl_t MEM_TYPE * p_task_ctl_t;
-typedef struct Task_list_t MEM_TYPE * p_task_list_t;
+typedef struct Task_ctl_t * p_task_ctl_t;
+typedef struct Task_list_t * p_task_list_t;
 
 /** Provide enumerated type to index task item lists*/
 typedef enum
@@ -23,10 +23,6 @@ typedef enum
     aux_list            /* Index of list where the item exists waiting on an object*/
 }list_index_t;
 
-/** Pointer to running task list*/
-extern struct Task_list_t running_task_list;
-extern struct Task_list_t idle_task_list;
-
 /** @brief Function used to initialise the current task to point at the running lists head */
 void Scheduler_init(void);
 
@@ -34,8 +30,9 @@ void Scheduler_init(void);
  * @param[in] task_to_init - pointer to a task for initialisation.
  * @param[in] init_sp - initial stack pointer value (after stack initialisation).
  * @param[in] init_task_func - function pointer to tasks entry function.
+ * @param[in] task_is_running - if true - task placed in running list - otherwise placed in idle list.
  */
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void));
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void), bool task_is_running);
 
 /** @brief Function used to initialise a task list.
  * @param[in] list_to_init - pointer to a list for initialisation.
@@ -43,6 +40,16 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, vo
  * @param[in] list_index - index of the list to in which to add the first task (ignored in the case first_task is NULL).
  */
 void Task_list_init(p_task_list_t const list_to_init, p_task_ctl_t const first_task, const list_index_t list_index);
+
+/** @brief Function used to append task to the running list
+ * @param[in] task_to_run - task to set running.
+ */
+void Task_set_running(p_task_ctl_t const task_to_insert);
+
+/** @brief Function used to append task to the idle list
+ * @param[in] task_to_idle - task to set idle.
+ */
+void Task_set_idle(p_task_ctl_t const task_to_insert);
 
 /** @brief Function used to append task to a task list
  * @param[in] list_for_insert - pointer to a task list for which the task should be inserted.

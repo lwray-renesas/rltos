@@ -24,16 +24,13 @@ void Rltos_kernel_enter(void)
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_top, void(* const p_task_func)(void))
+void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_top, void(* const p_task_func)(void), bool run_task)
 {
 	/* Initialise the stack*/
 	p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
-	Task_init((p_task_ctl_t)(task_to_add), p_stack_top, p_task_func);
-
-	/* Add task to running list*/
-	Task_insert_in_list(&running_task_list, (p_task_ctl_t )task_to_add, state_list);
+	Task_init((p_task_ctl_t)(task_to_add), p_stack_top, p_task_func, run_task);
 }
 /* END OF FUNCTION*/
 

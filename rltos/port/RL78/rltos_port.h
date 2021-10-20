@@ -24,32 +24,22 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-/** DETERMINE THE COMPILER IN USE*/
-#if defined(__ICCRL78__)
-#define IAR_RL78_COMPILER
-#elif defined(__clang__) && defined(__RL78__)
-#define LLVM_RL78_COMPILER
-#else
-#define UNKNOWN_COMPILER
-#endif
-
-/** DETERMINE THE MEMORY MODEL IN USE*/
-#if defined(IAR_RL78_COMPILER)
-#if __DATA_MODEL__ != NEAR
-#define MEM_TYPE __far
-#endif
-#endif
-
-/** If MEM_TYPE not detected manually set it (empty by default)*/
-#ifndef MEM_TYPE
-#define MEM_TYPE
-#endif
+/** Notes for isr installation:
+ * IAR:
+ *      interrupts are installed in rltos_scheduler_asm.asm
+ * 
+ * CLANG/GCC:
+ *      interrupts should be installed by the user application in the vector table
+ *      Rltos_yield is the BRK isr (0x7E)
+ *      Rltos_tick is the INTIL isr (0x38)
+ *      extern these function in the location the interrupt vector table is constructed and ensure they are enterred in the correct place
+ */
 
 /** @brief data type the stack pointer points at*/
 typedef uint16_t stack_type;
 
 /** @brief data type the stack pointer points at*/
-typedef uint16_t MEM_TYPE * stack_ptr_type;
+typedef uint16_t * stack_ptr_type;
 
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint16_t rltos_uint;
