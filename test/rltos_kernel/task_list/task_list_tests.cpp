@@ -29,13 +29,14 @@ TEST_GROUP(TaskListInitTestGroup)
       */
       p_dummy_task = new struct Task_ctl_t;
       p_aux_task_list = new struct Task_list_t;
-      Task_init(p_dummy_task, dummy_stack, &Dummy_task_func, true);
-      Task_list_init(p_aux_task_list, NULL, (list_index_t) 0);
+      Task_init(p_dummy_task, dummy_stack, &Dummy_task_func, 0U, true);
+      Task_list_init(p_aux_task_list);
    }
    /* END OF FUNCTION*/
 
    void teardown(void)
    {
+      /* Deinitialises dummy task and destroys dummy task and list*/
       Task_deinit(p_dummy_task);
       delete p_dummy_task;
       delete p_aux_task_list;
@@ -52,10 +53,15 @@ void Dummy_task_func(void)
 TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
 {
    std::unique_ptr<struct Task_ctl_t> l_task_under_test = std::make_unique<struct Task_ctl_t>();
-   Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func, true);
+   Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func, 0U, true);
 
    CHECK_TEXT((l_task_under_test.get()->stored_sp == dummy_stack), "Task_init failed to initialise stack pointer");
    CHECK_TEXT((l_task_under_test.get()->p_task_func == Dummy_task_func), "Task_init failed to initialise pointer to task function correctly");
+
+   CHECK_TEXT((l_task_under_test->p_next_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks next task");
+   CHECK_TEXT((l_task_under_test->p_prev_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks prev task");
+   CHECK_TEXT((l_task_under_test.get()->p_owners[state_list] == &running_task_list), "Task_init failed to add task to the running list");
+   CHECK_TEXT((l_task_under_test.get()->p_owners[aux_list] == NULL), "Task_init editted aux list owner without cause");
 }
 /* END OF TEST*/
 
@@ -76,7 +82,7 @@ TEST(TaskListInitTestGroup, Test_TaskAppend)
 {
    std::unique_ptr<struct Task_ctl_t> p_local_task = std::make_unique<struct Task_ctl_t>();
 
-   Task_insert_in_list(p_aux_task_list, p_local_task.get(), state_list);
+   Task_insert_in_list(p_aux_task_list, p_local_task.get(), state_list, 0U);
 
    CHECK_TEXT((p_aux_task_list->p_head == p_aux_task_list->p_index), "Task_insert_in_list editted p_head or p_index without cause");
    CHECK_TEXT((p_aux_task_list->p_head == p_dummy_task), "Task_insert_in_list editted p_head without cause");

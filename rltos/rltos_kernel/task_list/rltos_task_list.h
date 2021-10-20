@@ -30,44 +30,35 @@ void Scheduler_init(void);
  * @param[in] task_to_init - pointer to a task for initialisation.
  * @param[in] init_sp - initial stack pointer value (after stack initialisation).
  * @param[in] init_task_func - function pointer to tasks entry function.
+ * @param[in] priority - priority of task, lower is better.
  * @param[in] task_is_running - if true - task placed in running list - otherwise placed in idle list.
  */
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void), bool task_is_running);
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(* const init_task_func)(void), rltos_uint priority, bool task_is_running);
 
 /** @brief Function used to set deinit a task and removes from both running and idle lists.
  * @param[in] task_to_deinit - pointer to a task for deinitialisation.
  */
 void Task_deinit(p_task_ctl_t const task_to_deinit);
 
-/** @brief Function used to initialise a task list.
+/** @brief Function used to initialise a task list - 0's size and sets HEAD & INDEX to NULL.
  * @param[in] list_to_init - pointer to a list for initialisation.
- * @param[in] first_task - optional first task to add - if NULL, no task is added.
- * @param[in] list_index - index of the list to in which to add the first task (ignored in the case first_task is NULL).
  */
-void Task_list_init(p_task_list_t const list_to_init, p_task_ctl_t const first_task, const list_index_t list_index);
+void Task_list_init(p_task_list_t const list_to_init);
 
 /** @brief Function used to append task to the running list
  * @param[in] task_to_run - task to set running.
  */
-void Task_set_running(p_task_ctl_t const task_to_insert);
+void Task_set_running(p_task_ctl_t const task_to_run);
 
 /** @brief Function used to append task to the idle list
- * @param[in] task_to_idle - task to set idle.
+ * @param[in] time_to_idle - number of ticks to idle task.
  */
-void Task_set_idle(p_task_ctl_t const task_to_insert);
+void Task_set_current_idle(const rltos_uint time_to_idle);
 
-/** @brief Function used to append task to a task list
- * @param[in] list_for_insert - pointer to a task list for which the task should be inserted.
- * @param[in] task_to_insert - task to insert in list.
- * @param[in] list_index - index of the list to in which to insert the task.
+/** @brief Function used to set the current task to wait on an object (uses auxillary list)
+ * @param[in] owner - object to register waiting on.
+ * @param[in] time_to_wait - number of ticks to wait.
  */
-void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_t const task_to_insert, const list_index_t list_index);
-
-/** @brief Function used to remove task from a task list
- * @param[in] list_for_remove - pointer to a task list from which the task should be removed.
- * @param[in] task_to_remove - task to remove from list.
- * @param[in] list_index - index of the list to in which to remove the task.
- */
-void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
+void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait);
 
 #endif /* RLTOS_TASK_LIST_H_ */

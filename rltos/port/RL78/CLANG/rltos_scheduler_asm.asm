@@ -57,11 +57,11 @@ _Rltos_enter_first_task:
 ; START OF FUNCTION - void Rltos_yield(void)
 	.global _Rltos_yield
 	.type	_Rltos_yield,STT_FUNC
-	.extern _Rltos_scheduler_impl
+	.extern _Rltos_scheduler_switch_context
 	.text
 _Rltos_yield:
 	SAVE_CONTEXT
-	CALL	!!_Rltos_scheduler_impl ; Runs RLTOS scheduling algorithm
+	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling algorithm
 	RESTORE_CONTEXT
 	retb
 ; END OF FUNCTION - void Rltos_yield(void)
@@ -70,11 +70,13 @@ _Rltos_yield:
 ; START OF FUNCTION - void Rltos_tick(void)
 	.global _Rltos_tick
 	.type	_Rltos_tick,STT_FUNC
-	.extern _Rltos_scheduler_impl
+	.extern _Rltos_scheduler_tick_inc
+	.extern _Rltos_scheduler_switch_context
 	.text
 _Rltos_tick:
 	SAVE_CONTEXT
-	CALL	!!_Rltos_scheduler_impl ; Runs RLTOS scheduling algorithm
+	CALL	!!_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor
+	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling context switch
 	RESTORE_CONTEXT
 	reti
 ; END OF FUNCTION - void Rltos_tick(void)

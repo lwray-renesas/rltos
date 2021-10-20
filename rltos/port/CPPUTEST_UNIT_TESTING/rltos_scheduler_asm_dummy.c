@@ -6,7 +6,8 @@
  */
 
 /** Make scheduler implementation available*/
-extern void Rltos_scheduler_impl(void);
+extern void Rltos_scheduler_switch_context(void);
+extern void Rltos_scheduler_tick_inc(void);
 
 /** @brief emtpy function used to emulate the dummy functions*/
 static void Save_context(void);
@@ -26,7 +27,7 @@ void Rltos_enter_first_task(void)
 void Rltos_yield(void)
 {
 	Save_context();
-	Rltos_scheduler_impl();
+	Rltos_scheduler_switch_context();
 	Restore_context();
 }
 /* END OF FUNCTION*/
@@ -35,7 +36,8 @@ void Rltos_yield(void)
 void Rltos_tick(void)
 {
 	Save_context();
-	Rltos_scheduler_impl();
+	Rltos_scheduler_tick_inc();
+	Rltos_scheduler_switch_context();
 	Restore_context();
 }
 /* END OF FUNCTION*/
