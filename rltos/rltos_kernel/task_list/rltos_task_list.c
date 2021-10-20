@@ -311,7 +311,12 @@ void Rltos_scheduler_tick_inc(void)
 		++rltos_wrap_count;
 	}
 
-	/* While idle tasks are ready*/
+	/* While idle tasks are ready.
+	* AND 
+	* next idle tasks wrap counter matches system wrap counter.
+	* AND 
+	* system tick count has expired the next idles tasks expiry time.
+	*/
 	while ((idle_task_list.size > 0U) &&
 		   (rltos_wrap_count == rltos_next_idle_ready_wrap_count) &&
 		   (rltos_system_tick >= rltos_next_idle_ready_tick))

@@ -70,21 +70,26 @@ Only supports near data model - awaiting compiler update to support.
 - [CppUtest](https://cpputest.github.io/)
 - [CMake](https://cmake.org/)
 
+## Requirements for code quality checks
+- [Cppcheck](https://cppcheck.sourceforge.io/)
+
+## NOTES:
+- Can't implement sleep function until insert list function sorts the list!
+
 ## TODO NEXT (in order - unit test as we go)
 - On insert, sort the lists according to their sorting value (head = smallest number).
-- Include a priority metric, used currently only to order the list, not in the scheduling algorithm.
-- Write sleep function and make use of idle task list in the scheduler.
+- Unit test code thoroughly - checkpoint.
 - Integrate [Cppcheck](https://cppcheck.sourceforge.io/) in both unit tests and rltos main code (for each port).
+- Setup doxyfile and provide doc folder.
+- Tidy code banners & comments with license and proper descriptions +  author used for doxygen.
+- Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 
 ## TODO
 - Implement event_flags
 - Implement mutex
 - Implement queue
 - Implement semaphore
-- Setup unit testing on CPPUTEST and include files in test repo.
-- Setup doxyfile and provide doc folder.
 - Create example project + documentation to setup two tasks.
 - Implement co-operative scheduling
 - Write install guide for RL78 port.
 - Write instruction for getting up and running with unit testing this project.
-- Tidy code banners with license and proper descriptions +  author used for dosygen.
