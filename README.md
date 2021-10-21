@@ -73,6 +73,10 @@ Only supports near data model - awaiting compiler update to support.
 ## Requirements for code quality checks
 - [Cppcheck](https://cppcheck.sourceforge.io/)
 
+## Requirements for documentation production
+- [Doxygen](https://www.doxygen.nl/index.html)
+- [GraphViz](http://www.graphviz.org/)
+
 ## NOTES:
 - Can't implement sleep function until insert list function sorts the list!
 
