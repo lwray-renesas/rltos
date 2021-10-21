@@ -1,5 +1,6 @@
 /**
  * @defgroup Rltos_task_list Task list
+ * @ingroup Rltos_task
  * The group defining the RLTOS task list - containing the scheduler.
  * @addtogroup Rltos_task_list_api api
  * The public API (interface) to the RLTOS task list module.

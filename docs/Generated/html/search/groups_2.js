@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kernel_0',['Kernel',['../group___rltos__kernel.html',1,'']]]
+  ['mutex_0',['Mutex',['../group___rltos__mutex.html',1,'']]]
 ];

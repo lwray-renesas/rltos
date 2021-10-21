@@ -1,10 +1,17 @@
 var searchData=
 [
-  ['scheduler_5finit_0',['Scheduler_init',['../group___rltos__task__list__prv.html#ga7a5774702e922fe3bd53f74fc3cf5342',1,'Scheduler_init(void):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#ga7a5774702e922fe3bd53f74fc3cf5342',1,'Scheduler_init(void):&#160;rltos_task_list.c']]],
-  ['sempahore_1',['Sempahore',['../group___rltos__semaphore.html',1,'']]],
-  ['should_5fswitch_5ftask_2',['should_switch_task',['../group___rltos__task__list__prv.html#ga5c53ccc4e154989b577fa92779545419',1,'rltos_task_list.c']]],
-  ['size_3',['size',['../structtask__list__t.html#ab7b2a16266510fe944d230ab4c5a9ec9',1,'task_list_t']]],
-  ['sorting_5fvalues_4',['sorting_values',['../structtask__ctl__t.html#a2c6976256915d271d661da18720f7cd0',1,'task_ctl_t']]],
-  ['state_5flist_5',['state_list',['../group___rltos__task__list__api.html#gga09f710c47e5026bc2790e81defa17bc5ac01ca3840d6fc528b1eed84dfefb8433',1,'rltos_task_list.h']]],
-  ['stored_5fsp_6',['stored_sp',['../structtask__ctl__t.html#a1585e582f0add00159fe79fee4f80a16',1,'task_ctl_t']]]
+  ['task_0',['Task',['../group___rltos__task.html',1,'']]],
+  ['task_20list_1',['Task list',['../group___rltos__task__list.html',1,'']]],
+  ['task_5fappend_5fto_5flist_2',['Task_append_to_list',['../group___rltos__task__list__prv.html#ga28f6d69d82ff510be23a1a401d5d42a9',1,'rltos_task_list.c']]],
+  ['task_5fctl_5ft_3',['task_ctl_t',['../structtask__ctl__t.html',1,'']]],
+  ['task_5fdeinit_4',['Task_deinit',['../group___rltos__task__list__prv.html#ga497b702db38a8ce118c8393eb0587712',1,'Task_deinit(p_task_ctl_t const task_to_deinit):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#ga497b702db38a8ce118c8393eb0587712',1,'Task_deinit(p_task_ctl_t const task_to_deinit):&#160;rltos_task_list.c']]],
+  ['task_5finit_5',['Task_init',['../group___rltos__task__list__prv.html#ga7381af6f29df467e5543f1a7f358c4b1',1,'Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(*const init_task_func)(void), rltos_uint priority, bool task_is_running):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#ga7381af6f29df467e5543f1a7f358c4b1',1,'Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void(*const init_task_func)(void), rltos_uint priority, bool task_is_running):&#160;rltos_task_list.c']]],
+  ['task_5finsert_5fin_5flist_6',['Task_insert_in_list',['../group___rltos__task__list__prv.html#gab915c720a9360b7be5bb388002b6ebcd',1,'rltos_task_list.c']]],
+  ['task_5flist_5finit_7',['Task_list_init',['../group___rltos__task__list__prv.html#gac816af0adf021190a270dbf77055b7e8',1,'Task_list_init(p_task_list_t const list_to_init):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#gac816af0adf021190a270dbf77055b7e8',1,'Task_list_init(p_task_list_t const list_to_init):&#160;rltos_task_list.c']]],
+  ['task_5flist_5ft_8',['task_list_t',['../structtask__list__t.html',1,'']]],
+  ['task_5fremove_5ffrom_5flist_9',['Task_remove_from_list',['../group___rltos__task__list__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b',1,'rltos_task_list.c']]],
+  ['task_5fset_5fcurrent_5fidle_10',['Task_set_current_idle',['../group___rltos__task__list__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f',1,'Task_set_current_idle(const rltos_uint time_to_idle):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f',1,'Task_set_current_idle(const rltos_uint time_to_idle):&#160;rltos_task_list.c']]],
+  ['task_5fset_5fcurrent_5fwait_5fon_5fobject_11',['Task_set_current_wait_on_object',['../group___rltos__task__list__prv.html#ga90ce1a0329edc828e765740fce4e29cb',1,'Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#ga90ce1a0329edc828e765740fce4e29cb',1,'Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait):&#160;rltos_task_list.c']]],
+  ['task_5fset_5frunning_12',['Task_set_running',['../group___rltos__task__list__prv.html#gae2e9ba76398ba904d0c32071d3512a2b',1,'Task_set_running(p_task_ctl_t const task_to_run):&#160;rltos_task_list.c'],['../group___rltos__task__list__api.html#gae2e9ba76398ba904d0c32071d3512a2b',1,'Task_set_running(p_task_ctl_t const task_to_run):&#160;rltos_task_list.c']]],
+  ['todo_13',['TODO',['../todo.html',1,'developing']]]
 ];

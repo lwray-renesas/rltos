@@ -1,9 +1,9 @@
 /**
- * @defgroup Rltos_kernel Kernel
- * The group defining the RLTOS raw kernel.
- * @addtogroup Rltos_kernel_api api
- * The public API (interface) to the RLTOS kernel.
- * @ingroup Rltos_kernel
+ * @defgroup Rltos_task Task
+ * The group defining the RLTOS raw kernel tasks.
+ * @addtogroup Rltos_task_api api
+ * The public API (interface) to the RLTOS kernela tasks.
+ * @ingroup Rltos_task
  * @{
  */
 
@@ -57,7 +57,7 @@ typedef struct
 /** @brief pointer to dummy task structure*/
 typedef dummy_task_t * p_dummy_task_t;
 
-/** @brief pointer to dummy task list structure*/
+/** @brief  pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. */

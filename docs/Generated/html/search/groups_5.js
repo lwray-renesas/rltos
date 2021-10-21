@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue_0',['Queue',['../group___rltos__queue.html',1,'']]]
+  ['sempahore_0',['Sempahore',['../group___rltos__semaphore.html',1,'']]]
 ];

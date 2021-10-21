@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__kernel__prv.html#gac44bc5223fd6d5d7f635776b1eb6231b" target="_top" xlink:title="Enters RLTOS kernel and starts scheduler timer.">
+<g id="a_node2"><a xlink:href="group___rltos__task__prv.html#gac44bc5223fd6d5d7f635776b1eb6231b" target="_top" xlink:title="Enters RLTOS kernel and starts scheduler timer.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 98,-19.5 98,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="49" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Rltos_kernel_enter</text>
 </a>
