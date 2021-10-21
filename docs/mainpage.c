@@ -12,12 +12,12 @@ An objective of the code is to have complete unit test coverage of the kernel us
 A project deep divce - going into configurations and algorithms and justifications of techniques etc.
 
 \section coding_standards Coding Standards
-<a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
+- <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
 
 \subsection doxygen Doxygen
-<a href="https://www.doxygen.nl/index.html">Doxygen</a>
-<a href="http://www.graphviz.org/">GraphViz</a>
-<a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a>
+- <a href="https://www.doxygen.nl/index.html">Doxygen</a>
+- <a href="http://www.graphviz.org/">GraphViz</a>
+- <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a>
 
 
 \section unit_testing Unit Testing
@@ -39,10 +39,10 @@ Extenions required:
 - CMake Tools by Microsoft
 
 \subsection cmake CMake
-<a href="https://cmake.org/">CMake</a>
+- <a href="https://cmake.org/">CMake</a>
 
 \subsection cpputest CppUTest
-<a href="https://cpputest.github.io/">CppUTest</a>
+- <a href="https://cpputest.github.io/">CppUTest</a>
 
 
 \section todo TODO
