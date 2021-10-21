@@ -34,6 +34,7 @@ typedef struct
 	void * dummy1;
 	rltos_uint dummy2[4];
 	void * dummy3[6];
+	rltos_uint dummy4[2];
 }dummy_task_t;
 
 /** @brief Dummy task list structure guaranteed to be the same size as a task list structure.

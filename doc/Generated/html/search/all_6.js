@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['rltos_0',['RLTOS',['../index.html',1,'']]],
+  ['rltos_2ec_1',['rltos.c',['../rltos_8c.html',1,'']]],
+  ['rltos_2eh_2',['rltos.h',['../rltos_8h.html',1,'']]],
+  ['rltos_5fcreate_5ftask_3',['RLTOS_CREATE_TASK',['../rltos_8h.html#a926bea9bba1e8bc959d7579deb8f9a00',1,'rltos.h']]],
+  ['rltos_5fdeclare_5ftask_4',['RLTOS_DECLARE_TASK',['../rltos_8h.html#a2ac544d6c98b01e996fd2af76a6dd6d1',1,'rltos.h']]],
+  ['rltos_5fenter_5ffirst_5ftask_5',['Rltos_enter_first_task',['../rltos_8c.html#a04568f559034fd5f422b38c455278324',1,'rltos.c']]],
+  ['rltos_5fevent_5fflags_2ec_6',['rltos_event_flags.c',['../rltos__event__flags_8c.html',1,'']]],
+  ['rltos_5fevent_5fflags_2eh_7',['rltos_event_flags.h',['../rltos__event__flags_8h.html',1,'']]],
+  ['rltos_5fkernel_5fenter_8',['Rltos_kernel_enter',['../rltos_8h.html#ac44bc5223fd6d5d7f635776b1eb6231b',1,'Rltos_kernel_enter(void):&#160;rltos.c'],['../rltos_8c.html#ac44bc5223fd6d5d7f635776b1eb6231b',1,'Rltos_kernel_enter(void):&#160;rltos.c']]],
+  ['rltos_5fmutex_2ec_9',['rltos_mutex.c',['../rltos__mutex_8c.html',1,'']]],
+  ['rltos_5fmutex_2eh_10',['rltos_mutex.h',['../rltos__mutex_8h.html',1,'']]],
+  ['rltos_5fqueue_2ec_11',['rltos_queue.c',['../rltos__queue_8c.html',1,'']]],
+  ['rltos_5fqueue_2eh_12',['rltos_queue.h',['../rltos__queue_8h.html',1,'']]],
+  ['rltos_5fscheduler_5fswitch_5fcontext_13',['Rltos_scheduler_switch_context',['../rltos__task__list_8c.html#a7dad02e1630e47f423618b110c2071a4',1,'rltos_task_list.c']]],
+  ['rltos_5fscheduler_5ftick_5finc_14',['Rltos_scheduler_tick_inc',['../rltos__task__list_8c.html#a609bbe6d9efbe0605517cde0ba5c9f06',1,'rltos_task_list.c']]],
+  ['rltos_5fsemaphore_2ec_15',['rltos_semaphore.c',['../rltos__semaphore_8c.html',1,'']]],
+  ['rltos_5fsemaphore_2eh_16',['rltos_semaphore.h',['../rltos__semaphore_8h.html',1,'']]],
+  ['rltos_5fstack_5finit_17',['Rltos_stack_init',['../rltos_8c.html#a31f88a035671a12040d9feb90d70750d',1,'rltos.c']]],
+  ['rltos_5fstart_5ftick_5ftimer_18',['Rltos_start_tick_timer',['../rltos_8c.html#afd4c0a4449b5bb430a84403949924af1',1,'rltos.c']]],
+  ['rltos_5ftask_5fcreate_19',['Rltos_task_create',['../rltos_8h.html#a9620fe030b4b4f2e2f790b9b60a6dc0a',1,'Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_top, void(*const p_task_func)(void), rltos_uint task_priority, bool run_task):&#160;rltos.c'],['../rltos_8c.html#a9620fe030b4b4f2e2f790b9b60a6dc0a',1,'Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_top, void(*const p_task_func)(void), rltos_uint task_priority, bool run_task):&#160;rltos.c']]],
+  ['rltos_5ftask_5flist_2ec_20',['rltos_task_list.c',['../rltos__task__list_8c.html',1,'']]],
+  ['rltos_5ftask_5flist_2eh_21',['rltos_task_list.h',['../rltos__task__list_8h.html',1,'']]],
+  ['rltos_5ftask_5fsleep_22',['Rltos_task_sleep',['../rltos_8h.html#a581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos.c'],['../rltos_8c.html#a581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos.c']]],
+  ['rltos_5funused_23',['RLTOS_UNUSED',['../rltos_8h.html#a44bdae780bc13fedd9c99f1de7fd16f6',1,'rltos.h']]]
+];

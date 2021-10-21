@@ -78,5 +78,6 @@ _Rltos_tick:
 	CALL	!!_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor
 	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling context switch
 	RESTORE_CONTEXT
+	CLR1 !F036BH.0 ; Clears interval timer interrupt bit
 	reti
 ; END OF FUNCTION - void Rltos_tick(void)

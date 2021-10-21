@@ -75,9 +75,10 @@ ___interrupt_0x7E:
 _Rltos_tick:
 ___interrupt_0x38:
 	SAVE_CONTEXT
-	CALL	_Rltos_scheduler_tick_inc
+	CALL	_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor
 	CALL	_Rltos_scheduler_switch_context ; Runs RLTOS scheduling algorithm
 	RESTORE_CONTEXT
+	CLR1 !0x036B.0 ; Clears interval timer interrupt bit
 	reti
 ; END OF FUNCTION - void Rltos_tick(void)
 

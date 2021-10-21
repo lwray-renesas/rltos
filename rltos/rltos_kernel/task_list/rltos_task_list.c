@@ -23,6 +23,7 @@ struct Task_ctl_t
 	struct Task_ctl_t *p_next_tctl[2]; /* Pointer to the next item - can exist in two lists at once*/
 	struct Task_ctl_t *p_prev_tctl[2]; /* Pointer to the previous item - can exist in two lists at once*/
 	p_task_list_t p_owners[2];		   /* Pointer to the list who owns this task - can exist in two lists at once*/
+	rltos_uint sorting_values[2];		/* Array to store the lists sorting values*/
 };
 
 /** @brief Struct definition containing all items required to operate a task list*/
@@ -46,18 +47,18 @@ static struct Task_list_t idle_task_list = {
 	.size = 0U};
 
 /** Pointer to current running task*/
-volatile p_task_ctl_t p_current_task_ctl = NULL;
+p_task_ctl_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
 static volatile rltos_uint rltos_system_tick = 0U;
 /** Rltos wrap around tracker*/
 static volatile rltos_uint rltos_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
-static volatile rltos_uint rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+static rltos_uint rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
 /** Rltos wrap next idle tasks wrap around tracker*/
-static volatile rltos_uint rltos_next_idle_ready_wrap_count = 0U;
+static rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
-static volatile bool should_switch_task = true;
+static bool should_switch_task = true;
 
 /** @brief Function used to insert a task in a sorted task list
  * @param[in] list_for_append - pointer to a task list for which the task should be inserted.
@@ -170,33 +171,40 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 void Task_set_current_idle(const rltos_uint time_to_idle)
 {
 	/* Calculate next expiration time*/
-	running_task_list.p_index->idle_ready_time = rltos_system_tick + time_to_idle;
-	running_task_list.p_index->idle_time = time_to_idle;
+	p_current_task_ctl->idle_ready_time = rltos_system_tick + time_to_idle;
+	p_current_task_ctl->idle_time = time_to_idle;
 	/* Wraparound check*/
-	running_task_list.p_index->idle_wrap_count == (running_task_list.p_index->idle_ready_time < rltos_system_tick) ? rltos_wrap_count + 1U : rltos_wrap_count;
+	if(p_current_task_ctl->idle_ready_time < rltos_system_tick)
+	{
+		p_current_task_ctl->idle_wrap_count = rltos_wrap_count + 1U;
+	}
+	else
+	{
+		p_current_task_ctl->idle_wrap_count = rltos_wrap_count;
+	}
 
 	/* If list is empty - just fill parameters*/
 	if (idle_task_list.size == 0U)
 	{
-		rltos_next_idle_ready_tick = running_task_list.p_index->idle_ready_time;
-		rltos_next_idle_ready_wrap_count = running_task_list.p_index->idle_wrap_count;
+		rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
+		rltos_next_idle_ready_wrap_count = p_current_task_ctl->idle_wrap_count;
 	}
 	else
 	{
 		/* Both value have same wrap count i.e. both expire in the same window*/
-		if (running_task_list.p_index->idle_wrap_count == rltos_next_idle_ready_wrap_count)
+		if (p_current_task_ctl->idle_wrap_count == rltos_next_idle_ready_wrap_count)
 		{
 			/* Equal wrap counts - check if computed expiration tick time is quicker */
-			if (running_task_list.p_index->idle_ready_time < rltos_next_idle_ready_tick)
+			if (p_current_task_ctl->idle_ready_time < rltos_next_idle_ready_tick)
 			{
-				rltos_next_idle_ready_tick = running_task_list.p_index->idle_ready_time;
+				rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
 			}
 		}
-		else if (running_task_list.p_index->idle_wrap_count < rltos_next_idle_ready_wrap_count)
+		else if (p_current_task_ctl->idle_wrap_count < rltos_next_idle_ready_wrap_count)
 		{
 			/* computed wrap count is before the next wrap count, new one must be first*/
-			rltos_next_idle_ready_tick = running_task_list.p_index->idle_ready_time;
-			rltos_next_idle_ready_wrap_count = running_task_list.p_index->idle_wrap_count;
+			rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
+			rltos_next_idle_ready_wrap_count = p_current_task_ctl->idle_wrap_count;
 		}
 		else
 		{
@@ -204,8 +212,8 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 		}
 	}
 
-	Task_remove_from_list(&running_task_list, running_task_list.p_index, state_list);
-	Task_insert_in_list(&idle_task_list, running_task_list.p_index, state_list, running_task_list.p_index->idle_time);
+	Task_remove_from_list(&running_task_list, p_current_task_ctl, state_list);
+	Task_insert_in_list(&idle_task_list, p_current_task_ctl, state_list, p_current_task_ctl->idle_time);
 
 	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to switch tasks on next run*/
 	should_switch_task = false;
@@ -218,15 +226,61 @@ void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint
 	Task_set_current_idle(time_to_wait);
 
 	/* Dont care about the order in which they are appended*/
-	Task_append_to_list(owner, running_task_list.p_index, aux_list);
+	Task_append_to_list(owner, p_current_task_ctl, aux_list);
 }
 /* END OF FUNCTION*/
 
 static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_t const task_to_insert, const list_index_t list_index, const rltos_uint sorting_value)
-{
-	/* Currently implemented as append TODO: fix this*/
-	RLTOS_UNUSED(sorting_value);
-	Task_append_to_list(list_for_insert, task_to_insert, list_index);
+{	
+	/* If first task*/
+	if (0U == list_for_insert->size)
+	{
+		/* Make entire list circular to single task*/
+		list_for_insert->p_head = task_to_insert;
+		list_for_insert->p_index = task_to_insert;
+		task_to_insert->p_next_tctl[list_index] = task_to_insert;
+		task_to_insert->p_prev_tctl[list_index] = task_to_insert;
+	}
+	else
+	{
+		/* If the value belongs at the end of the list, append it*/ 
+		if(sorting_value >= list_for_insert->p_head->p_prev_tctl[list_index]->sorting_values[list_index])
+		{
+			task_to_insert->p_prev_tctl[list_index] = list_for_insert->p_head->p_prev_tctl[list_index];
+			task_to_insert->p_next_tctl[list_index] = list_for_insert->p_head;
+			list_for_insert->p_head->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;
+			list_for_insert->p_head->p_prev_tctl[list_index] = task_to_insert;
+		}
+		else if(sorting_value < list_for_insert->p_head->sorting_values[list_index])
+		{
+			/* Update the head*/
+			task_to_insert->p_prev_tctl[list_index] = list_for_insert->p_head->p_prev_tctl[list_index];
+			task_to_insert->p_next_tctl[list_index] = list_for_insert->p_head;
+			list_for_insert->p_head->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;
+			list_for_insert->p_head = task_to_insert;
+		}
+		else
+		{
+			/* Walk the list until; we get back to head OR we get to a list entry that belongs AFTER the current entry*/
+			p_task_ctl_t walk_value = list_for_insert->p_head->p_next_tctl[list_index];
+			while( (sorting_value >= walk_value->sorting_values[list_index]) && (walk_value != list_for_insert->p_head) )
+			{
+				walk_value = walk_value->p_next_tctl[list_index];
+			}
+			
+			task_to_insert->p_prev_tctl[list_index] = walk_value->p_prev_tctl[list_index];
+			task_to_insert->p_next_tctl[list_index] = walk_value;
+			walk_value->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;
+		}
+	}
+
+	/* Set the new owner list*/
+	task_to_insert->p_owners[list_index] = list_for_insert;
+	/* Set the new sorting value*/
+	task_to_insert->sorting_values[list_index] = sorting_value;
+
+	/* Increment list size*/
+	list_for_insert->size += 1U;
 }
 /* END OF FUNCTION*/
 
