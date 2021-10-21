@@ -10,14 +10,16 @@
 
 #include "rltos_port.h"
 
-/** @brief Utility macro for declaring a task.*/
+/** @brief Utility macro for declaring a task.
+ * @note This should really only be used with the RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name, tsk_priority, start_running).
+ */
 #define RLTOS_DECLARE_TASK(task_name, stack_size_bytes, task_func_name)						\
 	stack_type task_name##_stack[stack_size_bytes/2U];								\
 	dummy_task_t task_name##_str;													\
 	extern void task_func_name(void);
 
 /** @brief Utility macro for creating a task.
- * @note This can only be used if the RLTOS_DECLARE_TASK utility macro has been used.
+ * @note This can only be used if the RLTOS_DECLARE_TASK(task_name, stack_size_bytes, task_func_name) utility macro has been used.
  */
 #define RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name, tsk_priority, start_running)						\
 	Rltos_task_create(&task_name##_str, &task_name##_stack[stack_size_bytes/2U], &task_func_name, tsk_priority, start_running)

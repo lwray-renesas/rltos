@@ -28,6 +28,7 @@ var NAVTREE =
     [ "Quickstart", "index.html#quickstart", null ],
     [ "Project", "index.html#project", null ],
     [ "Coding Standards", "index.html#coding_standards", [
+      [ "CppCheck", "index.html#cppcheck", null ],
       [ "Doxygen", "index.html#doxygen", null ]
     ] ],
     [ "Unit Testing", "index.html#unit_testing", [

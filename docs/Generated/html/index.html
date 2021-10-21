@@ -94,18 +94,30 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p >An objective of the code is to have complete unit test coverage of the kernel using .</p>
 <h1><a class="anchor" id="quickstart"></a>
 Quickstart</h1>
+<hr  />
 <h1><a class="anchor" id="project"></a>
 Project</h1>
-<p >A project deep divce - going into configurations and algorithms and justifications of techniques etc.</p>
+<hr  />
+<p> A project deep dive - going into configurations and algorithms and justifications of techniques etc.</p>
 <h1><a class="anchor" id="coding_standards"></a>
 Coding Standards</h1>
-<p ><a href="https://cppcheck.sourceforge.io/">Cppcheck</a></p>
+<hr  />
+<h2><a class="anchor" id="cppcheck"></a>
+CppCheck</h2>
+<ul>
+<li><a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a></li>
+</ul>
 <h2><a class="anchor" id="doxygen"></a>
 Doxygen</h2>
-<p ><a href="https://www.doxygen.nl/index.html">Doxygen</a> <a href="http://www.graphviz.org/">GraphViz</a> <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a></p>
+<ul>
+<li><a href="https://www.doxygen.nl/index.html">Doxygen</a></li>
+<li><a href="http://www.graphviz.org/">GraphViz</a></li>
+<li><a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a></li>
+</ul>
 <h1><a class="anchor" id="unit_testing"></a>
 Unit Testing</h1>
-<p >The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file. The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio. The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.</p>
+<hr  />
+<p> The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file. The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio. The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.</p>
 <h2><a class="anchor" id="vs_code"></a>
 VS Code</h2>
 <p >The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.</p><ul>
@@ -118,21 +130,24 @@ VS Code</h2>
 </ul>
 <h2><a class="anchor" id="cmake"></a>
 CMake</h2>
-<p ><a href="https://cmake.org/">CMake</a></p>
+<ul>
+<li><a href="https://cmake.org/">CMake</a></li>
+</ul>
 <h2><a class="anchor" id="cpputest"></a>
 CppUTest</h2>
-<p ><a href="https://cpputest.github.io/">CppUTest</a></p>
+<ul>
+<li><a href="https://cpputest.github.io/">CppUTest</a></li>
+</ul>
 <h1><a class="anchor" id="todo"></a>
 TODO</h1>
-<p >List what we need to do moving forward with the project.</p>
+<hr  />
+<p> List what we need to do moving forward with the project.</p>
 <h2><a class="anchor" id="next"></a>
 Next</h2>
 <ul>
 <li>On insert, sort the lists according to their sorting value (head = smallest number).</li>
-<li>Unit test code thoroughly - checkpoint.</li>
-<li>Integrate <a href="https://cppcheck.sourceforge.io/">Cppcheck</a> in both unit tests and rltos main code (for each port).</li>
-<li>Setup doxyfile and provide doc folder.</li>
-<li>Tidy code banners &amp; comments with license and proper descriptions + author used for doxygen.</li>
+<li>Unit test code thoroughly &amp; MISRA clean - checkpoint.</li>
+<li>Review &amp; tidy all comments paying attention to file code banners &amp; comments with license and proper descriptions + author (doxygen).</li>
 <li>Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.</li>
 </ul>
 <h2><a class="anchor" id="soon"></a>
@@ -149,7 +164,8 @@ Soon</h2>
 </ul>
 <h1><a class="anchor" id="ports"></a>
 Ports</h1>
-<h2><a class="anchor" id="cpputest_unit_testing"></a>
+<hr  />
+ <h2><a class="anchor" id="cpputest_unit_testing"></a>
 CPPUTEST_UNIT_TESTING</h2>
 <p >This port exists to satisfy the unit testing environment.</p>
 <h2><a class="anchor" id="rl78"></a>

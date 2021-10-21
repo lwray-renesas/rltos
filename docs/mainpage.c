@@ -7,11 +7,14 @@ The name RLTOS comes from a play on the words RL78 and RTOS as at inception the 
 An objective of the code is to have complete unit test coverage of the kernel using .
 
 \section quickstart Quickstart
+<hr>
 
 \section project Project
+<hr>
 A project deep dive - going into configurations and algorithms and justifications of techniques etc.
 
 \section coding_standards Coding Standards
+<hr>
 
 \subsection cppcheck CppCheck
 - <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
@@ -23,6 +26,7 @@ A project deep dive - going into configurations and algorithms and justification
 
 
 \section unit_testing Unit Testing
+<hr>
 The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file.
 The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio.
 The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
@@ -48,6 +52,7 @@ Extenions required:
 
 
 \section todo TODO
+<hr>
 List what we need to do moving forward with the project.
 
 \subsection next Next
@@ -67,7 +72,7 @@ List what we need to do moving forward with the project.
 - Write instruction for getting up and running with unit testing this project.
 
 \section ports Ports
-
+<hr>
 \subsection cpputest_unit_testing CPPUTEST_UNIT_TESTING
 This port exists to satisfy the unit testing environment.
 
