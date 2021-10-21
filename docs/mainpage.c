@@ -9,7 +9,7 @@ An objective of the code is to have complete unit test coverage of the kernel us
 \section quickstart Quickstart
 
 \section project Project
-A project deep divce - going into configurations and algorithms and justifications of techniques etc.
+A project deep dive - going into configurations and algorithms and justifications of techniques etc.
 
 \section coding_standards Coding Standards
 - <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
