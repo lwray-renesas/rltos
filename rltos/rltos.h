@@ -54,10 +54,10 @@ typedef struct
 	rltos_uint dummy0;
 }dummy_task_list_t;
 
-/** pointer to dummy task structure*/
+/** @brief pointer to dummy task structure*/
 typedef dummy_task_t * p_dummy_task_t;
 
-/** pointer to dummy task list structure*/
+/** @brief pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. */
