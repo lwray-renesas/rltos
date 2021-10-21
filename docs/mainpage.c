@@ -6,6 +6,7 @@ The name RLTOS comes from a play on the words RL78 and RTOS as at inception the 
 
 \section quickstart Quickstart
 <hr>
+Need to write the quickstart.
 
 \section project Project
 <hr>
@@ -13,6 +14,7 @@ A project deep dive - going into configurations and algorithms and justification
 
 \section coding_standards Coding Standards
 <hr>
+Need to describe the coding standards.
 
 \subsection cppcheck CppCheck
 - <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
@@ -71,6 +73,8 @@ List what we need to do moving forward with the project.
 
 \section ports Ports
 <hr>
+Need to top level explain the ports - possibly at some point implement a porting guide.
+
 \subsection cpputest_unit_testing CPPUTEST_UNIT_TESTING
 This port exists to satisfy the unit testing environment.
 
