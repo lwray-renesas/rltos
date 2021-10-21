@@ -1,10 +1,8 @@
 /**
 \mainpage
 
-RLTOS is a real time operating system targetted at static allocation of objects and small embedded system.
-The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the RL78.
-
-An objective of the code is to have complete unit test coverage of the kernel using .
+RLTOS is a real time operating system targetted at small embedded systemas with the aim to provide fully static allocation of all obects & tasks.
+The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the Renesas RL78.
 
 \section quickstart Quickstart
 <hr>
