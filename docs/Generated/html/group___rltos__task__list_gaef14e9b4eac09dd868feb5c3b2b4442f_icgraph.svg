@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__kernel.html#ga581dd045fa985add7730a8a1581389b7" target="_top" xlink:title="Puts the current thread to sleep for a minimum of the given number of ticks.">
+<g id="a_node2"><a xlink:href="group___rltos__kernel__prv.html#ga581dd045fa985add7730a8a1581389b7" target="_top" xlink:title="Puts the current thread to sleep for a minimum of the given number of ticks.">
 <polygon fill="white" stroke="black" points="11,-50 11,-69 103,-69 103,-50 11,-50"/>
 <text text-anchor="middle" x="57" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">Rltos_task_sleep</text>
 </a>

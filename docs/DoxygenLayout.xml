@@ -4,7 +4,8 @@
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
     <tab type="pages" visible="yes" title="" intro=""/>
-    <tab type="modules" visible="yes" title="" intro=""/>
+    <tab type="modules" visible="$ALPHABETICAL_INDEX" title="Components" intro="Description of all the components within RLTOS.
+    Each component maps to a public (api) and private (implementation) portion which is synonymous with the header and source files respectively."/>
     <tab type="namespaces" visible="yes" title="">
       <tab type="namespacelist" visible="yes" title="" intro=""/>
       <tab type="namespacemembers" visible="yes" title="" intro=""/>
@@ -181,7 +182,7 @@
     <briefdescription visible="yes"/>
     <groupgraph visible="$GROUP_GRAPHS"/>
     <memberdecl>
-      <nestedgroups visible="yes" title=""/>
+      <nestedgroups visible="$ALPHABETICAL_INDEX" title=""/>
       <dirs visible="yes" title=""/>
       <files visible="yes" title=""/>
       <namespaces visible="yes" title=""/>

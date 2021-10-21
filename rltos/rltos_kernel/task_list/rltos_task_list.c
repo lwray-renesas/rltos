@@ -1,12 +1,18 @@
 /**
- * @addtogroup Rltos_task_list rltos_task_list
+ * @addtogroup Rltos_task_list_prv prv
+ * The private data (implementation) of the RLTOS task list.
+ * @ingroup Rltos_task_list
  * @{
  */
 
 #include "rltos.h"
 #include "rltos_task_list.h"
 
-/** Definition of task control structure*/
+/** @struct task_ctl_t
+ * @brief Definition of task control structure
+ * 
+ * Contains the definition of a tasks control structure within RLTOS.
+ */
 struct task_ctl_t
 {
 	/* Task specific data*/
@@ -24,7 +30,11 @@ struct task_ctl_t
 	rltos_uint sorting_values[2];		/**< Array to store the lists sorting values*/
 };
 
-/** Struct definition containing all items required to operate a task list*/
+/** @struct task_list_t
+ * @brief Definition of task list control structure
+ * 
+ * Contains the definition of a task list control structure within RLTOS.
+ */
 struct task_list_t
 {
 	p_task_ctl_t p_head;  /**< Head of list*/

@@ -1,5 +1,9 @@
 /**
- * @addtogroup Rltos_kernel rltos_kernel
+ * @defgroup Rltos_kernel Kernel
+ * The group defining the RLTOS raw kernel.
+ * @addtogroup Rltos_kernel_api api
+ * The public API (interface) to the RLTOS kernel.
+ * @ingroup Rltos_kernel
  * @{
  */
 
@@ -25,7 +29,9 @@
 /** @brief Utility macro for unused arguments*/
 #define RLTOS_UNUSED(e)	((void)(e))
 
-/** Dummy task structure guaranteed to be the same size as a task control structure.
+/** @struct dummy_task_t
+ * @brief Dummy task structure guaranteed to be the same size as a task control structure.
+ * 
  * This is used to hide the implementation of a real task control structure - but also allow static allocation of tasks.
  */
 typedef struct
@@ -37,7 +43,9 @@ typedef struct
 	rltos_uint dummy4[2];
 }dummy_task_t;
 
-/** Dummy task list structure guaranteed to be the same size as a task list structure.
+/** @struct dummy_task_list_t
+ * @brief Dummy task list structure guaranteed to be the same size as a task list structure.
+ * 
  * This is used to hide the implementation of a real task list structure - but also allow static allocation of tasks.
  */
 typedef struct
@@ -46,10 +54,10 @@ typedef struct
 	rltos_uint dummy0;
 }dummy_task_list_t;
 
-/** @brief typedef pointer to dummy task structure*/
+/** pointer to dummy task structure*/
 typedef dummy_task_t * p_dummy_task_t;
 
-/** @brief typedef pointer to dummy task list structure*/
+/** pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. */

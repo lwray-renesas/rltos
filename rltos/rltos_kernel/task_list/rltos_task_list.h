@@ -1,5 +1,9 @@
 /**
- * @addtogroup Rltos_task_list rltos_task_list
+ * @defgroup Rltos_task_list Task list
+ * The group defining the RLTOS task list - containing the scheduler.
+ * @addtogroup Rltos_task_list_api api
+ * The public API (interface) to the RLTOS task list module.
+ * @ingroup Rltos_task_list
  * @{
  */
 
@@ -10,11 +14,13 @@
 #error "Must include rltos.h before including this file in any source file"
 #endif
 
-/** Declare pointers to opaque data types*/
+/** @brief pointer to task control structure - an opaque data type*/
 typedef struct task_ctl_t * p_task_ctl_t;
+
+/** @brief pointer to task list control structure - an opaque data type*/
 typedef struct task_list_t * p_task_list_t;
 
-/** Provide enumerated type to index task item lists*/
+/** @brief Provides enumerated type to index task item lists*/
 typedef enum
 {
     state_list = 0U,    /* Index of list where the item exists in the running or idle list*/

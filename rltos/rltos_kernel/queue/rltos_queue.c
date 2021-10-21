@@ -1,5 +1,7 @@
 /**
- * @addtogroup Rltos_queue rltos_queue
+ * @addtogroup Rltos_queue_prv prv
+ * The private data (implementation) of the RLTOS queue.
+ * @ingroup Rltos_queue
  * @{
  */
 

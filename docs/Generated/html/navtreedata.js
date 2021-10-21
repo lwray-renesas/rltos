@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "RLTOS", "index.html", [
     [ "Documentation", "index.html", "index" ],
-    [ "Modules", "modules.html", "modules" ]
+    [ "Components", "modules.html", "modules" ]
   ] ]
 ];
 
