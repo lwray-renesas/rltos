@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <builddir>rltos_check-cppcheck-build-dir</builddir>
+    <platform>Native</platform>
+    <analyze-all-vs-configs>false</analyze-all-vs-configs>
+    <check-headers>true</check-headers>
+    <check-unused-templates>true</check-unused-templates>
+    <max-ctu-depth>2</max-ctu-depth>
+    <max-template-recursion>100</max-template-recursion>
+    <paths>
+        <dir name="rltos"/>
+        <dir name="rltos/port/CPPUTEST_UNIT_TESTING"/>
+        <dir name="rltos/rltos_kernel"/>
+        <dir name="rltos/rltos_kernel/task_list"/>
+        <dir name="rltos/rltos_kernel/semaphore"/>
+        <dir name="rltos/rltos_kernel/queue"/>
+        <dir name="rltos/rltos_kernel/mutex"/>
+        <dir name="rltos/rltos_kernel/event_flags"/>
+    </paths>
+    <addons>
+        <addon>misra</addon>
+    </addons>
+</project>

@@ -53,3 +53,6 @@ dkms.conf
 
 # vscode cmake lists build output
 build/*
+
+# cppcheck
+rltos_check-cppcheck-build-dir/*

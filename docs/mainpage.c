@@ -12,7 +12,7 @@ An objective of the code is to have complete unit test coverage of the kernel us
 A project deep divce - going into configurations and algorithms and justifications of techniques etc.
 
 \section coding_standards Coding Standards
-<a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
+<a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
 
 \subsection doxygen Doxygen
 <a href="https://www.doxygen.nl/index.html">Doxygen</a>
@@ -50,10 +50,8 @@ List what we need to do moving forward with the project.
 
 \subsection next Next
 - On insert, sort the lists according to their sorting value (head = smallest number).
-- Unit test code thoroughly - checkpoint.
-- Integrate [Cppcheck](https://cppcheck.sourceforge.io/) in both unit tests and rltos main code (for each port).
-- Setup doxyfile and provide doc folder.
-- Tidy code banners & comments with license and proper descriptions +  author used for doxygen.
+- Unit test code thoroughly & MISRA clean - checkpoint.
+- Review & tidy all comments paying attention to file code banners & comments with license and proper descriptions + author (doxygen).
 - Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 
 \subsection soon Soon
