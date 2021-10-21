@@ -55,7 +55,7 @@ List what we need to do moving forward with the project.
 \section next Next
 - On insert, sort the lists according to their sorting value (head = smallest number).
 - Unit test code thoroughly & MISRA clean - checkpoint.
-- Review & tidy all comments paying attention to file code banners & comments with license and proper descriptions + author (doxygen).
+- Place license in source and header files.
 - Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 
 \section soon Soon
