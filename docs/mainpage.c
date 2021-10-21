@@ -12,6 +12,8 @@ An objective of the code is to have complete unit test coverage of the kernel us
 A project deep dive - going into configurations and algorithms and justifications of techniques etc.
 
 \section coding_standards Coding Standards
+
+\subsection cppcheck CppCheck
 - <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
 
 \subsection doxygen Doxygen
