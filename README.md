@@ -77,6 +77,9 @@ Only supports near data model - awaiting compiler update to support.
 - [Doxygen](https://www.doxygen.nl/index.html)
 - [GraphViz](http://www.graphviz.org/)
 
+## Notes on documentation
+Documentation for current code can be found [here!](https://wraydev.github.io/rltos/)
+
 ## NOTES:
 - Can't implement sleep function until insert list function sorts the list!
 
