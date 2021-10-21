@@ -34,13 +34,13 @@ struct task_list_t
 	rltos_uint size;	  /**< Size of list*/
 };
 
-/** Running list*/
+/** List containing all running taks*/
 static struct task_list_t running_task_list = {
 	.p_head = NULL,
 	.p_index = NULL,
 	.size = 0U};
 
-/** Idle list*/
+/** List containing all idle/blocked tasks*/
 static struct task_list_t idle_task_list = {
 	.p_head = NULL,
 	.p_index = NULL,
