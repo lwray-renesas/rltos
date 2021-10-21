@@ -1,7 +1,7 @@
 var rltos__task__list_8c =
 [
-    [ "Task_ctl_t", "struct_task__ctl__t.html", "struct_task__ctl__t" ],
-    [ "Task_list_t", "struct_task__list__t.html", "struct_task__list__t" ],
+    [ "task_ctl_t", "structtask__ctl__t.html", "structtask__ctl__t" ],
+    [ "task_list_t", "structtask__list__t.html", "structtask__list__t" ],
     [ "Rltos_scheduler_switch_context", "rltos__task__list_8c.html#a7dad02e1630e47f423618b110c2071a4", null ],
     [ "Rltos_scheduler_tick_inc", "rltos__task__list_8c.html#a609bbe6d9efbe0605517cde0ba5c9f06", null ],
     [ "Scheduler_init", "rltos__task__list_8c.html#a7a5774702e922fe3bd53f74fc3cf5342", null ],

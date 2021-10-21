@@ -13,8 +13,8 @@
 #endif
 
 /** Declare pointers to opaque data types*/
-typedef struct Task_ctl_t * p_task_ctl_t;
-typedef struct Task_list_t * p_task_list_t;
+typedef struct task_ctl_t * p_task_ctl_t;
+typedef struct task_list_t * p_task_list_t;
 
 /** Provide enumerated type to index task item lists*/
 typedef enum

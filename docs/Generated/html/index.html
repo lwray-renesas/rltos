@@ -90,70 +90,79 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">RLTOS </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><b>ALL_TEMPLATE</b> </p>
-<p >RLTOS is a real time operating system targetted at static allocation of objects and small embedded system. The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the RL78.</p>
-<p >An objective of the code is to have complete unit test coverage of the kernel using <a href="https://cpputest.github.io/">CppUTest</a>.</p>
-<h1><a class="anchor" id="codeapi"></a>
-Code API</h1>
-<p >Provide links to specific auto-generated API documentation within your package that is of particular interest to a reader. Doxygen will document pretty much every part of your code, so do your best here to point the reader to the actual API.</p>
-<p >If your codebase is fairly large or has different sets of APIs, you should use the doxygen 'group' tag to keep these APIs together. For example, the roscpp documentation has 'libros' and 'botherder' groups so that those can be viewed separately. The rospy documentation similarly has a 'client-api' group that pulls together APIs for a Client API page.</p>
-<h1><a class="anchor" id="rosapi"></a>
-ROS API</h1>
-<p >Every ROS name in your code must be documented. Names are very important in ROS because they are the API to nodes and services. They are also capable of being remapped on the command-line, so it is VERY IMPORTANT THAT YOU LIST NAMES AS THEY APPEAR IN THE CODE. It is also important that you write your code so that the names can be easily remapped.</p>
-<p >List of nodes:</p><ul>
-<li><b>node_name1</b> </li>
-<li><b>node_name2</b> </li>
+<div class="textblock"><p >RLTOS is a real time operating system targetted at static allocation of objects and small embedded system. The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the RL78.</p>
+<p >An objective of the code is to have complete unit test coverage of the kernel using .</p>
+<h1><a class="anchor" id="quickstart"></a>
+Quickstart</h1>
+<h1><a class="anchor" id="project"></a>
+Project</h1>
+<p >A project deep divce - going into configurations and algorithms and justifications of techniques etc.</p>
+<h1><a class="anchor" id="coding_standards"></a>
+Coding Standards</h1>
+<p ><a href="https://cppcheck.sourceforge.io/">Cppcheck</a></p>
+<h2><a class="anchor" id="doxygen"></a>
+Doxygen</h2>
+<p ><a href="https://www.doxygen.nl/index.html">Doxygen</a> <a href="http://www.graphviz.org/">GraphViz</a> <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a></p>
+<h1><a class="anchor" id="unit_testing"></a>
+Unit Testing</h1>
+<p >The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file. The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio. The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.</p>
+<h2><a class="anchor" id="vs_code"></a>
+VS Code</h2>
+<p >The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.</p><ul>
+<li>"cmake.sourceDirectory": "${workspaceFolder}/test" This entry sets the cmake extension to work from the test folder.</li>
+<li>"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools" This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.</li>
 </ul>
-<hr  />
-<h2><a class="anchor" id="node_name"></a>
-node_name</h2>
-<p >node_name does (provide a basic description of your node)</p>
-<h3><a class="anchor" id="Usage"></a>
-Usage</h3>
-<pre class="fragment">$ node_type1 [standard ROS args]
-</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
-<pre class="fragment">$ node_type1
-</pre><h3><a class="anchor" id="topics"></a>
-ROS topics</h3>
-<p >Subscribes to:</p><ul>
-<li><b>"in"</b>: [std_msgs/FooType] description of in</li>
+<p >Extenions required:</p><ul>
+<li>C/C++ by Microsoft</li>
+<li>CMake Tools by Microsoft</li>
 </ul>
-<p >Publishes to:</p><ul>
-<li><b>"out"</b>: [std_msgs/FooType] description of out</li>
-</ul>
-<h3><a class="anchor" id="parameters"></a>
-ROS parameters</h3>
-<p >Reads the following parameters from the parameter server</p>
+<h2><a class="anchor" id="cmake"></a>
+CMake</h2>
+<p ><a href="https://cmake.org/">CMake</a></p>
+<h2><a class="anchor" id="cpputest"></a>
+CppUTest</h2>
+<p ><a href="https://cpputest.github.io/">CppUTest</a></p>
+<h1><a class="anchor" id="todo"></a>
+TODO</h1>
+<p >List what we need to do moving forward with the project.</p>
+<h2><a class="anchor" id="next"></a>
+Next</h2>
 <ul>
-<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
-<li><b>"~my_param"</b> : <b></b>[string] description of my_param</li>
+<li>On insert, sort the lists according to their sorting value (head = smallest number).</li>
+<li>Unit test code thoroughly - checkpoint.</li>
+<li>Integrate <a href="https://cppcheck.sourceforge.io/">Cppcheck</a> in both unit tests and rltos main code (for each port).</li>
+<li>Setup doxyfile and provide doc folder.</li>
+<li>Tidy code banners &amp; comments with license and proper descriptions + author used for doxygen.</li>
+<li>Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.</li>
 </ul>
-<p >Sets the following parameters on the parameter server</p>
+<h2><a class="anchor" id="soon"></a>
+Soon</h2>
 <ul>
-<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
+<li>Implement event_flags</li>
+<li>Implement mutex</li>
+<li>Implement queue</li>
+<li>Implement semaphore</li>
+<li>Create example project + documentation to setup two tasks.</li>
+<li>Implement co-operative scheduling</li>
+<li>Write install guide for RL78 port.</li>
+<li>Write instruction for getting up and running with unit testing this project.</li>
 </ul>
-<h3><a class="anchor" id="services"></a>
-ROS services</h3>
-<ul>
-<li><b>"foo_service"</b>: [std_srvs/FooType] description of foo_service</li>
-</ul>
-<h1><a class="anchor" id="commandline"></a>
-Command-line tools</h1>
-<p >This section is a catch-all for any additional tools that your package provides or uses that may be of use to the reader. For example:</p>
-<ul>
-<li>tools/scripts (e.g. rospack, roscd)</li>
-<li>roslaunch .launch files</li>
-<li>xmlparam files</li>
-</ul>
-<h2><a class="anchor" id="script_name"></a>
-script_name</h2>
-<p >Description of what this script/file does.</p>
-<h3><a class="anchor" id="Usage"></a>
-Usage</h3>
-<pre class="fragment">$ ./script_name [args]
-</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
-<pre class="fragment">$ ./script_name foo bar
-</pre> </div></div><!-- PageDoc -->
+<h1><a class="anchor" id="ports"></a>
+Ports</h1>
+<h2><a class="anchor" id="cpputest_unit_testing"></a>
+CPPUTEST_UNIT_TESTING</h2>
+<p >This port exists to satisfy the unit testing environment.</p>
+<h2><a class="anchor" id="rl78"></a>
+RL78</h2>
+<p >Port for the Renesas RL78 Microcontroller.</p>
+<h3><a class="anchor" id="clang"></a>
+CLANG</h3>
+<p >Port using the CLANG compiler</p>
+<dl class="section note"><dt>Note</dt><dd>CLANG is only currently supported in the near data model (default)</dd></dl>
+<h3><a class="anchor" id="iar"></a>
+IAR</h3>
+<p >Port using the IAR compiler </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.2-->

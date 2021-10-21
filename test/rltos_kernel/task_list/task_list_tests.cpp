@@ -27,8 +27,8 @@ TEST_GROUP(TaskListInitTestGroup)
       /* Setup initialises a dummy task to the running list.
       * Also initialises a dummy tasklist to contain a dummy task in the aux list
       */
-      p_dummy_task = new struct Task_ctl_t;
-      p_aux_task_list = new struct Task_list_t;
+      p_dummy_task = new struct task_ctl_t;
+      p_aux_task_list = new struct task_list_t;
       Task_init(p_dummy_task, dummy_stack, &Dummy_task_func, 0U, true);
       Task_list_init(p_aux_task_list);
    }
@@ -52,7 +52,7 @@ void Dummy_task_func(void)
 
 TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
 {
-   std::unique_ptr<struct Task_ctl_t> l_task_under_test = std::make_unique<struct Task_ctl_t>();
+   std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
    Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func, 0U, true);
 
    CHECK_TEXT((l_task_under_test.get()->stored_sp == dummy_stack), "Task_init failed to initialise stack pointer");
@@ -80,7 +80,7 @@ TEST(TaskListInitTestGroup, Test_TaskListInit_ValuesOk)
 
 TEST(TaskListInitTestGroup, Test_TaskAppend)
 {
-   std::unique_ptr<struct Task_ctl_t> p_local_task = std::make_unique<struct Task_ctl_t>();
+   std::unique_ptr<struct task_ctl_t> p_local_task = std::make_unique<struct task_ctl_t>();
 
    Task_insert_in_list(p_aux_task_list, p_local_task.get(), state_list, 0U);
 
@@ -143,7 +143,7 @@ TEST_GROUP(RltosSizesTestGroup)
 
 TEST(RltosSizesTestGroup, Test_RltosSizes_DummyEqualToReal)
 {
-   CHECK_TEXT((sizeof(struct Task_ctl_t) == sizeof(dummy_task_t)), "Dummy task struct is not the same size as the real task control struct");
-   CHECK_TEXT((sizeof(struct Task_list_t) == sizeof(dummy_task_list_t)), "Dummy task list struct is not the same size as the real task list struct");
+   CHECK_TEXT((sizeof(struct task_ctl_t) == sizeof(dummy_task_t)), "Dummy task struct is not the same size as the real task control struct");
+   CHECK_TEXT((sizeof(struct task_list_t) == sizeof(dummy_task_list_t)), "Dummy task list struct is not the same size as the real task list struct");
 }
 /* END OF TEST*/

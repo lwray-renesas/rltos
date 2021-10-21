@@ -99,11 +99,9 @@ $(document).ready(function(){initNavTree('rltos__task__list_8c.html',''); initRe
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_task__ctl__t.html">Task_ctl_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of task control structure.  <a href="struct_task__ctl__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtask__ctl__t.html">task_ctl_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_task__list__t.html">Task_list_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct definition containing all items required to operate a task list.  <a href="struct_task__list__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtask__list__t.html">task_list_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -111,22 +109,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a7a5774702e922fe3bd53f74fc3cf5342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a7a5774702e922fe3bd53f74fc3cf5342">Scheduler_init</a> (void)</td></tr>
 <tr class="memdesc:a7a5774702e922fe3bd53f74fc3cf5342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to initialise the current task to point at the running lists head.  <a href="rltos__task__list_8c.html#a7a5774702e922fe3bd53f74fc3cf5342">More...</a><br /></td></tr>
 <tr class="separator:a7a5774702e922fe3bd53f74fc3cf5342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7381af6f29df467e5543f1a7f358c4b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a7381af6f29df467e5543f1a7f358c4b1">Task_init</a> (<a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const task_to_init, const stack_ptr_type init_sp, void(*const init_task_func)(void), rltos_uint priority, bool task_is_running)</td></tr>
+<tr class="memitem:a7381af6f29df467e5543f1a7f358c4b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a7381af6f29df467e5543f1a7f358c4b1">Task_init</a> (<a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_init, const stack_ptr_type init_sp, void(*const init_task_func)(void), rltos_uint priority, bool task_is_running)</td></tr>
 <tr class="memdesc:a7381af6f29df467e5543f1a7f358c4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nodes.  <a href="rltos__task__list_8c.html#a7381af6f29df467e5543f1a7f358c4b1">More...</a><br /></td></tr>
 <tr class="separator:a7381af6f29df467e5543f1a7f358c4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a497b702db38a8ce118c8393eb0587712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a497b702db38a8ce118c8393eb0587712">Task_deinit</a> (<a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const task_to_deinit)</td></tr>
+<tr class="memitem:a497b702db38a8ce118c8393eb0587712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a497b702db38a8ce118c8393eb0587712">Task_deinit</a> (<a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_deinit)</td></tr>
 <tr class="memdesc:a497b702db38a8ce118c8393eb0587712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set deinit a task and removes from both running and idle lists.  <a href="rltos__task__list_8c.html#a497b702db38a8ce118c8393eb0587712">More...</a><br /></td></tr>
 <tr class="separator:a497b702db38a8ce118c8393eb0587712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac816af0adf021190a270dbf77055b7e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#ac816af0adf021190a270dbf77055b7e8">Task_list_init</a> (<a class="el" href="rltos__task__list_8h.html#af9650aa224aba1db06f679d8bd997a76">p_task_list_t</a> const list_to_init)</td></tr>
+<tr class="memitem:ac816af0adf021190a270dbf77055b7e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#ac816af0adf021190a270dbf77055b7e8">Task_list_init</a> (<a class="el" href="rltos__task__list_8h.html#a45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const list_to_init)</td></tr>
 <tr class="memdesc:ac816af0adf021190a270dbf77055b7e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to initialise a task list - 0's size and sets HEAD &amp; INDEX to NULL.  <a href="rltos__task__list_8c.html#ac816af0adf021190a270dbf77055b7e8">More...</a><br /></td></tr>
 <tr class="separator:ac816af0adf021190a270dbf77055b7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2e9ba76398ba904d0c32071d3512a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#ae2e9ba76398ba904d0c32071d3512a2b">Task_set_running</a> (<a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const task_to_run)</td></tr>
+<tr class="memitem:ae2e9ba76398ba904d0c32071d3512a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#ae2e9ba76398ba904d0c32071d3512a2b">Task_set_running</a> (<a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_run)</td></tr>
 <tr class="memdesc:ae2e9ba76398ba904d0c32071d3512a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to append task to the running list.  <a href="rltos__task__list_8c.html#ae2e9ba76398ba904d0c32071d3512a2b">More...</a><br /></td></tr>
 <tr class="separator:ae2e9ba76398ba904d0c32071d3512a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef14e9b4eac09dd868feb5c3b2b4442f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#aef14e9b4eac09dd868feb5c3b2b4442f">Task_set_current_idle</a> (const rltos_uint time_to_idle)</td></tr>
 <tr class="memdesc:aef14e9b4eac09dd868feb5c3b2b4442f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to append task to the idle list.  <a href="rltos__task__list_8c.html#aef14e9b4eac09dd868feb5c3b2b4442f">More...</a><br /></td></tr>
 <tr class="separator:aef14e9b4eac09dd868feb5c3b2b4442f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90ce1a0329edc828e765740fce4e29cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a90ce1a0329edc828e765740fce4e29cb">Task_set_current_wait_on_object</a> (<a class="el" href="rltos__task__list_8h.html#af9650aa224aba1db06f679d8bd997a76">p_task_list_t</a> const owner, const rltos_uint time_to_wait)</td></tr>
+<tr class="memitem:a90ce1a0329edc828e765740fce4e29cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a90ce1a0329edc828e765740fce4e29cb">Task_set_current_wait_on_object</a> (<a class="el" href="rltos__task__list_8h.html#a45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const owner, const rltos_uint time_to_wait)</td></tr>
 <tr class="memdesc:a90ce1a0329edc828e765740fce4e29cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set the current task to wait on an object (uses auxillary list)  <a href="rltos__task__list_8c.html#a90ce1a0329edc828e765740fce4e29cb">More...</a><br /></td></tr>
 <tr class="separator:a90ce1a0329edc828e765740fce4e29cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a609bbe6d9efbe0605517cde0ba5c9f06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a609bbe6d9efbe0605517cde0ba5c9f06">Rltos_scheduler_tick_inc</a> (void)</td></tr>
@@ -138,7 +136,7 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a09f0e5ca4af6b2f511b4ff7b280c0997">p_current_task_ctl</a> = NULL</td></tr>
+<tr class="memitem:a09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rltos__task__list_8c.html#a09f0e5ca4af6b2f511b4ff7b280c0997">p_current_task_ctl</a> = NULL</td></tr>
 <tr class="separator:a09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -216,7 +214,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Task_deinit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const&#160;</td>
+          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const&#160;</td>
           <td class="paramname"><em>task_to_deinit</em></td><td>)</td>
           <td></td>
         </tr>
@@ -242,7 +240,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Task_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const&#160;</td>
+          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const&#160;</td>
           <td class="paramname"><em>task_to_init</em>, </td>
         </tr>
         <tr>
@@ -305,7 +303,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Task_list_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#af9650aa224aba1db06f679d8bd997a76">p_task_list_t</a> const&#160;</td>
+          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const&#160;</td>
           <td class="paramname"><em>list_to_init</em></td><td>)</td>
           <td></td>
         </tr>
@@ -362,7 +360,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Task_set_current_wait_on_object </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#af9650aa224aba1db06f679d8bd997a76">p_task_list_t</a> const&#160;</td>
+          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const&#160;</td>
           <td class="paramname"><em>owner</em>, </td>
         </tr>
         <tr>
@@ -404,7 +402,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void Task_set_running </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> const&#160;</td>
+          <td class="paramtype"><a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const&#160;</td>
           <td class="paramname"><em>task_to_run</em></td><td>)</td>
           <td></td>
         </tr>
@@ -429,7 +427,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="rltos__task__list_8h.html#a307c32cc0513fbc24f434ef7260598f7">p_task_ctl_t</a> p_current_task_ctl = NULL</td>
+          <td class="memname"><a class="el" href="rltos__task__list_8h.html#a4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> p_current_task_ctl = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">

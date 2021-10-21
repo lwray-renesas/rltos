@@ -25,17 +25,26 @@
 var NAVTREE =
 [
   [ "RLTOS", "index.html", [
-    [ "Code API", "index.html#codeapi", null ],
-    [ "ROS API", "index.html#rosapi", [
-      [ "node_name", "index.html#node_name", [
-        [ "Usage", "index.html#Usage", null ],
-        [ "ROS topics", "index.html#topics", null ],
-        [ "ROS parameters", "index.html#parameters", null ],
-        [ "ROS services", "index.html#services", null ]
-      ] ]
+    [ "Quickstart", "index.html#quickstart", null ],
+    [ "Project", "index.html#project", null ],
+    [ "Coding Standards", "index.html#coding_standards", [
+      [ "Doxygen", "index.html#doxygen", null ]
     ] ],
-    [ "Command-line tools", "index.html#commandline", [
-      [ "script_name", "index.html#script_name", null ]
+    [ "Unit Testing", "index.html#unit_testing", [
+      [ "VS Code", "index.html#vs_code", null ],
+      [ "CMake", "index.html#cmake", null ],
+      [ "CppUTest", "index.html#cpputest", null ]
+    ] ],
+    [ "TODO", "index.html#todo", [
+      [ "Next", "index.html#next", null ],
+      [ "Soon", "index.html#soon", null ]
+    ] ],
+    [ "Ports", "index.html#ports", [
+      [ "CPPUTEST_UNIT_TESTING", "index.html#cpputest_unit_testing", null ],
+      [ "RL78", "index.html#rl78", [
+        [ "CLANG", "index.html#clang", null ],
+        [ "IAR", "index.html#iar", null ]
+      ] ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

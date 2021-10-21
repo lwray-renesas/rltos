@@ -25,7 +25,7 @@
 /** @brief Utility macro for unused arguments*/
 #define RLTOS_UNUSED(e)	((void)(e))
 
-/** @brief Dummy task structure guaranteed to be the same size as a task control structure.
+/** Dummy task structure guaranteed to be the same size as a task control structure.
  * This is used to hide the implementation of a real task control structure - but also allow static allocation of tasks.
  */
 typedef struct
@@ -37,7 +37,7 @@ typedef struct
 	rltos_uint dummy4[2];
 }dummy_task_t;
 
-/** @brief Dummy task list structure guaranteed to be the same size as a task list structure.
+/** Dummy task list structure guaranteed to be the same size as a task list structure.
  * This is used to hide the implementation of a real task list structure - but also allow static allocation of tasks.
  */
 typedef struct

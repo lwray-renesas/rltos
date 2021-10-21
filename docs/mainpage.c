@@ -1,110 +1,85 @@
 /**
 \mainpage
 
-\b ALL_TEMPLATE
-
 RLTOS is a real time operating system targetted at static allocation of objects and small embedded system.
 The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the RL78.
 
-An objective of the code is to have complete unit test coverage of the kernel using <a href="https://cpputest.github.io/">CppUTest</a>.
+An objective of the code is to have complete unit test coverage of the kernel using .
+
+\section quickstart Quickstart
+
+\section project Project
+A project deep divce - going into configurations and algorithms and justifications of techniques etc.
+
+\section coding_standards Coding Standards
+<a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
+
+\subsection doxygen Doxygen
+<a href="https://www.doxygen.nl/index.html">Doxygen</a>
+<a href="http://www.graphviz.org/">GraphViz</a>
+<a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a>
 
 
-\section codeapi Code API
-
-Provide links to specific auto-generated API documentation within your
-package that is of particular interest to a reader. Doxygen will
-document pretty much every part of your code, so do your best here to
-point the reader to the actual API.
-
-If your codebase is fairly large or has different sets of APIs, you
-should use the doxygen 'group' tag to keep these APIs together. For
-example, the roscpp documentation has 'libros' and 'botherder' groups
-so that those can be viewed separately. The rospy documentation
-similarly has a 'client-api' group that pulls together APIs for a
-Client API page.
+\section unit_testing Unit Testing
+The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file.
+The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio.
+The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
 
 
-\section rosapi ROS API
+\subsection vs_code VS Code
+The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.
+- "cmake.sourceDirectory": "${workspaceFolder}/test"
+This entry sets the cmake extension to work from the test folder.
 
-Every ROS name in your code must be documented. Names are very
-important in ROS because they are the API to nodes and services. They
-are also capable of being remapped on the command-line, so it is VERY
-IMPORTANT THAT YOU LIST NAMES AS THEY APPEAR IN THE CODE. It is also
-important that you write your code so that the names can be easily
-remapped.
+- "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.
 
-List of nodes:
-- \b node_name1
-- \b node_name2
+Extenions required:
+- C/C++ by Microsoft
+- CMake Tools by Microsoft
 
+\subsection cmake CMake
+<a href="https://cmake.org/">CMake</a>
 
-<!-- START: copy for each node -->
-
-<hr>
-
-\subsection node_name node_name
-
-node_name does (provide a basic description of your node)
-
-\subsubsection Usage
-\verbatim
-$ node_type1 [standard ROS args]
-\endverbatim
-
-\par Example
-
-\verbatim
-$ node_type1
-\endverbatim
+\subsection cpputest CppUTest
+<a href="https://cpputest.github.io/">CppUTest</a>
 
 
-\subsubsection topics ROS topics
+\section todo TODO
+List what we need to do moving forward with the project.
 
-Subscribes to:
-- \b "in": [std_msgs/FooType] description of in
+\subsection next Next
+- On insert, sort the lists according to their sorting value (head = smallest number).
+- Unit test code thoroughly - checkpoint.
+- Integrate [Cppcheck](https://cppcheck.sourceforge.io/) in both unit tests and rltos main code (for each port).
+- Setup doxyfile and provide doc folder.
+- Tidy code banners & comments with license and proper descriptions +  author used for doxygen.
+- Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 
-Publishes to:
-- \b "out": [std_msgs/FooType] description of out
+\subsection soon Soon
+- Implement event_flags
+- Implement mutex
+- Implement queue
+- Implement semaphore
+- Create example project + documentation to setup two tasks.
+- Implement co-operative scheduling
+- Write install guide for RL78 port.
+- Write instruction for getting up and running with unit testing this project.
 
-\subsubsection parameters ROS parameters
+\section ports Ports
 
-Reads the following parameters from the parameter server
+\subsection cpputest_unit_testing CPPUTEST_UNIT_TESTING
+This port exists to satisfy the unit testing environment.
 
-- \b "~param_name" : \b [type] description of param_name
-- \b "~my_param" : \b [string] description of my_param
+\subsection rl78 RL78
+Port for the Renesas RL78 Microcontroller.
 
-Sets the following parameters on the parameter server
+\subsubsection clang CLANG
+Port using the CLANG compiler
 
-- \b "~param_name" : \b [type] description of param_name
+\note CLANG is only currently supported in the near data model (default) 
 
+\subsubsection iar IAR
+Port using the IAR compiler
 
-\subsubsection services ROS services
-- \b "foo_service": [std_srvs/FooType] description of foo_service
-
-
-<!-- END: copy for each node -->
-
-\section commandline Command-line tools
-
-This section is a catch-all for any additional tools that your package
-provides or uses that may be of use to the reader. For example:
-
-- tools/scripts (e.g. rospack, roscd)
-- roslaunch .launch files
-- xmlparam files
-
-\subsection script_name script_name
-
-Description of what this script/file does.
-
-\subsubsection Usage
-\verbatim
-$ ./script_name [args]
-\endverbatim
-
-\par Example
-
-\verbatim
-$ ./script_name foo bar
-\endverbatim
 */

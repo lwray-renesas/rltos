@@ -8,40 +8,40 @@
 #include "rltos.h"
 #include "rltos_task_list.h"
 
-/** @brief Definition of task control structure*/
-struct Task_ctl_t
+/** Definition of task control structure*/
+struct task_ctl_t
 {
 	/* Task specific data*/
-	stack_ptr_type stored_sp;	/* Stored value of the stack pointer*/
-	void (*p_task_func)(void);	/* Function pointer for entry of point of task*/
-	rltos_uint idle_ready_time; /* Value representing the time this task will be ready*/
-	rltos_uint idle_time;		/* Value representing the max time this task should remain idled*/
-	rltos_uint idle_wrap_count; /* Value to detect when wrap around is required*/
-	rltos_uint priority;		/* Value representing the tasks priority*/
+	stack_ptr_type stored_sp;	/**< Stored value of the stack pointer*/
+	void (*p_task_func)(void);	/**< Function pointer for entry of point of task*/
+	rltos_uint idle_ready_time; /**< Value representing the time this task will be ready*/
+	rltos_uint idle_time;		/**< Value representing the max time this task should remain idled*/
+	rltos_uint idle_wrap_count; /**< Value to detect when wrap around is required*/
+	rltos_uint priority;		/**< Value representing the tasks priority*/
 
 	/* List specific data*/
-	struct Task_ctl_t *p_next_tctl[2]; /* Pointer to the next item - can exist in two lists at once*/
-	struct Task_ctl_t *p_prev_tctl[2]; /* Pointer to the previous item - can exist in two lists at once*/
-	p_task_list_t p_owners[2];		   /* Pointer to the list who owns this task - can exist in two lists at once*/
-	rltos_uint sorting_values[2];		/* Array to store the lists sorting values*/
+	struct task_ctl_t *p_next_tctl[2]; /**< Pointer to the next item - can exist in two lists at once*/
+	struct task_ctl_t *p_prev_tctl[2]; /**< Pointer to the previous item - can exist in two lists at once*/
+	p_task_list_t p_owners[2];		   /**< Pointer to the list who owns this task - can exist in two lists at once*/
+	rltos_uint sorting_values[2];		/**< Array to store the lists sorting values*/
 };
 
-/** @brief Struct definition containing all items required to operate a task list*/
-struct Task_list_t
+/** Struct definition containing all items required to operate a task list*/
+struct task_list_t
 {
-	p_task_ctl_t p_head;  /* Head of list*/
-	p_task_ctl_t p_index; /* current index of list*/
-	rltos_uint size;	  /* Size of list*/
+	p_task_ctl_t p_head;  /**< Head of list*/
+	p_task_ctl_t p_index; /**< current index of list*/
+	rltos_uint size;	  /**< Size of list*/
 };
 
 /** Running list*/
-static struct Task_list_t running_task_list = {
+static struct task_list_t running_task_list = {
 	.p_head = NULL,
 	.p_index = NULL,
 	.size = 0U};
 
 /** Idle list*/
-static struct Task_list_t idle_task_list = {
+static struct task_list_t idle_task_list = {
 	.p_head = NULL,
 	.p_index = NULL,
 	.size = 0U};
