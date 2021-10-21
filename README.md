@@ -80,6 +80,9 @@ Only supports near data model - awaiting compiler update to support.
 ## Notes on documentation
 Documentation for current code can be found [here!](https://wraydev.github.io/rltos/)
 
+## Thanks to
+- [doxygen-awesome-css](https://jothepro.github.io/doxygen-awesome-css/)
+
 ## NOTES:
 - Can't implement sleep function until insert list function sorts the list!
 
