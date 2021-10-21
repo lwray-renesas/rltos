@@ -1,8 +1,6 @@
-/*
- * rltos_task_list.c
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_task_list rltos_task_list
+ * @{
  */
 
 #include "rltos.h"
@@ -398,3 +396,5 @@ void Rltos_scheduler_switch_context(void)
 	p_current_task_ctl = running_task_list.p_index;
 }
 /* END OF FUNCTION*/
+
+/*! @} */

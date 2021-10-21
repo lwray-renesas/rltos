@@ -25,54 +25,14 @@
 var NAVTREE =
 [
   [ "RLTOS", "index.html", [
-    [ "Quickstart", "index.html#quickstart", null ],
-    [ "Project", "index.html#project", null ],
-    [ "Coding Standards", "index.html#coding_standards", [
-      [ "CppCheck", "index.html#cppcheck", null ],
-      [ "Doxygen", "index.html#doxygen", null ]
-    ] ],
-    [ "Unit Testing", "index.html#unit_testing", [
-      [ "VS Code", "index.html#vs_code", null ],
-      [ "CMake", "index.html#cmake", null ],
-      [ "CppUTest", "index.html#cpputest", null ]
-    ] ],
-    [ "TODO", "index.html#todo", [
-      [ "Next", "index.html#next", null ],
-      [ "Soon", "index.html#soon", null ]
-    ] ],
-    [ "Ports", "index.html#ports", [
-      [ "CPPUTEST_UNIT_TESTING", "index.html#cpputest_unit_testing", null ],
-      [ "RL78", "index.html#rl78", [
-        [ "CLANG", "index.html#clang", null ],
-        [ "IAR", "index.html#iar", null ]
-      ] ]
-    ] ],
-    [ "Data Structures", "annotated.html", [
-      [ "Data Structures", "annotated.html", "annotated_dup" ],
-      [ "Data Structure Index", "classes.html", null ],
-      [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
-      ] ]
-    ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "Globals", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
-    ] ]
+    [ "Documentation", "index.html", "index" ],
+    [ "Modules", "modules.html", "modules" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"coding_standards.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

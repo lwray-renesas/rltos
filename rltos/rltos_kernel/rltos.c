@@ -1,8 +1,6 @@
-/*
- * rltos_kernel.c
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_kernel rltos_kernel
+ * @{
  */
 
 #include "rltos.h"
@@ -50,3 +48,5 @@ void Rltos_task_sleep(const rltos_uint tick_count)
 	}
 }
 /* END OF FUNCTION*/
+
+/*! @} */

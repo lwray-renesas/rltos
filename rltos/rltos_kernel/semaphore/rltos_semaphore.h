@@ -1,8 +1,6 @@
-/*
- * rltos_semaphore.h
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_semaphore rltos_sempahore
+ * @{
  */
 
 #ifndef RLTOS_SEMAPHORE_H_
@@ -15,3 +13,5 @@
 
 
 #endif /* RLTOS_SEMAPHORE_H_ */
+
+/*! @} */

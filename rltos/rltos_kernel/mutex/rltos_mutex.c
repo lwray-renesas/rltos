@@ -1,11 +1,11 @@
-/*
- * rltos_mutex.c
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_mutex rltos_mutex
+ * @{
  */
 
 #include "rltos.h"
 #include "rltos_mutex.h"
 
 
+
+/*! @} */

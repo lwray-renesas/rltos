@@ -1,11 +1,11 @@
-/*
- * rltos_queue.c
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_queue rltos_queue
+ * @{
  */
 
 #include "rltos.h"
 #include "rltos_queue.h"
 
 
+
+/*! @} */

@@ -1,8 +1,6 @@
-/*
- * rltos_event_flags.h
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_event_flags rltos_event_flags
+ * @{
  */
 
 #ifndef RLTOS_EVENT_FLAGS_H_
@@ -15,3 +13,5 @@
 
 
 #endif /* RLTOS_EVENT_FLAGS_H_ */
+
+/*! @} */

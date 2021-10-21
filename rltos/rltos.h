@@ -1,8 +1,6 @@
-/*
- * rltos.h
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_kernel rltos_kernel
+ * @{
  */
 
 #ifndef RLTOS_RLTOS_H_
@@ -69,3 +67,5 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type p_stack_
 void Rltos_task_sleep(const rltos_uint tick_count);
 
 #endif /* RLTOS_RLTOS_H_ */
+
+/*! @} */

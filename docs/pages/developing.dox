@@ -1,38 +1,34 @@
 /**
-\mainpage
+\page developing Developing
+This page attempts to outline everything to do with the development process of RLTOS.
+Contents:
+    - \subpage coding_standards
+    - \subpage unit_testing
+    - \subpage todo
+    - \subpage ports
+*/
 
-RLTOS is a real time operating system targetted at small embedded systemas with the aim to provide fully static allocation of all obects & tasks.
-The name RLTOS comes from a play on the words RL78 and RTOS as at inception the systems first target was the Renesas RL78.
-
-\section quickstart Quickstart
-<hr>
-Need to write the quickstart.
-
-\section project Project
-<hr>
-A project deep dive - going into configurations and algorithms and justifications of techniques etc.
-
-\section coding_standards Coding Standards
-<hr>
+/**
+\page coding_standards Coding Standards
 Need to describe the coding standards.
 
-\subsection cppcheck CppCheck
+\section cppcheck CppCheck
 - <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
 
-\subsection doxygen Doxygen
+\section doxygen Doxygen
 - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
 - <a href="http://www.graphviz.org/">GraphViz</a>
 - <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a>
 
+*/
 
-\section unit_testing Unit Testing
-<hr>
+/**
+\page unit_testing Unit Testing
 The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file.
 The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio.
 The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
 
-
-\subsection vs_code VS Code
+\section vs_code VS Code
 The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.
 - "cmake.sourceDirectory": "${workspaceFolder}/test"
 This entry sets the cmake extension to work from the test folder.
@@ -44,24 +40,25 @@ Extenions required:
 - C/C++ by Microsoft
 - CMake Tools by Microsoft
 
-\subsection cmake CMake
+\section cmake CMake
 - <a href="https://cmake.org/">CMake</a>
 
-\subsection cpputest CppUTest
+\section cpputest CppUTest
 - <a href="https://cpputest.github.io/">CppUTest</a>
 
+*/
 
-\section todo TODO
-<hr>
+/**
+\page todo TODO
 List what we need to do moving forward with the project.
 
-\subsection next Next
+\section next Next
 - On insert, sort the lists according to their sorting value (head = smallest number).
 - Unit test code thoroughly & MISRA clean - checkpoint.
 - Review & tidy all comments paying attention to file code banners & comments with license and proper descriptions + author (doxygen).
 - Including behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 
-\subsection soon Soon
+\section soon Soon
 - Implement event_flags
 - Implement mutex
 - Implement queue
@@ -71,22 +68,24 @@ List what we need to do moving forward with the project.
 - Write install guide for RL78 port.
 - Write instruction for getting up and running with unit testing this project.
 
-\section ports Ports
-<hr>
+*/
+
+/**
+\page ports Ports
 Need to top level explain the ports - possibly at some point implement a porting guide.
 
-\subsection cpputest_unit_testing CPPUTEST_UNIT_TESTING
+\section cpputest_unit_testing CPPUTEST_UNIT_TESTING
 This port exists to satisfy the unit testing environment.
 
-\subsection rl78 RL78
+\section rl78 RL78
 Port for the Renesas RL78 Microcontroller.
 
-\subsubsection clang CLANG
+\subsection clang CLANG
 Port using the CLANG compiler
 
 \note CLANG is only currently supported in the near data model (default) 
 
-\subsubsection iar IAR
+\subsection iar IAR
 Port using the IAR compiler
 
 */

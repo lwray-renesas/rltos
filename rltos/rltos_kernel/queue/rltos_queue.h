@@ -1,8 +1,6 @@
-/*
- * rltos_queue.h
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_queue rltos_queue
+ * @{
  */
 
 #ifndef RLTOS_QUEUE_H_
@@ -15,3 +13,5 @@
 
 
 #endif /* RLTOS_SEMAPHORE_H_ */
+
+/*! @} */

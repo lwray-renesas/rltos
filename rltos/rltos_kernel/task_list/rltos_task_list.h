@@ -1,8 +1,6 @@
-/*
- * rltos_task_list.h
- *
- *  Created on: 22 Apr 2021
- *      Author: Louis Wray
+/**
+ * @addtogroup Rltos_task_list rltos_task_list
+ * @{
  */
 
 #ifndef RLTOS_TASK_LIST_H_
@@ -62,3 +60,5 @@ void Task_set_current_idle(const rltos_uint time_to_idle);
 void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait);
 
 #endif /* RLTOS_TASK_LIST_H_ */
+
+/*! @} */

@@ -3,6 +3,7 @@
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
         "rltos_task_list.h": "c",
-        "memory": "cpp"
+        "memory": "cpp",
+        "rltos_mutex.h": "c"
     }
 }
