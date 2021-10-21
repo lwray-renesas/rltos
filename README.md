@@ -1,4 +1,4 @@
-# rltos
+# RLTOS
 Lightweight, fully unit-tested, statically allocated RTOS.
 
 ## Documentation
