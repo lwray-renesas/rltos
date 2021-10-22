@@ -22,7 +22,9 @@ typedef struct task_ctl_t * p_task_ctl_t;
 typedef struct task_list_t * p_task_list_t;
 
 /** @enum list_index_t
- * Provides enumerated type to index task item lists
+ * @brief Provides enumerated type to index task item lists,
+ * This is used to index between a tasks state list (running or idle) and an 
+ * auxilliary list for an object which the task is associated with waiting on.
  */
 typedef enum
 {
