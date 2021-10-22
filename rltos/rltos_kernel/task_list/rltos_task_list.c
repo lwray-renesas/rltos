@@ -55,6 +55,7 @@ static struct task_list_t idle_task_list = {
 	.size = 0U};
 
 /** Pointer to current running task*/
+/* cppcheck-suppress misra-c2012-8.4 - this variable is externed/declared in assembly file for porting the scheduler*/
 p_task_ctl_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
@@ -362,6 +363,7 @@ static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ct
 /* END OF FUNCTION*/
 
 /** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
+/* cppcheck-suppress misra-c2012-8.4 - this function is externed/declared in assembly file for porting the scheduler*/
 void Rltos_scheduler_tick_inc(void)
 {
 	/* Increment system tick counter*/
@@ -391,6 +393,7 @@ void Rltos_scheduler_tick_inc(void)
 }
 
 /** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
+/* cppcheck-suppress misra-c2012-8.4 - this function is externed/declared in assembly file for porting the scheduler*/
 void Rltos_scheduler_switch_context(void)
 {
 	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/

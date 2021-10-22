@@ -17,13 +17,13 @@
         "${workspaceFolder}/rltos/rltos_kernel/semaphore",
         "${workspaceFolder}/rltos/rltos_kernel/queue",
         "${workspaceFolder}/rltos/rltos_kernel/mutex",
-        "${workspaceFolder}/rltos/rltos_kernel/event_flags",
-        "${workspaceFolder}/rltos/port/CPPUTEST_UNIT_TESTING/"
+        "${workspaceFolder}/rltos/rltos_kernel/event_flags"
     ],
     "c-cpp-flylint.cppcheck.addons": [
         ".vscode/misra.json"
     ],
     "c-cpp-flylint.cppcheck.extraArgs": [
         "--cppcheck-build-dir=rltos_check-cppcheck-build-dir",
+        "rltos_kernel"
     ]
 }
