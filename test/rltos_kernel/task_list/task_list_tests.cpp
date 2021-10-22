@@ -50,6 +50,12 @@ void Dummy_task_func(void)
 }
 /* END OF FUNCTION*/
 
+TEST(TaskListInitTestGroup, Test_SchedulerInit)
+{
+   CHECK_TEXT(false, "TODO: Write Test_SchedulerInit");
+}
+/* END OF TEST*/
+
 TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
 {
    std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
@@ -62,6 +68,12 @@ TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
    CHECK_TEXT((l_task_under_test->p_prev_tctl[state_list] == p_dummy_task), "Task_list_init failed to initialise tasks prev task");
    CHECK_TEXT((l_task_under_test.get()->p_owners[state_list] == &running_task_list), "Task_init failed to add task to the running list");
    CHECK_TEXT((l_task_under_test.get()->p_owners[aux_list] == NULL), "Task_init editted aux list owner without cause");
+}
+/* END OF TEST*/
+
+TEST(TaskListInitTestGroup, Test_TaskDeinit_ValuesOk)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskDeinit_ValuesOk");
 }
 /* END OF TEST*/
 
@@ -107,21 +119,39 @@ TEST(TaskListInitTestGroup, Test_TaskRemove)
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskListInit_NullTask)
+TEST(TaskListInitTestGroup, Test_TaskInsert)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskListInit_NullTask");
+   CHECK_TEXT(false, "TODO: Write Test_TaskInsert");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskAddThenRemoveSameTask)
+TEST(TaskListInitTestGroup, Test_TaskSetRunning)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskAddThenRemoveSameTask");
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetRunning");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskAddThenRemoveDifferentTask)
+TEST(TaskListInitTestGroup, Test_TaskSetCurrentIdle)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskAddThenRemoveDifferentTask");
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentIdle");
+}
+/* END OF TEST*/
+
+TEST(TaskListInitTestGroup, Test_TaskSetCurrentWaitOnObject)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentWaitOnObject");
+}
+/* END OF TEST*/
+
+TEST(TaskListInitTestGroup, Test_SchedulerTickInc)
+{
+   CHECK_TEXT(false, "TODO: Write Test_SchedulerTickInc");
+}
+/* END OF TEST*/
+
+TEST(TaskListInitTestGroup, Test_SchedulerSwitchContext)
+{
+   CHECK_TEXT(false, "TODO: Write Test_SchedulerSwitchContext");
 }
 /* END OF TEST*/
 

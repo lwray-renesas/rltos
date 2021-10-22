@@ -8,7 +8,8 @@
     "c-cpp-flylint.pclintplus.enable": false,
     "c-cpp-flylint.cppcheck.enable": true,
     "c-cpp-flylint.run": "onType",
-    "c-cpp-flylint.cppcheck.language": "C",
+    "c-cpp-flylint.cppcheck.standard": ["c99"],
+    "c-cpp-flylint.cppcheck.language": "c",
     "c-cpp-flylint.cppcheck.platform": "native",
     "c-cpp-flylint.excludeFromWorkspacePaths": [
         "test/",
