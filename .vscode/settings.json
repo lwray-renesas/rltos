@@ -10,6 +10,10 @@
     "c-cpp-flylint.run": "onType",
     "c-cpp-flylint.cppcheck.language": "C",
     "c-cpp-flylint.cppcheck.platform": "native",
+    "c-cpp-flylint.excludeFromWorkspacePaths": [
+        "test/",
+        "rltos/port/"
+    ],
     "c-cpp-flylint.cppcheck.includePaths": [
         "${workspaceFolder}/rltos",
         "${workspaceFolder}/rltos/rltos_kernel",
