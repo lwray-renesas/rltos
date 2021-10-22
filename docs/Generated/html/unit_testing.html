@@ -90,27 +90,8 @@ $(document).ready(function(){initNavTree('unit_testing.html',''); initResizable(
   <div class="headertitle"><div class="title">Unit Testing </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file. The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio. The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.</p>
-<h1><a class="anchor" id="vs_code"></a>
-VS Code</h1>
-<p >The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.</p><ul>
-<li>"cmake.sourceDirectory": "${workspaceFolder}/test" This entry sets the cmake extension to work from the test folder.</li>
-<li>"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools" This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.</li>
-</ul>
-<p >Extenions required:</p><ul>
-<li>C/C++ by Microsoft</li>
-<li>CMake Tools by Microsoft</li>
-</ul>
-<h1><a class="anchor" id="cmake"></a>
-CMake</h1>
-<ul>
-<li><a href="https://cmake.org/">CMake</a></li>
-</ul>
-<h1><a class="anchor" id="cpputest"></a>
-CppUTest</h1>
-<ul>
-<li><a href="https://cpputest.github.io/">CppUTest</a> </li>
-</ul>
+<div class="textblock"><p >RLTOS uses CppUTest to implement unit testing of all code (except ports) - this is to ensure code quality and provide protection against regressions. And also becuase why not learn about a technique for improving your code!</p>
+<p >To make the code build and run on windows (the hose test platform) we need to make a port which satisfies the codes expectations from the porting file. The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file. The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio. The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

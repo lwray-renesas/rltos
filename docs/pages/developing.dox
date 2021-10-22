@@ -2,49 +2,118 @@
 \page developing Developing
 This page attempts to outline everything to do with the development process of RLTOS.
 Contents:
+    - \subpage start_developing
+    - \subpage visual_studio_code
     - \subpage coding_standards
+    - \subpage doxygen
     - \subpage unit_testing
     - \subpage todo
     - \subpage ports
 */
 
 /**
+\page start_developing Start Developing
+To start developing you will need to install the following tools:
+    - <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+    - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
+    - <a href="http://www.graphviz.org/">GraphViz</a>
+    - <a href="https://cmake.org/">CMake</a>
+    - Follow instructions for building and installing (including the addition of the environment variables): <a href="https://cpputest.github.io/">CppUTest</a>
+    - <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
+    - You will need a copy of <a href="https://www.misra.org.uk/">MISRA C 2012</a> (15 GBP) - and from there convert it into a misra.txt file for Cppcheck.
+    Then you will have to copy this misra.txt file into C:\Program Files\Cppcheck\addons.
+
+You will then need to ensure your PATH environment variable has the entries to the following:
+    - <graphviz-install-dir>\bin (e.g. C:\Program Files\Graphviz\bin)
+    - <doxygen-install-dir>\bin (e.g. C:\Program Files\doxygen\bin)
+    - <cppcheck-install-dir> (e.g. C:\Program Files\Cppcheck)
+
+
+You will also need to install and enable the following Visual Studio Code extensions:
+    - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a>
+    - <a href="https://marketplace.visualstudio.com/items?itemName=jbenden.c-cpp-flylint">C/C++ Advanced Lint</a>
+    - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a>
+
+\note Make sure CMake\bin is also in the PATH environment variable.
+
+Now opening the repo at the top level (using Visual Studio Code) and configuring and building using the Cmake tools extension from the command palette (ctrl + shift + p) should be seemless.
+*/
+
+/**
+\page visual_studio_code Visual Studio Code
+This project uses visual studio code for most development (with the exception of the ports).
+The settings.json for vs code is basic but enables the startup of development from a single environment.
+Here I'll attempt describe each entry in the settings file:
+    - @code "cmake.sourceDirectory": "${workspaceFolder}/test" @endcode
+    This entry sets the cmake extension to work from the test folder.
+    - @code "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools" @endcode
+    This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.
+    - @code 
+    "c-cpp-flylint.clang.enable": false
+    "c-cpp-flylint.flawfinder.enable": false
+    "c-cpp-flylint.flexelint.enable": false
+    "c-cpp-flylint.lizard.enable": false
+    "c-cpp-flylint.pclintplus.enable": false
+    "c-cpp-flylint.cppcheck.enable": true
+    @endcode
+    These entries disable all linters supported by C/C++ Advanced Lint except Cppcheck (the one we'll be using).
+    - @code "c-cpp-flylint.run": "onType" @endcode
+    This entry runs the linter when typing the code.
+    - @code "c-cpp-flylint.cppcheck.language": "C" @endcode
+    This entry sets the linters nguage explicitly to C.
+    - @code "c-cpp-flylint.cppcheck.platform": "native" @endcode
+    This entry sets the platform to native.
+    - @code "c-cpp-flylint.cppcheck.includePaths": [
+        "${workspaceFolder}/rltos",
+        "${workspaceFolder}/rltos/rltos_kernel",
+        "${workspaceFolder}/rltos/rltos_kernel/task_list",
+        "${workspaceFolder}/rltos/rltos_kernel/semaphore",
+        "${workspaceFolder}/rltos/rltos_kernel/queue",
+        "${workspaceFolder}/rltos/rltos_kernel/mutex",
+        "${workspaceFolder}/rltos/rltos_kernel/event_flags",
+        "${workspaceFolder}/rltos/port/CPPUTEST_UNIT_TESTING/"
+        ]
+        @endcode
+    These entries tell the linter where to look for headers when linting.
+    - @code "c-cpp-flylint.cppcheck.addons": [
+        ".vscode/misra.json"
+        ]
+        @endcode
+    This entry applies the MISRA addon.
+    - @code "c-cpp-flylint.cppcheck.extraArgs": [
+        "--cppcheck-build-dir=rltos_check-cppcheck-build-dir"
+        ]
+        @endcode
+    This entry places all the output documents in a sub-directory.
+
+We also have the misra.json - this is simply used to implement the misra plugin on the linting tool.
+*/
+
+/**
 \page coding_standards Coding Standards
-Need to describe the coding standards.
+RLTOS is checked against the <a href="https://www.misra.org.uk/">MISRA C 2012</a> coding standard.
+The analysis tool used is <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>.
+To make development and scanning easier/faster, this is only implemented through VS code.
 
-\section cppcheck CppCheck
-- <a href="https://www.misra.org.uk/">MISRA C 2012</a> implemented through <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
+*/
 
-\section doxygen Doxygen
-- <a href="https://www.doxygen.nl/index.html">Doxygen</a>
-- <a href="http://www.graphviz.org/">GraphViz</a>
-- <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a>
+/**
+\page doxygen Doxygen
+RLTOS uses doxygen to generate all documentation - this is posted to github pages (where you're reading this I expect).
+
+\note Thanks to: <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a> for the brilliant formatting of this documentation!
 
 */
 
 /**
 \page unit_testing Unit Testing
+RLTOS uses CppUTest to implement unit testing of all code (except ports) - this is to ensure code quality and provide protection against regressions.
+And also becuase why not learn about a technique for improving your code!
+
+To make the code build and run on windows (the hose test platform) we need to make a port which satisfies the codes expectations from the porting file.
 The port for unit testing contains a rltos_scheduler_asm_dummy c file which implements skeleton versions of what should be implemented in the rltos_scheduler_asm.asm file.
 The unit testing port should work for most host based compilers - testing will only ever be performed on MSVC through visual studio.
 The testing folder should contain a CMakeLists.txt file for CMAKE to generate the testing project.
-
-\section vs_code VS Code
-The settings.JSON file contains two entries only to enable working from vs code and running the unit tests through cmake and the cmake plug in for vs code.
-- "cmake.sourceDirectory": "${workspaceFolder}/test"
-This entry sets the cmake extension to work from the test folder.
-
-- "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
-This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.
-
-Extenions required:
-- C/C++ by Microsoft
-- CMake Tools by Microsoft
-
-\section cmake CMake
-- <a href="https://cmake.org/">CMake</a>
-
-\section cpputest CppUTest
-- <a href="https://cpputest.github.io/">CppUTest</a>
 
 */
 

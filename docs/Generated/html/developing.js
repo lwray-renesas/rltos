@@ -1,14 +1,10 @@
 var developing =
 [
-    [ "Coding Standards", "coding_standards.html", [
-      [ "CppCheck", "coding_standards.html#cppcheck", null ],
-      [ "Doxygen", "coding_standards.html#doxygen", null ]
-    ] ],
-    [ "Unit Testing", "unit_testing.html", [
-      [ "VS Code", "unit_testing.html#vs_code", null ],
-      [ "CMake", "unit_testing.html#cmake", null ],
-      [ "CppUTest", "unit_testing.html#cpputest", null ]
-    ] ],
+    [ "Start Developing", "start_developing.html", null ],
+    [ "Visual Studio Code", "visual_studio_code.html", null ],
+    [ "Coding Standards", "coding_standards.html", null ],
+    [ "Doxygen", "doxygen.html", null ],
+    [ "Unit Testing", "unit_testing.html", null ],
     [ "TODO", "todo.html", [
       [ "Next", "todo.html#next", null ],
       [ "Soon", "todo.html#soon", null ]
