@@ -1,0 +1,1 @@
+This is a dummy file - this directory must exist when running cppcheck - so adding a file to version control to force the directory to be made.
