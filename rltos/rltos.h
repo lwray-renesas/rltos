@@ -32,7 +32,7 @@
 /** @struct dummy_task_t
  * @brief Dummy task structure guaranteed to be the same size as a task control structure.
  * 
- * This is used to hide the implementation of a real task control structure - but also allow static allocation of tasks.
+ * This is used to hide the implementation of a real task control structure - and allow static allocation of tasks.
  */
 typedef struct
 {
@@ -46,7 +46,7 @@ typedef struct
 /** @struct dummy_task_list_t
  * @brief Dummy task list structure guaranteed to be the same size as a task list structure.
  * 
- * This is used to hide the implementation of a real task list structure - but also allow static allocation of tasks.
+ * This is used to hide the implementation of a real task list structure - and allow static allocation of tasks.
  */
 typedef struct
 {
