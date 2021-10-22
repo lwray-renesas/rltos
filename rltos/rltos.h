@@ -68,7 +68,7 @@ typedef dummy_task_list_t * p_dummy_task_list_t;
 void Rltos_kernel_enter(void);
 
 /** @brief Initialises task control structure, stack & appends to task list.
- * @param[in] task_to_add - pointer to dummy task structure from which to create the task.
+ * @param[inout] task_to_add - pointer to dummy task structure from which to create the task.
  * @param[in] p_stack_top - pointer to the top of the stack.
  * @param[in] p_task_f - function pointer to the task entry function.
  * @param[in] task_priority - function pointer to the task entry function.

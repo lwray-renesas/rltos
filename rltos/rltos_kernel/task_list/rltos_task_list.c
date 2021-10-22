@@ -70,23 +70,23 @@ static rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 static bool should_switch_task = true;
 
 /** @brief Function used to insert a task in a sorted task list
- * @param[in] list_for_append - pointer to a task list for which the task should be inserted.
- * @param[in] task_to_append - task to insert in list.
+ * @param[inout] list_for_append - pointer to a task list for which the task should be inserted.
+ * @param[inout] task_to_append - task to insert in list.
  * @param[in] list_index - index of the list to in which to insert the task.
  * @param[in] sorting_value - value used to sort list order.
  */
 static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_t const task_to_insert, const list_index_t list_index, const rltos_uint sorting_value);
 
 /** @brief Function used to append task to a task list
- * @param[in] list_for_append - pointer to a task list for which the task should be appended.
- * @param[in] task_to_append - task to append to list.
+ * @param[inout] list_for_append - pointer to a task list for which the task should be appended.
+ * @param[inout] task_to_append - task to append to list.
  * @param[in] list_index - index of the list to in which to append the task.
  */
 static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_t const task_to_append, const list_index_t list_index);
 
 /** @brief Function used to remove task from a task list
- * @param[in] list_for_remove - pointer to a task list from which the task should be removed.
- * @param[in] task_to_remove - task to remove from list.
+ * @param[inout] list_for_remove - pointer to a task list from which the task should be removed.
+ * @param[inout] task_to_remove - task to remove from list.
  * @param[in] list_index - index of the list to in which to remove the task.
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
