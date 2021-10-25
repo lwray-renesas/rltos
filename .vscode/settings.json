@@ -1,5 +1,10 @@
 {
     "cmake.sourceDirectory": "${workspaceFolder}/test",
+    "cmake.debugConfig": {
+        "args": [
+            "-ojunit"
+        ]
+    },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "c-cpp-flylint.clang.enable": false,
     "c-cpp-flylint.flawfinder.enable": false,
