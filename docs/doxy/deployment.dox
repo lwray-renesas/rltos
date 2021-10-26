@@ -1,0 +1,21 @@
+/**
+\page deployment Deployment
+This page attempts to outline everything to do with the deployment process of RLTOS.
+Contents:
+    - \subpage tooling
+	- \subpage gh_actions
+*/
+
+/**
+\page tooling Tooling
+The tools used in deployment, which also include those outlined in the \ref developing "Developing page", (internal to Github Actions) are as follows:
+    - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
+    - <a href="http://www.graphviz.org/">GraphViz</a>
+    - <a href="https://github.com/OpenCppCoverage/OpenCppCoverage">OpenCppCoverage</a>
+*/
+
+/**
+\page gh_actions Github Actions
+Explain the use of github actions - i.e. what happens, when and how.
+*/
+
