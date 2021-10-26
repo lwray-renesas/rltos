@@ -27,7 +27,7 @@
  */
 /* cppcheck-suppress misra-c2012-20.10 - This macro is a utility macro - not functional code, only way to implement is with # and ## */
 /* cppcheck-suppress misra-c2012-20.7 - parenthesis will break this macro*/
-#define RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name, tsk_priority, start_running)						\
+#define RLTOS_CREATE_TASK(task_name, stack_size_bytes, task_func_name, tsk_priority, start_running)	 \
 	Rltos_task_create(&task_name##_str, &task_name##_stack[stack_size_bytes/2U], &task_func_name, tsk_priority, start_running)
 
 /** @brief Utility macro for unused arguments*/
