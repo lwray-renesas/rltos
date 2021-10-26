@@ -6,36 +6,6 @@
         ]
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "c-cpp-flylint.clang.enable": false,
-    "c-cpp-flylint.flawfinder.enable": false,
-    "c-cpp-flylint.flexelint.enable": false,
-    "c-cpp-flylint.lizard.enable": false,
-    "c-cpp-flylint.pclintplus.enable": false,
-    "c-cpp-flylint.cppcheck.enable": true,
-    "c-cpp-flylint.run": "onType",
-    "c-cpp-flylint.cppcheck.standard": ["c99"],
-    "c-cpp-flylint.cppcheck.language": "c",
-    "c-cpp-flylint.cppcheck.platform": "native",
-    "c-cpp-flylint.excludeFromWorkspacePaths": [
-        "test/",
-        "rltos/port/"
-    ],
-    "c-cpp-flylint.cppcheck.includePaths": [
-        "${workspaceFolder}/rltos",
-        "${workspaceFolder}/rltos/rltos_kernel",
-        "${workspaceFolder}/rltos/rltos_kernel/task_list",
-        "${workspaceFolder}/rltos/rltos_kernel/semaphore",
-        "${workspaceFolder}/rltos/rltos_kernel/queue",
-        "${workspaceFolder}/rltos/rltos_kernel/mutex",
-        "${workspaceFolder}/rltos/rltos_kernel/event_flags"
-    ],
-    "c-cpp-flylint.cppcheck.addons": [
-        ".vscode/misra.json"
-    ],
-    "c-cpp-flylint.cppcheck.extraArgs": [
-        "--cppcheck-build-dir=rltos_check-cppcheck-build-dir",
-        "rltos_kernel"
-    ],
     "files.associations": {
         "*.dox": "c"
     }
