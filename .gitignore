@@ -56,4 +56,4 @@ build/*
 
 # cppcheck
 rltos_check-cppcheck-build-dir/*
-!rltos_check-cppcheck-build-dir/dummy.txt
+rltos_check_results.*
