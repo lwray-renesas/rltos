@@ -78,6 +78,9 @@ Documentation is posted to github pages - the latest version can be found <a hre
     - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
     - <a href="http://www.graphviz.org/">GraphViz</a>
 
+The doxyfile can be found in the docs/doxy folder.
+Running this file through the doxygen tool will update the documentation.
+
 \note Thanks to: <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a> for the brilliant formatting of this documentation!
 
 */

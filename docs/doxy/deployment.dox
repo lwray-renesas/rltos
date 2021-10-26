@@ -9,9 +9,10 @@ Contents:
 /**
 \page tooling Tooling
 The tools used in deployment, which also include those outlined in the \ref developing "Developing page", (internal to Github Actions) are as follows:
-    - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
-    - <a href="http://www.graphviz.org/">GraphViz</a>
     - <a href="https://github.com/OpenCppCoverage/OpenCppCoverage">OpenCppCoverage</a>
+    - Something to handle the junit outputs of cpputest and convert into a report also.
+    - Something to handle the xml or csv outputs of the cppcheck.
+    - Somewhere/something to document misra suppressions.
 */
 
 /**
