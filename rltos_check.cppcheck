@@ -9,25 +9,13 @@
     <max-template-recursion>100</max-template-recursion>
     <includedir>
         <dir name="rltos/"/>
-        <dir name="rltos/rltos_kernel/"/>
-        <dir name="rltos/rltos_kernel/task_list/"/>
-        <dir name="rltos/rltos_kernel/semaphore/"/>
-        <dir name="rltos/rltos_kernel/queue/"/>
-        <dir name="rltos/rltos_kernel/mutex/"/>
-        <dir name="rltos/rltos_kernel/event_flags/"/>
     </includedir>
     <paths>
         <dir name="rltos"/>
-        <dir name="rltos/rltos_kernel"/>
-        <dir name="rltos/rltos_kernel/task_list"/>
-        <dir name="rltos/rltos_kernel/semaphore"/>
-        <dir name="rltos/rltos_kernel/queue"/>
-        <dir name="rltos/rltos_kernel/mutex"/>
-        <dir name="rltos/rltos_kernel/event_flags"/>
     </paths>
-    <exclude>
-        <path name="rltos/port/"/>
-    </exclude>
+    <libraries>
+        <library>windows</library>
+    </libraries>
     <addons>
         <addon>misra</addon>
     </addons>

@@ -17,7 +17,7 @@ struct task_ctl_t
 {
 	/* Task specific data*/
 	stack_ptr_type stored_sp;	/**< Stored value of the stack pointer*/
-	void (*p_task_func)(void);	/**< Function pointer for entry of point of task*/
+	p_task_func_t p_task_func;	/**< Function pointer for entry of point of task*/
 	rltos_uint idle_ready_time; /**< Value representing the time this task will be ready*/
 	rltos_uint idle_time;		/**< Value representing the max time this task should remain idled*/
 	rltos_uint idle_wrap_count; /**< Value to detect when wrap around is required*/
@@ -56,7 +56,6 @@ static struct task_list_t idle_task_list = {
 	0U /* Size*/
 };
 /** Pointer to current running task*/
-/* cppcheck-suppress misra-c2012-8.4 - this variable is externed/declared in assembly file for porting the scheduler*/
 p_task_ctl_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
@@ -99,7 +98,7 @@ void Scheduler_init(void)
 }
 /* END OF FUNCTION*/
 
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, void (*const init_task_func)(void), rltos_uint priority, bool task_is_running)
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running)
 {
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
 	task_to_init->p_task_func = init_task_func;
@@ -364,7 +363,6 @@ static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ct
 /* END OF FUNCTION*/
 
 /** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
-/* cppcheck-suppress misra-c2012-8.4 - this function is externed/declared in assembly file for porting the scheduler*/
 void Rltos_scheduler_tick_inc(void)
 {
 	/* Increment system tick counter*/
@@ -394,7 +392,6 @@ void Rltos_scheduler_tick_inc(void)
 }
 
 /** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
-/* cppcheck-suppress misra-c2012-8.4 - this function is externed/declared in assembly file for porting the scheduler*/
 void Rltos_scheduler_switch_context(void)
 {
 	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/

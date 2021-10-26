@@ -33,13 +33,12 @@ void Rltos_kernel_enter(void)
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_stack_top, void (*const p_task_func)(void), rltos_uint task_priority, bool run_task)
+void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task)
 {
 	/* Initialise the stack*/
 	stack_ptr_type l_p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
-	/* cppcheck-suppress misra-c2012-11.3 - dummy task type MUST be used for static allocation. Size of dummy types are always tested to be equal (on each platform) to the casted real types*/
 	Task_init((p_task_ctl_t)(task_to_add), l_p_stack_top, p_task_func, task_priority, run_task);
 }
 /* END OF FUNCTION*/
