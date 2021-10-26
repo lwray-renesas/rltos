@@ -46,8 +46,8 @@ typedef dummy_task_t * p_dummy_task_t;
 /** @brief  pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
 
-/** @brief function pointer type for task functions*/
-typedef void(* p_task_func_t)(void);
+/** @brief pointer type for task functions*/
+typedef void* p_task_func_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. */
 void Rltos_kernel_enter(void);

@@ -8,6 +8,7 @@
     <max-ctu-depth>2</max-ctu-depth>
     <max-template-recursion>100</max-template-recursion>
     <includedir>
+        <dir name="rltos/port/CPPUTEST_UNIT_TESTING/"/>
         <dir name="rltos/"/>
     </includedir>
     <paths>
