@@ -98,17 +98,15 @@ $(document).ready(function(){initNavTree('start_developing.html',''); initResiza
 <li>You will need a copy of <a href="https://www.misra.org.uk/">MISRA C 2012</a> (15 GBP) - and from there convert it into a misra.txt file for Cppcheck. Then you will have to copy this misra.txt file into C:\Program Files\Cppcheck\addons.</li>
 </ul>
 <p >You will then need to ensure your PATH environment variable has the entries to the following:</p><ul>
-<li>&lt;cppcheck-install-dir&gt; (e.g. C:\Program Files\Cppcheck)</li>
 <li>&lt;cpputest-source-dir&gt; (e.g. C:\Users\Lwray\Dev\cpputest)</li>
 <li>&lt;cpputest-home-dir&gt; (e.g. C:\Program Files\CppUTest)</li>
 </ul>
 <p >You will also need to install and enable the following Visual Studio Code extensions:</p><ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=jbenden.c-cpp-flylint">C/C++ Advanced Lint</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a></li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Make sure CMake\bin is also in the PATH environment variable.</dd></dl>
-<p>Now opening the repo at the top level (using Visual Studio Code) and configuring and building using the Cmake tools extension from the command palette (ctrl + shift + p) should be seemless. </p>
+<p>Now open the repo at the top level (using Visual Studio Code). Configure and build using the Cmake tools extension from the command palette (ctrl + shift + p). Debug the unit tests, also from the command palette. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

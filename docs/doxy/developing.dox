@@ -75,7 +75,6 @@ The configuration/project file for cppcheck can be found in the root directory o
 \page doxygen Doxygen
 RLTOS uses doxygen to generate all documentation with graphviz for the calling graphs.
 Documentation is posted to github pages - the latest version can be found <a href="https://https://wraydev.github.io/rltos/">here</a>.
-
     - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
     - <a href="http://www.graphviz.org/">GraphViz</a>
 

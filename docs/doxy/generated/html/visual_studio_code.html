@@ -101,51 +101,12 @@ $(document).ready(function(){initNavTree('visual_studio_code.html',''); initResi
 <div class="line">    ]</div>
 <div class="line">}</div>
 </div><!-- fragment --> This entry forces the test runner to output a junit style xml test report.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.clang.enable&quot;</span>: <span class="keyword">false</span></div>
-<div class="line"><span class="stringliteral">&quot;c-cpp-flylint.flawfinder.enable&quot;</span>: <span class="keyword">false</span></div>
-<div class="line"><span class="stringliteral">&quot;c-cpp-flylint.flexelint.enable&quot;</span>: <span class="keyword">false</span></div>
-<div class="line"><span class="stringliteral">&quot;c-cpp-flylint.lizard.enable&quot;</span>: <span class="keyword">false</span></div>
-<div class="line"><span class="stringliteral">&quot;c-cpp-flylint.pclintplus.enable&quot;</span>: <span class="keyword">false</span></div>
-<div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.enable&quot;</span>: <span class="keyword">true</span></div>
-</div><!-- fragment --> These entries disable all linters supported by C/C++ Advanced Lint except Cppcheck (the one we'll be using).</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.run&quot;</span>: <span class="stringliteral">&quot;onType&quot;</span> </div>
-</div><!-- fragment --> This entry runs the linter when typing the code.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.language&quot;</span>: <span class="stringliteral">&quot;C&quot;</span> </div>
-</div><!-- fragment --> This entry sets the linters nguage explicitly to C.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.platform&quot;</span>: <span class="stringliteral">&quot;native&quot;</span> </div>
-</div><!-- fragment --> This entry sets the platform to native.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.excludeFromWorkspacePaths&quot;</span>: [</div>
-<div class="line">       <span class="stringliteral">&quot;test/&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;rltos/port/&quot;</span></div>
-<div class="line">   ]</div>
-</div><!-- fragment --> This entry stops the linting on the test files and the port files.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.includePaths&quot;</span>: [</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel/task_list&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel/semaphore&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel/queue&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel/mutex&quot;</span>,</div>
-<div class="line">       <span class="stringliteral">&quot;${workspaceFolder}/rltos/rltos_kernel/event_flags&quot;</span></div>
-<div class="line">       ]</div>
-</div><!-- fragment --> These entries tell the linter where to look for headers when linting.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.addons&quot;</span>: [</div>
-<div class="line">       <span class="stringliteral">&quot;.vscode/misra.json&quot;</span></div>
-<div class="line">       ]</div>
-</div><!-- fragment --> This entry applies the MISRA addon.</li>
-<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;c-cpp-flylint.cppcheck.extraArgs&quot;</span>: [</div>
-<div class="line">       <span class="stringliteral">&quot;--cppcheck-build-dir=rltos_check-cppcheck-build-dir&quot;</span></div>
-<div class="line">       <span class="stringliteral">&quot;rltos_kernel&quot;</span></div>
-<div class="line">       ]</div>
-</div><!-- fragment --> This entry places all the output documents in a sub-directory &amp; sets cppcheck to analyse all rltos_kernel directory</li>
-</ul>
-<p >We also have the misra.json - this is simply used to implement the misra plugin on the linting tool. The misra.json expects the user to have installed a misra.txt file in the cppcheck addon directory. </p><div class="fragment"><div class="line">{</div>
-<div class="line">    <span class="stringliteral">&quot;script&quot;</span>: <span class="stringliteral">&quot;misra.py&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;args&quot;</span>: [</div>
-<div class="line">        <span class="stringliteral">&quot;--rule-texts=\&quot;C:\\Program Files\\Cppcheck\\addons\\misra.txt\&quot;&quot;</span></div>
-<div class="line">    ]</div>
+<li><div class="fragment"><div class="line"><span class="stringliteral">&quot;files.associations&quot;</span>: {</div>
+<div class="line">    <span class="stringliteral">&quot;*.dox&quot;</span>: <span class="stringliteral">&quot;c&quot;</span></div>
 <div class="line">}</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --> This entry associates the .dox files as C to help with source code highlighting. </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.2-->
