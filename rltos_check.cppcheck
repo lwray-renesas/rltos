@@ -13,6 +13,9 @@
     <paths>
         <dir name="rltos"/>
     </paths>
+    <exclude>
+        <path name="rltos/port/"/>
+    </exclude>
     <libraries>
         <library>windows</library>
     </libraries>
