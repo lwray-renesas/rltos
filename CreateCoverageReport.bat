@@ -1,14 +1,32 @@
+if exist "%cd%\build\Debug\rltos_test.exe" (
 REM Now we run the coverage check - excluding the test framework, test code & port files (we only want to know how much of our rltos source is being tested)
-echo off
 OpenCppCoverage --sources "%cd%" --excluded_source "%CPPUTEST_SOURCE%\*" --excluded_source "test\*" --excluded_source "rltos\port\*" -- "build\Debug\rltos_test.exe"
 
-echo on
-REM Now we copy the latest coverage report in the docs coverage folder
-echo off
+REM Find the coverage report, copy into the report/coverage folder and delete the auto generated one.
 
-if exist "%cd%\CoverageReport*" (
-del "%cd%\report\coverage\*" /q /s
+set find_folder_result=---
 
-FOR /F "delims=" %%i IN ('dir /b /ad-h /t:c /od') DO SET a=%%i
-xcopy "%a%" "%cd%\report\coverage" /E/H/C/
+for /D %%d in ("%cd%\CoverageReport*") do (
+  set find_folder_result=%%d
+)
+
+if exist "%find_folder_result%" (goto WINDIR) else (goto NOWINDIR)
+
+:WINDIR
+    if exist "%cd%\report\coverage\" (
+        del "%cd%\report\coverage\*" /q /s
+    ) else (
+        mkdir "%cd%\report\coverage"
+    )
+
+    for /F "delims=" %%i in ('dir /b /ad-h /t:c /od') do set a=%%i
+    xcopy "%a%" "%cd%\report\coverage" /E/H/C/
+
+    rmdir "%find_folder_result%" /q /s
+  goto end
+
+:NOWINDIR
+  echo No Coverage Report Generated
+
+:end
 )
