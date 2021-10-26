@@ -44,16 +44,17 @@ struct task_list_t
 
 /** List containing all running taks*/
 static struct task_list_t running_task_list = {
-	.p_head = NULL,
-	.p_index = NULL,
-	.size = 0U};
+	NULL, /* Head*/
+	NULL, /* Index*/
+	0U /* Size*/
+};
 
 /** List containing all idle/blocked tasks*/
 static struct task_list_t idle_task_list = {
-	.p_head = NULL,
-	.p_index = NULL,
-	.size = 0U};
-
+	NULL, /* Head*/
+	NULL, /* Index*/
+	0U /* Size*/
+};
 /** Pointer to current running task*/
 /* cppcheck-suppress misra-c2012-8.4 - this variable is externed/declared in assembly file for porting the scheduler*/
 p_task_ctl_t p_current_task_ctl = NULL;

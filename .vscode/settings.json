@@ -35,5 +35,8 @@
     "c-cpp-flylint.cppcheck.extraArgs": [
         "--cppcheck-build-dir=rltos_check-cppcheck-build-dir",
         "rltos_kernel"
-    ]
+    ],
+    "files.associations": {
+        "*.dox": "c"
+    }
 }
