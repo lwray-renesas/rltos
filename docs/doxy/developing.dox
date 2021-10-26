@@ -65,6 +65,7 @@ Here I'll attempt describe each entry in the settings file:
 
 /**
 \page coding_standards Coding Standards
+[Work in progess - currently trying to get cppcheck to provide consistent results.
 RLTOS is checked against the <a href="https://www.misra.org.uk/">MISRA C 2012</a> coding standard.
 The analysis tool used is <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>.
 To make development and scanning easier/faster, this is only implemented through VS code.
