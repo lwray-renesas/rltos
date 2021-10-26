@@ -59,7 +59,7 @@ Here I'll attempt describe each entry in the settings file:
         "*.dox": "c"
     }
     @endcode
-    Theis entry associates the .dox files as C to help with source code highlighting.
+    This entry associates the .dox files as C to help with source code highlighting.
 
 */
 
@@ -68,7 +68,7 @@ Here I'll attempt describe each entry in the settings file:
 RLTOS is checked against the <a href="https://www.misra.org.uk/">MISRA C 2012</a> coding standard.
 The analysis tool used is <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>.
 To make development and scanning easier/faster, this is only implemented through VS code.
-
+The configuration/project file for cppcheck can be found in the root directory of the repo rltos_check.cppcheck.
 */
 
 /**
