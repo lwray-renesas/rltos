@@ -123,9 +123,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__prv.html#ga7a5774702e922fe3bd53f74fc3cf5342">Scheduler_init</a> (void)</td></tr>
 <tr class="memdesc:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to initialise the current task to point at the running lists head.  <a href="group___rltos__task__list__prv.html#ga7a5774702e922fe3bd53f74fc3cf5342">More...</a><br /></td></tr>
 <tr class="separator:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7381af6f29df467e5543f1a7f358c4b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__prv.html#ga7381af6f29df467e5543f1a7f358c4b1">Task_init</a> (<a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_init, const stack_ptr_type init_sp, void(*const init_task_func)(void), rltos_uint priority, bool task_is_running)</td></tr>
-<tr class="memdesc:ga7381af6f29df467e5543f1a7f358c4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nodes.  <a href="group___rltos__task__list__prv.html#ga7381af6f29df467e5543f1a7f358c4b1">More...</a><br /></td></tr>
-<tr class="separator:ga7381af6f29df467e5543f1a7f358c4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78">Task_init</a> (<a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_init, const stack_ptr_type init_sp, <a class="el" href="group___rltos__task__api.html#gab6902a14a0e8d8f53d75c79f555e9468">p_task_func_t</a> const init_task_func, rltos_uint const priority, bool const task_is_running)</td></tr>
+<tr class="memdesc:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nodes.  <a href="group___rltos__task__list__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78">More...</a><br /></td></tr>
+<tr class="separator:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga497b702db38a8ce118c8393eb0587712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__prv.html#ga497b702db38a8ce118c8393eb0587712">Task_deinit</a> (<a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_deinit)</td></tr>
 <tr class="memdesc:ga497b702db38a8ce118c8393eb0587712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set deinit a task and removes from both running and idle lists.  <a href="group___rltos__task__list__prv.html#ga497b702db38a8ce118c8393eb0587712">More...</a><br /></td></tr>
 <tr class="separator:ga497b702db38a8ce118c8393eb0587712"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -328,8 +328,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga7381af6f29df467e5543f1a7f358c4b1" name="ga7381af6f29df467e5543f1a7f358c4b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7381af6f29df467e5543f1a7f358c4b1">&#9670;&nbsp;</a></span>Task_init()</h2>
+<a id="ga6bbde0c90e5e572e8131cc7652d8dd78" name="ga6bbde0c90e5e572e8131cc7652d8dd78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6bbde0c90e5e572e8131cc7652d8dd78">&#9670;&nbsp;</a></span>Task_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,19 +349,19 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramtype"><a class="el" href="group___rltos__task__api.html#gab6902a14a0e8d8f53d75c79f555e9468">p_task_func_t</a> const&#160;</td>
           <td class="paramname"><em>init_task_func</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">rltos_uint&#160;</td>
+          <td class="paramtype">rltos_uint const&#160;</td>
           <td class="paramname"><em>priority</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
+          <td class="paramtype">bool const&#160;</td>
           <td class="paramname"><em>task_is_running</em>&#160;</td>
         </tr>
         <tr>
@@ -386,12 +386,14 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_ga7381af6f29df467e5543f1a7f358c4b1_cgraph.svg" width="264" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_ga6bbde0c90e5e572e8131cc7652d8dd78_cgraph.svg" width="264" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_ga7381af6f29df467e5543f1a7f358c4b1_icgraph.svg" width="260" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_ga6bbde0c90e5e572e8131cc7652d8dd78_icgraph.svg" width="260" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -455,7 +457,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="554" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__list__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="554" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>

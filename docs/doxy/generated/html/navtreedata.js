@@ -25,7 +25,11 @@
 var NAVTREE =
 [
   [ "RLTOS", "index.html", [
-    [ "Documentation", "index.html", "index" ]
+    [ "Documentation", "index.html", "index" ],
+    [ "Components", "modules.html", "modules" ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
+    ] ]
   ] ]
 ];
 

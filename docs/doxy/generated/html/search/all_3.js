@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mainpage_2edox_0',['mainpage.dox',['../mainpage_8dox.html',1,'']]]
+  ['event_20flags_0',['Event flags',['../group___rltos__event__flags.html',1,'']]]
 ];
