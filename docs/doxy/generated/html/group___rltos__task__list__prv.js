@@ -24,6 +24,7 @@ var group___rltos__task__list__prv =
     [ "Task_deinit", "group___rltos__task__list__prv.html#ga497b702db38a8ce118c8393eb0587712", null ],
     [ "Task_init", "group___rltos__task__list__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78", null ],
     [ "Task_insert_in_list", "group___rltos__task__list__prv.html#gab915c720a9360b7be5bb388002b6ebcd", null ],
+    [ "Task_is_in_list", "group___rltos__task__list__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf", null ],
     [ "Task_list_init", "group___rltos__task__list__prv.html#gac816af0adf021190a270dbf77055b7e8", null ],
     [ "Task_remove_from_list", "group___rltos__task__list__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b", null ],
     [ "Task_set_current_idle", "group___rltos__task__list__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f", null ],

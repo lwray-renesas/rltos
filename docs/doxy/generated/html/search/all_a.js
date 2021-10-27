@@ -19,11 +19,12 @@ var searchData=
   ['rltos_5fsystem_5ftick_16',['rltos_system_tick',['../group___rltos__task__list__prv.html#ga6106b912ed784069ef3cb4d67a2e8cde',1,'rltos_task_list.c']]],
   ['rltos_5ftask_2ec_17',['rltos_task.c',['../rltos__task_8c.html',1,'']]],
   ['rltos_5ftask_2eh_18',['rltos_task.h',['../rltos__task_8h.html',1,'']]],
-  ['rltos_5ftask_5fcreate_19',['Rltos_task_create',['../group___rltos__task__prv.html#gac8946f8462bb5376de171d3d252f5772',1,'Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task):&#160;rltos_task.c'],['../group___rltos__task__api.html#gac8946f8462bb5376de171d3d252f5772',1,'Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task):&#160;rltos_task.c']]],
-  ['rltos_5ftask_5flist_2ec_20',['rltos_task_list.c',['../rltos__task__list_8c.html',1,'']]],
-  ['rltos_5ftask_5flist_2eh_21',['rltos_task_list.h',['../rltos__task__list_8h.html',1,'']]],
-  ['rltos_5ftask_5fsleep_22',['Rltos_task_sleep',['../group___rltos__task__prv.html#ga581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos_task.c'],['../group___rltos__task__api.html#ga581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos_task.c']]],
-  ['rltos_5funused_23',['RLTOS_UNUSED',['../group___rltos__task__api.html#ga44bdae780bc13fedd9c99f1de7fd16f6',1,'rltos_task.h']]],
-  ['rltos_5fwrap_5fcount_24',['rltos_wrap_count',['../group___rltos__task__list__prv.html#gaabcb6337e1d7773cd74f220532873594',1,'rltos_task_list.c']]],
-  ['running_5ftask_5flist_25',['running_task_list',['../group___rltos__task__list__prv.html#ga847b65da3481970d2cfd1651cd956df8',1,'rltos_task_list.c']]]
+  ['rltos_5ftask_5fcreate_19',['Rltos_task_create',['../group___rltos__task__prv.html#ga834372bf1fbfa182dcd47b8f680f435a',1,'Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task):&#160;rltos_task.c'],['../group___rltos__task__api.html#ga834372bf1fbfa182dcd47b8f680f435a',1,'Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task):&#160;rltos_task.c']]],
+  ['rltos_5ftask_5fdestroy_20',['Rltos_task_destroy',['../group___rltos__task__prv.html#ga2e60520c320866bc60fdcb5fbc9260e3',1,'Rltos_task_destroy(p_dummy_task_t const task_to_destroy):&#160;rltos_task.c'],['../group___rltos__task__api.html#ga2e60520c320866bc60fdcb5fbc9260e3',1,'Rltos_task_destroy(p_dummy_task_t const task_to_destroy):&#160;rltos_task.c']]],
+  ['rltos_5ftask_5flist_2ec_21',['rltos_task_list.c',['../rltos__task__list_8c.html',1,'']]],
+  ['rltos_5ftask_5flist_2eh_22',['rltos_task_list.h',['../rltos__task__list_8h.html',1,'']]],
+  ['rltos_5ftask_5fsleep_23',['Rltos_task_sleep',['../group___rltos__task__prv.html#ga581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos_task.c'],['../group___rltos__task__api.html#ga581dd045fa985add7730a8a1581389b7',1,'Rltos_task_sleep(const rltos_uint tick_count):&#160;rltos_task.c']]],
+  ['rltos_5funused_24',['RLTOS_UNUSED',['../group___rltos__task__api.html#ga44bdae780bc13fedd9c99f1de7fd16f6',1,'rltos_task.h']]],
+  ['rltos_5fwrap_5fcount_25',['rltos_wrap_count',['../group___rltos__task__list__prv.html#gaabcb6337e1d7773cd74f220532873594',1,'rltos_task_list.c']]],
+  ['running_5ftask_5flist_26',['running_task_list',['../group___rltos__task__list__prv.html#ga847b65da3481970d2cfd1651cd956df8',1,'rltos_task_list.c']]]
 ];

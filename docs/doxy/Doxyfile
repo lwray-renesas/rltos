@@ -875,9 +875,8 @@ INPUT                  = "deep dive.dox" \
                          developing.dox \
                          mainpage.dox \
                          quickstart.dox \
-                         ../../rltos/rltos.h \
-                         ../../rltos/rltos_kernel \
-                         deployment.dox
+                         deployment.dox \
+                         ../../src/rltos_kernel
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
