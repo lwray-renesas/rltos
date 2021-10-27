@@ -17,9 +17,6 @@ To start developing you will need to install the following tools:
     - <a href="https://code.visualstudio.com/">Visual Studio Code</a>
     - <a href="https://cmake.org/">CMake</a>
     - Follow instructions for building and installing (including the addition of the environment variables): <a href="https://cpputest.github.io/">CppUTest</a>
-    - <a href="https://cppcheck.sourceforge.io/">Cppcheck</a>
-    - You will need a copy of <a href="https://www.misra.org.uk/">MISRA C 2012</a> (15 GBP) - and from there convert it into a misra.txt file for Cppcheck.
-    Then you will have to copy this misra.txt file into C:\Program Files\Cppcheck\addons.
 
 You will then need to ensure your PATH environment variable has the entries to the following:
     - <cpputest-source-dir> (e.g. C:\Users\Lwray\Dev\cpputest)
