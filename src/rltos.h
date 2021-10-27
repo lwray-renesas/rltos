@@ -34,7 +34,7 @@ typedef struct
  * 
  * This is used to hide the implementation of a real task list structure - and allow static allocation of tasks.
  */
-typedef struct
+typedef struct DummyTaskLsit
 {
 	void * dummy1[2];
 	rltos_uint dummy0;

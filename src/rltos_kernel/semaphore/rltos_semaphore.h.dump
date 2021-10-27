@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<dumps>
+  <platform name="win64" char_bit="8" short_bit="16" int_bit="32" long_bit="32" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="rltos/src/rltos_kernel/semaphore/rltos_semaphore.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x * @defgroup Rltos_semaphore Sempahorex * The group defining the RLTOS semaphore.x * @addtogroup Rltos_semaphore_api apix * The public API (interface) to the RLTOS semaphore module.x * @ingroup Rltos_semaphorex * @{x */"/>
+    <tok fileIndex="0" linenr="10" column="1" str="#"/>
+    <tok fileIndex="0" linenr="10" column="2" str="ifndef"/>
+    <tok fileIndex="0" linenr="10" column="9" str="RLTOS_SEMAPHORE_H_"/>
+    <tok fileIndex="0" linenr="11" column="1" str="#"/>
+    <tok fileIndex="0" linenr="11" column="2" str="define"/>
+    <tok fileIndex="0" linenr="11" column="9" str="RLTOS_SEMAPHORE_H_"/>
+    <tok fileIndex="0" linenr="13" column="1" str="#"/>
+    <tok fileIndex="0" linenr="13" column="2" str="ifndef"/>
+    <tok fileIndex="0" linenr="13" column="9" str="RLTOS_RLTOS_H_"/>
+    <tok fileIndex="0" linenr="14" column="1" str="#"/>
+    <tok fileIndex="0" linenr="14" column="2" str="error"/>
+    <tok fileIndex="0" linenr="14" column="8" str="&quot;Must include rltos.h before including this file in any source file&quot;"/>
+    <tok fileIndex="0" linenr="15" column="1" str="#"/>
+    <tok fileIndex="0" linenr="15" column="2" str="endif"/>
+    <tok fileIndex="0" linenr="19" column="1" str="#"/>
+    <tok fileIndex="0" linenr="19" column="2" str="endif"/>
+    <tok fileIndex="0" linenr="19" column="8" str="/* RLTOS_SEMAPHORE_H_ */"/>
+    <tok fileIndex="0" linenr="21" column="1" str="/*! @} */"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>

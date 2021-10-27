@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<dumps>
+  <platform name="win64" char_bit="8" short_bit="16" int_bit="32" long_bit="32" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="rltos/src/rltos_kernel/rltos.c"/>
+    <file index="1" name="rltos/src/rltos.h"/>
+    <file index="2" name="rltos/src/rltos_kernel/task_list/rltos_task_list.h"/>
+    <file index="3" name="rltos/src/port/CPPUTEST_UNIT_TESTING/rltos_port.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x * @addtogroup Rltos_task_prv prvx * The private data (implementation) of the RLTOS kernels tasks.x * @ingroup Rltos_taskx * @{x */"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;rltos.h&quot;"/>
+    <tok fileIndex="0" linenr="9" column="1" str="#"/>
+    <tok fileIndex="0" linenr="9" column="2" str="include"/>
+    <tok fileIndex="0" linenr="9" column="10" str="&quot;task_list/rltos_task_list.h&quot;"/>
+    <tok fileIndex="0" linenr="11" column="1" str="/** @brief Function to enter the first rltos task. * @details Defined in rltos_kernel.asm - does not save context, only restores it and returns as though from interrupt (RETI). * This function MUST be called after initialising the current task pointer (p_current_task_ctl). */"/>
+    <tok fileIndex="0" linenr="15" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="15" column="8" str="void"/>
+    <tok fileIndex="0" linenr="15" column="13" str="Rltos_enter_first_task"/>
+    <tok fileIndex="0" linenr="15" column="35" str="("/>
+    <tok fileIndex="0" linenr="15" column="36" str="void"/>
+    <tok fileIndex="0" linenr="15" column="40" str=")"/>
+    <tok fileIndex="0" linenr="15" column="41" str=";"/>
+    <tok fileIndex="0" linenr="17" column="1" str="/** @brief Initialises stack for creation of task.x * This function is provided by the porting layer.x * @return The value of the stack pointer post initialisation (used to restore context).x*/"/>
+    <tok fileIndex="0" linenr="21" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="21" column="8" str="stack_ptr_type"/>
+    <tok fileIndex="0" linenr="21" column="23" str="Rltos_stack_init"/>
+    <tok fileIndex="0" linenr="21" column="39" str="("/>
+    <tok fileIndex="0" linenr="21" column="40" str="stack_ptr_type"/>
+    <tok fileIndex="0" linenr="21" column="55" str="p_stack_top"/>
+    <tok fileIndex="0" linenr="21" column="66" str=","/>
+    <tok fileIndex="0" linenr="21" column="68" str="void"/>
+    <tok fileIndex="0" linenr="21" column="73" str="("/>
+    <tok fileIndex="0" linenr="21" column="74" str="*"/>
+    <tok fileIndex="0" linenr="21" column="75" str="const"/>
+    <tok fileIndex="0" linenr="21" column="81" str="p_task_func"/>
+    <tok fileIndex="0" linenr="21" column="92" str=")"/>
+    <tok fileIndex="0" linenr="21" column="93" str="("/>
+    <tok fileIndex="0" linenr="21" column="94" str="void"/>
+    <tok fileIndex="0" linenr="21" column="98" str=")"/>
+    <tok fileIndex="0" linenr="21" column="99" str=")"/>
+    <tok fileIndex="0" linenr="21" column="100" str=";"/>
+    <tok fileIndex="0" linenr="23" column="1" str="/** @brief Initialises and start RLTOS tick timer.x * This function is provided by the application layer.x*/"/>
+    <tok fileIndex="0" linenr="26" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="26" column="8" str="void"/>
+    <tok fileIndex="0" linenr="26" column="13" str="Rltos_start_tick_timer"/>
+    <tok fileIndex="0" linenr="26" column="35" str="("/>
+    <tok fileIndex="0" linenr="26" column="36" str="void"/>
+    <tok fileIndex="0" linenr="26" column="40" str=")"/>
+    <tok fileIndex="0" linenr="26" column="41" str=";"/>
+    <tok fileIndex="0" linenr="28" column="1" str="void"/>
+    <tok fileIndex="0" linenr="28" column="6" str="Rltos_kernel_enter"/>
+    <tok fileIndex="0" linenr="28" column="24" str="("/>
+    <tok fileIndex="0" linenr="28" column="25" str="void"/>
+    <tok fileIndex="0" linenr="28" column="29" str=")"/>
+    <tok fileIndex="0" linenr="29" column="1" str="{"/>
+    <tok fileIndex="0" linenr="30" column="2" str="Scheduler_init"/>
+    <tok fileIndex="0" linenr="30" column="16" str="("/>
+    <tok fileIndex="0" linenr="30" column="17" str=")"/>
+    <tok fileIndex="0" linenr="30" column="18" str=";"/>
+    <tok fileIndex="0" linenr="31" column="2" str="Rltos_start_tick_timer"/>
+    <tok fileIndex="0" linenr="31" column="24" str="("/>
+    <tok fileIndex="0" linenr="31" column="25" str=")"/>
+    <tok fileIndex="0" linenr="31" column="26" str=";"/>
+    <tok fileIndex="0" linenr="32" column="2" str="Rltos_enter_first_task"/>
+    <tok fileIndex="0" linenr="32" column="24" str="("/>
+    <tok fileIndex="0" linenr="32" column="25" str=")"/>
+    <tok fileIndex="0" linenr="32" column="26" str=";"/>
+    <tok fileIndex="0" linenr="33" column="1" str="}"/>
+    <tok fileIndex="0" linenr="34" column="1" str="/* END OF FUNCTION*/"/>
+    <tok fileIndex="0" linenr="36" column="1" str="void"/>
+    <tok fileIndex="0" linenr="36" column="6" str="Rltos_task_create"/>
+    <tok fileIndex="0" linenr="36" column="23" str="("/>
+    <tok fileIndex="0" linenr="36" column="24" str="p_dummy_task_t"/>
+    <tok fileIndex="0" linenr="36" column="39" str="const"/>
+    <tok fileIndex="0" linenr="36" column="45" str="task_to_add"/>
+    <tok fileIndex="0" linenr="36" column="56" str=","/>
+    <tok fileIndex="0" linenr="36" column="58" str="stack_ptr_type"/>
+    <tok fileIndex="0" linenr="36" column="73" str="const"/>
+    <tok fileIndex="0" linenr="36" column="79" str="p_stack_top"/>
+    <tok fileIndex="0" linenr="36" column="90" str=","/>
+    <tok fileIndex="0" linenr="36" column="92" str="p_task_func_t"/>
+    <tok fileIndex="0" linenr="36" column="106" str="const"/>
+    <tok fileIndex="0" linenr="36" column="112" str="p_task_func"/>
+    <tok fileIndex="0" linenr="36" column="123" str=","/>
+    <tok fileIndex="0" linenr="36" column="125" str="rltos_uint"/>
+    <tok fileIndex="0" linenr="36" column="136" str="const"/>
+    <tok fileIndex="0" linenr="36" column="142" str="task_priority"/>
+    <tok fileIndex="0" linenr="36" column="155" str=","/>
+    <tok fileIndex="0" linenr="36" column="157" str="bool"/>
+    <tok fileIndex="0" linenr="36" column="162" str="const"/>
+    <tok fileIndex="0" linenr="36" column="168" str="run_task"/>
+    <tok fileIndex="0" linenr="36" column="176" str=")"/>
+    <tok fileIndex="0" linenr="37" column="1" str="{"/>
+    <tok fileIndex="0" linenr="38" column="2" str="/* Initialise the stack*/"/>
+    <tok fileIndex="0" linenr="39" column="2" str="stack_ptr_type"/>
+    <tok fileIndex="0" linenr="39" column="17" str="l_p_stack_top"/>
+    <tok fileIndex="0" linenr="39" column="31" str="="/>
+    <tok fileIndex="0" linenr="39" column="33" str="Rltos_stack_init"/>
+    <tok fileIndex="0" linenr="39" column="49" str="("/>
+    <tok fileIndex="0" linenr="39" column="50" str="p_stack_top"/>
+    <tok fileIndex="0" linenr="39" column="61" str=","/>
+    <tok fileIndex="0" linenr="39" column="63" str="p_task_func"/>
+    <tok fileIndex="0" linenr="39" column="74" str=")"/>
+    <tok fileIndex="0" linenr="39" column="75" str=";"/>
+    <tok fileIndex="0" linenr="41" column="2" str="/* Initialise the task*/"/>
+    <tok fileIndex="0" linenr="42" column="2" str="/* [Suppression Details] - dummy control structure type provided for static allocation of objects while retaining opaqueness - objects garunteed to be same size*/"/>
+    <tok fileIndex="0" linenr="43" column="2" str="Task_init"/>
+    <tok fileIndex="0" linenr="43" column="11" str="("/>
+    <tok fileIndex="0" linenr="43" column="12" str="("/>
+    <tok fileIndex="0" linenr="43" column="13" str="p_task_ctl_t"/>
+    <tok fileIndex="0" linenr="43" column="25" str=")"/>
+    <tok fileIndex="0" linenr="43" column="26" str="("/>
+    <tok fileIndex="0" linenr="43" column="27" str="task_to_add"/>
+    <tok fileIndex="0" linenr="43" column="38" str=")"/>
+    <tok fileIndex="0" linenr="43" column="39" str=","/>
+    <tok fileIndex="0" linenr="43" column="41" str="l_p_stack_top"/>
+    <tok fileIndex="0" linenr="43" column="54" str=","/>
+    <tok fileIndex="0" linenr="43" column="56" str="p_task_func"/>
+    <tok fileIndex="0" linenr="43" column="67" str=","/>
+    <tok fileIndex="0" linenr="43" column="69" str="task_priority"/>
+    <tok fileIndex="0" linenr="43" column="82" str=","/>
+    <tok fileIndex="0" linenr="43" column="84" str="run_task"/>
+    <tok fileIndex="0" linenr="43" column="92" str=")"/>
+    <tok fileIndex="0" linenr="43" column="93" str=";"/>
+    <tok fileIndex="0" linenr="43" column="95" str="/* cppcheck-suppress misra-c2012-11.3*/"/>
+    <tok fileIndex="0" linenr="44" column="1" str="}"/>
+    <tok fileIndex="0" linenr="45" column="1" str="/* END OF FUNCTION*/"/>
+    <tok fileIndex="0" linenr="47" column="1" str="void"/>
+    <tok fileIndex="0" linenr="47" column="6" str="Rltos_task_sleep"/>
+    <tok fileIndex="0" linenr="47" column="22" str="("/>
+    <tok fileIndex="0" linenr="47" column="23" str="const"/>
+    <tok fileIndex="0" linenr="47" column="29" str="rltos_uint"/>
+    <tok fileIndex="0" linenr="47" column="40" str="tick_count"/>
+    <tok fileIndex="0" linenr="47" column="50" str=")"/>
+    <tok fileIndex="0" linenr="48" column="1" str="{"/>
+    <tok fileIndex="0" linenr="49" column="2" str="if"/>
+    <tok fileIndex="0" linenr="49" column="5" str="("/>
+    <tok fileIndex="0" linenr="49" column="6" str="tick_count"/>
+    <tok fileIndex="0" linenr="49" column="17" str="&gt;"/>
+    <tok fileIndex="0" linenr="49" column="19" str="0U"/>
+    <tok fileIndex="0" linenr="49" column="21" str=")"/>
+    <tok fileIndex="0" linenr="50" column="2" str="{"/>
+    <tok fileIndex="0" linenr="51" column="3" str="/* Idle the current task*/"/>
+    <tok fileIndex="0" linenr="52" column="3" str="Task_set_current_idle"/>
+    <tok fileIndex="0" linenr="52" column="24" str="("/>
+    <tok fileIndex="0" linenr="52" column="25" str="tick_count"/>
+    <tok fileIndex="0" linenr="52" column="35" str=")"/>
+    <tok fileIndex="0" linenr="52" column="36" str=";"/>
+    <tok fileIndex="0" linenr="54" column="3" str="/* Force yield the task*/"/>
+    <tok fileIndex="0" linenr="55" column="3" str="Rltos_task_yield"/>
+    <tok fileIndex="0" linenr="55" column="19" str="("/>
+    <tok fileIndex="0" linenr="55" column="20" str=")"/>
+    <tok fileIndex="0" linenr="55" column="21" str=";"/>
+    <tok fileIndex="0" linenr="56" column="2" str="}"/>
+    <tok fileIndex="0" linenr="57" column="1" str="}"/>
+    <tok fileIndex="0" linenr="58" column="1" str="/* END OF FUNCTION*/"/>
+    <tok fileIndex="0" linenr="60" column="1" str="/*! @} */"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>

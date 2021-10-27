@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<dumps>
+  <platform name="win64" char_bit="8" short_bit="16" int_bit="32" long_bit="32" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="rltos/src/rltos_kernel/semaphore/rltos_semaphore.c"/>
+    <file index="1" name="rltos/src/rltos.h"/>
+    <file index="2" name="rltos/src/rltos_kernel/semaphore/rltos_semaphore.h"/>
+    <file index="3" name="rltos/src/port/CPPUTEST_UNIT_TESTING/rltos_port.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x * @addtogroup Rltos_semaphore_prv prvx * The private data (implementation) of the RLTOS semaphore.x * @ingroup Rltos_semaphorex * @{x */"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;rltos.h&quot;"/>
+    <tok fileIndex="0" linenr="9" column="1" str="#"/>
+    <tok fileIndex="0" linenr="9" column="2" str="include"/>
+    <tok fileIndex="0" linenr="9" column="10" str="&quot;rltos_semaphore.h&quot;"/>
+    <tok fileIndex="0" linenr="14" column="1" str="/*! @} */"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>

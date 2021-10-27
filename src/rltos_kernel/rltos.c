@@ -39,7 +39,8 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_
 	stack_ptr_type l_p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
-	Task_init((p_task_ctl_t)(task_to_add), l_p_stack_top, p_task_func, task_priority, run_task);
+	/* [Suppression Details] - dummy control structure type provided for static allocation of objects while retaining opaqueness - objects garunteed to be same size*/
+	Task_init((p_task_ctl_t)(task_to_add), l_p_stack_top, p_task_func, task_priority, run_task); /* cppcheck-suppress misra-c2012-11.3*/
 }
 /* END OF FUNCTION*/
 

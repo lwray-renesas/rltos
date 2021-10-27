@@ -1,0 +1,12 @@
+rltos/src/rltos.h.ctu-info
+rltos/src/rltos_kernel/event_flags/rltos_event_flags.c.ctu-info
+rltos/src/rltos_kernel/event_flags/rltos_event_flags.h.ctu-info
+rltos/src/rltos_kernel/mutex/rltos_mutex.c.ctu-info
+rltos/src/rltos_kernel/mutex/rltos_mutex.h.ctu-info
+rltos/src/rltos_kernel/queue/rltos_queue.c.ctu-info
+rltos/src/rltos_kernel/queue/rltos_queue.h.ctu-info
+rltos/src/rltos_kernel/rltos.c.ctu-info
+rltos/src/rltos_kernel/semaphore/rltos_semaphore.c.ctu-info
+rltos/src/rltos_kernel/semaphore/rltos_semaphore.h.ctu-info
+rltos/src/rltos_kernel/task_list/rltos_task_list.c.ctu-info
+rltos/src/rltos_kernel/task_list/rltos_task_list.h.ctu-info

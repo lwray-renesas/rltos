@@ -12,7 +12,6 @@ The tools used in deployment, which also include those outlined in the \ref deve
     - <a href="https://github.com/OpenCppCoverage/OpenCppCoverage">OpenCppCoverage</a>
     - Something to handle the junit outputs of cpputest and convert into a report also.
     - Something to handle the xml or csv outputs of the cppcheck.
-    - Somewhere/something to document misra suppressions.
 */
 
 /**

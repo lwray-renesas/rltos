@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.20)
 project(rltos_test)
 
 # Setup RLTOS base directory
-set(RLTOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../rltos/)
+set(RLTOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../src/)
 
 ########################################## LISTING OF SOURCE - START ##########################################
 
