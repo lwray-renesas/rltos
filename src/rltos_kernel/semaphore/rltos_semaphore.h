@@ -15,7 +15,6 @@
 #endif
 
 
-
 #endif /* RLTOS_SEMAPHORE_H_ */
 
 /*! @} */

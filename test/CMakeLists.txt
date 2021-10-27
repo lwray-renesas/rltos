@@ -22,7 +22,11 @@ ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.h)
 ##### List TEST source files #####
 set(TEST_SOURCE_FILES
 all_tests.cpp
-rltos_kernel/task/task_list/task_list_tests.cpp)
+rltos_kernel/task/task_list/task_list_tests.cpp
+rltos_kernel/semaphore/semaphore_tests.cpp
+rltos_kernel/queue/queue_tests.cpp
+rltos_kernel/mutex/mutex_tests.cpp
+rltos_kernel/event_flags/event_flags_tests.cpp)
 
 ##### List TEST header files #####
 set(TEST_HEADER_FILES)
@@ -50,6 +54,7 @@ add_executable(rltos_test ${ALL_SOURCE})
 # Add the following directories - only include directroies required by any project is a port directory containing rltos_port.h and the kernel task directory.
 target_include_directories(rltos_test PUBLIC 
 ${CPPUTEST_HOME_DIR}/include
+${RLTOS_DIR}/rltos_kernel
 ${RLTOS_DIR}/rltos_kernel/task
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING)
 

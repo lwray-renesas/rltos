@@ -8,8 +8,10 @@
 #include "CppUTest/TestHarness.h"
 #include <memory>
 
+/* The task list tests are a special case which tests the functionality of rltos_task.c also*/
+
 extern "C" {
-/* Including the source file allows us to test the internal workings of the rltos_task_list module*/
+/* Including the source file allows us to test the internal workings of the module*/
 #include "task_list/rltos_task_list.c"
 }
 
