@@ -88,22 +88,33 @@ $(document).ready(function(){initNavTree('rltos__task__list_8h.html',''); initRe
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">rltos_task_list.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><a href="rltos__task__list_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtask__ctl__t.html">task_ctl_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of task control structure.  <a href="structtask__ctl__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtask__list__t.html">task_list_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of task list control structure.  <a href="structtask__list__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga4694904741a0e90ff836770783ffdf47"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtask__ctl__t.html">task_ctl_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a></td></tr>
-<tr class="memdesc:ga4694904741a0e90ff836770783ffdf47"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to task control structure - an opaque data type  <a href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">More...</a><br /></td></tr>
+<tr class="memdesc:ga4694904741a0e90ff836770783ffdf47"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to task control structure  <a href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">More...</a><br /></td></tr>
 <tr class="separator:ga4694904741a0e90ff836770783ffdf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga45fd0c89795a3ab3140dcc4f939181d3"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtask__list__t.html">task_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a></td></tr>
-<tr class="memdesc:ga45fd0c89795a3ab3140dcc4f939181d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to task list control structure - an opaque data type  <a href="group___rltos__task__list__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">More...</a><br /></td></tr>
+<tr class="memdesc:ga45fd0c89795a3ab3140dcc4f939181d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to task list control structure  <a href="group___rltos__task__list__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">More...</a><br /></td></tr>
 <tr class="separator:ga45fd0c89795a3ab3140dcc4f939181d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -116,9 +127,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga7a5774702e922fe3bd53f74fc3cf5342">Scheduler_init</a> (void)</td></tr>
-<tr class="memdesc:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to initialise the current task to point at the running lists head.  <a href="group___rltos__task__list__api.html#ga7a5774702e922fe3bd53f74fc3cf5342">More...</a><br /></td></tr>
-<tr class="separator:ga7a5774702e922fe3bd53f74fc3cf5342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f098dd7382a94e001bdeeadd29ae7bf"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf">Task_is_in_list</a> (<a class="el" href="group___rltos__task__list__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const lst, <a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const tsk, const <a class="el" href="group___rltos__task__list__api.html#ga09f710c47e5026bc2790e81defa17bc5">list_index_t</a> ind)</td></tr>
+<tr class="memdesc:ga6f098dd7382a94e001bdeeadd29ae7bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to check if a task is contained within the task list or not.  <a href="group___rltos__task__list__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf">More...</a><br /></td></tr>
+<tr class="separator:ga6f098dd7382a94e001bdeeadd29ae7bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga6bbde0c90e5e572e8131cc7652d8dd78">Task_init</a> (<a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_init, const stack_ptr_type init_sp, <a class="el" href="group___rltos__task__api.html#gab6902a14a0e8d8f53d75c79f555e9468">p_task_func_t</a> const init_task_func, rltos_uint const priority, bool const task_is_running)</td></tr>
 <tr class="memdesc:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nodes.  <a href="group___rltos__task__list__api.html#ga6bbde0c90e5e572e8131cc7652d8dd78">More...</a><br /></td></tr>
 <tr class="separator:ga6bbde0c90e5e572e8131cc7652d8dd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +148,25 @@ Functions</h2></td></tr>
 <tr class="memitem:ga90ce1a0329edc828e765740fce4e29cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga90ce1a0329edc828e765740fce4e29cb">Task_set_current_wait_on_object</a> (<a class="el" href="group___rltos__task__list__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const owner, const rltos_uint time_to_wait)</td></tr>
 <tr class="memdesc:ga90ce1a0329edc828e765740fce4e29cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to set the current task to wait on an object (uses auxillary list)  <a href="group___rltos__task__list__api.html#ga90ce1a0329edc828e765740fce4e29cb">More...</a><br /></td></tr>
 <tr class="separator:ga90ce1a0329edc828e765740fce4e29cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga847b65da3481970d2cfd1651cd956df8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__list__t.html">task_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga847b65da3481970d2cfd1651cd956df8">running_task_list</a></td></tr>
+<tr class="separator:ga847b65da3481970d2cfd1651cd956df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49f071765d856473924736dcf75f5087"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__list__t.html">task_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga49f071765d856473924736dcf75f5087">idle_task_list</a></td></tr>
+<tr class="separator:ga49f071765d856473924736dcf75f5087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___rltos__task__list__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga09f0e5ca4af6b2f511b4ff7b280c0997">p_current_task_ctl</a></td></tr>
+<tr class="separator:ga09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6106b912ed784069ef3cb4d67a2e8cde"><td class="memItemLeft" align="right" valign="top">volatile rltos_uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga6106b912ed784069ef3cb4d67a2e8cde">rltos_system_tick</a></td></tr>
+<tr class="separator:ga6106b912ed784069ef3cb4d67a2e8cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaabcb6337e1d7773cd74f220532873594"><td class="memItemLeft" align="right" valign="top">volatile rltos_uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#gaabcb6337e1d7773cd74f220532873594">rltos_wrap_count</a></td></tr>
+<tr class="separator:gaabcb6337e1d7773cd74f220532873594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga841faa3ccd9dd8b645084cf2dc99aff2"><td class="memItemLeft" align="right" valign="top">rltos_uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga841faa3ccd9dd8b645084cf2dc99aff2">rltos_next_idle_ready_tick</a></td></tr>
+<tr class="separator:ga841faa3ccd9dd8b645084cf2dc99aff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa98c090225b85de59f0cfca6f649c9f8"><td class="memItemLeft" align="right" valign="top">rltos_uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#gaa98c090225b85de59f0cfca6f649c9f8">rltos_next_idle_ready_wrap_count</a></td></tr>
+<tr class="separator:gaa98c090225b85de59f0cfca6f649c9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c53ccc4e154989b577fa92779545419"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__list__api.html#ga5c53ccc4e154989b577fa92779545419">should_switch_task</a></td></tr>
+<tr class="separator:ga5c53ccc4e154989b577fa92779545419"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

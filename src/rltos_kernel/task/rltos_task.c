@@ -27,7 +27,8 @@ extern void Rltos_start_tick_timer(void);
 
 void Rltos_kernel_enter(void)
 {
-	Scheduler_init();
+	/* Initialise the current task control pointer*/
+	p_current_task_ctl = running_task_list.p_head;
 	Rltos_start_tick_timer();
 	Rltos_enter_first_task();
 }

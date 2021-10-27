@@ -8,49 +8,15 @@
 #include "rltos_task.h"
 #include "rltos_task_list.h"
 
-/** @struct task_ctl_t
- * @brief Definition of task control structure
- * 
- * Contains the definition of a tasks control structure within RLTOS.
- */
-struct task_ctl_t
-{
-	/* Task specific data*/
-	stack_ptr_type stored_sp;	/**< Stored value of the stack pointer*/
-	p_task_func_t p_task_func;	/**< Function pointer for entry of point of task*/
-	rltos_uint idle_ready_time; /**< Value representing the time this task will be ready*/
-	rltos_uint idle_time;		/**< Value representing the max time this task should remain idled*/
-	rltos_uint idle_wrap_count; /**< Value to detect when wrap around is required*/
-	rltos_uint priority;		/**< Value representing the tasks priority*/
-
-	/* List specific data*/
-	struct task_ctl_t *p_next_tctl[2]; /**< Pointer to the next item - can exist in two lists at once*/
-	struct task_ctl_t *p_prev_tctl[2]; /**< Pointer to the previous item - can exist in two lists at once*/
-	p_task_list_t p_owners[2];		   /**< Pointer to the list who owns this task - can exist in two lists at once*/
-	rltos_uint sorting_values[2];		/**< Array to store the lists sorting values*/
-};
-
-/** @struct task_list_t
- * @brief Definition of task list control structure
- * 
- * Contains the definition of a task list control structure within RLTOS.
- */
-struct task_list_t
-{
-	p_task_ctl_t p_head;  /**< Head of list*/
-	p_task_ctl_t p_index; /**< current index of list*/
-	rltos_uint size;	  /**< Size of list*/
-};
-
 /** List containing all running taks*/
-static struct task_list_t running_task_list = {
+struct task_list_t running_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U /* Size*/
 };
 
 /** List containing all idle/blocked tasks*/
-static struct task_list_t idle_task_list = {
+struct task_list_t idle_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U /* Size*/
@@ -59,15 +25,15 @@ static struct task_list_t idle_task_list = {
 p_task_ctl_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
-static volatile rltos_uint rltos_system_tick = 0U;
+volatile rltos_uint rltos_system_tick = 0U;
 /** Rltos wrap around tracker*/
-static volatile rltos_uint rltos_wrap_count = 0U;
+volatile rltos_uint rltos_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
-static rltos_uint rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+rltos_uint rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
 /** Rltos wrap next idle tasks wrap around tracker*/
-static rltos_uint rltos_next_idle_ready_wrap_count = 0U;
+rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
-static bool should_switch_task = true;
+bool should_switch_task = true;
 
 /** @brief Function used to insert a task in a sorted task list
  * @param[inout] list_for_append - pointer to a task list for which the task should be inserted.
@@ -90,24 +56,6 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
  * @param[in] list_index - index of the list to in which to remove the task.
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
-
-/** @brief Function used to check if a task is contained within the task list or not.
- * @param[in] lst - pointer to a task list to check for tasks existence.
- * @param[in] tsk - task to check whether contained in (owned by) list.
- * @param[in] list_index - index of the list to check.
- */
-static inline bool Task_is_in_list(p_task_list_t const lst, p_task_ctl_t const tsk, const list_index_t ind)
-{
-	return (lst != NULL) && (tsk->p_owners[ind] == lst);
-}
-/* END OF FUNCTION*/
-
-void Scheduler_init(void)
-{
-	/* Scheduler initialisation consists of setting the pointer to the current operating task*/
-	p_current_task_ctl = running_task_list.p_head;
-}
-/* END OF FUNCTION*/
 
 void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running)
 {
