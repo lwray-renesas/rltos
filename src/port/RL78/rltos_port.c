@@ -2,9 +2,9 @@
 
 /** @brief Initialises task stack
  * @param[in] p_stack_top - pointer to the top of the stack.
- * @param[in] p_task_f - function pointer to the task entry function.
+ * @param[in] p_task_func - function pointer to the task entry function.
  * @return returns the stack pointer when complete.*/
-stack_ptr_type Rltos_stack_init(stack_ptr_type const p_stack_top, void(* const p_task_func)(void))
+stack_ptr_type Rltos_stack_init(stack_ptr_type const p_stack_top, void* const p_task_func)
 {
     /* msn = most significant nibble (top 4 bits of 20bit address)*/
 	stack_type p_task_f_msn = (stack_type) ((((uint32_t)(p_task_func)) & 0xF0000UL) >> 16U);

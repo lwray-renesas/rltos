@@ -8,8 +8,10 @@
 #include "CppUTest/TestHarness.h"
 #include <memory>
 
+extern "C" {
 /* Including the source file allows us to test the internal workings of the rltos_task_list module*/
-#include "rltos_kernel/task_list/rltos_task_list.c"
+#include "task_list/rltos_task_list.c"
+}
 
 /** Prototypes*/
 void Dummy_task_func(void);

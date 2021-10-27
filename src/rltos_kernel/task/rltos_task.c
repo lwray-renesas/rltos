@@ -18,7 +18,7 @@ extern void Rltos_enter_first_task(void);
  * This function is provided by the porting layer.
  * @return The value of the stack pointer post initialisation (used to restore context).
 */
-extern stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void (*const p_task_func)(void));
+extern stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void *const p_task_func);
 
 /** @brief Initialises and start RLTOS tick timer.
  * This function is provided by the application layer.

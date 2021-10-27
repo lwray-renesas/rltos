@@ -8,7 +8,5 @@
     },
     "files.associations": {
         "*.dox": "c",
-        "rltos_task_list.h": "c",
-        "rltos_semaphore.h": "c"
     }
 }
