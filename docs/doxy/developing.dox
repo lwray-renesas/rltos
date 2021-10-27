@@ -103,7 +103,7 @@ More can be found on this in the \ref deployment "Deployment Page".
 List what we need to do moving forward with the project.
 
 \section next Next
-- Unit test code thoroughly & MISRA clean - checkpoint.
+- Unit test code thoroughly - checkpoint.
 - Include behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
 - Create quickstart guide (could make use of an examples repo which includes this repo as a submodule?)
 - Create deep dive material on inner workings of scheduler and the software hierarchy.
