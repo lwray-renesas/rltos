@@ -16,7 +16,7 @@ Contents:
 To start developing you will need to install the following tools:
     - <a href="https://code.visualstudio.com/">Visual Studio Code</a>
     - <a href="https://cmake.org/">CMake</a>
-    - Follow instructions for building and installing (including the addition of the environment variables): <a href="https://cpputest.github.io/">CppUTest</a>
+    - <a href="https://cpputest.github.io/">CppUTest</a>: Follow instructions for building and installing (including the addition of the environment variables).
 
 You will then need to ensure your PATH environment variable has the entries to the following:
     - <cpputest-source-dir> (e.g. C:\Users\Lwray\Dev\cpputest)
