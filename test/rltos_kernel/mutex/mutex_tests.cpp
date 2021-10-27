@@ -10,7 +10,6 @@
 
 extern "C" {
 /* Including the source file allows us to test the internal workings of the module*/
-#include "rltos_task.h"
 #include "mutex/rltos_mutex.c"
 }
 

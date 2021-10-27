@@ -3,6 +3,8 @@
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
         "*.dox": "c",
-        "rltos_task_list_prv.h": "c"
+        "rltos_task_list_prv.h": "c",
+        "rltos_semaphore.c": "cpp",
+        "rltos_task.c": "cpp"
     }
 }
