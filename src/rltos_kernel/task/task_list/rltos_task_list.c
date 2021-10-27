@@ -5,7 +5,7 @@
  * @{
  */
 
-#include "rltos.h"
+#include "rltos_task.h"
 #include "rltos_task_list.h"
 
 /** @struct task_ctl_t

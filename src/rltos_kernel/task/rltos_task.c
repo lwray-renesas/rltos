@@ -5,7 +5,7 @@
  * @{
  */
 
-#include "rltos.h"
+#include "rltos_task.h"
 #include "task_list/rltos_task_list.h"
 
 /** @brief Function to enter the first rltos task.

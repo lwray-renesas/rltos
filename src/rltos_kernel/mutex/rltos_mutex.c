@@ -5,7 +5,7 @@
  * @{
  */
 
-#include "rltos.h"
+#include "rltos_task.h"
 #include "rltos_mutex.h"
 
 

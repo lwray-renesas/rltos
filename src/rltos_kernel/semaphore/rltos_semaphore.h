@@ -10,8 +10,8 @@
 #ifndef RLTOS_SEMAPHORE_H_
 #define RLTOS_SEMAPHORE_H_
 
-#ifndef RLTOS_RLTOS_H_
-#error "Must include rltos.h before including this file in any source file"
+#ifndef RLTOS_TASK_H_
+#error "Must include rltos_task.h before including this file in any source file"
 #endif
 
 

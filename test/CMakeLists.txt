@@ -13,8 +13,8 @@ set(RLTOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../src/)
 set(RLTOS_SOURCE_FILES
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_scheduler_asm_dummy.c
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.c
-${RLTOS_DIR}/rltos_kernel/rltos.c
-${RLTOS_DIR}/rltos_kernel/task_list/rltos_task_list.c
+${RLTOS_DIR}/rltos_kernel/task/rltos_task.c
+${RLTOS_DIR}/rltos_kernel/task/task_list/rltos_task_list.c
 ${RLTOS_DIR}/rltos_kernel/event_flags/rltos_event_flags.c
 ${RLTOS_DIR}/rltos_kernel/mutex/rltos_mutex.c
 ${RLTOS_DIR}/rltos_kernel/queue/rltos_queue.c
@@ -23,8 +23,8 @@ ${RLTOS_DIR}/rltos_kernel/semaphore/rltos_semaphore.c)
 ##### List RLTOS header files #####
 set(RLTOS_HEADER_FILES
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.h
-${RLTOS_DIR}/rltos.h
-${RLTOS_DIR}/rltos_kernel/task_list/rltos_task_list.h
+${RLTOS_DIR}/rltos_kernel/task/rltos_task.h
+${RLTOS_DIR}/rltos_kernel/task/task_list/rltos_task_list.h
 ${RLTOS_DIR}/rltos_kernel/event_flags/rltos_event_flags.h
 ${RLTOS_DIR}/rltos_kernel/mutex/rltos_mutex.h
 ${RLTOS_DIR}/rltos_kernel/queue/rltos_queue.h
@@ -33,7 +33,8 @@ ${RLTOS_DIR}/rltos_kernel/semaphore/rltos_semaphore.h)
 ##### List TEST source files #####
 set(TEST_SOURCE_FILES
 all_tests.cpp
-rltos_kernel/task_list/task_list_tests.cpp)
+rltos_kernel/task/task_tests.cpp
+rltos_kernel/task/task_list/task_list_tests.cpp)
 
 ##### List TEST header files #####
 set(TEST_HEADER_FILES)
@@ -61,7 +62,7 @@ add_executable(rltos_test ${ALL_SOURCE})
 # Add the following directories
 target_include_directories(rltos_test PUBLIC 
 ${CPPUTEST_HOME_DIR}/include
-${RLTOS_DIR}
+${RLTOS_DIR}/task
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING)
 
 # Add the following libraries

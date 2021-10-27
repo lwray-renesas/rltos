@@ -7,8 +7,8 @@
  * @{
  */
 
-#ifndef RLTOS_RLTOS_H_
-#define RLTOS_RLTOS_H_
+#ifndef RLTOS_TASK_H_
+#define RLTOS_TASK_H_
 
 #include "rltos_port.h"
 
@@ -63,6 +63,6 @@ void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_
 /** @brief Puts the current thread to sleep for a minimum of the given number of ticks*/
 void Rltos_task_sleep(const rltos_uint tick_count);
 
-#endif /* RLTOS_RLTOS_H_ */
+#endif /* RLTOS_TASK_H_ */
 
 /*! @} */
