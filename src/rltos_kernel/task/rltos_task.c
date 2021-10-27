@@ -33,13 +33,20 @@ void Rltos_kernel_enter(void)
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_create(p_dummy_task_t const task_to_add, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task)
+void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task)
 {
 	/* Initialise the stack*/
 	stack_ptr_type l_p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
-	Task_init((p_task_ctl_t)(task_to_add), l_p_stack_top, p_task_func, task_priority, run_task);
+	Task_init((p_task_ctl_t)(task_to_create), l_p_stack_top, p_task_func, task_priority, run_task);
+}
+/* END OF FUNCTION*/
+
+void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
+{
+	/* Denitialise the task*/
+	Task_deinit((p_task_ctl_t)(task_to_destroy));
 }
 /* END OF FUNCTION*/
 

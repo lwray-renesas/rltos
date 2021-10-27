@@ -91,6 +91,17 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
 
+/** @brief Function used to check if a task is contained within the task list or not.
+ * @param[in] lst - pointer to a task list to check for tasks existence.
+ * @param[in] tsk - task to check whether contained in (owned by) list.
+ * @param[in] list_index - index of the list to check.
+ */
+static inline bool Task_is_in_list(p_task_list_t const lst, p_task_ctl_t const tsk, const list_index_t ind)
+{
+	return (lst != NULL) && (tsk->p_owners[ind] == lst);
+}
+/* END OF FUNCTION*/
+
 void Scheduler_init(void)
 {
 	/* Scheduler initialisation consists of setting the pointer to the current operating task*/
@@ -132,14 +143,9 @@ void Task_deinit(p_task_ctl_t const task_to_deinit)
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
 	task_to_deinit->p_task_func = NULL;
 	task_to_deinit->stored_sp = NULL;
-	/* Task always exists in a state list - no need to check for NULL*/
+	/* Check if task is in the list internally*/
 	Task_remove_from_list(task_to_deinit->p_owners[state_list], task_to_deinit, state_list);
-
-	/* Aux task will be NULL if not in one*/
-	if (NULL != task_to_deinit->p_owners[aux_list])
-	{
-		Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
-	}
+	Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
 }
 /* END OF FUNCTION*/
 
@@ -324,7 +330,7 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index)
 {
 	/* Only operate on a list where the task is garuanteed to be owned by that list*/
-	if (task_to_remove->p_owners[list_index] == list_for_remove)
+	if (Task_is_in_list(list_for_remove, task_to_remove, list_index))
 	{
 		list_for_remove->size -= 1U;
 
