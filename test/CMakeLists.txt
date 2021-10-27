@@ -9,8 +9,9 @@ set(RLTOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../src/)
 
 ########################################## LISTING OF SOURCE - START ##########################################
 
-##### List RLTOS source files - (port files) #####
+##### List RLTOS source files - (port files & rltos_task.c to be tested within task_list) #####
 set(RLTOS_SOURCE_FILES
+${RLTOS_DIR}/rltos_kernel/task/rltos_task.c
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_scheduler_asm_dummy.c
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.c)
 
@@ -21,7 +22,6 @@ ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.h)
 ##### List TEST source files #####
 set(TEST_SOURCE_FILES
 all_tests.cpp
-rltos_kernel/task/task_tests.cpp
 rltos_kernel/task/task_list/task_list_tests.cpp)
 
 ##### List TEST header files #####

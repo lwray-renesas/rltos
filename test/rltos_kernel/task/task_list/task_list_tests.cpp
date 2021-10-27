@@ -153,7 +153,31 @@ TEST(TaskListInitTestGroup, Test_SchedulerTickInc)
 
 TEST(TaskListInitTestGroup, Test_SchedulerSwitchContext)
 {
+      Rltos_kernel_enter();
    CHECK_TEXT(false, "TODO: Write Test_SchedulerSwitchContext");
+}
+/* END OF TEST*/
+
+/** Test group for task list initialser functions*/
+TEST_GROUP(TaskTestGroup)
+{
+   void setup(void)
+   {
+
+   }
+   /* END OF FUNCTION*/
+
+   void teardown(void)
+   {
+      
+   }
+   /* END OF FUNCTION*/
+};
+
+TEST(TaskTestGroup, RltosKernelEnter_DoesNotCrash)
+{
+   Rltos_kernel_enter();
+   CHECK(true);
 }
 /* END OF TEST*/
 
