@@ -22,7 +22,7 @@ ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.h)
 set(TEST_SOURCE_FILES
 all_tests.cpp
 rltos_kernel/task/task_tests.cpp
-rltos_kernel/task/task_list/task_list_tests.cpp
+rltos_kernel/task/task_scheduler/task_scheduler_tests.cpp
 rltos_kernel/semaphore/semaphore_tests.cpp
 rltos_kernel/queue/queue_tests.cpp
 rltos_kernel/mutex/mutex_tests.cpp

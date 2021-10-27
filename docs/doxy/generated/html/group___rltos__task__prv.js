@@ -1,6 +1,6 @@
 var group___rltos__task__prv =
 [
-    [ "Task list", "group___rltos__task__list.html", "group___rltos__task__list" ],
+    [ "Task Scheduler", "group___rltos__task__scheduler.html", "group___rltos__task__scheduler" ],
     [ "Rltos_enter_first_task", "group___rltos__task__prv.html#ga04568f559034fd5f422b38c455278324", null ],
     [ "Rltos_kernel_enter", "group___rltos__task__prv.html#gac44bc5223fd6d5d7f635776b1eb6231b", null ],
     [ "Rltos_stack_init", "group___rltos__task__prv.html#ga0891d018525403a612d750c2851fe082", null ],

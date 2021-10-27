@@ -6,7 +6,7 @@
  */
 
 #include "rltos_task.h"
-#include "task_list/rltos_task_list.h"
+#include "task_scheduler/rltos_task_scheduler.h"
 
 /** @brief Function to enter the first rltos task.
  * @details Defined in rltos_kernel.asm - does not save context, only restores it and returns as though from interrupt (RETI).

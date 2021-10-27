@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__list__prv.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
+<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__prv.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
 <polygon fill="white" stroke="black" points="137,-0.5 137,-19.5 203,-19.5 203,-0.5 137,-0.5"/>
 <text text-anchor="middle" x="170" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_deinit</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__list__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
+<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
 <polygon fill="white" stroke="black" points="239,-0.5 239,-19.5 355,-19.5 355,-0.5 239,-0.5"/>
 <text text-anchor="middle" x="297" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__list__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
 <polygon fill="white" stroke="black" points="391,-0.5 391,-19.5 472,-19.5 472,-0.5 391,-0.5"/>
 <text text-anchor="middle" x="431.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
 </a>

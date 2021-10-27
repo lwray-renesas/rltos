@@ -67,7 +67,7 @@ var sectionId = 'dynsection-4';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__list__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
+<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
 <polygon fill="white" stroke="black" points="128,-19.5 128,-38.5 240,-38.5 240,-19.5 128,-19.5"/>
 <text text-anchor="middle" x="184" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_set_current_idle</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-4';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__list__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
+<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
 <polygon fill="white" stroke="black" points="285,-38.5 285,-57.5 383,-57.5 383,-38.5 285,-38.5"/>
 <text text-anchor="middle" x="334" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_list</text>
 </a>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-4';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__list__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
 <polygon fill="white" stroke="black" points="276,-0.5 276,-19.5 392,-19.5 392,-0.5 276,-0.5"/>
 <text text-anchor="middle" x="334" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-4';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group___rltos__task__list__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
+<g id="a_node5"><a xlink:href="group___rltos__task__scheduler__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
 <polygon fill="white" stroke="black" points="428,-0.5 428,-19.5 509,-19.5 509,-0.5 428,-0.5"/>
 <text text-anchor="middle" x="468.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
 </a>

@@ -1,18 +1,18 @@
 /**
- * @defgroup Rltos_task_list Task list
+ * @defgroup Rltos_task_scheduler Task Scheduler
  * @ingroup Rltos_task_prv
- * The group defining the RLTOS task list - containing the scheduler.
- * @addtogroup Rltos_task_list_api api
- * The API (interface) to the RLTOS task list module.
+ * The group defining the RLTOS task scheduler - containing the tasks and task lists.
+ * @addtogroup Rltos_task_scheduler_api api
+ * The API (interface) to the RLTOS task scheduler module.
  * This module is ONLY used by the modules of RLTOS and should NEVER be accessed directly by an application.
- * The only reason the struct definitions for task and task list types are defined here is so the structs created with other modules
- * can be unit tested thoroughly - that is the tasks and the task lists can all be seperately probed
- * @ingroup Rltos_task_list
+ * The only reason the struct definitions for task and task scheduler types are defined here is so the structs created with other modules
+ * can be unit tested thoroughly - that is the tasks and the task lists can all be seperately probed.
+ * @ingroup Rltos_task_scheduler
  * @{
  */
 
-#ifndef RLTOS_TASK_LIST_H_
-#define RLTOS_TASK_LIST_H_
+#ifndef RLTOS_TASK_SCHEDULER_H_
+#define RLTOS_TASK_SCHEDULER_H_
 
 #ifndef RLTOS_TASK_H_
 #error "Must include rltos_task.h before including this file in any source file"
@@ -125,6 +125,6 @@ void Task_set_current_idle(const rltos_uint time_to_idle);
  */
 void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait);
 
-#endif /* RLTOS_TASK_LIST_H_ */
+#endif /* RLTOS_TASK_SCHEDULER_H_ */
 
 /*! @} */

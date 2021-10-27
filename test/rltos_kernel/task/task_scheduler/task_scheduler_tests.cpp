@@ -10,7 +10,7 @@
 
 extern "C" {
 /* Including the source file allows us to test the internal workings of the module*/
-#include "task_list/rltos_task_list.c"
+#include "task_scheduler/rltos_task_scheduler.c"
 }
 
 
@@ -21,7 +21,7 @@ extern "C" {
 void Dummy_task_func(void);
 
 /** Test group for task list initialser functions*/
-TEST_GROUP(TaskListInitTestGroup)
+TEST_GROUP(TaskSchedulerInitTestGroup)
 {
    /* Global variables for use in tests - provide a list, task, stack and function for every test*/
    p_task_list_t p_aux_task_list;
@@ -56,13 +56,13 @@ void Dummy_task_func(void)
 }
 /* END OF FUNCTION*/
 
-TEST(TaskListInitTestGroup, Test_SchedulerInit)
+TEST(TaskSchedulerInitTestGroup, Test_SchedulerInit)
 {
    CHECK_TEXT(false, "TODO: Write Test_SchedulerInit");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
+TEST(TaskSchedulerInitTestGroup, Test_TaskInit_ValuesOk)
 {
    std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
    Task_init(l_task_under_test.get(), dummy_stack, &Dummy_task_func, 0U, true);
@@ -77,13 +77,13 @@ TEST(TaskListInitTestGroup, Test_TaskInit_ValuesOk)
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskDeinit_ValuesOk)
+TEST(TaskSchedulerInitTestGroup, Test_TaskDeinit_ValuesOk)
 {
    CHECK_TEXT(false, "TODO: Write Test_TaskDeinit_ValuesOk");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskListInit_ValuesOk)
+TEST(TaskSchedulerInitTestGroup, Test_TaskListInit_ValuesOk)
 {
    /* Task_init done in setup*/
    /* Task_list_init done in setup*/
@@ -96,7 +96,7 @@ TEST(TaskListInitTestGroup, Test_TaskListInit_ValuesOk)
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskAppend)
+TEST(TaskSchedulerInitTestGroup, Test_TaskAppend)
 {
    std::unique_ptr<struct task_ctl_t> p_local_task = std::make_unique<struct task_ctl_t>();
 
@@ -113,7 +113,7 @@ TEST(TaskListInitTestGroup, Test_TaskAppend)
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskRemove)
+TEST(TaskSchedulerInitTestGroup, Test_TaskRemove)
 {
    Task_remove_from_list(p_aux_task_list, p_dummy_task, aux_list);
 
@@ -125,39 +125,38 @@ TEST(TaskListInitTestGroup, Test_TaskRemove)
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskInsert)
+TEST(TaskSchedulerInitTestGroup, Test_TaskInsert)
 {
    CHECK_TEXT(false, "TODO: Write Test_TaskInsert");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskSetRunning)
+TEST(TaskSchedulerInitTestGroup, Test_TaskSetRunning)
 {
    CHECK_TEXT(false, "TODO: Write Test_TaskSetRunning");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskSetCurrentIdle)
+TEST(TaskSchedulerInitTestGroup, Test_TaskSetCurrentIdle)
 {
    CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentIdle");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_TaskSetCurrentWaitOnObject)
+TEST(TaskSchedulerInitTestGroup, Test_TaskSetCurrentWaitOnObject)
 {
    CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentWaitOnObject");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_SchedulerTickInc)
+TEST(TaskSchedulerInitTestGroup, Test_SchedulerTickInc)
 {
    CHECK_TEXT(false, "TODO: Write Test_SchedulerTickInc");
 }
 /* END OF TEST*/
 
-TEST(TaskListInitTestGroup, Test_SchedulerSwitchContext)
+TEST(TaskSchedulerInitTestGroup, Test_SchedulerSwitchContext)
 {
-      Rltos_kernel_enter();
    CHECK_TEXT(false, "TODO: Write Test_SchedulerSwitchContext");
 }
 /* END OF TEST*/

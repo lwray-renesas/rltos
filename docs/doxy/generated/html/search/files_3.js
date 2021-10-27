@@ -10,6 +10,6 @@ var searchData=
   ['rltos_5fsemaphore_2eh_7',['rltos_semaphore.h',['../rltos__semaphore_8h.html',1,'']]],
   ['rltos_5ftask_2ec_8',['rltos_task.c',['../rltos__task_8c.html',1,'']]],
   ['rltos_5ftask_2eh_9',['rltos_task.h',['../rltos__task_8h.html',1,'']]],
-  ['rltos_5ftask_5flist_2ec_10',['rltos_task_list.c',['../rltos__task__list_8c.html',1,'']]],
-  ['rltos_5ftask_5flist_2eh_11',['rltos_task_list.h',['../rltos__task__list_8h.html',1,'']]]
+  ['rltos_5ftask_5fscheduler_2ec_10',['rltos_task_scheduler.c',['../rltos__task__scheduler_8c.html',1,'']]],
+  ['rltos_5ftask_5fscheduler_2eh_11',['rltos_task_scheduler.h',['../rltos__task__scheduler_8h.html',1,'']]]
 ];

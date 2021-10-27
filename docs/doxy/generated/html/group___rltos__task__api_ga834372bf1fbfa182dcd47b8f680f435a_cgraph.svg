@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__list__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78" target="_top" xlink:title="Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nod...">
+<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78" target="_top" xlink:title="Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nod...">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-19.5 202,-19.5 202,-0.5 146,-0.5"/>
 <text text-anchor="middle" x="174" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_init</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__list__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
 <polygon fill="white" stroke="black" points="253,-0.5 253,-19.5 351,-19.5 351,-0.5 253,-0.5"/>
 <text text-anchor="middle" x="302" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_list</text>
 </a>

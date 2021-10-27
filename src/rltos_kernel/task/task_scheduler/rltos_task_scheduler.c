@@ -1,12 +1,12 @@
 /**
- * @addtogroup Rltos_task_list_prv prv
+ * @addtogroup Rltos_task_scheduler_prv prv
  * The private data (implementation) of the RLTOS task list.
- * @ingroup Rltos_task_list
+ * @ingroup Rltos_task_scheduler
  * @{
  */
 
 #include "rltos_task.h"
-#include "rltos_task_list.h"
+#include "rltos_task_scheduler.h"
 
 /** List containing all running taks*/
 struct task_list_t running_task_list = {
