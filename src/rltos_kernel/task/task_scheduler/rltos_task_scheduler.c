@@ -6,7 +6,7 @@
  */
 
 #include "rltos_task.h"
-#include "rltos_task_scheduler.h"
+#include "rltos_task_scheduler_prv.h"
 
 /** List containing all running taks*/
 struct task_list_t running_task_list = {
@@ -56,6 +56,12 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
  * @param[in] list_index - index of the list to in which to remove the task.
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
+
+void Task_scheduler_init(void)
+{
+	p_current_task_ctl = running_task_list.p_head;
+}
+/* END OF FUNCTION*/
 
 void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running)
 {

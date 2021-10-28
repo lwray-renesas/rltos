@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 539;
 var viewHeight = 85;
-var sectionId = 'dynsection-8';
+var sectionId = 'dynsection-7';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -128,7 +128,7 @@ var sectionId = 'dynsection-8';
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="group___rltos__task__scheduler__api.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
+<g id="a_node6"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
 <polygon fill="white" stroke="black" points="450,-0.5 450,-19.5 531,-19.5 531,-0.5 450,-0.5"/>
 <text text-anchor="middle" x="490.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
 </a>

@@ -9,6 +9,8 @@
 #include <memory>
 
 extern "C" {
+#include "rltos_task.h"
+#include "task_scheduler/rltos_task_scheduler_prv.h"
 /* Including the source file allows us to test the internal workings of the module*/
 #include "mutex/rltos_mutex.c"
 }

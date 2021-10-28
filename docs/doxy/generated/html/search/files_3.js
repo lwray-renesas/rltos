@@ -11,5 +11,6 @@ var searchData=
   ['rltos_5ftask_2ec_8',['rltos_task.c',['../rltos__task_8c.html',1,'']]],
   ['rltos_5ftask_2eh_9',['rltos_task.h',['../rltos__task_8h.html',1,'']]],
   ['rltos_5ftask_5fscheduler_2ec_10',['rltos_task_scheduler.c',['../rltos__task__scheduler_8c.html',1,'']]],
-  ['rltos_5ftask_5fscheduler_2eh_11',['rltos_task_scheduler.h',['../rltos__task__scheduler_8h.html',1,'']]]
+  ['rltos_5ftask_5fscheduler_2eh_11',['rltos_task_scheduler.h',['../rltos__task__scheduler_8h.html',1,'']]],
+  ['rltos_5ftask_5fscheduler_5fprv_2eh_12',['rltos_task_scheduler_prv.h',['../rltos__task__scheduler__prv_8h.html',1,'']]]
 ];

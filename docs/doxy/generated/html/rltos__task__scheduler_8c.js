@@ -8,6 +8,7 @@ var rltos__task__scheduler_8c =
     [ "Task_insert_in_list", "group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd", null ],
     [ "Task_list_init", "group___rltos__task__scheduler__prv.html#gac816af0adf021190a270dbf77055b7e8", null ],
     [ "Task_remove_from_list", "group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b", null ],
+    [ "Task_scheduler_init", "group___rltos__task__scheduler__prv.html#gae1bd8e8e3af9f778a719fb7a086451f1", null ],
     [ "Task_set_current_idle", "group___rltos__task__scheduler__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f", null ],
     [ "Task_set_current_wait_on_object", "group___rltos__task__scheduler__prv.html#ga90ce1a0329edc828e765740fce4e29cb", null ],
     [ "Task_set_running", "group___rltos__task__scheduler__prv.html#gae2e9ba76398ba904d0c32071d3512a2b", null ],
