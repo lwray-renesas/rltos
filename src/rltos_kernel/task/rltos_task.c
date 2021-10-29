@@ -1,5 +1,5 @@
 /**
- * @addtogroup Rltos_task_prv prv
+ * @addtogroup Rltos_task_prv Task Private
  * The private data (implementation) of the RLTOS kernels tasks.
  * @ingroup Rltos_task
  * @{
@@ -24,6 +24,8 @@ extern stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void *const p
  * This function is provided by the application layer.
 */
 extern void Rltos_start_tick_timer(void);
+
+/*! @} */
 
 void Rltos_kernel_enter(void)
 {
@@ -63,5 +65,3 @@ void Rltos_task_sleep(const rltos_uint tick_count)
 	}
 }
 /* END OF FUNCTION*/
-
-/*! @} */

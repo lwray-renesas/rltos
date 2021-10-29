@@ -1,6 +1,5 @@
 /**
- * @addtogroup Rltos_task_scheduler_prv prv
- * The private portion containing important scheduler definitions and globals used for unit testing.
+ * @addtogroup Rltos_task_scheduler_prv Task Scheduler Private
  * @ingroup Rltos_task_scheduler
  * @{
  */
@@ -48,16 +47,6 @@ struct task_list_t
 	rltos_uint size;	  /**< Size of list*/
 };
 
-/* Variables defined intask list we want to access during unit testing of modules integrating with kernel*/
-extern struct task_list_t running_task_list;
-extern struct task_list_t idle_task_list;
-extern p_task_ctl_t p_current_task_ctl;
-extern volatile rltos_uint rltos_system_tick;
-extern volatile rltos_uint rltos_wrap_count;
-extern rltos_uint rltos_next_idle_ready_tick;
-extern rltos_uint rltos_next_idle_ready_wrap_count;
-extern bool should_switch_task;
-
 /** @brief Function used to check if a task is contained within the task list or not.
  * @param[in] lst - pointer to a task list to check for tasks existence.
  * @param[in] tsk - task to check whether contained in (owned by) list.
@@ -69,6 +58,16 @@ static inline bool Task_is_in_list(p_task_list_t const lst, p_task_ctl_t const t
 }
 /* END OF FUNCTION*/
 
-#endif /* RLTOS_TASK_SCHEDULER_PRV_H_ */
-
 /*! @} */
+
+/* Variables defined intask list we want to access during unit testing of modules integrating with kernel*/
+extern struct task_list_t running_task_list;
+extern struct task_list_t idle_task_list;
+extern p_task_ctl_t p_current_task_ctl;
+extern volatile rltos_uint rltos_system_tick;
+extern volatile rltos_uint rltos_wrap_count;
+extern rltos_uint rltos_next_idle_ready_tick;
+extern rltos_uint rltos_next_idle_ready_wrap_count;
+extern bool should_switch_task;
+
+#endif /* RLTOS_TASK_SCHEDULER_PRV_H_ */

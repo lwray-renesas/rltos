@@ -1,5 +1,5 @@
 /**
- * @addtogroup Rltos_semaphore_prv prv
+ * @addtogroup Rltos_semaphore_prv Semaphore Private
  * The private data (implementation) of the RLTOS semaphore.
  * @ingroup Rltos_semaphore
  * @{

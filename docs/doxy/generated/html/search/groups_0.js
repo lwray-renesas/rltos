@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['api_0',['api',['../group___rltos__event__flags__api.html',1,'(Global Namespace)'],['../group___rltos__mutex__api.html',1,'(Global Namespace)'],['../group___rltos__queue__api.html',1,'(Global Namespace)'],['../group___rltos__semaphore__api.html',1,'(Global Namespace)'],['../group___rltos__task__api.html',1,'(Global Namespace)'],['../group___rltos__task__scheduler__api.html',1,'(Global Namespace)']]]
+  ['event_20flags_0',['Event flags',['../group___rltos__event__flags.html',1,'']]],
+  ['event_20flags_20api_1',['Event Flags API',['../group___rltos__event__flags__api.html',1,'']]],
+  ['event_20flags_20private_2',['Event Flags Private',['../group___rltos__event__flags__prv.html',1,'']]]
 ];

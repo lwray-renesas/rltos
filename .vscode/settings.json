@@ -3,5 +3,13 @@
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
         "*.dox": "c",
+        "memory": "cpp",
+        "array": "cpp",
+        "istream": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xlocnum": "cpp",
+        "xutility": "cpp"
     }
 }

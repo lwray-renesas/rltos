@@ -1,7 +1,7 @@
 /**
  * @defgroup Rltos_task Task
  * The group defining the RLTOS raw kernel tasks.
- * @addtogroup Rltos_task_api api
+ * @addtogroup Rltos_task_api Task API
  * The public API (interface) to the RLTOS kernela tasks.
  * @ingroup Rltos_task
  * @{
@@ -34,7 +34,7 @@ typedef struct
  * 
  * This is used to hide the implementation of a real task list structure - and allow static allocation of tasks.
  */
-typedef struct DummyTaskLsit
+typedef struct
 {
 	void * dummy1[2];
 	rltos_uint dummy0;

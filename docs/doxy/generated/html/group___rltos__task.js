@@ -1,5 +1,5 @@
 var group___rltos__task =
 [
-    [ "prv", "group___rltos__task__prv.html", "group___rltos__task__prv" ],
-    [ "api", "group___rltos__task__api.html", "group___rltos__task__api" ]
+    [ "Task Private", "group___rltos__task__prv.html", "group___rltos__task__prv" ],
+    [ "Task API", "group___rltos__task__api.html", "group___rltos__task__api" ]
 ];

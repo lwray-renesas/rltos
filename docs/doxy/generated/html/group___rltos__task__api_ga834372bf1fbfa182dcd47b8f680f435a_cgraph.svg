@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6bbde0c90e5e572e8131cc7652d8dd78" target="_top" xlink:title="Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nod...">
+<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__api.html#ga6bbde0c90e5e572e8131cc7652d8dd78" target="_top" xlink:title="Function used to set initial stack pointer, task entry function &amp; clear pointers to next and prev nod...">
 <polygon fill="white" stroke="black" points="146,-0.5 146,-19.5 202,-19.5 202,-0.5 146,-0.5"/>
 <text text-anchor="middle" x="174" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_init</text>
 </a>

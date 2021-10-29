@@ -5,10 +5,10 @@ var indexSectionsWithContent =
   2: "dmqr",
   3: "rt",
   4: "diprs",
-  5: "dp",
+  5: "p",
   6: "l",
   7: "as",
-  8: "aempqst",
+  8: "emqst",
   9: "cdgpqstuv"
 };
 

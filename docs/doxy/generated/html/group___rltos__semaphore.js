@@ -1,5 +1,5 @@
 var group___rltos__semaphore =
 [
-    [ "prv", "group___rltos__semaphore__prv.html", null ],
-    [ "api", "group___rltos__semaphore__api.html", null ]
+    [ "Semaphore Private", "group___rltos__semaphore__prv.html", null ],
+    [ "Semaphore API", "group___rltos__semaphore__api.html", null ]
 ];

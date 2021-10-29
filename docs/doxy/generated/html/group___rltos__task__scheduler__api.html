@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RLTOS: api</title>
+<title>RLTOS: Task Scheduler API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,13 +91,13 @@ $(document).ready(function(){initNavTree('group___rltos__task__scheduler__api.ht
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">api<div class="ingroups"><a class="el" href="group___rltos__task.html">Task</a> &raquo; <a class="el" href="group___rltos__task__prv.html">prv</a> &raquo; <a class="el" href="group___rltos__task__scheduler.html">Task Scheduler</a></div></div></div>
+  <div class="headertitle"><div class="title">Task Scheduler API<div class="ingroups"><a class="el" href="group___rltos__task__scheduler.html">Task Scheduler</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Collaboration diagram for api:</div>
+Collaboration diagram for Task Scheduler API:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api.svg" width="210" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api.svg" width="308" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -142,7 +142,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga90ce1a0329edc828e765740fce4e29cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p >The API (interface) to the RLTOS task scheduler module. This module is ONLY used by the modules of RLTOS and should NEVER be accessed directly by an application. The only reason the struct definitions for task and task scheduler types are defined here is so the structs created with other modules can be unit tested thoroughly - that is the tasks and the task lists can all be seperately probed. </p>
+<p >The API (interface) to the RLTOS task scheduler module. This module is ONLY used by the modules of RLTOS and should NEVER be accessed directly by an application. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga4694904741a0e90ff836770783ffdf47" name="ga4694904741a0e90ff836770783ffdf47"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga4694904741a0e90ff836770783ffdf47">&#9670;&nbsp;</a></span>p_task_ctl_t</h2>
@@ -226,8 +226,7 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_ga497b702db38a8ce118c8393eb0587712_cgraph.svg" width="458" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_ga497b702db38a8ce118c8393eb0587712_cgraph.svg" width="458" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -348,6 +347,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function to initialise the current task on entry to the scheduler. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_gae1bd8e8e3af9f778a719fb7a086451f1_icgraph.svg" width="327" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -377,8 +381,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_gaef14e9b4eac09dd868feb5c3b2b4442f_cgraph.svg" width="519" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_gaef14e9b4eac09dd868feb5c3b2b4442f_cgraph.svg" width="519" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -425,8 +428,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_ga90ce1a0329edc828e765740fce4e29cb_cgraph.svg" width="100%" height="385"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_ga90ce1a0329edc828e765740fce4e29cb_cgraph.svg" width="100%" height="385"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -457,8 +459,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_gae2e9ba76398ba904d0c32071d3512a2b_cgraph.svg" width="494" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__api_gae2e9ba76398ba904d0c32071d3512a2b_cgraph.svg" width="494" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

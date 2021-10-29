@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
+<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
 <polygon fill="white" stroke="black" points="128,-19.5 128,-38.5 240,-38.5 240,-19.5 128,-19.5"/>
 <text text-anchor="middle" x="184" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_set_current_idle</text>
 </a>

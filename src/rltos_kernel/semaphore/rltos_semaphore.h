@@ -1,7 +1,7 @@
 /**
  * @defgroup Rltos_semaphore Sempahore
  * The group defining the RLTOS semaphore.
- * @addtogroup Rltos_semaphore_api api
+ * @addtogroup Rltos_semaphore_api Semaphore API
  * The public API (interface) to the RLTOS semaphore module.
  * @ingroup Rltos_semaphore
  * @{

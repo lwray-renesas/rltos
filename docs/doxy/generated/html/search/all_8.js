@@ -13,6 +13,5 @@ var searchData=
   ['p_5ftask_5ffunc_5ft_10',['p_task_func_t',['../group___rltos__task__api.html#gab6902a14a0e8d8f53d75c79f555e9468',1,'rltos_task.h']]],
   ['p_5ftask_5flist_5ft_11',['p_task_list_t',['../group___rltos__task__scheduler__api.html#ga45fd0c89795a3ab3140dcc4f939181d3',1,'rltos_task_scheduler.h']]],
   ['ports_12',['Ports',['../ports.html',1,'developing']]],
-  ['priority_13',['priority',['../structtask__ctl__t.html#a405dce594dfc7a29b007dfa03eebcde1',1,'task_ctl_t']]],
-  ['prv_14',['prv',['../group___rltos__event__flags__prv.html',1,'(Global Namespace)'],['../group___rltos__mutex__prv.html',1,'(Global Namespace)'],['../group___rltos__queue__prv.html',1,'(Global Namespace)'],['../group___rltos__semaphore__prv.html',1,'(Global Namespace)'],['../group___rltos__task__prv.html',1,'(Global Namespace)'],['../group___rltos__task__scheduler__prv.html',1,'(Global Namespace)']]]
+  ['priority_13',['priority',['../structtask__ctl__t.html#a405dce594dfc7a29b007dfa03eebcde1',1,'task_ctl_t']]]
 ];

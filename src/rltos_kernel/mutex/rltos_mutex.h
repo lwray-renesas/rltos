@@ -1,7 +1,7 @@
 /**
  * @defgroup Rltos_mutex Mutex
  * The group defining the RLTOS mutex.
- * @addtogroup Rltos_mutex_api api
+ * @addtogroup Rltos_mutex_api Mutex API
  * The public API (interface) to the RLTOS mutex module.
  * @ingroup Rltos_mutex
  * @{

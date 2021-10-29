@@ -1,5 +1,5 @@
 /**
- * @addtogroup Rltos_event_flags_prv prv
+ * @addtogroup Rltos_event_flags_prv Event Flags Private
  * The private data (implementation) of the RLTOS event flags.
  * @ingroup Rltos_event_flags
  * @{

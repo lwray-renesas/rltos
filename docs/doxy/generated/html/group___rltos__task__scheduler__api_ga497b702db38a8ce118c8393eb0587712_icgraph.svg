@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__prv.html#ga2e60520c320866bc60fdcb5fbc9260e3" target="_top" xlink:title="Deinitialises task control structure, and removes from any lists.">
+<g id="a_node2"><a xlink:href="group___rltos__task__api.html#ga2e60520c320866bc60fdcb5fbc9260e3" target="_top" xlink:title="Deinitialises task control structure, and removes from any lists.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 101,-19.5 101,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="50.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Rltos_task_destroy</text>
 </a>

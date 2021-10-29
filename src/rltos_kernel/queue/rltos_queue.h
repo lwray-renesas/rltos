@@ -1,7 +1,7 @@
 /**
  * @defgroup Rltos_queue Queue
  * The group defining the RLTOS queue.
- * @addtogroup Rltos_queue_api api
+ * @addtogroup Rltos_queue_api Queue API
  * The public API (interface) to the RLTOS queue module.
  * @ingroup Rltos_queue
  * @{

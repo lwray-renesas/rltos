@@ -1,5 +1,5 @@
 /**
- * @addtogroup Rltos_task_scheduler_prv prv
+ * @addtogroup Rltos_task_scheduler_prv Task Scheduler Private
  * The private data (implementation) of the RLTOS task list.
  * @ingroup Rltos_task_scheduler
  * @{
@@ -56,6 +56,54 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
  * @param[in] list_index - index of the list to in which to remove the task.
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
+
+/** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
+void Rltos_scheduler_tick_inc(void)
+{
+	/* Increment system tick counter*/
+	++rltos_system_tick;
+
+	/* check for wraparound*/
+	if (rltos_system_tick == 0U)
+	{
+		++rltos_wrap_count;
+	}
+
+	/* While idle tasks are ready.
+	* AND 
+	* next idle tasks wrap counter matches system wrap counter.
+	* AND 
+	* system tick count has expired the next idles tasks expiry time.
+	*/
+	while ((idle_task_list.size > 0U) &&
+		   (rltos_wrap_count == rltos_next_idle_ready_wrap_count) &&
+		   (rltos_system_tick >= rltos_next_idle_ready_tick))
+	{
+		/* Head of list is always first, list is ordered such that the next expiration time is at the head
+		* Function also updates the system parameters rltos_next_idle_ready_wrap_count and rltos_next_idle_ready_tick
+		*/
+		Task_set_running(idle_task_list.p_head);
+	}
+}
+
+/** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
+void Rltos_scheduler_switch_context(void)
+{
+	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/
+	if (should_switch_task)
+	{
+		running_task_list.p_index = running_task_list.p_index->p_next_tctl[state_list];
+	}
+	else
+	{
+		should_switch_task = true;
+	}
+
+	p_current_task_ctl = running_task_list.p_index;
+}
+/* END OF FUNCTION*/
+
+/*! @} */
 
 void Task_scheduler_init(void)
 {
@@ -226,13 +274,14 @@ static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_
 			task_to_insert->p_prev_tctl[list_index] = list_for_insert->p_head->p_prev_tctl[list_index];
 			task_to_insert->p_next_tctl[list_index] = list_for_insert->p_head;
 			list_for_insert->p_head->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;
+			list_for_insert->p_head->p_prev_tctl[list_index] = task_to_insert;
 			list_for_insert->p_head = task_to_insert;
 		}
 		else
 		{
-			/* Walk the list until; we get back to head OR we get to a list entry that belongs AFTER the current entry*/
+			/* Walk the list until; we get to a list entry that belongs AFTER the current entry OR we get back to head*/
 			p_task_ctl_t walk_value = list_for_insert->p_head->p_next_tctl[list_index];
-			while( (sorting_value >= walk_value->sorting_values[list_index]) && (walk_value != list_for_insert->p_head) )
+			while( (walk_value->sorting_values[list_index] <= sorting_value) && (walk_value != list_for_insert->p_head) )
 			{
 				walk_value = walk_value->p_next_tctl[list_index];
 			}
@@ -240,6 +289,7 @@ static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_
 			task_to_insert->p_prev_tctl[list_index] = walk_value->p_prev_tctl[list_index];
 			task_to_insert->p_next_tctl[list_index] = walk_value;
 			walk_value->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;
+			walk_value->p_prev_tctl[list_index] = task_to_insert;
 		}
 	}
 
@@ -321,51 +371,3 @@ static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ct
 	}
 }
 /* END OF FUNCTION*/
-
-/** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
-void Rltos_scheduler_tick_inc(void)
-{
-	/* Increment system tick counter*/
-	++rltos_system_tick;
-
-	/* check for wraparound*/
-	if (rltos_system_tick == 0U)
-	{
-		++rltos_wrap_count;
-	}
-
-	/* While idle tasks are ready.
-	* AND 
-	* next idle tasks wrap counter matches system wrap counter.
-	* AND 
-	* system tick count has expired the next idles tasks expiry time.
-	*/
-	while ((idle_task_list.size > 0U) &&
-		   (rltos_wrap_count == rltos_next_idle_ready_wrap_count) &&
-		   (rltos_system_tick >= rltos_next_idle_ready_tick))
-	{
-		/* Head of list is always first, list is ordered such that the next expiration time is at the head
-		* Function also updates the system parameters rltos_next_idle_ready_wrap_count and rltos_next_idle_ready_tick
-		*/
-		Task_set_running(idle_task_list.p_head);
-	}
-}
-
-/** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
-void Rltos_scheduler_switch_context(void)
-{
-	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/
-	if (should_switch_task)
-	{
-		running_task_list.p_index = running_task_list.p_index->p_next_tctl[state_list];
-	}
-	else
-	{
-		should_switch_task = true;
-	}
-
-	p_current_task_ctl = running_task_list.p_index;
-}
-/* END OF FUNCTION*/
-
-/*! @} */

@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__prv.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
+<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__api.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
 <polygon fill="white" stroke="black" points="184,-115.5 184,-134.5 250,-134.5 250,-115.5 184,-115.5"/>
 <text text-anchor="middle" x="217" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_deinit</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f" target="_top" xlink:title="Function used to append task to the idle list.">
 <polygon fill="white" stroke="black" points="161,-55.5 161,-74.5 273,-74.5 273,-55.5 161,-55.5"/>
 <text text-anchor="middle" x="217" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_set_current_idle</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="group___rltos__task__scheduler__prv.html#gae2e9ba76398ba904d0c32071d3512a2b" target="_top" xlink:title="Function used to append task to the running list.">
+<g id="a_node7"><a xlink:href="group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b" target="_top" xlink:title="Function used to append task to the running list.">
 <polygon fill="white" stroke="black" points="170.5,-14.5 170.5,-33.5 263.5,-33.5 263.5,-14.5 170.5,-14.5"/>
 <text text-anchor="middle" x="217" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_set_running</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__prv.html#ga2e60520c320866bc60fdcb5fbc9260e3" target="_top" xlink:title="Deinitialises task control structure, and removes from any lists.">
+<g id="a_node3"><a xlink:href="group___rltos__task__api.html#ga2e60520c320866bc60fdcb5fbc9260e3" target="_top" xlink:title="Deinitialises task control structure, and removes from any lists.">
 <polygon fill="white" stroke="black" points="12,-126.5 12,-145.5 113,-145.5 113,-126.5 12,-126.5"/>
 <text text-anchor="middle" x="62.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">Rltos_task_destroy</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group___rltos__task__prv.html#ga581dd045fa985add7730a8a1581389b7" target="_top" xlink:title="Puts the current thread to sleep for a minimum of the given number of ticks.">
+<g id="a_node5"><a xlink:href="group___rltos__task__api.html#ga581dd045fa985add7730a8a1581389b7" target="_top" xlink:title="Puts the current thread to sleep for a minimum of the given number of ticks.">
 <polygon fill="white" stroke="black" points="16.5,-88.5 16.5,-107.5 108.5,-107.5 108.5,-88.5 16.5,-88.5"/>
 <text text-anchor="middle" x="62.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">Rltos_task_sleep</text>
 </a>
@@ -96,7 +96,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="group___rltos__task__scheduler__prv.html#ga90ce1a0329edc828e765740fce4e29cb" target="_top" xlink:title="Function used to set the current task to wait on an object (uses auxillary list)">
+<g id="a_node6"><a xlink:href="group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb" target="_top" xlink:title="Function used to set the current task to wait on an object (uses auxillary list)">
 <polygon fill="white" stroke="black" points="5.5,-39 5.5,-69 119.5,-69 119.5,-39 5.5,-39"/>
 <text text-anchor="start" x="13.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">Task_set_current_wait</text>
 <text text-anchor="middle" x="62.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">_on_object</text>

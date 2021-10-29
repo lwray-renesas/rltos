@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__prv.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
+<g id="a_node2"><a xlink:href="group___rltos__task__scheduler__api.html#ga497b702db38a8ce118c8393eb0587712" target="_top" xlink:title="Function used to set deinit a task and removes from both running and idle lists.">
 <polygon fill="white" stroke="black" points="137,-0.5 137,-19.5 203,-19.5 203,-0.5 137,-0.5"/>
 <text text-anchor="middle" x="170" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_deinit</text>
 </a>

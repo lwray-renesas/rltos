@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['prv_0',['prv',['../group___rltos__event__flags__prv.html',1,'(Global Namespace)'],['../group___rltos__mutex__prv.html',1,'(Global Namespace)'],['../group___rltos__queue__prv.html',1,'(Global Namespace)'],['../group___rltos__semaphore__prv.html',1,'(Global Namespace)'],['../group___rltos__task__prv.html',1,'(Global Namespace)'],['../group___rltos__task__scheduler__prv.html',1,'(Global Namespace)']]]
+  ['semaphore_20api_0',['Semaphore API',['../group___rltos__semaphore__api.html',1,'']]],
+  ['semaphore_20private_1',['Semaphore Private',['../group___rltos__semaphore__prv.html',1,'']]],
+  ['sempahore_2',['Sempahore',['../group___rltos__semaphore.html',1,'']]]
 ];

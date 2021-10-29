@@ -16,9 +16,9 @@ extern "C"
 #include "rltos_task.c"
 }
 
-/***************************************************************************************************
- * Task                                                                                            *
- **************************************************************************************************/
+
+
+
 
 /* Collection of dummy functions for task create tests*/
 static void task0_func(void) {}
@@ -176,9 +176,9 @@ TEST(TaskTestGroup, RltosTaskSleep_InTheCorrectList)
 }
 /* END OF TEST*/
 
-/***************************************************************************************************
- * Misc                                                                                            *
- **************************************************************************************************/
+
+
+
 
 /** Test group for dummy struct sizes*/
 TEST_GROUP(RltosSizesTestGroup){
