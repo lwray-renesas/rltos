@@ -1,7 +1,7 @@
 /**
  * @addtogroup Rltos_task_prv Task Private
  * The private data (implementation) of the RLTOS kernels tasks.
- * @ingroup Rltos_task
+ * @ingroup Rltos_task_api
  * @{
  */
 

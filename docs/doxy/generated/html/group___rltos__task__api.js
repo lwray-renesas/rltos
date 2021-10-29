@@ -1,5 +1,6 @@
 var group___rltos__task__api =
 [
+    [ "Task Private", "group___rltos__task__prv.html", "group___rltos__task__prv" ],
     [ "dummy_task_t", "structdummy__task__t.html", [
       [ "dummy0", "structdummy__task__t.html#a7899f901e006b0d858030ae67a8af5d1", null ],
       [ "dummy1", "structdummy__task__t.html#ab8f9d71f7b4021a3964d3abf724e1940", null ],

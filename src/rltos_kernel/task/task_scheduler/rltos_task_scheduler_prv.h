@@ -1,6 +1,6 @@
 /**
  * @addtogroup Rltos_task_scheduler_prv Task Scheduler Private
- * @ingroup Rltos_task_scheduler
+ * @ingroup Rltos_task_scheduler_api
  * @{
  */
 

@@ -1,7 +1,7 @@
 /**
  * @addtogroup Rltos_mutex_prv Mutex Private
  * The private data (implementation) of the RLTOS mutex.
- * @ingroup Rltos_mutex
+ * @ingroup Rltos_mutex_api
  * @{
  */
 

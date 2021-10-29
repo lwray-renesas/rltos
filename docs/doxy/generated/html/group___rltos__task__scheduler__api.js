@@ -1,5 +1,6 @@
 var group___rltos__task__scheduler__api =
 [
+    [ "Task Scheduler Private", "group___rltos__task__scheduler__prv.html", "group___rltos__task__scheduler__prv" ],
     [ "p_task_ctl_t", "group___rltos__task__scheduler__api.html#ga4694904741a0e90ff836770783ffdf47", null ],
     [ "p_task_list_t", "group___rltos__task__scheduler__api.html#ga45fd0c89795a3ab3140dcc4f939181d3", null ],
     [ "list_index_t", "group___rltos__task__scheduler__api.html#ga09f710c47e5026bc2790e81defa17bc5", [

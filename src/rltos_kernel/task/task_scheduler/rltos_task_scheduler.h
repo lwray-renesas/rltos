@@ -5,6 +5,11 @@
  * The API (interface) to the RLTOS task scheduler module.
  * This module is ONLY used by the modules of RLTOS and should NEVER be accessed directly by an application.
  * @ingroup Rltos_task_scheduler
+ * @ingroup Rltos_task_prv
+ * @ingroup Rltos_semaphore_prv
+ * @ingroup Rltos_queue_prv
+ * @ingroup Rltos_mutex_prv
+ * @ingroup Rltos_event_flags_prv
  * @{
  */
 
