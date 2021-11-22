@@ -61,8 +61,11 @@ ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING)
 # Add the following libraries
 target_link_libraries(rltos_test LINK_PUBLIC 
 ${CPPUTEST_HOME_DIR}/lib/CppUTest.lib 
-${CPPUTEST_HOME_DIR}/lib/CppUTestExt.lib
-winmm.lib)
+${CPPUTEST_HOME_DIR}/lib/CppUTestExt.lib)
+
+if(WIN32)
+	target_link_libraries(rltos_test LINK_PUBLIC winmm.lib)
+endif()
 
 # Group source
 source_group(TREE ${RLTOS_DIR} PREFIX rltos FILES ${RLTOS_HEADER_FILES} ${RLTOS_SOURCE_FILES})
