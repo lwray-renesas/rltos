@@ -1,6 +1,9 @@
 /**
+ * @defgroup Rltos_core Core
+ * The group containing the core workings of the RLTOS system - namely tasks and the task scheduler.
  * @defgroup Rltos_task Task
  * The group defining the RLTOS raw kernel tasks.
+ * @ingroup Rltos_core
  * @addtogroup Rltos_task_api Task API
  * The public API (interface) to the RLTOS kernela tasks.
  * @ingroup Rltos_task

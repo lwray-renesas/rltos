@@ -21,8 +21,8 @@ ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING/rltos_port.h)
 ##### List TEST source files #####
 set(TEST_SOURCE_FILES
 all_tests.cpp
-rltos_kernel/task/task_tests.cpp
-rltos_kernel/task/task_scheduler/task_scheduler_tests.cpp
+rltos_kernel/core/task_tests.cpp
+rltos_kernel/core/task_scheduler/task_scheduler_tests.cpp
 rltos_kernel/semaphore/semaphore_tests.cpp
 rltos_kernel/queue/queue_tests.cpp
 rltos_kernel/mutex/mutex_tests.cpp
@@ -55,7 +55,7 @@ add_executable(rltos_test ${ALL_SOURCE})
 target_include_directories(rltos_test PUBLIC 
 ${CPPUTEST_HOME_DIR}/include
 ${RLTOS_DIR}/rltos_kernel
-${RLTOS_DIR}/rltos_kernel/task
+${RLTOS_DIR}/rltos_kernel/core
 ${RLTOS_DIR}/port/CPPUTEST_UNIT_TESTING)
 
 # Add the following libraries
