@@ -145,6 +145,9 @@ void Task_deinit(p_task_ctl_t const task_to_deinit)
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
 	task_to_deinit->p_task_func = NULL;
 	task_to_deinit->stored_sp = NULL;
+
+	/* TODO: update idle tick count and wrap count values if task deinitialised is from the idle list*/
+
 	/* Check if task is in the list internally*/
 	Task_remove_from_list(task_to_deinit->p_owners[state_list], task_to_deinit, state_list);
 	Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
@@ -174,6 +177,7 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 	/* If the idle task list is empty - invalidate the next time variable*/
 	if (0U == idle_task_list.size)
 	{
+		rltos_next_idle_ready_wrap_count = RLTOS_UINT_MAX;
 		rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
 	}
 	else

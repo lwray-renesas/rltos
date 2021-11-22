@@ -259,11 +259,11 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert_SameSortValues)
    std::array<struct task_ctl_t,tasks_to_add> l_tasks_under_test;
 
    /* Create random number generation function*/
-   std::random_device rd;
-   std::mt19937 g(rd());
+   std::random_device random_dev;
+   std::mt19937 random_gen(random_dev());
    std::uniform_int_distribution<> distrib(0);
 
-   const rltos_uint tsk_priority = static_cast<rltos_uint>(distrib(g));
+   const rltos_uint tsk_priority = static_cast<rltos_uint>(distrib(random_gen));
 
    /* set the priorities of each task*/
    for(struct task_ctl_t &tsk : l_tasks_under_test)
@@ -272,7 +272,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert_SameSortValues)
    }
 
    /* Shuffle the list*/
-   std::shuffle(l_tasks_under_test.begin(), l_tasks_under_test.end(), g);
+   std::shuffle(l_tasks_under_test.begin(), l_tasks_under_test.end(), random_gen);
 
    /* Add the tasks (now in random order)*/
    for(struct task_ctl_t &tsk : l_tasks_under_test)
@@ -296,108 +296,267 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert_SameSortValues)
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskSetRunning)
+TEST(TaskSchedulerTestGroup, Test_TaskSetRunning_ListsOK_IdleOnly)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskSetRunning");
+   /* Create testable task and stack*/
+   std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test = std::make_unique<stack_type[]>(32);
+   
+   Task_init(l_task_under_test.get(), l_stack_under_test.get(), &Dummy_task_func, 0U, false);
+
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test.get(), state_list), "Task incorrectly intitialised - should be in idle list");
+
+   Task_set_running(l_task_under_test.get());
+
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task_under_test.get(), state_list), "Task failed to be removed from idle list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test.get(), state_list), "Task failed to be added to running list");
+   CHECK_TEXT(RLTOS_UINT_MAX == rltos_next_idle_ready_tick , "Failed to update next idle ready tick count");
+   CHECK_TEXT(RLTOS_UINT_MAX == rltos_next_idle_ready_wrap_count , "Failed to update next idle ready wrap count");
+
+   /* Tear down*/
+   Task_deinit(l_task_under_test.get());
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle)
+TEST(TaskSchedulerTestGroup, Test_TaskSetRunning_ListsOK_IdleOnly_2tasks)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentIdle");
+   /* Create testable task and stack*/
+   std::unique_ptr<struct task_ctl_t> l_task_under_test0 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test0 = std::make_unique<stack_type[]>(32);
+   
+   std::unique_ptr<struct task_ctl_t> l_task_under_test1 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test1 = std::make_unique<stack_type[]>(32);
+   
+   Task_init(l_task_under_test0.get(), l_stack_under_test0.get(), &Dummy_task_func, 0U, false);
+   Task_init(l_task_under_test1.get(), l_stack_under_test1.get(), &Dummy_task_func, 0U, false);
+
+   /* Random values to verify the idle counters are updated*/
+   l_task_under_test1->idle_ready_time = 0x1234U;
+   l_task_under_test1->idle_wrap_count = 0x5678U;
+
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test0.get(), state_list), "Task incorrectly intitialised - should be in idle list");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test1.get(), state_list), "Task incorrectly intitialised - should be in idle list");
+
+   Task_set_running(l_task_under_test0.get());
+
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test0.get(), state_list), "Task failed to be added to running list");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test1.get(), state_list), "Task incorrectly intiialised - should be in idle list");
+   /* Check the idle counters in the scheduler have been updated*/
+   CHECK_TEXT(l_task_under_test1->idle_ready_time == rltos_next_idle_ready_tick , "Failed to update next idle ready tick count");
+   CHECK_TEXT(l_task_under_test1->idle_wrap_count == rltos_next_idle_ready_wrap_count , "Failed to update next idle ready wrap count");
+
+   /* Tear down*/
+   Task_deinit(l_task_under_test0.get());
+   Task_deinit(l_task_under_test1.get());
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentWaitOnObject)
+TEST(TaskSchedulerTestGroup, Test_TaskSetRunning_ListsOK_IdleAndAux)
 {
-   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentWaitOnObject");
+   /* Create testable task and stack*/
+   std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test = std::make_unique<stack_type[]>(32);
+
+   /* Create testable auxiallary list*/
+   std::unique_ptr<struct task_list_t> l_aux_list_under_test = std::make_unique<struct task_list_t>();
+
+   Task_list_init(l_aux_list_under_test.get());
+   
+   Task_init(l_task_under_test.get(), l_stack_under_test.get(), &Dummy_task_func, 0U, false);
+   Task_append_to_list(l_aux_list_under_test.get(), l_task_under_test.get(), aux_list);
+
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test.get(), state_list), "Task incorrectly intitialised - should be in idle list");
+   CHECK_TEXT(Task_is_in_list(l_aux_list_under_test.get(), l_task_under_test.get(), aux_list), "Task incorrectly intitialised - should be in aux list");
+
+   Task_set_running(l_task_under_test.get());
+
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task_under_test.get(), state_list), "Task failed to be removed from idle list");
+   CHECK_TEXT(!Task_is_in_list(l_aux_list_under_test.get(), l_task_under_test.get(), aux_list), "Task failed to be removed from aux list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test.get(), state_list), "Task failed to be added to running list");
+
+   /* Tear down*/
+   Task_deinit(l_task_under_test.get());
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK)
+{
+   /* Create testable task and stack*/
+   std::unique_ptr<struct task_ctl_t> l_task_under_test0 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test0 = std::make_unique<stack_type[]>(32);
+   
+   std::unique_ptr<struct task_ctl_t> l_task_under_test1 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test1 = std::make_unique<stack_type[]>(32);
+   
+   Task_init(l_task_under_test0.get(), l_stack_under_test0.get(), &Dummy_task_func, 0U, true);
+   Task_init(l_task_under_test1.get(), l_stack_under_test1.get(), &Dummy_task_func, 1U, true);
+
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test0.get(), state_list), "Task incorrectly intitialised - should be in running list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test1.get(), state_list), "Task incorrectly intitialised - should be in running list");
+   CHECK_TEXT(running_task_list.p_head == l_task_under_test0.get(), "head of running task list is not as expected");
+
+   Task_scheduler_init();
+
+   CHECK_TEXT(p_current_task_ctl == l_task_under_test0.get(), "curent task is not as expected");
+
+   Task_set_current_idle(0x1234U);
+   
+   /* This call will always be followed by a yield*/
+   Rltos_scheduler_switch_context();
+
+   CHECK_TEXT(p_current_task_ctl == l_task_under_test1.get(), "curent task is not as expected");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test0.get(), state_list), "Task incorrectly set - should be in running list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test1.get(), state_list), "Task erroneously changed - should be in running list");
+   CHECK_TEXT(l_task_under_test0->idle_ready_time == rltos_next_idle_ready_tick , "Failed to update next idle ready tick count");
+   CHECK_TEXT(l_task_under_test0->idle_wrap_count == rltos_next_idle_ready_wrap_count , "Failed to update next idle ready wrap count");
+   
+   Task_deinit(l_task_under_test0.get());
+   Task_deinit(l_task_under_test1.get());
+   p_current_task_ctl = NULL;
+   rltos_next_idle_ready_wrap_count = 0U;
+   rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK_WrapAround)
+{
+   /* Create testable task and stack*/
+   std::unique_ptr<struct task_ctl_t> l_task_under_test0 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test0 = std::make_unique<stack_type[]>(32);
+   
+   std::unique_ptr<struct task_ctl_t> l_task_under_test1 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test1 = std::make_unique<stack_type[]>(32);
+   
+   Task_init(l_task_under_test0.get(), l_stack_under_test0.get(), &Dummy_task_func, 0U, true);
+   Task_init(l_task_under_test1.get(), l_stack_under_test1.get(), &Dummy_task_func, 1U, true);
+
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test0.get(), state_list), "Task incorrectly intitialised - should be in running list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test1.get(), state_list), "Task incorrectly intitialised - should be in running list");
+   CHECK_TEXT(running_task_list.p_head == l_task_under_test0.get(), "head of running task list is not as expected");
+
+   Task_scheduler_init();
+
+   CHECK_TEXT(p_current_task_ctl == l_task_under_test0.get(), "curent task is not as expected");
+
+   rltos_system_tick = 0xFFFFFFF0U;
+   Task_set_current_idle(0x1234U);
+   
+   /* This call will always be followed by a yield*/
+   Rltos_scheduler_switch_context();
+
+   CHECK_TEXT(p_current_task_ctl == l_task_under_test1.get(), "curent task is not as expected");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test0.get(), state_list), "Task incorrectly set - should be in running list");
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test1.get(), state_list), "Task erroneously changed - should be in running list");
+   CHECK_TEXT(l_task_under_test0->idle_ready_time == rltos_next_idle_ready_tick , "Failed to update next idle ready tick count");
+   CHECK_TEXT(l_task_under_test0->idle_wrap_count == rltos_next_idle_ready_wrap_count , "Failed to update next idle ready wrap count");
+   CHECK_TEXT((0xFFFFFFF0U+0x1234U) == rltos_next_idle_ready_tick , "Failed to update next idle ready tick count");
+   CHECK_TEXT(1U == rltos_next_idle_ready_wrap_count , "Failed to update next idle ready wrap count");
+   
+   Task_deinit(l_task_under_test0.get());
+   Task_deinit(l_task_under_test1.get());
+   p_current_task_ctl = NULL;
+   rltos_next_idle_ready_wrap_count = 0U;
+   rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+   rltos_system_tick = 0U;
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_OneTaskInList)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentIdle_OneTaskInList");
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ticksUpdatedOK)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentIdle_ticksUpdatedOK");
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentWaitOnObject_ListsOK)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentWaitOnObject_ListsOK");
+}
+/* END OF TEST*/
+
+TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentWaitOnObject_OneTaskInList)
+{
+   CHECK_TEXT(false, "TODO: Write Test_TaskSetCurrentWaitOnObject_OneTaskInList");
 }
 /* END OF TEST*/
 
 TEST(TaskSchedulerTestGroup, Test_SchedulerTickInc)
 {
+   /* Difficult test here - we will need to perform multiple - look at testing:
+   - Tasks ready to be idled
+   - One tick before ready
+   - One tick after ready
+   - No tasks in idle list
+   - wrap count 0 & RLTOS_UINT_MAX
+   - tick count 0 & RLTOS_UINT_MAX
+   - tick & wrap count 0 & RLTOS_UINT_MAX
+   - This will help in testing & protecting against wrap around conditions
+   */
    CHECK_TEXT(false, "TODO: Write Test_SchedulerTickInc");
 }
 /* END OF TEST*/
 
 TEST(TaskSchedulerTestGroup, Test_SchedulerSwitchContext)
 {
-   /* Create dummy task and stack*/
-   std::unique_ptr<struct task_ctl_t> l_task0 = std::make_unique<struct task_ctl_t>();
-   std::unique_ptr<stack_type[]> l_stack0 = std::make_unique<stack_type[]>(32);
-   /* Create dummy task and stack*/
-   std::unique_ptr<struct task_ctl_t> l_task1 = std::make_unique<struct task_ctl_t>();
-   std::unique_ptr<stack_type[]> l_stack1 = std::make_unique<stack_type[]>(32);
-   /* Create dummy task and stack*/
-   std::unique_ptr<struct task_ctl_t> l_task2 = std::make_unique<struct task_ctl_t>();
-   std::unique_ptr<stack_type[]> l_stack2 = std::make_unique<stack_type[]>(32);
-   /* Create dummy task and stack*/
-   std::unique_ptr<struct task_ctl_t> l_task3 = std::make_unique<struct task_ctl_t>();
-   std::unique_ptr<stack_type[]> l_stack3 = std::make_unique<stack_type[]>(32);
-   /* Create dummy task and stack*/
-   std::unique_ptr<struct task_ctl_t> l_task4 = std::make_unique<struct task_ctl_t>();
-   std::unique_ptr<stack_type[]> l_stack4 = std::make_unique<stack_type[]>(32);
+   const size_t tasks_to_add = 10U;
+   size_t scheduler_iterations = 1000U;
 
-   Task_init(l_task0.get(), l_stack0.get(), &Dummy_task_func, 0U, true);
-   Task_init(l_task1.get(), l_stack1.get(), &Dummy_task_func, 0U, true);
-   Task_init(l_task2.get(), l_stack2.get(), &Dummy_task_func, 0U, true);
-   Task_init(l_task3.get(), l_stack3.get(), &Dummy_task_func, 0U, true);
-   Task_init(l_task4.get(), l_stack4.get(), &Dummy_task_func, 0U, true);
+   /* Create testable tasks*/
+   std::array<struct task_ctl_t,tasks_to_add> l_tasks_under_test;
+
+   /* Create testable tasks*/
+   std::array<stack_type[32],tasks_to_add> l_stacks_under_test;
+
+   for(size_t tsk_ind = 0U; tsk_ind < tasks_to_add ; ++tsk_ind)
+   {
+      Task_init(&l_tasks_under_test[tsk_ind], (stack_ptr_type)&l_stacks_under_test[tsk_ind], &Dummy_task_func, 0U, true);
+   }
 
    Task_scheduler_init(); /* Initialise running task list p_head (l_task0)*/
-   CHECK_TEXT(p_current_task_ctl == l_task0.get(), "p_current_task failed to initialise as expected");
+   CHECK_TEXT(p_current_task_ctl == &l_tasks_under_test[0U], "p_current_task failed to initialise as expected");
 
-   should_switch_task = true;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task1.get(), "context switch didnt occur when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task1.get(), "context switch didnt occur when expected");
+   /* Create random number generation function*/
+   std::random_device random_dev;
+   std::mt19937 random_gen(random_dev());
+   std::uniform_int_distribution<> distrib(0,1);
 
-   should_switch_task = false;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task1.get(), "context switch occurred when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task1.get(), "context switch occurred when expected");
+   while(scheduler_iterations > 0U)
+   {
+      p_task_ctl_t saved_task_before_sched = p_current_task_ctl;
+      bool task_switch_expected = distrib(random_gen) == 1; /* If the random generator determines we should switch task - should_switch_task = true, otherwise its false*/
 
-   should_switch_task = true;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task2.get(), "context switch didnt occur when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task2.get(), "context switch didnt occur when expected");
+      should_switch_task = task_switch_expected;
 
-   should_switch_task = true;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task3.get(), "context switch didnt occur when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task3.get(), "context switch didnt occur when expected");
+      /* Run the scheduler - if should_switch_task is false on entry - the function sets it to true
+      This is intended and is used when telling the scheduler tick handler that the index has already 
+      been udpated (such as the case when calling Task_set_current_idle())*/
+      Rltos_scheduler_switch_context();
 
-   should_switch_task = false;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task3.get(), "context switch occurred when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task3.get(), "context switch occurred when expected");
+      /* Check if we are supposed to switch the tasks*/
+      if(task_switch_expected)
+      {
+         CHECK_TEXT(p_current_task_ctl == saved_task_before_sched->p_next_tctl[state_list] , "context switch didnt occur when expected");
+         CHECK_TEXT(running_task_list.p_index == saved_task_before_sched->p_next_tctl[state_list] , "context switch didnt occur when expected");
+      }
+      else
+      {
+         CHECK_TEXT(p_current_task_ctl == saved_task_before_sched, "context switch occurred when not expected or desrired");
+         CHECK_TEXT(running_task_list.p_index == saved_task_before_sched, "context switch occurred when not expected or desrired");
+      }
 
-   should_switch_task = true;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task4.get(), "context switch didnt occur when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task4.get(), "context switch didnt occur when expected");
-
-   should_switch_task = false;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task4.get(), "context switch occurred when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task4.get(), "context switch occurred when expected");
-
-   should_switch_task = false;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task4.get(), "context switch occurred when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task4.get(), "context switch occurred when expected");
-
-   should_switch_task = true;
-   Rltos_scheduler_switch_context();
-   CHECK_TEXT(p_current_task_ctl == l_task0.get(), "context switch didnt occur when expected");
-   CHECK_TEXT(running_task_list.p_index == l_task0.get(), "context switch didnt occur when expected");
+      --scheduler_iterations;
+   }
 
    /* Tear down*/
-   Task_deinit(l_task0.get());
-   Task_deinit(l_task1.get());
-   Task_deinit(l_task2.get());
-   Task_deinit(l_task3.get());
-   Task_deinit(l_task4.get());
+   for(size_t tsk_ind = 0U; tsk_ind < tasks_to_add ; ++tsk_ind)
+   {
+      Task_deinit(&l_tasks_under_test[tsk_ind]);
+   }
 
    p_current_task_ctl = NULL;
 }
