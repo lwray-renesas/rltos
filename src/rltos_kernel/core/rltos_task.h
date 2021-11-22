@@ -67,7 +67,8 @@ void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const
  * @param[inout] task_to_destroy - pointer to dummy task structure which represents the task to destroy.*/
 void Rltos_task_destroy(p_dummy_task_t const task_to_destroy);
 
-/** @brief Puts the current thread to sleep for a minimum of the given number of ticks*/
+/** @brief Puts the current thread to sleep for a minimum of the given number of ticks
+ * @param[in] tick_count - The number of RLTOS ticks which the task will be placed in the idle list. If this value is 0 - this function call resolves to a yield.*/
 void Rltos_task_sleep(const rltos_uint tick_count);
 
 #endif /* RLTOS_TASK_H_ */

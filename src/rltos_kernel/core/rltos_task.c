@@ -59,9 +59,9 @@ void Rltos_task_sleep(const rltos_uint tick_count)
 	{
 		/* Idle the current task*/
 		Task_set_current_idle(tick_count);
-
-		/* Force yield the task*/
-		Rltos_task_yield();
 	}
+
+	/* Force yield the task*/
+	Rltos_task_yield();
 }
 /* END OF FUNCTION*/
