@@ -1,6 +1,15 @@
 /**
 \page deep_dive Deep Dive
-
 A project deep dive - going into configurations and algorithms and justifications of techniques etc.
+Contents:
+    - \subpage limitations
 
+*/
+
+/**
+\page limitations Limitations
+The following limitations to use are listed:
+    - 0 Running tasks is not permitted
+        - Workaround: Ensure in your design that there will always be always one task running.
+        For this you can implement the sleepy task which simply puts the device into a sleep state in a while(1) loop.
 */
