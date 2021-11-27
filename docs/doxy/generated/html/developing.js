@@ -1,7 +1,6 @@
 var developing =
 [
     [ "Start Developing", "start_developing.html", null ],
-    [ "Visual Studio Code", "visual_studio_code.html", null ],
     [ "Coding Standards", "coding_standards.html", null ],
     [ "Doxygen", "doxygen.html", null ],
     [ "Unit Testing", "unit_testing.html", [

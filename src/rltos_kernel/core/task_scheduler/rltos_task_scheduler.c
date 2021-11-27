@@ -215,20 +215,20 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 	}
 	else
 	{
-		/* Both value have same wrap count i.e. both expire in the same window*/
-		if (p_current_task_ctl->idle_wrap_count == rltos_next_idle_ready_wrap_count)
+		if ((p_current_task_ctl->idle_wrap_count + 1U) == rltos_next_idle_ready_wrap_count)
+		{
+			/* The current task calculated wrap count is before the next one*/
+			/* Idle tick count can only wrap around once, so we check one wrap ahead*/
+			rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
+			rltos_next_idle_ready_wrap_count = p_current_task_ctl->idle_wrap_count;
+		}
+		else if (p_current_task_ctl->idle_wrap_count == rltos_next_idle_ready_wrap_count)
 		{
 			/* Equal wrap counts - check if computed expiration tick time is quicker */
 			if (p_current_task_ctl->idle_ready_time < rltos_next_idle_ready_tick)
 			{
 				rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
 			}
-		}
-		else if (p_current_task_ctl->idle_wrap_count < rltos_next_idle_ready_wrap_count)
-		{
-			/* computed wrap count is before the next wrap count, new one must be first*/
-			rltos_next_idle_ready_tick = p_current_task_ctl->idle_ready_time;
-			rltos_next_idle_ready_wrap_count = p_current_task_ctl->idle_wrap_count;
 		}
 		else
 		{

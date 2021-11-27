@@ -3,7 +3,6 @@
 This page attempts to outline everything to do with the development process of RLTOS.
 Contents:
     - \subpage start_developing
-    - \subpage visual_studio_code
     - \subpage coding_standards
     - \subpage doxygen
     - \subpage unit_testing
@@ -32,24 +31,6 @@ You will also need to install and enable the following Visual Studio Code extens
 Now open the repo at the top level (using Visual Studio Code).
 Configure and build using the Cmake tools extension from the command palette (ctrl + shift + p).
 Debug the unit tests, also from the command palette.
-*/
-
-/**
-\page visual_studio_code Visual Studio Code
-This project uses visual studio code for most development (with the exception of the ports).
-The settings.json for vs code is basic but enables the startup of development from a single environment.
-Here I'll attempt describe each entry in the settings file:
-    - @code "cmake.sourceDirectory": "${workspaceFolder}/test" @endcode
-    This entry sets the cmake extension to work from the test folder.
-    - @code "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools" @endcode
-    This entry ensures that the cmake extension provides all necessary configuration information to the C/C++ extension.
-    - @code 
-    "files.associations": {
-        "*.dox": "c"
-    }
-    @endcode
-    This entry associates the .dox files as C to help with source code highlighting.
-
 */
 
 /**
