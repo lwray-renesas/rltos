@@ -60,6 +60,7 @@ Modifications made to improve setup:
 - Disable style violations being presented
 - Enable inline suppressions
 - Normal analysis (not aggressive)
+- To use cppcheck you must also create a folder at the same level as check.cppcheck called cppcheck_build_dir where cppcheck will store analysis files.
 */
 
 /**
