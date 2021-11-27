@@ -11,6 +11,7 @@ Contents:
 The tools used in deployment, which also include those outlined in the \ref developing "Developing page", (internal to Github Actions) are as follows:
     - <a href="https://github.com/OpenCppCoverage/OpenCppCoverage">OpenCppCoverage</a>
     - Something to handle the junit outputs of cpputest and convert into a report also.
+    - <a href="https://cppcheck.sourceforge.io/">CppCheck</a>
 */
 
 /**
