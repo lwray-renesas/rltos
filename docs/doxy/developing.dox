@@ -54,7 +54,12 @@ Here I'll attempt describe each entry in the settings file:
 
 /**
 \page coding_standards Coding Standards
-Desire is to check against MISRA coding standards but inconsistencies with free static analysis tools & cost of paid-for tools making this difficult.
+Using CppCheck with MISRA addon to scan RLTOS - cppcheck project file provided check.cppcheck.
+Modifications made to improve setup:
+- misra.py for installation editted to return only 'error' violation severity (NOT default 'style')
+- Disable style violations being presented
+- Enable inline suppressions
+- Normal analysis (not aggressive)
 */
 
 /**

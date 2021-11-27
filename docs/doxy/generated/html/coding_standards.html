@@ -90,7 +90,12 @@ $(document).ready(function(){initNavTree('coding_standards.html',''); initResiza
   <div class="headertitle"><div class="title">Coding Standards </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Desire is to check against MISRA coding standards but inconsistencies with free static analysis tools &amp; cost of paid-for tools making this difficult. </p>
+<div class="textblock"><p >Using CppCheck with MISRA addon to scan RLTOS - cppcheck project file provided check.cppcheck. Modifications made to improve setup:</p><ul>
+<li>misra.py for installation editted to return only 'error' violation severity (NOT default 'style')</li>
+<li>Disable style violations being presented</li>
+<li>Enable inline suppressions</li>
+<li>Normal analysis (not aggressive) </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
