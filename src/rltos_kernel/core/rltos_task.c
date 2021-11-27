@@ -42,6 +42,7 @@ void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const
 	stack_ptr_type l_p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
+	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
 	Task_init((p_task_ctl_t)(task_to_create), l_p_stack_top, p_task_func, task_priority, run_task);
 }
 /* END OF FUNCTION*/
@@ -49,6 +50,7 @@ void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const
 void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
 {
 	/* Denitialise the task*/
+	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
 	Task_deinit((p_task_ctl_t)(task_to_destroy));
 }
 /* END OF FUNCTION*/

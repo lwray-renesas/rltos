@@ -58,6 +58,7 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
 
 /** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
+/* cppcheck-suppress misra-c2012-8.4 - Declaration not required, externed by linker in asm file*/
 void Rltos_scheduler_tick_inc(void)
 {
 	/* Increment system tick counter*/
@@ -85,8 +86,10 @@ void Rltos_scheduler_tick_inc(void)
 		Task_set_running(idle_task_list.p_head);
 	}
 }
+/* END OF FUNCTION*/
 
 /** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
+/* cppcheck-suppress misra-c2012-8.4 - Declaration not required, externed by linker in asm file*/
 void Rltos_scheduler_switch_context(void)
 {
 	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/

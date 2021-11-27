@@ -55,5 +55,4 @@ dkms.conf
 build/*
 
 # cppcheck
-rltos_check-cppcheck-build-dir/*
-rltos_check_results.*
+cppcheck_build_dir/*
