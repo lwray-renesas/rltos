@@ -21,7 +21,6 @@ You will then need to ensure your PATH environment variable has the entries to t
     - <cpputest-source-dir> (e.g. C:\Users\Lwray\Dev\cpputest)
     - <cpputest-home-dir> (e.g. C:\Program Files\CppUTest)
 
-
 You will also need to install and enable the following Visual Studio Code extensions:
     - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a>
     - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a>
