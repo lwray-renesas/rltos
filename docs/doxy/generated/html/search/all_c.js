@@ -19,6 +19,5 @@ var searchData=
   ['task_5fset_5fcurrent_5fidle_16',['Task_set_current_idle',['../group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f',1,'Task_set_current_idle(const rltos_uint time_to_idle):&#160;rltos_task_scheduler.c'],['../group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f',1,'Task_set_current_idle(const rltos_uint time_to_idle):&#160;rltos_task_scheduler.c']]],
   ['task_5fset_5fcurrent_5fwait_5fon_5fobject_17',['Task_set_current_wait_on_object',['../group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb',1,'Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait):&#160;rltos_task_scheduler.c'],['../group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb',1,'Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait):&#160;rltos_task_scheduler.c']]],
   ['task_5fset_5frunning_18',['Task_set_running',['../group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b',1,'Task_set_running(p_task_ctl_t const task_to_run):&#160;rltos_task_scheduler.c'],['../group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b',1,'Task_set_running(p_task_ctl_t const task_to_run):&#160;rltos_task_scheduler.c']]],
-  ['todo_19',['TODO',['../todo.html',1,'developing']]],
-  ['tooling_20',['Tooling',['../tooling.html',1,'deployment']]]
+  ['tooling_19',['Tooling',['../tooling.html',1,'deployment']]]
 ];

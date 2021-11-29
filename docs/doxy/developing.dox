@@ -6,7 +6,6 @@ Contents:
     - \subpage coding_standards
     - \subpage doxygen
     - \subpage unit_testing
-    - \subpage todo
     - \subpage ports
 */
 
@@ -41,6 +40,11 @@ Modifications made to improve setup:
 - Enable inline suppressions
 - Normal analysis (not aggressive)
 - To use cppcheck you must also create a folder at the same level as check.cppcheck called cppcheck_build_dir where cppcheck will store analysis files.
+
+\section misra_suppressions MISRA Suppressions
+This section lists the suppressions of MISRA violations and explains why they are present.
+- List suppressions.
+
 */
 
 /**
@@ -74,27 +78,9 @@ More can be found on this in the \ref deployment "Deployment Page".
 */
 
 /**
-\page todo TODO
-List what we need to do moving forward with the project.
-
-\section next Next
-- Unit test code thoroughly - checkpoint.
-- Include behavioural tests observing switching between IDLE and RUNNING tasks - checkpoint.
-- Create quickstart guide (could make use of an examples repo which includes this repo as a submodule?)
-- Create deep dive material on inner workings of scheduler and the software hierarchy.
-
-\section soon Soon
-- Implement event_flags
-- Implement mutex
-- Implement queue
-- Implement semaphore
-- Implement co-operative scheduling
-
-*/
-
-/**
 \page ports Ports
 Need to top level explain the ports - possibly at some point implement a porting guide.
+Also need to explain that this section outlines what ports are available and any considerations or when using the ports.
 
 \section cpputest_unit_testing CPPUTEST_UNIT_TESTING
 This port exists to satisfy the unit testing environment.

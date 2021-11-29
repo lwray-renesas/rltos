@@ -1,14 +1,12 @@
 var developing =
 [
     [ "Start Developing", "start_developing.html", null ],
-    [ "Coding Standards", "coding_standards.html", null ],
+    [ "Coding Standards", "coding_standards.html", [
+      [ "MISRA Suppressions", "coding_standards.html#misra_suppressions", null ]
+    ] ],
     [ "Doxygen", "doxygen.html", null ],
     [ "Unit Testing", "unit_testing.html", [
       [ "Coverage", "unit_testing.html#coverage", null ]
-    ] ],
-    [ "TODO", "todo.html", [
-      [ "Next", "todo.html#next", null ],
-      [ "Soon", "todo.html#soon", null ]
     ] ],
     [ "Ports", "ports.html", [
       [ "CPPUTEST_UNIT_TESTING", "ports.html#cpputest_unit_testing", null ],
