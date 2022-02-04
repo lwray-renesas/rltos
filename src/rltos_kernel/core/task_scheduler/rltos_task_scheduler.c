@@ -75,7 +75,7 @@ void Rltos_scheduler_tick_inc(void)
 		++rltos_wrap_count;
 	}
 
-	/* While idle tasks are ready.
+	/* While idle tasks are present in idle task list.
 	* AND 
 	* next idle tasks wrap counter matches system wrap counter.
 	* AND 
@@ -165,15 +165,31 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_
 
 void Task_deinit(p_task_ctl_t const task_to_deinit)
 {
+	const bool was_head_of_idle_list = idle_task_list.p_head == task_to_deinit;
+
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
 	task_to_deinit->p_task_func = NULL;
 	task_to_deinit->stored_sp = NULL;
 
-	/* TODO: update idle tick count and wrap count values if task deinitialised is from the idle list*/
-
-	/* Check if task is in the list internally*/
+	/* Remove from any lists*/
 	Task_remove_from_list(task_to_deinit->p_owners[state_list], task_to_deinit, state_list);
 	Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
+
+	if (was_head_of_idle_list)
+	{
+		/* If the idle task list is empty - invalidate the next time variable*/
+		if (0U == idle_task_list.size)
+		{
+			rltos_next_idle_ready_wrap_count = RLTOS_UINT_MAX;
+			rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+		}
+		else
+		{
+			/* Otherwise update it*/
+			rltos_next_idle_ready_wrap_count = idle_task_list.p_head->idle_wrap_count;
+			rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
+		}
+	}
 }
 /* END OF FUNCTION*/
 
@@ -187,6 +203,8 @@ void Task_list_init(p_task_list_t const list_to_init)
 
 void Task_set_running(p_task_ctl_t const task_to_run)
 {
+	const bool was_head_of_idle_list = idle_task_list.p_head == task_to_run;
+
 	/* If we are owned by an object -> remove from objects list*/
 	if (NULL != task_to_run->p_owners[aux_list])
 	{
@@ -197,17 +215,20 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 	Task_remove_from_list(&idle_task_list, task_to_run, state_list);
 	Task_insert_in_list(&running_task_list, task_to_run, state_list, task_to_run->priority);
 
-	/* If the idle task list is empty - invalidate the next time variable*/
-	if (0U == idle_task_list.size)
+	if (was_head_of_idle_list)
 	{
-		rltos_next_idle_ready_wrap_count = RLTOS_UINT_MAX;
-		rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
-	}
-	else
-	{
-		/* Otherwise update it*/
-		rltos_next_idle_ready_wrap_count = idle_task_list.p_head->idle_wrap_count;
-		rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
+		/* If the idle task list is empty - invalidate the next time variable*/
+		if (0U == idle_task_list.size)
+		{
+			rltos_next_idle_ready_wrap_count = RLTOS_UINT_MAX;
+			rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
+		}
+		else
+		{
+			/* Otherwise update it*/
+			rltos_next_idle_ready_wrap_count = idle_task_list.p_head->idle_wrap_count;
+			rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
+		}
 	}
 }
 /* END OF FUNCTION*/
@@ -252,14 +273,14 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 		}
 		else
 		{
-			/* computed wrap count it too large - cannot possibly be next in line*/
+			/* computed wrap count is too large - cannot possibly be next in line*/
 		}
 	}
 
 	Task_remove_from_list(&running_task_list, p_current_task_ctl, state_list);
 	Task_insert_in_list(&idle_task_list, p_current_task_ctl, state_list, p_current_task_ctl->idle_time);
 
-	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to switch tasks on next run*/
+	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
 	should_switch_task = false;
 }
 /* END OF FUNCTION*/
@@ -306,7 +327,7 @@ static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_
 		}
 		else
 		{
-			/* Walk the list until; we get to a list entry that belongs AFTER the current entry OR we get back to head*/
+			/* Walk the list until we get to a list entry that belongs AFTER the current entry OR we get back to head*/
 			p_task_ctl_t walk_value = list_for_insert->p_head->p_next_tctl[list_index];
 			while( (walk_value->sorting_values[list_index] <= sorting_value) && (walk_value != list_for_insert->p_head) )
 			{

@@ -49,10 +49,13 @@ typedef uint16_t rltos_uint;
 /** @brief value of unsigned integers maximum value*/
 #define RLTOS_UINT_MAX	(0xFFFFU)
 
-/** @brief macro used to disable interrupts - can also be fulfilled with a void function(void)*/
+/** @brief macro used to prepare for disabling interrupts*/
+#define RLTOS_PREPARE_CRITICAL_SECTION()
+
+/** @brief macro used to disable interrupts*/
 #define RLTOS_ENTER_CRITICAL_SECTION()	asm("di")
 
-/** @brief macro used to enable interrupts - can also be fulfilled with a void function(void)*/
+/** @brief macro used to enable interrupts*/
 #define RLTOS_EXIT_CRITICAL_SECTION()	asm("ei")
 
 /** @brief macro used to yield a task - can also be fulfilled with a void function(void)*/

@@ -53,7 +53,7 @@ void Task_scheduler_deinit(void);
  */
 void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running);
 
-/** @brief Function used to set deinit a task and removes from both running and idle lists.
+/** @brief Function used to set deinit a task and removes from both state and aux lists.
  * @param[inout] task_to_deinit - pointer to a task for deinitialisation.
  */
 void Task_deinit(p_task_ctl_t const task_to_deinit);
