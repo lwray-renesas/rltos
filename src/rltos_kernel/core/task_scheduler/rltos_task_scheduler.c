@@ -34,6 +34,13 @@ rltos_uint rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
 rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
 bool should_switch_task = true;
+/** Rltos idle task stack*/
+static stack_type idle_task_stack[32];
+/** Rltos idle task*/
+static struct task_ctl_t idle_task_ctl;
+
+/** @brief Idle task function - calls hook function on each execution*/
+static void Rltos_idle_thread(void);
 
 /** @brief Function used to insert a task in a sorted task list
  * @param[inout] list_for_append - pointer to a task list for which the task should be inserted.
@@ -57,8 +64,6 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
  */
 static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
 
-/** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
-/* cppcheck-suppress misra-c2012-8.4 - Declaration not required, externed by linker in asm file*/
 void Rltos_scheduler_tick_inc(void)
 {
 	/* Increment system tick counter*/
@@ -88,8 +93,6 @@ void Rltos_scheduler_tick_inc(void)
 }
 /* END OF FUNCTION*/
 
-/** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
-/* cppcheck-suppress misra-c2012-8.4 - Declaration not required, externed by linker in asm file*/
 void Rltos_scheduler_switch_context(void)
 {
 	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/
@@ -110,7 +113,24 @@ void Rltos_scheduler_switch_context(void)
 
 void Task_scheduler_init(void)
 {
+	/* Initialise the stack*/
+	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(idle_task_stack, &Rltos_idle_thread);
+
+	/* Create the idle task and puit it in the running list*/
+	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);
+
+	/* Initialise the current task ctl pointer*/
 	p_current_task_ctl = running_task_list.p_head;
+}
+/* END OF FUNCTION*/
+
+void Task_scheduler_deinit(void)
+{
+	/* Create the idle task and puit it in the running list*/
+	Task_deinit(&idle_task_ctl);
+
+	/* Initialise the current task ctl pointer*/
+	p_current_task_ctl = NULL;
 }
 /* END OF FUNCTION*/
 
@@ -375,6 +395,15 @@ static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ct
 		/* Remove tasks next and previous entries*/
 		task_to_remove->p_prev_tctl[list_index] = NULL;
 		task_to_remove->p_next_tctl[list_index] = NULL;
+	}
+}
+/* END OF FUNCTION*/
+
+static void Rltos_idle_thread(void)
+{
+	while(1)
+	{
+		Rltos_port_idle_task_hook();
 	}
 }
 /* END OF FUNCTION*/

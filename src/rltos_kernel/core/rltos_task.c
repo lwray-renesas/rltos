@@ -8,38 +8,21 @@
 #include "rltos_task.h"
 #include "task_scheduler/rltos_task_scheduler.h"
 
-/** @brief Function to enter the first rltos task.
- * @details Defined in rltos_kernel.asm - does not save context, only restores it and returns as though from interrupt (RETI).
- * This function MUST be called after initialising the current task pointer (p_current_task_ctl).
- */
-extern void Rltos_enter_first_task(void);
-
-/** @brief Initialises stack for creation of task.
- * This function is provided by the porting layer.
- * @return The value of the stack pointer post initialisation (used to restore context).
-*/
-extern stack_ptr_type Rltos_stack_init(stack_ptr_type p_stack_top, void *const p_task_func);
-
-/** @brief Initialises and start RLTOS tick timer.
- * This function is provided by the application layer.
-*/
-extern void Rltos_start_tick_timer(void);
-
 /*! @} */
 
 void Rltos_kernel_enter(void)
 {
 	/* Initialise the current task control pointer*/
 	Task_scheduler_init();
-	Rltos_start_tick_timer();
-	Rltos_enter_first_task();
+	Rltos_port_start_tick_timer();
+	Rltos_port_enter_first_task();
 }
 /* END OF FUNCTION*/
 
 void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task)
 {
 	/* Initialise the stack*/
-	stack_ptr_type l_p_stack_top = Rltos_stack_init(p_stack_top, p_task_func);
+	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/

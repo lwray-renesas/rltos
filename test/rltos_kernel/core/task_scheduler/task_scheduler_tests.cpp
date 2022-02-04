@@ -100,18 +100,14 @@ void Simulate_scheduler(const rltos_uint num_ticks,
 }
 /* END OF FUNCTION*/
 
-TEST(TaskSchedulerTestGroup, Test_SchedulerInit_SetsCurrentTaskOk)
+TEST(TaskSchedulerTestGroup, Test_SchedulerInitAndDeinit_ControlsIdleTaskOk)
 {
-   /* Create testable task & append to list*/
-   std::unique_ptr<struct task_ctl_t> l_task_under_test = std::make_unique<struct task_ctl_t>();
-   Task_append_to_list(&running_task_list, l_task_under_test.get(), state_list);
-
    Task_scheduler_init();
-
-   CHECK_TEXT(p_current_task_ctl == l_task_under_test.get(), "Scheduler incorrectly initialised");
-
-   Task_remove_from_list(&running_task_list, l_task_under_test.get(), state_list);
-   p_current_task_ctl = NULL;
+   CHECK_TEXT(p_current_task_ctl == &idle_task_ctl, "Scheduler incorrectly initialised");
+   CHECK_TEXT(running_task_list.p_head == &idle_task_ctl, "Scheduler incorrectly initialised");
+   Task_scheduler_deinit();
+   CHECK_TEXT(p_current_task_ctl == NULL, "Scheduler incorrectly deinitialised");
+   CHECK_TEXT(running_task_list.p_head == NULL, "Scheduler incorrectly deinitialised");
 }
 /* END OF TEST*/
 
@@ -465,7 +461,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK)
 
    Task_deinit(l_task_under_test0.get());
    Task_deinit(l_task_under_test1.get());
-   p_current_task_ctl = NULL;
+   Task_scheduler_deinit();
    rltos_next_idle_ready_wrap_count = 0U;
    rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
 }
@@ -507,7 +503,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK_WrapAround)
 
    Task_deinit(l_task_under_test0.get());
    Task_deinit(l_task_under_test1.get());
-   p_current_task_ctl = NULL;
+   Task_scheduler_deinit();
    rltos_next_idle_ready_wrap_count = 0U;
    rltos_next_idle_ready_tick = RLTOS_UINT_MAX;
    rltos_system_tick = 0U;
@@ -611,6 +607,6 @@ TEST(TaskSchedulerTestGroup, Test_SchedulerSwitchContext)
       Task_deinit(&l_tasks_under_test[tsk_ind]);
    }
 
-   p_current_task_ctl = NULL;
+   Task_scheduler_deinit();
 }
 /* END OF TEST*/

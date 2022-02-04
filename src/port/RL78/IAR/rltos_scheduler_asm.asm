@@ -43,8 +43,8 @@ RESTORE_CONTEXT MACRO
     ENDM
 ; END OF MACRO - restores target CPU context
 
-; START OF FUNCTION - void Rltos_enter_first_task(void)
-	PUBLIC _Rltos_enter_first_task
+; START OF FUNCTION - void Rltos_port_enter_first_task(void)
+	PUBLIC _Rltos_port_enter_first_task
 	SECTION CODE:CODE
 _Rltos_enter_first_task:
 	RESTORE_CONTEXT
@@ -52,12 +52,12 @@ _Rltos_enter_first_task:
 ; END OF FUNCTION - void Rltos_enter_first_task(void)
 
 
-; START OF FUNCTION - void Rltos_yield(void)
+; START OF FUNCTION - void Rltos_port_yield(void)
 	PUBLIC _Rltos_yield
         PUBLIC  ___interrupt_0x7E
 	EXTERN _Rltos_scheduler_switch_context
 	SECTION CODE:CODE
-_Rltos_yield:
+_Rltos_port_yield:
 ___interrupt_0x7E:
 	SAVE_CONTEXT
 	CALL	_Rltos_scheduler_switch_context ; Runs RLTOS scheduling algorithm
@@ -67,12 +67,12 @@ ___interrupt_0x7E:
 
 
 ; START OF FUNCTION - void Rltos_tick(void)
-	PUBLIC _Rltos_tick
+	PUBLIC _Rltos_port_tick
         PUBLIC  ___interrupt_0x38
 	EXTERN _Rltos_scheduler_tick_inc
 	EXTERN _Rltos_scheduler_switch_context
 	SECTION CODE:CODE
-_Rltos_tick:
+_Rltos_port_tick:
 ___interrupt_0x38:
 	SAVE_CONTEXT
 	CALL	_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor

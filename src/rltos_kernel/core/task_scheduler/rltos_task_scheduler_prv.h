@@ -70,4 +70,10 @@ extern rltos_uint rltos_next_idle_ready_tick;
 extern rltos_uint rltos_next_idle_ready_wrap_count;
 extern bool should_switch_task;
 
+/** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */
+void Rltos_scheduler_tick_inc(void);
+
+/** @brief implementation of rltos context switch - called from rltos_scheduler_asm.asm */
+void Rltos_scheduler_switch_context(void);
+
 #endif /* RLTOS_TASK_SCHEDULER_PRV_H_ */

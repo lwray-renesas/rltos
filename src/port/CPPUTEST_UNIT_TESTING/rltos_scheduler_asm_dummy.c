@@ -9,22 +9,19 @@
 extern void Rltos_scheduler_switch_context(void);
 extern void Rltos_scheduler_tick_inc(void);
 
-/** @brief emtpy function used to emulate the dummy functions*/
+/** @brief empty function used to emulate the dummy functions*/
 static void Save_context(void);
 
-/** @brief emtpy function used to emulate the dummy functions*/
+/** @brief empty function used to emulate the dummy functions*/
 static void Restore_context(void);
 
-
-/** @brief dummy definition of function referenced in source that is typically provided in asm*/
-void Rltos_enter_first_task(void)
+void Rltos_port_enter_first_task(void)
 {
 	Restore_context();
 }
 /* END OF FUNCTION*/
 
-/** @brief dummy definition of function referenced in source that is typically provided in asm*/
-void Rltos_yield(void)
+void Rltos_port_yield(void)
 {
 	Save_context();
 	Rltos_scheduler_switch_context();
@@ -32,8 +29,7 @@ void Rltos_yield(void)
 }
 /* END OF FUNCTION*/
 
-/** @brief dummy definition of function referenced in source that is typically provided in asm*/
-void Rltos_tick(void)
+void Rltos_port_tick(void)
 {
 	Save_context();
 	Rltos_scheduler_tick_inc();

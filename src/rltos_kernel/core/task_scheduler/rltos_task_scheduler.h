@@ -38,8 +38,11 @@ typedef enum
     aux_list            /**< Index of list where the item exists waiting on an object*/
 }list_index_t;
 
-/** @brief Function to initialise the current task on entry to the scheduler*/
+/** @brief Function to initialise the current task on entry to the scheduler & create + add the idle task to the running list.*/
 void Task_scheduler_init(void);
+
+/** @brief Function to deinitialise the current task and remove the idle task from the running list.*/
+void Task_scheduler_deinit(void);
 
 /** @brief Function used to set initial stack pointer, task entry function & clear pointers to next and prev nodes.
  * @param[inout] task_to_init - pointer to a task for initialisation.

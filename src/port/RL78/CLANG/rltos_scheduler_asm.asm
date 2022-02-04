@@ -44,22 +44,22 @@
 ; END OF MACRO - restores target CPU context
 
 
-; START OF FUNCTION - void Rltos_enter_first_task(void)
-	.global _Rltos_enter_first_task
-	.type	_Rltos_enter_first_task,STT_FUNC
+; START OF FUNCTION - void Rltos_port_enter_first_task(void)
+	.global _Rltos_port_enter_first_task
+	.type	_Rltos_port_enter_first_task,STT_FUNC
 	.text
-_Rltos_enter_first_task:
+_Rltos_port_enter_first_task:
 	RESTORE_CONTEXT
 	reti
 ; END OF FUNCTION - void Rltos_enter_first_task(void)
 
 
-; START OF FUNCTION - void Rltos_yield(void)
-	.global _Rltos_yield
-	.type	_Rltos_yield,STT_FUNC
+; START OF FUNCTION - void Rltos_port_yield(void)
+	.global _Rltos_port_yield
+	.type	_Rltos_port_yield,STT_FUNC
 	.extern _Rltos_scheduler_switch_context
 	.text
-_Rltos_yield:
+_Rltos_port_yield:
 	SAVE_CONTEXT
 	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling algorithm
 	RESTORE_CONTEXT
@@ -67,13 +67,13 @@ _Rltos_yield:
 ; END OF FUNCTION - void Rltos_yield(void)
 
 
-; START OF FUNCTION - void Rltos_tick(void)
-	.global _Rltos_tick
-	.type	_Rltos_tick,STT_FUNC
+; START OF FUNCTION - void Rltos_port_tick(void)
+	.global _Rltos_port_tick
+	.type	_Rltos_port_tick,STT_FUNC
 	.extern _Rltos_scheduler_tick_inc
 	.extern _Rltos_scheduler_switch_context
 	.text
-_Rltos_tick:
+_Rltos_port_tick:
 	SAVE_CONTEXT
 	CALL	!!_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor
 	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling context switch
