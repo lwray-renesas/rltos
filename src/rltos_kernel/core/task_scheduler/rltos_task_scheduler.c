@@ -119,6 +119,10 @@ void Rltos_scheduler_switch_context(void)
 
 void Task_scheduler_init(void)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+	
 	/* Manually reset system tick and wrap counters*/
 	rltos_system_tick = 0U;
 	rltos_wrap_count = 0U;
@@ -131,21 +135,33 @@ void Task_scheduler_init(void)
 
 	/* Initialise the current task ctl pointer*/
 	p_current_task_ctl = running_task_list.p_head;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_scheduler_deinit(void)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	/* Create the idle task and puit it in the running list*/
 	Task_deinit(&idle_task_ctl);
 
 	/* Initialise the current task ctl pointer*/
 	p_current_task_ctl = NULL;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
 	task_to_init->p_task_func = init_task_func;
 	task_to_init->stored_sp = init_sp;
@@ -170,11 +186,17 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_
 	{
 		Task_insert_in_list(&idle_task_list, task_to_init, state_list, task_to_init->idle_time);
 	}
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_deinit(p_task_ctl_t const task_to_deinit)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	const bool was_head_of_idle_list = idle_task_list.p_head == task_to_deinit;
 
 	/* Set the task function and stack pointer - then NULL init the list parameters*/
@@ -200,19 +222,31 @@ void Task_deinit(p_task_ctl_t const task_to_deinit)
 			rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
 		}
 	}
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_list_init(p_task_list_t const list_to_init)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	list_to_init->size = 0U;
 	list_to_init->p_head = NULL;
 	list_to_init->p_index = NULL;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_set_running(p_task_ctl_t const task_to_run)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	const bool was_head_of_idle_list = idle_task_list.p_head == task_to_run;
 
 	/* If we are owned by an object -> remove from objects list*/
@@ -240,11 +274,17 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 			rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
 		}
 	}
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_set_current_idle(const rltos_uint time_to_idle)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	/* Calculate next expiration time*/
 	p_current_task_ctl->idle_ready_time = rltos_system_tick + time_to_idle;
 	p_current_task_ctl->idle_time = time_to_idle;
@@ -292,16 +332,24 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 
 	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
 	should_switch_task = false;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
 void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait)
 {
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
 	/* Idle the task until it is told to run, either by the scheduler or the owning objects signal*/
 	Task_set_current_idle(time_to_wait);
 
 	/* Dont care about the order in which they are appended*/
 	Task_append_to_list(owner, p_current_task_ctl, aux_list);
+
+	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
