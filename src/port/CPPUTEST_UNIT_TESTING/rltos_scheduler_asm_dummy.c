@@ -5,6 +5,8 @@
  *      Author: Louis Wray
  */
 
+#include "rltos_port.h"
+
 /** Make scheduler implementation available*/
 extern void Rltos_scheduler_switch_context(void);
 extern void Rltos_scheduler_tick_inc(void);
@@ -14,6 +16,11 @@ static void Save_context(void);
 
 /** @brief empty function used to emulate the dummy functions*/
 static void Restore_context(void);
+
+uint8_t Rltos_get_interrupt_status(void)
+{
+	return 1;
+}
 
 void Rltos_port_enter_first_task(void)
 {

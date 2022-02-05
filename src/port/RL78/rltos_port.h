@@ -50,13 +50,13 @@ typedef uint16_t rltos_uint;
 #define RLTOS_UINT_MAX	(0xFFFFU)
 
 /** @brief macro used to prepare for disabling interrupts*/
-#define RLTOS_PREPARE_CRITICAL_SECTION()
+#define RLTOS_PREPARE_CRITICAL_SECTION() uint8_t l_int_status = Rltos_get_interrupt_status()
 
 /** @brief macro used to disable interrupts*/
 #define RLTOS_ENTER_CRITICAL_SECTION()	asm("di")
 
 /** @brief macro used to enable interrupts*/
-#define RLTOS_EXIT_CRITICAL_SECTION()	asm("ei")
+#define RLTOS_EXIT_CRITICAL_SECTION()	if(l_int_status == 1U) { asm("ei"); }
 
 /** @brief macro used to yield a task - can also be fulfilled with a void function(void)*/
 #define Rltos_task_yield()  asm("brk")
@@ -73,6 +73,12 @@ void Rltos_port_start_tick_timer(void);
 
 /** @brief The hook called by the idle thread constantly in a while 1 loop - typically used to enter low power state.*/
 void Rltos_port_idle_task_hook(void);
+
+/** @brief Function to be provided for returning interrupt status - provided in ASM.
+ * @return 0 = interrupt disabled
+ * 1 = interrupt enabled
+*/
+extern uint8_t Rltos_get_interrupt_status(void);
 
 /** @brief Function to be provided for enterring first task of kernel - provided in ASM.
  * @details Does not save context, only restores it and returns as though from interrupt.

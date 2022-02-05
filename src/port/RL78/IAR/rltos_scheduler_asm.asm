@@ -32,16 +32,25 @@ RESTORE_CONTEXT MACRO
 	MOVW	HL, AX
 	MOVW	AX, [HL]
 	MOVW	SP, AX
-	POP	AX                    ; Restore CS & ES Registers.
-	MOV	CS, A
-	XCH	A, X
-	MOV	ES, A
-	POP	HL                    ; Restore Register Bank
-	POP	DE
-	POP	BC
-	POP	AX
+	POP		AX                    ; Restore CS & ES Registers.
+	MOV		CS, A
+	XCH		A, X
+	MOV		ES, A
+	POP		HL                    ; Restore Register Bank
+	POP		DE
+	POP		BC
+	POP		AX
     ENDM
 ; END OF MACRO - restores target CPU context
+
+; START OF FUNCTION - void Rltos_get_interrupt_status(void)
+	PUBLIC _Rltos_get_interrupt_status
+	SECTION CODE:CODE
+_Rltos_get_interrupt_status:
+	MOV 	A, PSW
+	SHR		A, #7
+	ret
+; END OF FUNCTION - void Rltos_get_interrupt_status(void)
 
 ; START OF FUNCTION - void Rltos_port_enter_first_task(void)
 	PUBLIC _Rltos_port_enter_first_task

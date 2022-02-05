@@ -63,6 +63,12 @@ void Rltos_port_start_tick_timer(void);
 /** @brief the hook called by the idle thread constantly in a while 1 loop*/
 void Rltos_port_idle_task_hook(void);
 
+/** @brief Function to be provided for returning interrupt status - provided in ASM.
+ * @return 0 = interrupt disabled
+ * 1 = interrupt enabled
+*/
+uint8_t Rltos_get_interrupt_status(void);
+
 /** @brief Function to be provided for enterring first task of kernel - restores context and returns as though fom ISR.*/
 void Rltos_port_enter_first_task(void);
 

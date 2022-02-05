@@ -44,6 +44,17 @@
 ; END OF MACRO - restores target CPU context
 
 
+; START OF FUNCTION - void Rltos_get_interrupt_status(void)
+	.global _Rltos_get_interrupt_status
+	.type	_Rltos_get_interrupt_status,STT_FUNC
+	.text
+_Rltos_get_interrupt_status:
+	MOV 	A, PSW
+	SHR		A, #7
+	ret
+; END OF FUNCTION - void Rltos_get_interrupt_status(void)
+
+
 ; START OF FUNCTION - void Rltos_port_enter_first_task(void)
 	.global _Rltos_port_enter_first_task
 	.type	_Rltos_port_enter_first_task,STT_FUNC
