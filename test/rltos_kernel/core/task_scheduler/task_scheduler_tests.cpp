@@ -66,13 +66,12 @@ void Simulate_scheduler(const rltos_uint num_ticks,
 {
    rltos_uint l_num_ticks = num_ticks;
 
-   if (start_hook)
-   {
-      start_hook();
-   }
-
    while (l_num_ticks > 0)
    {
+      if (start_hook)
+      {
+         start_hook();
+      }
       if (should_inc_tick)
       {
          Rltos_scheduler_tick_inc();
@@ -487,7 +486,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK_WrapAround)
 
    CHECK_TEXT(p_current_task_ctl == l_task_under_test0.get(), "curent task is not as expected");
 
-   rltos_system_tick = 0xFFFFFFF0U;
+   rltos_system_tick = RLTOS_UINT_MAX-1U;
    /* This call will always be followed by a yield*/
    Task_set_current_idle(0x1234U);
 
@@ -498,7 +497,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ListsOK_WrapAround)
    CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test1.get(), state_list), "Task erroneously changed - should be in running list");
    CHECK_TEXT(l_task_under_test0->idle_ready_time == rltos_next_idle_ready_tick, "Failed to update next idle ready tick count");
    CHECK_TEXT(l_task_under_test0->idle_wrap_count == rltos_next_idle_ready_wrap_count, "Failed to update next idle ready wrap count");
-   CHECK_TEXT((0xFFFFFFF0U + 0x1234U) == rltos_next_idle_ready_tick, "Failed to update next idle ready tick count");
+   CHECK_TEXT(((RLTOS_UINT_MAX-1U) + 0x1234U) == rltos_next_idle_ready_tick, "Failed to update next idle ready tick count");
    CHECK_TEXT(1U == rltos_next_idle_ready_wrap_count, "Failed to update next idle ready wrap count");
 
    Task_deinit(l_task_under_test0.get());
@@ -566,21 +565,21 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentIdle_ticksUpdatedOK)
    /* Manually increase the ready wrapcount to test we overwrite this with the task being idles for less time (which does not force a tick wrap around)*/
    rltos_next_idle_ready_wrap_count += 1U;
 
-   Task_set_current_idle(0xFFFFU);
+   Task_set_current_idle(RLTOS_UINT_MAX);
    Rltos_scheduler_switch_context();
 
    CHECK_TEXT(p_current_task_ctl == l_task_under_test4.get(), "curent task is not as expected");
-   CHECK_TEXT(rltos_next_idle_ready_tick == 0xFFFFU, "tick count incorrect");
+   CHECK_TEXT(rltos_next_idle_ready_tick == RLTOS_UINT_MAX, "tick count incorrect");
    CHECK_TEXT(rltos_next_idle_ready_wrap_count == 0U, "wrap count incorrect");
 
    /* Now force a wrap around a verify the idle task has not been over written*/
-   rltos_system_tick = 0xFFFFU;
+   rltos_system_tick = RLTOS_UINT_MAX;
 
    Task_set_current_idle(10U);
    Rltos_scheduler_switch_context();
 
    CHECK_TEXT(p_current_task_ctl == &idle_task_ctl, "curent task is not as expected");
-   CHECK_TEXT(rltos_next_idle_ready_tick == 0xFFFFU, "tick count incorrect");
+   CHECK_TEXT(rltos_next_idle_ready_tick == RLTOS_UINT_MAX, "tick count incorrect");
    CHECK_TEXT(rltos_next_idle_ready_wrap_count == 0U, "wrap count incorrect");
 
    Task_deinit(l_task_under_test0.get());
@@ -623,11 +622,46 @@ TEST(TaskSchedulerTestGroup, Test_TaskSetCurrentWaitOnObject_ListsOK)
 
 TEST(TaskSchedulerTestGroup, Test_SchedulerTickInc)
 {
-   /* Difficult test here - we will need to perform multiple - look at testing:
-   - First of all though write basic test to stisfy 100% coverage so we can move on.
-   - Then put these tests in the TODO project.
-   */
-   CHECK_TEXT(false, "TODO: Write Test_SchedulerTickInc");
+   std::unique_ptr<struct task_ctl_t> l_task_under_test0 = std::make_unique<struct task_ctl_t>();
+   std::unique_ptr<stack_type[]> l_stack_under_test0 = std::make_unique<stack_type[]>(32);
+
+   std::unique_ptr<struct task_list_t> l_task_list0 = std::make_unique<struct task_list_t>();
+
+   Task_init(l_task_under_test0.get(), l_stack_under_test0.get(), &Dummy_task_func, 0U, true);
+
+   Task_scheduler_init();
+
+   CHECK_TEXT(p_current_task_ctl == l_task_under_test0.get(), "curent task is not as expected");
+
+   Task_set_current_wait_on_object(l_task_list0.get(), RLTOS_UINT_MAX);
+
+   CHECK_TEXT(Task_is_in_list(l_task_list0.get(), l_task_under_test0.get(), aux_list), "task is not in aux list as expected");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test0.get(), state_list), "task is not in idle list as expected");
+
+   /* Set variable ready for wrap around (speeds up test)*/
+   rltos_system_tick = RLTOS_UINT_MAX - 0xFFFFU;
+
+   /* simluate up to wrap around*/
+   Simulate_scheduler(0xFFFFU, [&](){ 
+      CHECK_TEXT(Task_is_in_list(l_task_list0.get(), l_task_under_test0.get(), aux_list), "task is not in aux list as expected");
+      CHECK_TEXT(Task_is_in_list(&idle_task_list, l_task_under_test0.get(), state_list), "task is not in idle list as expected");
+      CHECK_TEXT(Task_is_in_list(&running_task_list, &idle_task_ctl, state_list), "idle task is not running as expected");
+      CHECK_TEXT(running_task_list.p_index == &idle_task_ctl, "Idle task not running when expected");
+   }, [&](){}, [&](){}, [&](){
+      CHECK_TEXT(!Task_is_in_list(l_task_list0.get(), l_task_under_test0.get(), aux_list), "task is not in aux list as expected");
+      CHECK_TEXT(Task_is_in_list(&running_task_list, l_task_under_test0.get(), state_list), "task is not in idle list as expected");
+      CHECK_TEXT(Task_is_in_list(&running_task_list, &idle_task_ctl, state_list), "idle task is not running as expected");
+      CHECK_TEXT((p_current_task_ctl == l_task_under_test0.get()) && (running_task_list.p_index == l_task_under_test0.get()), "Temp task not running when expected");
+      }, true);
+
+   /* Check wrap around*/
+   Simulate_scheduler(1U, [=](){}, [=](){}, [&](){}, [=](){
+      CHECK_TEXT(rltos_wrap_count == 1U,"rtlos wrap around did not occur");
+   }, true);
+
+    Task_deinit(l_task_under_test0.get());
+
+    Task_scheduler_deinit();
 }
 /* END OF TEST*/
 

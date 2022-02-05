@@ -68,6 +68,7 @@ TEST_GROUP(TaskTestGroup)
 
 TEST(TaskTestGroup, RltosKernelEnter_DoesNotCrash)
 {
+   /* Get up and running with mocking to verify certain function calls are made*/
    Rltos_kernel_enter();
    CHECK(true);
 }

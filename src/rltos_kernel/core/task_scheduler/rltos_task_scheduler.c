@@ -113,6 +113,10 @@ void Rltos_scheduler_switch_context(void)
 
 void Task_scheduler_init(void)
 {
+	/* Manually reset system tick and wrap counters*/
+	rltos_system_tick = 0U;
+	rltos_wrap_count = 0U;
+
 	/* Initialise the stack*/
 	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(idle_task_stack, &Rltos_idle_thread);
 
