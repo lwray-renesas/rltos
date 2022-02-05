@@ -12,6 +12,6 @@ The following limitations to use are listed:
     - 0 Running tasks is not permitted
         - Workaround: Ensure in your design that there will always be always one task running.
         For this you can implement the sleepy task which simply puts the device into a sleep state in a while(1) loop.
-    - The tick interrupt can never next into another interrupt - this will break the scheduler.
+    - The tick interrupt can never nest into another interrupt - this will break the scheduler.
         - Workaround: There isn't one - set interrupt priorities necessary if possible.
 */
