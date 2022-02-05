@@ -704,8 +704,17 @@ TEST(TaskSchedulerTestGroup, Test_SchedulerSwitchContext)
       /* Check if we are supposed to switch the tasks*/
       if (task_switch_expected)
       {
-         CHECK_TEXT(p_current_task_ctl == saved_task_before_sched->p_next_tctl[state_list], "context switch didnt occur when expected");
-         CHECK_TEXT(running_task_list.p_index == saved_task_before_sched->p_next_tctl[state_list], "context switch didnt occur when expected");
+         /* check if the next task was the idle task and ensure we tried to skip it*/
+         if(saved_task_before_sched->p_next_tctl[state_list] == &idle_task_ctl)
+         {
+            CHECK_TEXT(p_current_task_ctl == saved_task_before_sched->p_next_tctl[state_list]->p_next_tctl[state_list], "context switch didnt occur when expected");
+            CHECK_TEXT(running_task_list.p_index == saved_task_before_sched->p_next_tctl[state_list]->p_next_tctl[state_list], "context switch didnt occur when expected");
+         }
+         else
+         {
+            CHECK_TEXT(p_current_task_ctl == saved_task_before_sched->p_next_tctl[state_list], "context switch didnt occur when expected");
+            CHECK_TEXT(running_task_list.p_index == saved_task_before_sched->p_next_tctl[state_list], "context switch didnt occur when expected");
+         }
       }
       else
       {

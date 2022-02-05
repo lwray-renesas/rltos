@@ -105,6 +105,12 @@ void Rltos_scheduler_switch_context(void)
 		should_switch_task = true;
 	}
 
+	/* If we are ever about to enter to idle task - try switch to the next active task - if the idle task is the only one available, the next item in the list will be the idle task anyway and we will enter it*/
+	if(running_task_list.p_index == &idle_task_ctl)
+	{
+		running_task_list.p_index = running_task_list.p_index->p_next_tctl[state_list];
+	}
+
 	p_current_task_ctl = running_task_list.p_index;
 }
 /* END OF FUNCTION*/
