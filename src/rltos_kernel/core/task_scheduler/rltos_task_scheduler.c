@@ -328,7 +328,7 @@ static void Task_insert_in_list(p_task_list_t const list_for_insert, p_task_ctl_
 		}
 		else if(sorting_value < list_for_insert->p_head->sorting_values[list_index])
 		{
-			/* Update the head*/
+			/* Value belongs at the head/start of the list - Update the head*/
 			task_to_insert->p_prev_tctl[list_index] = list_for_insert->p_head->p_prev_tctl[list_index];
 			task_to_insert->p_next_tctl[list_index] = list_for_insert->p_head;
 			list_for_insert->p_head->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_insert;

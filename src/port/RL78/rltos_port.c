@@ -37,7 +37,7 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* con
 
 void Rltos_port_start_tick_timer(void)
 {
-	/* Do Nothing*/
+	/* TODO: Start timer interrupt for which the ISR is Rltos_port_tick*/
 }
 /* END OF FUNCTION*/
 

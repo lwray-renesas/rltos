@@ -111,6 +111,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gaaf0d6196a9bd2cf22c5fd38b0a6725bf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#gaaf0d6196a9bd2cf22c5fd38b0a6725bf">Rltos_idle_thread</a> (void)</td></tr>
+<tr class="memdesc:gaaf0d6196a9bd2cf22c5fd38b0a6725bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Idle task function - calls hook function on each execution.  <a href="group___rltos__task__scheduler__prv.html#gaaf0d6196a9bd2cf22c5fd38b0a6725bf">More...</a><br /></td></tr>
+<tr class="separator:gaaf0d6196a9bd2cf22c5fd38b0a6725bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab915c720a9360b7be5bb388002b6ebcd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd">Task_insert_in_list</a> (<a class="el" href="group___rltos__task__scheduler__api.html#ga45fd0c89795a3ab3140dcc4f939181d3">p_task_list_t</a> const list_for_insert, <a class="el" href="group___rltos__task__scheduler__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a> const task_to_insert, const <a class="el" href="group___rltos__task__scheduler__api.html#ga09f710c47e5026bc2790e81defa17bc5">list_index_t</a> list_index, const rltos_uint sorting_value)</td></tr>
 <tr class="memdesc:gab915c720a9360b7be5bb388002b6ebcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to insert a task in a sorted task list.  <a href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd">More...</a><br /></td></tr>
 <tr class="separator:gab915c720a9360b7be5bb388002b6ebcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,10 +151,48 @@ Variables</h2></td></tr>
 <tr class="separator:gaa98c090225b85de59f0cfca6f649c9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5c53ccc4e154989b577fa92779545419"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga5c53ccc4e154989b577fa92779545419">should_switch_task</a> = true</td></tr>
 <tr class="separator:ga5c53ccc4e154989b577fa92779545419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff8dda95e4fd2e2f21c17a44ab71afcf"><td class="memItemLeft" align="right" valign="top">static stack_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#gaff8dda95e4fd2e2f21c17a44ab71afcf">idle_task_stack</a> [32]</td></tr>
+<tr class="separator:gaff8dda95e4fd2e2f21c17a44ab71afcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ccd12cc08586d8021cbe4abfb3bf600"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structtask__ctl__t.html">task_ctl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga2ccd12cc08586d8021cbe4abfb3bf600">idle_task_ctl</a></td></tr>
+<tr class="separator:ga2ccd12cc08586d8021cbe4abfb3bf600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >The private data (implementation) of the RLTOS task list. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gaaf0d6196a9bd2cf22c5fd38b0a6725bf" name="gaaf0d6196a9bd2cf22c5fd38b0a6725bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaf0d6196a9bd2cf22c5fd38b0a6725bf">&#9670;&nbsp;</a></span>Rltos_idle_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Rltos_idle_thread </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Idle task function - calls hook function on each execution. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_gaaf0d6196a9bd2cf22c5fd38b0a6725bf_icgraph.svg" width="498" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ga7dad02e1630e47f423618b110c2071a4" name="ga7dad02e1630e47f423618b110c2071a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7dad02e1630e47f423618b110c2071a4">&#9670;&nbsp;</a></span>Rltos_scheduler_switch_context()</h2>
 
@@ -313,7 +354,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="554" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -370,7 +412,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga6f098dd7382a94e001bdeeadd29ae7bf_icgraph.svg" width="100%" height="454"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga6f098dd7382a94e001bdeeadd29ae7bf_icgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -432,12 +475,36 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga421dbb81487cd2fdc1fd06b1407eae5b_icgraph.svg" width="578" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga421dbb81487cd2fdc1fd06b1407eae5b_icgraph.svg" width="578" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="ga2ccd12cc08586d8021cbe4abfb3bf600" name="ga2ccd12cc08586d8021cbe4abfb3bf600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2ccd12cc08586d8021cbe4abfb3bf600">&#9670;&nbsp;</a></span>idle_task_ctl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtask__ctl__t.html">task_ctl_t</a> idle_task_ctl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Rltos idle task </p>
+
+</div>
+</div>
 <a id="ga49f071765d856473924736dcf75f5087" name="ga49f071765d856473924736dcf75f5087"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga49f071765d856473924736dcf75f5087">&#9670;&nbsp;</a></span>idle_task_list</h2>
 
@@ -455,6 +522,29 @@ Here is the caller graph for this function:</div>
 <div class="line">    0U </div>
 <div class="line">}</div>
 </div><!-- fragment --><p >List containing all idle/blocked tasks </p>
+
+</div>
+</div>
+<a id="gaff8dda95e4fd2e2f21c17a44ab71afcf" name="gaff8dda95e4fd2e2f21c17a44ab71afcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaff8dda95e4fd2e2f21c17a44ab71afcf">&#9670;&nbsp;</a></span>idle_task_stack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">stack_type idle_task_stack[32]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Rltos idle task stack </p>
 
 </div>
 </div>

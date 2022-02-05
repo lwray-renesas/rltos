@@ -90,7 +90,19 @@ $(document).ready(function(){initNavTree('quickstart.html',''); initResizable();
   <div class="headertitle"><div class="title">Quickstart </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Need to write the quickstart. </p>
+<div class="textblock"><p >The quickstart is for using RLTOS in an embedded project. The folowing assumes a port has been selected.</p>
+<ul>
+<li>In the development environment add the include paths to:<ul>
+<li>rltos_port.h for your target platform.</li>
+<li><a class="el" href="rltos__task_8h.html">rltos_task.h</a> which brings in all core code for RLTOS.</li>
+</ul>
+</li>
+<li>In the rltos_port.c file for your target platform ensure the <div class="fragment"><div class="line"><span class="keywordtype">void</span> Rltos_port_start_tick_timer(<span class="keywordtype">void</span>) </div>
+</div><!-- fragment --> function is populated with code to start the tick timer running.</li>
+<li>Ensure the rltos_scheduler_asm.asm file for your target platform and target compiler are included in the build sources.</li>
+<li>Ensure the Relevant ISR's are installed in the interrupt vector table of your target paltform - otherwise the ISR for tick (and yield where applicable) will never be called.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Some ports (such as RL78 IAR) install the tick and yield interrupts for you in asm - the port filesshould mention this in the rltos_port.h file if this is the case. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -1,6 +1,6 @@
 /**
 \page developing Developing
-This page attempts to outline everything to do with the development process of RLTOS.
+This section attempts to outline everything to do with the development process of RLTOS.
 Contents:
     - \subpage start_developing
     - \subpage coding_standards
@@ -14,11 +14,7 @@ Contents:
 To start developing you will need to install the following tools:
     - <a href="https://code.visualstudio.com/">Visual Studio Code</a>
     - <a href="https://cmake.org/">CMake</a>
-    - <a href="https://cpputest.github.io/">CppUTest</a>: Follow instructions for building and installing (including the addition of the environment variables).
-
-You will then need to ensure your PATH environment variable has the entries to the following:
-    - <cpputest-source-dir> (e.g. C:\Users\Lwray\Dev\cpputest)
-    - <cpputest-home-dir> (e.g. C:\Program Files\CppUTest)
+    - <a href="https://cpputest.github.io/">CppUTest</a> - Follow instructions for building and installing (including the addition of the environment variables).
 
 You will also need to install and enable the following Visual Studio Code extensions:
     - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a>
@@ -43,7 +39,8 @@ Modifications made to improve setup:
 
 \section misra_suppressions MISRA Suppressions
 This section lists the suppressions of MISRA violations and explains why they are present.
-- List suppressions.
+- Rltos_task_create: misra-c2012-11.3 - prohibition of casting between pointers to objects of different types - This is the only way to allow for static allocation of objects while still hiding implementation - sizes are gauranteed to be same as part of qualifying the ports.
+- Rltos_task_destroy: misra-c2012-11.3 - prohibition of casting between pointers to objects of different types - This is the only way to allow for static allocation of objects while still hiding implementation - sizes are gauranteed to be same as part of qualifying the ports.
 
 */
 
@@ -54,7 +51,7 @@ Documentation is posted to github pages - the latest version can be found <a hre
     - <a href="https://www.doxygen.nl/index.html">Doxygen</a>
     - <a href="http://www.graphviz.org/">GraphViz</a>
 
-The doxyfile can be found in the docs/doxy folder.
+The doxyfile can be found: docs/doxy/DoxyFile
 Running this file through the doxygen tool will update the documentation.
 
 \note Thanks to: <a href="https://jothepro.github.io/doxygen-awesome-css/">doxygen-awesome-css</a> for the brilliant formatting of this documentation!
@@ -79,8 +76,8 @@ More can be found on this in the \ref deployment "Deployment Page".
 
 /**
 \page ports Ports
-Need to top level explain the ports - possibly at some point implement a porting guide.
-Also need to explain that this section outlines what ports are available and any considerations or when using the ports.
+The following section outlines what ports are avilable.
+Each port will explain limitations and considerations of its own implementaiton.
 
 \section cpputest_unit_testing CPPUTEST_UNIT_TESTING
 This port exists to satisfy the unit testing environment.

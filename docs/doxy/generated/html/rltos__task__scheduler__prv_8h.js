@@ -1,5 +1,7 @@
 var rltos__task__scheduler__prv_8h =
 [
+    [ "Rltos_scheduler_switch_context", "group___rltos__task__scheduler__prv.html#ga7dad02e1630e47f423618b110c2071a4", null ],
+    [ "Rltos_scheduler_tick_inc", "group___rltos__task__scheduler__prv.html#ga609bbe6d9efbe0605517cde0ba5c9f06", null ],
     [ "Task_is_in_list", "group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf", null ],
     [ "idle_task_list", "group___rltos__task__scheduler__prv.html#ga49f071765d856473924736dcf75f5087", null ],
     [ "p_current_task_ctl", "group___rltos__task__scheduler__prv.html#ga09f0e5ca4af6b2f511b4ff7b280c0997", null ],

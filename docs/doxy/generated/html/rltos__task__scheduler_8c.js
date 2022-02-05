@@ -1,5 +1,6 @@
 var rltos__task__scheduler_8c =
 [
+    [ "Rltos_idle_thread", "group___rltos__task__scheduler__prv.html#gaaf0d6196a9bd2cf22c5fd38b0a6725bf", null ],
     [ "Rltos_scheduler_switch_context", "group___rltos__task__scheduler__prv.html#ga7dad02e1630e47f423618b110c2071a4", null ],
     [ "Rltos_scheduler_tick_inc", "group___rltos__task__scheduler__prv.html#ga609bbe6d9efbe0605517cde0ba5c9f06", null ],
     [ "Task_append_to_list", "group___rltos__task__scheduler__prv.html#ga28f6d69d82ff510be23a1a401d5d42a9", null ],
@@ -8,11 +9,14 @@ var rltos__task__scheduler_8c =
     [ "Task_insert_in_list", "group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd", null ],
     [ "Task_list_init", "group___rltos__task__scheduler__api.html#gac816af0adf021190a270dbf77055b7e8", null ],
     [ "Task_remove_from_list", "group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b", null ],
+    [ "Task_scheduler_deinit", "group___rltos__task__scheduler__api.html#gaea5aed38dc28d13622f7ab25c56e9715", null ],
     [ "Task_scheduler_init", "group___rltos__task__scheduler__api.html#gae1bd8e8e3af9f778a719fb7a086451f1", null ],
     [ "Task_set_current_idle", "group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f", null ],
     [ "Task_set_current_wait_on_object", "group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb", null ],
     [ "Task_set_running", "group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b", null ],
+    [ "idle_task_ctl", "group___rltos__task__scheduler__prv.html#ga2ccd12cc08586d8021cbe4abfb3bf600", null ],
     [ "idle_task_list", "group___rltos__task__scheduler__prv.html#ga49f071765d856473924736dcf75f5087", null ],
+    [ "idle_task_stack", "group___rltos__task__scheduler__prv.html#gaff8dda95e4fd2e2f21c17a44ab71afcf", null ],
     [ "p_current_task_ctl", "group___rltos__task__scheduler__prv.html#ga09f0e5ca4af6b2f511b4ff7b280c0997", null ],
     [ "rltos_next_idle_ready_tick", "group___rltos__task__scheduler__prv.html#ga841faa3ccd9dd8b645084cf2dc99aff2", null ],
     [ "rltos_next_idle_ready_wrap_count", "group___rltos__task__scheduler__prv.html#gaa98c090225b85de59f0cfca6f649c9f8", null ],

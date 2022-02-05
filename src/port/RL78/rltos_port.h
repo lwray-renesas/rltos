@@ -79,10 +79,16 @@ void Rltos_port_idle_task_hook(void);
  */
 extern void Rltos_port_enter_first_task(void);
 
-/** @brief Function to be provided for manually yielding task - to be installed as ISR 0x7E (BRK) - provided in ASM.*/
+/** @brief Function to be provided for manually yielding task - to be installed as ISR 0x7E (BRK) - provided in ASM.
+ * @details For the IAR comipiler the ISR is installed in ASM.
+ * For the LLVM port this header file should be included in the vector table definition file and the function should be installed in the given vector table location.
+*/
 extern void Rltos_port_yield(void);
 
-/** @brief Function to be provided for tick handler ISR - to be installed as tick/timer interrupt (INTITL) - provided in ASM.*/
+/** @brief Function to be provided for tick handler ISR - to be installed as tick/timer interrupt (INTITL) - provided in ASM.
+ * @details For the IAR comipiler the ISR is installed in ASM.
+ * For the LLVM port this header file should be included in the vector table definition file and the function should be installed in the given vector table location.
+*/
 extern void Rltos_port_tick(void);
 
 #endif /* RLTOS_PORT_H_ */

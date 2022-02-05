@@ -51,7 +51,7 @@ endif()
 # Creating an executable project
 add_executable(rltos_test ${ALL_SOURCE})
 
-# Add the following directories - only include directroies required by any project is a port directory containing rltos_port.h and the kernel task directory.
+# Add the following directories - only include directories required by any project is a port directory containing rltos_port.h and the kernel task directory.
 target_include_directories(rltos_test PUBLIC 
 ${CPPUTEST_HOME_DIR}/include
 ${RLTOS_DIR}/rltos_kernel

@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Function to initialise the current task on entry to the scheduler.">
+<g id="a_node1"><a xlink:title="Function to initialise the current task on entry to the scheduler &amp; create + add the idle task to the...">
 <polygon fill="#bfbfbf" stroke="black" points="134,-0.5 134,-19.5 237,-19.5 237,-0.5 134,-0.5"/>
 <text text-anchor="middle" x="185.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_scheduler_init</text>
 </a>

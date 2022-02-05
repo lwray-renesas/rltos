@@ -100,7 +100,8 @@ $(document).ready(function(){initNavTree('coding_standards.html',''); initResiza
 <h1><a class="anchor" id="misra_suppressions"></a>
 MISRA Suppressions</h1>
 <p >This section lists the suppressions of MISRA violations and explains why they are present.</p><ul>
-<li>List suppressions. </li>
+<li>Rltos_task_create: misra-c2012-11.3 - prohibition of casting between pointers to objects of different types - This is the only way to allow for static allocation of objects while still hiding implementation - sizes are gauranteed to be same as part of qualifying the ports.</li>
+<li>Rltos_task_destroy: misra-c2012-11.3 - prohibition of casting between pointers to objects of different types - This is the only way to allow for static allocation of objects while still hiding implementation - sizes are gauranteed to be same as part of qualifying the ports. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
