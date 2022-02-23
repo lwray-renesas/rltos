@@ -2,7 +2,6 @@
     "cmake.sourceDirectory": "${workspaceFolder}/test",
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
-        "*.dox": "c",
         "memory": "cpp",
         "array": "cpp",
         "istream": "cpp",
