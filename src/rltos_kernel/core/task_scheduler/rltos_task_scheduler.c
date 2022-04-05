@@ -74,14 +74,18 @@ void Rltos_scheduler_tick_inc(void)
 	{
 		++rltos_wrap_count;
 	}
+}
+/* END OF FUNCTION*/
 
-	/* While idle tasks are present in idle task list.
+void Rltos_scheduler_switch_context(void)
+{
+	/* If idle tasks are present in idle task list.
 	* AND 
 	* next idle tasks wrap counter matches system wrap counter.
 	* AND 
 	* system tick count has expired the next idles tasks expiry time.
 	*/
-	while ((idle_task_list.size > 0U) &&
+	if ((idle_task_list.size > 0U) &&
 		   (rltos_wrap_count == rltos_next_idle_ready_wrap_count) &&
 		   (rltos_system_tick >= rltos_next_idle_ready_tick))
 	{
@@ -90,11 +94,7 @@ void Rltos_scheduler_tick_inc(void)
 		*/
 		Task_set_running(idle_task_list.p_head);
 	}
-}
-/* END OF FUNCTION*/
 
-void Rltos_scheduler_switch_context(void)
-{
 	/* If we need to switch task - do so, otherwise mark as needing to switch next time*/
 	if (should_switch_task)
 	{
