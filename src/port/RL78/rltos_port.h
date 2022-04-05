@@ -46,6 +46,11 @@ typedef uint16_t * stack_ptr_type;
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint16_t rltos_uint;
 
+/** @brief pointer type for task functions.
+ * @note In the event the target application in an RL78 grows beyond 64k boundary 
+*/
+typedef void(*p_task_func_t)(void);
+
 /** @brief value of unsigned integers maximum value*/
 #define RLTOS_UINT_MAX	(0xFFFFU)
 

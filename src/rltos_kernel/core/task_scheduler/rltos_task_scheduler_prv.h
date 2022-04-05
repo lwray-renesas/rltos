@@ -13,6 +13,12 @@
 
 #include "rltos_task_scheduler.h"
 
+/** @brief Macro definition for the maximum number of lists a task can be in.
+ * @details Currently set to 2; state and auxillary. This is directly proprtional to the
+ * number of values in the typdef enum list_index_t.
+*/
+#define MAX_TASK_LISTS    (2U)
+
 /** @struct task_ctl_t
  * @brief Definition of task control structure
  * 
@@ -22,17 +28,17 @@ struct task_ctl_t
 {
 	/* Task specific data*/
 	stack_ptr_type stored_sp;	/**< Stored value of the stack pointer*/
-	p_task_func_t p_task_func;	/**< Function pointer for entry of point of task*/
+	p_task_func_t p_task_func;	/**< Function pointer for entry point of task*/
 	rltos_uint idle_ready_time; /**< Value representing the time this task will be ready*/
 	rltos_uint idle_time;		/**< Value representing the max time this task should remain idled*/
 	rltos_uint idle_wrap_count; /**< Value to detect when wrap around is required*/
 	rltos_uint priority;		/**< Value representing the tasks priority*/
 
 	/* List specific data*/
-	struct task_ctl_t *p_next_tctl[2]; /**< Pointer to the next item - can exist in two lists at once*/
-	struct task_ctl_t *p_prev_tctl[2]; /**< Pointer to the previous item - can exist in two lists at once*/
-	p_task_list_t p_owners[2];		   /**< Pointer to the list who owns this task - can exist in two lists at once*/
-	rltos_uint sorting_values[2];		/**< Array to store the lists sorting values*/
+	struct task_ctl_t *p_next_tctl[MAX_TASK_LISTS]; /**< Pointer to the next item - can exist in two lists at once*/
+	struct task_ctl_t *p_prev_tctl[MAX_TASK_LISTS]; /**< Pointer to the previous item - can exist in two lists at once*/
+	p_task_list_t p_owners[MAX_TASK_LISTS];		   /**< Pointer to the list who owns this task - can exist in two lists at once*/
+	rltos_uint sorting_values[MAX_TASK_LISTS];		/**< Array to store the lists sorting values*/
 };
 
 /** @struct task_list_t

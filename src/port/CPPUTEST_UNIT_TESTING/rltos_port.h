@@ -35,6 +35,9 @@ typedef uint32_t * stack_ptr_type;
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint32_t rltos_uint;
 
+/** @brief pointer type for task functions*/
+typedef void(*p_task_func_t)(void);
+
 /** @brief value of unsigned integers maximum value*/
 #define RLTOS_UINT_MAX	(0xFFFFFFFFU)
 

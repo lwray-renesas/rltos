@@ -15,9 +15,6 @@
 
 #include "rltos_port.h"
 
-/** @brief Utility macro for unused arguments*/
-#define RLTOS_UNUSED(e)	((void)(e))
-
 /** @struct dummy_task_t
  * @brief Dummy task structure guaranteed to be the same size as a task control structure.
  * 
@@ -48,9 +45,6 @@ typedef dummy_task_t * p_dummy_task_t;
 
 /** @brief  pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
-
-/** @brief pointer type for task functions*/
-typedef void* p_task_func_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. */
 void Rltos_kernel_enter(void);
