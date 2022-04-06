@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('group___rltos__task__scheduler__prv.ht
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Task Scheduler Private<div class="ingroups"><a class="el" href="group___rltos__core.html">Core</a> &raquo; <a class="el" href="group___rltos__task__scheduler.html">Task Scheduler</a> &#124; <a class="el" href="group___rltos__core.html">Core</a> &raquo; <a class="el" href="group___rltos__task.html">Task</a> &raquo; <a class="el" href="group___rltos__task__api.html">Task API</a> &raquo; <a class="el" href="group___rltos__task__prv.html">Task Private</a> &#124; <a class="el" href="group___rltos__semaphore.html">Sempahore</a> &raquo; <a class="el" href="group___rltos__semaphore__api.html">Semaphore API</a> &raquo; <a class="el" href="group___rltos__semaphore__prv.html">Semaphore Private</a> &#124; <a class="el" href="group___rltos__queue.html">Queue</a> &raquo; <a class="el" href="group___rltos__queue__api.html">Queue API</a> &raquo; <a class="el" href="group___rltos__queue__prv.html">Queue Private</a> &#124; <a class="el" href="group___rltos__mutex.html">Mutex</a> &raquo; <a class="el" href="group___rltos__mutex__api.html">Mutex API</a> &raquo; <a class="el" href="group___rltos__mutex__prv.html">Mutex Private</a> &#124; <a class="el" href="group___rltos__event__flags.html">Event flags</a> &raquo; <a class="el" href="group___rltos__event__flags__api.html">Event Flags API</a> &raquo; <a class="el" href="group___rltos__event__flags__prv.html">Event Flags Private</a> &raquo; <a class="el" href="group___rltos__task__scheduler__api.html">Task Scheduler API</a></div></div></div>
@@ -108,6 +109,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtask__list__t.html">task_list_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of task list control structure.  <a href="structtask__list__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga94f6d3d7f9ba47c80564648cca0e9fa6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga94f6d3d7f9ba47c80564648cca0e9fa6">MAX_TASK_LISTS</a>&#160;&#160;&#160;(2U)</td></tr>
+<tr class="memdesc:ga94f6d3d7f9ba47c80564648cca0e9fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro definition for the maximum number of lists a task can be in.  <a href="group___rltos__task__scheduler__prv.html#ga94f6d3d7f9ba47c80564648cca0e9fa6">More...</a><br /></td></tr>
+<tr class="separator:ga94f6d3d7f9ba47c80564648cca0e9fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -139,6 +146,8 @@ Variables</h2></td></tr>
 <tr class="separator:ga847b65da3481970d2cfd1651cd956df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga49f071765d856473924736dcf75f5087"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__list__t.html">task_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga49f071765d856473924736dcf75f5087">idle_task_list</a></td></tr>
 <tr class="separator:ga49f071765d856473924736dcf75f5087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga089d3e06b5b712d0f915a142c83f3adb"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtask__list__t.html">task_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga089d3e06b5b712d0f915a142c83f3adb">stopped_task_list</a></td></tr>
+<tr class="separator:ga089d3e06b5b712d0f915a142c83f3adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___rltos__task__scheduler__api.html#ga4694904741a0e90ff836770783ffdf47">p_task_ctl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga09f0e5ca4af6b2f511b4ff7b280c0997">p_current_task_ctl</a> = NULL</td></tr>
 <tr class="separator:ga09f0e5ca4af6b2f511b4ff7b280c0997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6106b912ed784069ef3cb4d67a2e8cde"><td class="memItemLeft" align="right" valign="top">volatile rltos_uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___rltos__task__scheduler__prv.html#ga6106b912ed784069ef3cb4d67a2e8cde">rltos_system_tick</a> = 0U</td></tr>
@@ -158,6 +167,24 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >The private data (implementation) of the RLTOS task list. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga94f6d3d7f9ba47c80564648cca0e9fa6" name="ga94f6d3d7f9ba47c80564648cca0e9fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga94f6d3d7f9ba47c80564648cca0e9fa6">&#9670;&nbsp;</a></span>MAX_TASK_LISTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_TASK_LISTS&#160;&#160;&#160;(2U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro definition for the maximum number of lists a task can be in. </p>
+<p >Currently set to 2; state and auxillary. This is directly proprtional to the number of values in the typdef enum list_index_t. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaaf0d6196a9bd2cf22c5fd38b0a6725bf" name="gaaf0d6196a9bd2cf22c5fd38b0a6725bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaaf0d6196a9bd2cf22c5fd38b0a6725bf">&#9670;&nbsp;</a></span>Rltos_idle_thread()</h2>
@@ -209,6 +236,12 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>implementation of rltos context switch - called from rltos_scheduler_asm.asm </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga7dad02e1630e47f423618b110c2071a4_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -229,11 +262,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>implementation of rltos tick increment - called from rltos_scheduler_asm.asm </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga609bbe6d9efbe0605517cde0ba5c9f06_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 
 </div>
 </div>
@@ -289,7 +317,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga28f6d69d82ff510be23a1a401d5d42a9_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga28f6d69d82ff510be23a1a401d5d42a9_icgraph.svg" width="528" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -353,7 +382,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_gab915c720a9360b7be5bb388002b6ebcd_icgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -410,7 +440,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga6f098dd7382a94e001bdeeadd29ae7bf_icgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga6f098dd7382a94e001bdeeadd29ae7bf_icgraph.svg" width="100%" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -472,7 +503,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga421dbb81487cd2fdc1fd06b1407eae5b_icgraph.svg" width="578" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group___rltos__task__scheduler__prv_ga421dbb81487cd2fdc1fd06b1407eae5b_icgraph.svg" width="100%" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -517,7 +549,7 @@ Here is the caller graph for this function:</div>
 <div class="line">    NULL, </div>
 <div class="line">    0U </div>
 <div class="line">}</div>
-</div><!-- fragment --><p >List containing all idle/blocked tasks </p>
+</div><!-- fragment --><p >List containing all temporarily blocked tasks </p>
 
 </div>
 </div>
@@ -651,6 +683,26 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p >Rltos next time to remove task from idle list </p>
+
+</div>
+</div>
+<a id="ga089d3e06b5b712d0f915a142c83f3adb" name="ga089d3e06b5b712d0f915a142c83f3adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga089d3e06b5b712d0f915a142c83f3adb">&#9670;&nbsp;</a></span>stopped_task_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtask__list__t.html">task_list_t</a> stopped_task_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    NULL, </div>
+<div class="line">    NULL, </div>
+<div class="line">    0U </div>
+<div class="line">}</div>
+</div><!-- fragment --><p >List containing all permanently blocked tasks </p>
 
 </div>
 </div>

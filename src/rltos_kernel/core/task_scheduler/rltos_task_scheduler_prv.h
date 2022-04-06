@@ -69,6 +69,7 @@ static inline bool Task_is_in_list(p_task_list_t const lst, p_task_ctl_t const t
 /* Variables defined intask list we want to access during unit testing of modules integrating with kernel*/
 extern struct task_list_t running_task_list;
 extern struct task_list_t idle_task_list;
+extern struct task_list_t stopped_task_list;
 extern p_task_ctl_t p_current_task_ctl;
 extern volatile rltos_uint rltos_system_tick;
 extern volatile rltos_uint rltos_wrap_count;

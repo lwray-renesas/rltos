@@ -9,9 +9,11 @@ var rltos__task__scheduler_8h =
     [ "Task_deinit", "group___rltos__task__scheduler__api.html#ga497b702db38a8ce118c8393eb0587712", null ],
     [ "Task_init", "group___rltos__task__scheduler__api.html#ga6bbde0c90e5e572e8131cc7652d8dd78", null ],
     [ "Task_list_init", "group___rltos__task__scheduler__api.html#gac816af0adf021190a270dbf77055b7e8", null ],
+    [ "Task_resume", "group___rltos__task__scheduler__api.html#gafed22720e2a57cdac7337c27d9f6b71d", null ],
     [ "Task_scheduler_deinit", "group___rltos__task__scheduler__api.html#gaea5aed38dc28d13622f7ab25c56e9715", null ],
     [ "Task_scheduler_init", "group___rltos__task__scheduler__api.html#gae1bd8e8e3af9f778a719fb7a086451f1", null ],
     [ "Task_set_current_idle", "group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f", null ],
     [ "Task_set_current_wait_on_object", "group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb", null ],
-    [ "Task_set_running", "group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b", null ]
+    [ "Task_set_running", "group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b", null ],
+    [ "Task_set_stopped", "group___rltos__task__scheduler__api.html#gaa65328e4b21083ff31b9ab00088bba47", null ]
 ];

@@ -23,7 +23,7 @@ extern "C"
 
 /** Prototypes*/
 /** @brief The dummy task function used for initialisation of tasks*/
-void Dummy_task_func(void);
+static void Dummy_task_func(void);
 
 /** @brief Helper function used to simulate the scheduler running
  * @param[in] num_ticks - Number of ticks to run the scheduler simulation for.
@@ -89,7 +89,7 @@ TEST_GROUP(TaskSchedulerTestGroup)
    /* END OF FUNCTION*/
 };
 
-void Dummy_task_func(void)
+static void Dummy_task_func(void)
 {
    /* Do nothing*/
 }
@@ -165,61 +165,19 @@ TEST(TaskSchedulerTestGroup, Test_TaskListInit_ValuesOk)
 
 TEST(TaskSchedulerTestGroup, Test_TaskAppend)
 {
-   p_task_ctl_t l_task0_under_test = (p_task_ctl_t)&(group_tasks_under_test[0]);
-   p_task_ctl_t l_task1_under_test = (p_task_ctl_t)&(group_tasks_under_test[1]);
-   p_task_ctl_t l_task2_under_test = (p_task_ctl_t)&(group_tasks_under_test[2]);
-   p_task_ctl_t l_task3_under_test = (p_task_ctl_t)&(group_tasks_under_test[3]);
-
-   Task_append_to_list(&l_aux_list_under_test, l_task0_under_test, aux_list);
-   CHECK_TEXT(l_aux_list_under_test.p_head == l_task0_under_test, "List append failed, p_head not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_index == l_task0_under_test, "List append failed, p_index not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.size == 1U, "List append failed, size not set correctly");
-
-   Task_append_to_list(&l_aux_list_under_test, l_task1_under_test, aux_list);
-   CHECK_TEXT(l_aux_list_under_test.p_head == l_task0_under_test, "List append failed, p_head not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_index == l_task0_under_test, "List append failed, p_index not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.size == 2U, "List append failed, size not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_head->p_prev_tctl[state_list] == l_task1_under_test, "List append failed, p_head previous task not set correctly");
-   CHECK_TEXT(l_task1_under_test->p_next_tctl[state_list] == l_aux_list_under_test.p_head, "List append failed, task appended next task not set correctly");
-
-   Task_append_to_list(&l_aux_list_under_test, l_task2_under_test, aux_list);
-   CHECK_TEXT(l_aux_list_under_test.p_head == l_task0_under_test, "List append failed, p_head not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_index == l_task0_under_test, "List append failed, p_index not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.size == 3U, "List append failed, size not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_head->p_prev_tctl[state_list] == l_task2_under_test, "List append failed, p_head previous task not set correctly");
-   CHECK_TEXT(l_task2_under_test->p_next_tctl[state_list] == l_aux_list_under_test.p_head, "List append failed, task appended next task not set correctly");
-   CHECK_TEXT(l_task2_under_test->p_prev_tctl[state_list] == l_task1_under_test, "List append failed, task appended prev task not set correctly");
-   CHECK_TEXT(l_task1_under_test->p_next_tctl[state_list] == l_task2_under_test, "List append failed, task previously appended next task not set correctly");
-
-   Task_append_to_list(&l_aux_list_under_test, l_task3_under_test, aux_list);
-   CHECK_TEXT(l_aux_list_under_test.p_head == l_task0_under_test, "List append failed, p_head not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_index == l_task0_under_test, "List append failed, p_index not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.size == 4U, "List append failed, size not set correctly");
-   CHECK_TEXT(l_aux_list_under_test.p_head->p_prev_tctl[state_list] == l_task3_under_test, "List append failed, p_head previous task not set correctly");
-   CHECK_TEXT(l_task3_under_test->p_next_tctl[state_list] == l_aux_list_under_test.p_head, "List append failed, task appended next task not set correctly");
-   CHECK_TEXT(l_task3_under_test->p_prev_tctl[state_list] == l_task2_under_test, "List append failed, task appended prev task not set correctly");
-   CHECK_TEXT(l_task2_under_test->p_next_tctl[state_list] == l_task3_under_test, "List append failed, task previously appended next task not set correctly");
+   FAIL("TODO: Test Task Append");
 }
 /* END OF TEST*/
 
 TEST(TaskSchedulerTestGroup, Test_TaskRemove)
 {
-   p_task_ctl_t l_task0_under_test = (p_task_ctl_t)&(group_tasks_under_test[0]);
-
-   Task_append_to_list(&l_aux_list_under_test, l_task0_under_test, aux_list);
-
-   Task_remove_from_list(&l_aux_list_under_test, l_task0_under_test, aux_list);
-
-   CHECK_TEXT((l_aux_list_under_test.p_head == NULL), "Task_remove_from_list did not reset p_head");
-   CHECK_TEXT((l_aux_list_under_test.p_index == NULL), "Task_remove_from_list did not reset p_index");
-   CHECK_TEXT((l_aux_list_under_test.size == 0U), "Task_remove_from_list did not reset size");
-   CHECK_TEXT((l_task0_under_test->p_next_tctl[aux_list] == NULL), "Task_remove_from_list did not reset tasks next task pointer");
-   CHECK_TEXT((l_task0_under_test->p_prev_tctl[aux_list] == NULL), "Task_remove_from_list did not reset tasks previous task pointer");
+   FAIL("TODO: Test Task Remove");
 }
 /* END OF TEST*/
 
 TEST(TaskSchedulerTestGroup, Test_TaskInsert)
 {
+   /* Test performed on created running and stopped lists*/
    /* Verify the running list is ordered in priority from highest (smallest number) to lowest (largest number)*/
    p_task_ctl_t tsk_indexer = running_task_list.p_head->p_next_tctl[state_list];
    while (tsk_indexer != running_task_list.p_head)
@@ -230,8 +188,8 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert)
    }
 
    /* Verify the idle list is ordered in priority from highest (smallest number) to lowest (largest number)*/
-   tsk_indexer = idle_task_list.p_head->p_next_tctl[state_list];
-   while (tsk_indexer != idle_task_list.p_head)
+   tsk_indexer = stopped_task_list.p_head->p_next_tctl[state_list];
+   while (tsk_indexer != stopped_task_list.p_head)
    {
       /* Checks if the current tasks sorting value is larger than or equal to the one before it*/
       CHECK_TEXT(tsk_indexer->sorting_values[state_list] >= tsk_indexer->p_prev_tctl[state_list]->sorting_values[state_list], "Idle list in wrong order!");
@@ -242,13 +200,6 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert)
 
 TEST(TaskSchedulerTestGroup, Test_TaskSetRunning_ListsOK_IdleOnly)
 {
-   p_task_ctl_t l_task0_under_test = idle_task_list.p_head;
-
-   Task_set_running(l_task0_under_test);
-
-   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task failed to be removed from idle list");
-   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task failed to be added to running list");
-   CHECK_TEXT(RLTOS_UINT_MAX == rltos_next_idle_ready_tick, "Failed to update next idle ready tick count");
-   CHECK_TEXT(RLTOS_UINT_MAX == rltos_next_idle_ready_wrap_count, "Failed to update next idle ready wrap count");
+   FAIL("TODO: Test Task Set Running");
 }
 /* END OF TEST*/

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tooling_0',['Tooling',['../tooling.html',1,'deployment']]]
+  ['tasks_0',['Tasks',['../tasks.html',1,'deep_dive']]],
+  ['tooling_1',['Tooling',['../tooling.html',1,'deployment']]]
 ];
