@@ -15,12 +15,20 @@ struct task_list_t running_task_list = {
 	0U /* Size*/
 };
 
-/** List containing all idle/blocked tasks*/
+/** List containing all temporarily blocked tasks*/
 struct task_list_t idle_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U /* Size*/
 };
+
+/** List containing all permanently blocked tasks*/
+struct task_list_t stopped_task_list = {
+	NULL, /* Head*/
+	NULL, /* Index*/
+	0U /* Size*/
+};
+
 /** Pointer to current running task*/
 p_task_ctl_t p_current_task_ctl = NULL;
 
@@ -146,10 +154,10 @@ void Task_scheduler_deinit(void)
 
 	RLTOS_ENTER_CRITICAL_SECTION();
 
-	/* Create the idle task and puit it in the running list*/
+	/* Destroy the idle task*/
 	Task_deinit(&idle_task_ctl);
 
-	/* Initialise the current task ctl pointer*/
+	/* Destroy the current task control pointer*/
 	p_current_task_ctl = NULL;
 
 	RLTOS_EXIT_CRITICAL_SECTION();
@@ -184,7 +192,7 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_
 	}
 	else
 	{
-		Task_insert_in_list(&idle_task_list, task_to_init, state_list, task_to_init->idle_time);
+		Task_insert_in_list(&stopped_task_list, task_to_init, state_list, task_to_init->idle_time);
 	}
 
 	RLTOS_EXIT_CRITICAL_SECTION();
@@ -247,7 +255,7 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 
 	RLTOS_ENTER_CRITICAL_SECTION();
 
-	const bool was_head_of_idle_list = idle_task_list.p_head == task_to_run;
+	const bool was_head_of_idle_list = (task_to_run->p_owners[state_list] == &idle_task_list) && (task_to_run == idle_task_list.p_head);
 
 	/* If we are owned by an object -> remove from objects list*/
 	if (NULL != task_to_run->p_owners[aux_list])
@@ -256,7 +264,7 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 	}
 
 	/* Move task from idle state to running state*/
-	Task_remove_from_list(&idle_task_list, task_to_run, state_list);
+	Task_remove_from_list(task_to_run->p_owners[state_list], task_to_run, state_list);
 	Task_insert_in_list(&running_task_list, task_to_run, state_list, task_to_run->priority);
 
 	if (was_head_of_idle_list)
@@ -276,6 +284,16 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 	}
 
 	RLTOS_EXIT_CRITICAL_SECTION();
+}
+/* END OF FUNCTION*/
+
+void Task_resume(p_task_ctl_t const task_to_resume)
+{
+	/* Only set the task running if it is not waiting on an object*/
+	if(task_to_resume->p_owners[aux_list] == NULL)
+	{
+		Task_set_running(task_to_resume);
+	}
 }
 /* END OF FUNCTION*/
 
@@ -327,11 +345,25 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 		}
 	}
 
-	Task_remove_from_list(&running_task_list, p_current_task_ctl, state_list);
+	Task_remove_from_list(p_current_task_ctl->p_owners[state_list], p_current_task_ctl, state_list);
 	Task_insert_in_list(&idle_task_list, p_current_task_ctl, state_list, p_current_task_ctl->idle_time);
 
 	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
 	should_switch_task = false;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
+}
+/* END OF FUNCTION*/
+
+void Task_set_stopped(p_task_ctl_t const task_to_stop)
+{
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
+	/* Move task into stopped task list - don't care about stop list order*/
+	Task_remove_from_list(task_to_stop->p_owners[state_list], task_to_stop, state_list);
+	Task_append_to_list(&stopped_task_list, task_to_stop, state_list);
 
 	RLTOS_EXIT_CRITICAL_SECTION();
 }
@@ -343,8 +375,15 @@ void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint
 
 	RLTOS_ENTER_CRITICAL_SECTION();
 
-	/* Idle the task until it is told to run, either by the scheduler or the owning objects signal*/
-	Task_set_current_idle(time_to_wait);
+	/* Idle the task if the time to wait is less than max*/
+	if(RLTOS_UINT_MAX == time_to_wait)
+	{
+		Task_set_stopped(p_current_task_ctl);
+	}
+	else
+	{
+		Task_set_current_idle(time_to_wait);
+	}
 
 	/* Dont care about the order in which they are appended*/
 	Task_append_to_list(owner, p_current_task_ctl, aux_list);

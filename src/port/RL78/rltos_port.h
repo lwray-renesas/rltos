@@ -76,6 +76,9 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* con
 /** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
 void Rltos_port_start_tick_timer(void);
 
+/** @brief Stops the RLTOS tick timer (INTITL)*/
+void Rltos_port_stop_tick_timer(void);
+
 /** @brief The hook called by the idle thread constantly in a while 1 loop - typically used to enter low power state.*/
 void Rltos_port_idle_task_hook(void);
 

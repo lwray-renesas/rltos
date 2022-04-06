@@ -2,8 +2,16 @@
 \page deep_dive Deep Dive
 A project deep dive - going into configurations and algorithms and justifications of techniques etc.
 Contents:
+    - \subpage tasks
     - \subpage limitations
+*/
 
+/**
+\page tasks Tasks
+The principle of the tasks operation surrounds 3 system lists.
+1. Running list - contains all tasks ready to run, including the task currently running (always located at the head).
+2. Idle list - contains all tasks temporarily stopped - that is ones with a timeout which the tick handler can re-introduce.
+3. Stopped list - contains all tasks permanently stopped which can only be manually released (infinite waits of tasks stopped with stop API).
 */
 
 /**

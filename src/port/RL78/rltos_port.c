@@ -41,6 +41,13 @@ void Rltos_port_start_tick_timer(void)
 }
 /* END OF FUNCTION*/
 
+/** @brief Stops running the RLTOS tick timer (INTITL)*/
+void Rltos_port_stop_tick_timer(void)
+{
+	/* TODO: Stop timer interrupt for which the ISR is Rltos_port_tick*/
+}
+/* END OF FUNCTION*/
+
 void Rltos_port_idle_task_hook(void)
 {
 	/* Do Nothing*/

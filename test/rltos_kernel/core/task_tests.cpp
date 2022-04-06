@@ -48,10 +48,11 @@ TEST_GROUP(TaskTestGroup)
    void setup(void)
    {
       Rltos_task_create(&task0, task0_stack, &task0_func, 0U, true);
-      Rltos_task_create(&task1, task1_stack, &task1_func, 0U, true);
+      Rltos_task_create(&task1, task1_stack, &task1_func, 0U, false);
       Rltos_task_create(&task2, task2_stack, &task2_func, 0U, true);
-      Rltos_task_create(&task3, task3_stack, &task3_func, 0U, true);
+      Rltos_task_create(&task3, task3_stack, &task3_func, 0U, false);
       Rltos_task_create(&task4, task4_stack, &task4_func, 0U, true);
+      Rltos_kernel_enter();
    }
    /* END OF FUNCTION*/
 
@@ -62,17 +63,10 @@ TEST_GROUP(TaskTestGroup)
       Rltos_task_destroy(&task2);
       Rltos_task_destroy(&task3);
       Rltos_task_destroy(&task4);
+      Rltos_kernel_kill();
    }
    /* END OF FUNCTION*/
 };
-
-TEST(TaskTestGroup, RltosKernelEnter_DoesNotCrash)
-{
-   /* Get up and running with mocking to verify certain function calls are made*/
-   Rltos_kernel_enter();
-   CHECK(true);
-}
-/* END OF TEST*/
 
 TEST(TaskTestGroup, RltosTaskCreate_ValuesOk)
 {
@@ -101,15 +95,15 @@ TEST(TaskTestGroup, RltosTaskCreate_ValuesOk)
    CHECK_TEXT(((p_task_ctl_t)&task4)->p_owners[aux_list] == NULL, "Task 4 of 4 aux list incorrectly initialised");
 
    CHECK_TEXT(Task_is_in_list(&running_task_list, (p_task_ctl_t)&task0, state_list), "Task 0 of 4 not placed in running list");
-   CHECK_TEXT(Task_is_in_list(&running_task_list, (p_task_ctl_t)&task1, state_list), "Task 1 of 4 not placed in running list");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task1, state_list), "Task 1 of 4 not placed in idle list");
    CHECK_TEXT(Task_is_in_list(&running_task_list, (p_task_ctl_t)&task2, state_list), "Task 2 of 4 not placed in running list");
-   CHECK_TEXT(Task_is_in_list(&running_task_list, (p_task_ctl_t)&task3, state_list), "Task 3 of 4 not placed in running list");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task3, state_list), "Task 3 of 4 not placed in idle list");
    CHECK_TEXT(Task_is_in_list(&running_task_list, (p_task_ctl_t)&task4, state_list), "Task 4 of 4 not placed in running list");
 
    CHECK_TEXT(!Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task0, state_list), "Task 0 of 4 erroneously placed in idle list");
-   CHECK_TEXT(!Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task1, state_list), "Task 1 of 4 erroneously placed in idle list");
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, (p_task_ctl_t)&task1, state_list), "Task 1 of 4 erroneously placed in running list");
    CHECK_TEXT(!Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task2, state_list), "Task 2 of 4 erroneously placed in idle list");
-   CHECK_TEXT(!Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task3, state_list), "Task 3 of 4 erroneously placed in idle list");
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, (p_task_ctl_t)&task3, state_list), "Task 3 of 4 erroneously placed in running list");
    CHECK_TEXT(!Task_is_in_list(&idle_task_list, (p_task_ctl_t)&task4, state_list), "Task 4 of 4 erroneously placed in idle list");
 }
 /* END OF TEST*/

@@ -63,10 +63,20 @@ void Task_deinit(p_task_ctl_t const task_to_deinit);
  */
 void Task_list_init(p_task_list_t const list_to_init);
 
-/** @brief Function used to append task to the running list
+/** @brief Function used to insert the task to the running list
  * @param[inout] task_to_run - task to set running.
  */
 void Task_set_running(p_task_ctl_t const task_to_run);
+
+/** @brief Function used to set a task running - only if it is stopped (not waiting on an object or idled)
+ * @param[inout] task_to_run - task to resume.
+ */
+void Task_resume(p_task_ctl_t const task_to_resume);
+
+/** @brief Function used to append the task to the stopped list
+ * @param[in] task_to_stop - task to stop.
+ */
+void Task_set_stopped(p_task_ctl_t const task_to_stop);
 
 /** @brief Function used to append task to the idle list
  * @param[in] time_to_idle - number of ticks to idle task.

@@ -12,10 +12,16 @@
 
 void Rltos_kernel_enter(void)
 {
-	/* Initialise the current task control pointer*/
 	Task_scheduler_init();
 	Rltos_port_start_tick_timer();
 	Rltos_port_enter_first_task();
+}
+/* END OF FUNCTION*/
+
+void Rltos_kernel_kill(void)
+{
+	Rltos_port_stop_tick_timer();
+	Task_scheduler_deinit();
 }
 /* END OF FUNCTION*/
 
@@ -35,6 +41,18 @@ void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
 	/* Denitialise the task*/
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
 	Task_deinit((p_task_ctl_t)(task_to_destroy));
+}
+/* END OF FUNCTION*/
+
+void Rltos_task_stop(p_dummy_task_t const task_to_stop)
+{
+	Task_set_stopped((p_task_ctl_t)(task_to_stop));
+}
+/* END OF FUNCTION*/
+
+void Rltos_task_resume(p_dummy_task_t const task_to_resume)
+{
+	Task_resume((p_task_ctl_t)(task_to_resume));
 }
 /* END OF FUNCTION*/
 

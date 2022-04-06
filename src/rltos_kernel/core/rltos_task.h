@@ -49,6 +49,9 @@ typedef dummy_task_list_t * p_dummy_task_list_t;
 /** @brief Enters RLTOS kernel and starts scheduler timer. */
 void Rltos_kernel_enter(void);
 
+/** @brief Cleanup of RLTOS kernel and stops scheduler timer. */
+void Rltos_kernel_kill(void);
+
 /** @brief Initialises task control structure, stack & appends to task list.
  * @param[inout] task_to_create - pointer to dummy task structure from which to create the task.
  * @param[in] p_stack_top - pointer to the top of the stack.
@@ -60,6 +63,14 @@ void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const
 /** @brief Deinitialises task control structure, and removes from any lists.
  * @param[inout] task_to_destroy - pointer to dummy task structure which represents the task to destroy.*/
 void Rltos_task_destroy(p_dummy_task_t const task_to_destroy);
+
+/** @brief Stops the targetted task indefinitely.
+ * @param[in] task_to_stop - Pointer to the task to stop.*/
+void Rltos_task_stop(p_dummy_task_t const task_to_stop);
+
+/** @brief Resumes the targetted task in the stop state.
+ * @param[in] task_to_resume - Pointer to the task to resume.*/
+void Rltos_task_resume(p_dummy_task_t const task_to_resume);
 
 /** @brief Puts the current thread to sleep for a minimum of the given number of ticks
  * @param[in] tick_count - The number of RLTOS ticks which the task will be placed in the idle list. If this value is 0 - this function call resolves to a yield.*/
