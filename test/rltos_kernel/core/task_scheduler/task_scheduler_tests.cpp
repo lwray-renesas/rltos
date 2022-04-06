@@ -198,7 +198,7 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert)
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskSetRunning_ListsOK_IdleOnly)
+TEST(TaskSchedulerTestGroup, Test_TaskSetRunning)
 {
    FAIL("TODO: Test Task Set Running");
 }
