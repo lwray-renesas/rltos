@@ -142,7 +142,8 @@ void Task_scheduler_init(void)
 	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);
 
 	/* Initialise the current task ctl pointer*/
-	p_current_task_ctl = running_task_list.p_head;
+	running_task_list.p_index = running_task_list.p_head;
+	p_current_task_ctl = running_task_list.p_index;
 
 	RLTOS_EXIT_CRITICAL_SECTION();
 }
@@ -297,6 +298,23 @@ void Task_resume(p_task_ctl_t const task_to_resume)
 }
 /* END OF FUNCTION*/
 
+void Task_set_stopped(p_task_ctl_t const task_to_stop)
+{
+	RLTOS_PREPARE_CRITICAL_SECTION();
+
+	RLTOS_ENTER_CRITICAL_SECTION();
+
+	/* Move task into stopped task list - don't care about stop list order*/
+	Task_remove_from_list(task_to_stop->p_owners[state_list], task_to_stop, state_list);
+	Task_append_to_list(&stopped_task_list, task_to_stop, state_list);
+		
+	/* by stopping the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
+	should_switch_task = false;
+
+	RLTOS_EXIT_CRITICAL_SECTION();
+}
+/* END OF FUNCTION*/
+
 void Task_set_current_idle(const rltos_uint time_to_idle)
 {
 	RLTOS_PREPARE_CRITICAL_SECTION();
@@ -350,20 +368,6 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 
 	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
 	should_switch_task = false;
-
-	RLTOS_EXIT_CRITICAL_SECTION();
-}
-/* END OF FUNCTION*/
-
-void Task_set_stopped(p_task_ctl_t const task_to_stop)
-{
-	RLTOS_PREPARE_CRITICAL_SECTION();
-
-	RLTOS_ENTER_CRITICAL_SECTION();
-
-	/* Move task into stopped task list - don't care about stop list order*/
-	Task_remove_from_list(task_to_stop->p_owners[state_list], task_to_stop, state_list);
-	Task_append_to_list(&stopped_task_list, task_to_stop, state_list);
 
 	RLTOS_EXIT_CRITICAL_SECTION();
 }

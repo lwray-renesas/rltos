@@ -43,7 +43,7 @@ void Simulate_scheduler(const rltos_uint num_ticks,
 /** Test group for task list initialser functions
  * All tests have acccess to a kernel with 100 tasks each with 32 units of stack - pointing to the dummy task function.
 */
-TEST_GROUP(TaskSchedulerTestGroup)
+TEST_GROUP(Task_scheduler)
 {
    static const size_t tasks_to_add = 100;
    static const size_t stack_size_units = 32;
@@ -137,14 +137,20 @@ void Simulate_scheduler(const rltos_uint num_ticks,
 }
 /* END OF FUNCTION*/
 
-TEST(TaskSchedulerTestGroup, Test_SchedulerInit)
+TEST(Task_scheduler, Test_Scheduler_init)
 {
    CHECK_TEXT(p_current_task_ctl != NULL, "Scheduler incorrectly initialised");
    CHECK_TEXT(running_task_list.p_head != NULL, "Scheduler incorrectly initialised");
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_IdleTaskInit_Ok)
+TEST(Task_scheduler, Test_Scheduler_deinit)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_init_on_idle_task)
 {
    CHECK_TEXT((idle_task_ctl.stored_sp == idle_task_stack), "Idle task stack pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_task_func == Rltos_idle_thread), "Idle task function pointer is not initialised as expected");
@@ -154,8 +160,15 @@ TEST(TaskSchedulerTestGroup, Test_IdleTaskInit_Ok)
    CHECK_TEXT((idle_task_ctl.p_owners[state_list] == &running_task_list), "Idle task should be owned by the running list");
    CHECK_TEXT(Task_is_in_list(&running_task_list, &idle_task_ctl, state_list), "Idle task should be owned by the running list");
 }
+/* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskListInit_ValuesOk)
+TEST(Task_scheduler, Test_Task_deinit_on_idle_task)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_list_init)
 {
    CHECK_TEXT((l_aux_list_under_test.p_head == NULL), "Task_list_init failed to initialise head pointer");
    CHECK_TEXT((l_aux_list_under_test.p_index == NULL), "Task_list_init failed to initialise index pointer");
@@ -163,19 +176,19 @@ TEST(TaskSchedulerTestGroup, Test_TaskListInit_ValuesOk)
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskAppend)
+TEST(Task_scheduler, Test_Task_append)
 {
-   FAIL("TODO: Test Task Append");
+   FAIL("TODO: Write Test");
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskRemove)
+TEST(Task_scheduler, Test_Task_remove)
 {
-   FAIL("TODO: Test Task Remove");
+   FAIL("TODO: Write Test");
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskInsert)
+TEST(Task_scheduler, Test_Task_insert)
 {
    /* Test performed on created running and stopped lists*/
    /* Verify the running list is ordered in priority from highest (smallest number) to lowest (largest number)*/
@@ -198,8 +211,44 @@ TEST(TaskSchedulerTestGroup, Test_TaskInsert)
 }
 /* END OF TEST*/
 
-TEST(TaskSchedulerTestGroup, Test_TaskSetRunning)
+TEST(Task_scheduler, Test_Task_set_running)
 {
-   FAIL("TODO: Test Task Set Running");
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_resume)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_set_stopped)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_set_current_idle)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_set_current_wait_on_object)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Scheduler_tick_inc)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Scheduler_switch_context)
+{
+   FAIL("TODO: Write Test");
 }
 /* END OF TEST*/

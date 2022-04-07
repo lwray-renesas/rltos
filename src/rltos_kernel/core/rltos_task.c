@@ -47,6 +47,12 @@ void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
 void Rltos_task_stop(p_dummy_task_t const task_to_stop)
 {
 	Task_set_stopped((p_task_ctl_t)(task_to_stop));
+
+	/* If its the current task - force yield the task*/
+	if((p_task_ctl_t)(task_to_stop) == p_current_task_ctl)
+	{
+		Rltos_task_yield();
+	}
 }
 /* END OF FUNCTION*/
 

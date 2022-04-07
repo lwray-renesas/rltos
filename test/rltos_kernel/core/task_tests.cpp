@@ -26,7 +26,7 @@ extern "C"
 static void Dummy_task_func(void);
 
 /** Test group for task list initialser functions*/
-TEST_GROUP(TaskTestGroup)
+TEST_GROUP(Task)
 {
    static const size_t tasks_to_add = 100;
    static const size_t stack_size_units = 32;
@@ -78,7 +78,25 @@ static void Dummy_task_func(void)
 }
 /* END OF FUNCTION*/
 
-TEST(TaskTestGroup, RltosTaskCreate_ValuesOk)
+TEST(Task, Test_kernel_enter)
+{
+   CHECK_TEXT(p_current_task_ctl != NULL, "Current task is NULL");
+   CHECK_TEXT(rltos_system_tick == 0U, "System tick count is not 0");
+   CHECK_TEXT(rltos_wrap_count == 0U, "System wrap count is not 0");
+   CHECK_TEXT(running_task_list.size != 0U, "Running task list size is zero");
+   CHECK_TEXT(running_task_list.p_head != NULL, "Running task list head pointer is NULL");
+   CHECK_TEXT(running_task_list.p_index != NULL, "Running task list index pointer is NULL");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_kernel_kill)
+{
+   Rltos_kernel_kill();
+   CHECK_TEXT(p_current_task_ctl == NULL, "Current task is not NULL");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_create)
 {
    for(dummy_task_t const &tsk_to_tst : group_tasks_under_test)
    {
@@ -90,7 +108,7 @@ TEST(TaskTestGroup, RltosTaskCreate_ValuesOk)
 }
 /* END OF TEST*/
 
-TEST(TaskTestGroup, RltosTaskDestroy_ValuesOk)
+TEST(Task, Test_task_destroy)
 {
    p_task_ctl_t p_tsk_to_tst = (p_task_ctl_t)&group_tasks_under_test[0];
 
@@ -106,7 +124,99 @@ TEST(TaskTestGroup, RltosTaskDestroy_ValuesOk)
 }
 /* END OF TEST*/
 
-TEST(TaskTestGroup, RltosTaskSleep_InTheCorrectList)
+TEST(Task, Test_task_stop_pending_task)
+{
+   p_task_ctl_t l_task0_under_test = p_current_task_ctl->p_prev_tctl[state_list];
+   Rltos_task_stop((p_dummy_task_t)l_task0_under_test);
+
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task incorrectly in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task not in stopped list");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_stop_idled_task)
+{
+   Rltos_task_sleep(0x1234U); /* Put a task in the idle task list*/
+
+   p_task_ctl_t l_task0_under_test = idle_task_list.p_head;
+   Rltos_task_stop((p_dummy_task_t)l_task0_under_test);
+
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task incorrectly in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task not in stopped list");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_stop_current_task)
+{
+   p_task_ctl_t l_prev_running_index = running_task_list.p_index;
+   p_task_ctl_t l_task0_under_test = p_current_task_ctl;
+
+   CHECK_TEXT(l_prev_running_index == p_current_task_ctl, "Initial running list index is not the current task");
+
+   Rltos_task_stop((p_dummy_task_t)l_task0_under_test);
+
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task incorrectly in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task not in stopped list");
+   CHECK_TEXT(l_prev_running_index != running_task_list.p_index, "Running lists index has not been updated");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_resume_stopped_task)
+{
+   p_task_ctl_t l_task0_under_test = stopped_task_list.p_head;
+
+   Rltos_task_resume((p_dummy_task_t)l_task0_under_test);
+
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task not in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(!Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task incorrectly in stopped list");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_resume_stopped_aux_owned_task)
+{
+   p_task_ctl_t l_prev_running_index = running_task_list.p_index;
+   p_task_ctl_t l_task0_under_test = p_current_task_ctl;
+
+   CHECK_TEXT(l_prev_running_index == p_current_task_ctl, "Initial running list index is not the current task");
+
+   /* stop the current task*/
+   Task_set_current_wait_on_object(&l_aux_list_under_test, RLTOS_UINT_MAX);
+
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task incorrectly in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task not in stopped list");
+   CHECK_TEXT(l_prev_running_index != running_task_list.p_index, "Running lists index has not been updated");
+
+   p_task_ctl_t l_intermediate_running_index = running_task_list.p_index;
+
+   /* Resume should have no effect on this task*/
+   Rltos_task_resume((p_dummy_task_t) p_current_task_ctl);
+
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task incorrectly in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task not in stopped list");
+   CHECK_TEXT(l_intermediate_running_index == running_task_list.p_index, "Running lists index has been updated");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_resume_idled_task)
+{
+   Rltos_task_sleep(0x1234U); /* Put a task in the idle task list*/
+
+   p_task_ctl_t l_task0_under_test = idle_task_list.p_head;
+   Rltos_task_resume((p_dummy_task_t)l_task0_under_test);
+
+   CHECK_TEXT(Task_is_in_list(&running_task_list, l_task0_under_test, state_list), "Task not in running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_task0_under_test, state_list), "Task incorrectly in idle list");
+   CHECK_TEXT(!Task_is_in_list(&stopped_task_list, l_task0_under_test, state_list), "Task incorrectly in stopped list");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_sleep_zero_ticks)
 {
    p_task_ctl_t l_prev_cur_task = p_current_task_ctl;
 
@@ -115,11 +225,27 @@ TEST(TaskTestGroup, RltosTaskSleep_InTheCorrectList)
    CHECK_TEXT(Task_is_in_list(&running_task_list, l_prev_cur_task, state_list), "Task not in running list when it should be");
    CHECK_TEXT(!Task_is_in_list(&idle_task_list, l_prev_cur_task, state_list), "Task placed in idle list when it shouldn't be");
    CHECK_TEXT(!Task_is_in_list(&stopped_task_list, l_prev_cur_task, state_list), "Task placed in stopped list when it shouldn't be");
+}
+/* END OF TEST*/
 
-   l_prev_cur_task = p_current_task_ctl;
+TEST(Task, Test_task_sleep_non_zero_ticks)
+{
+   p_task_ctl_t l_prev_cur_task = p_current_task_ctl;
 
-   /* Check non-0 value changes task state list*/
+   /* Check non-0 value changes task state list correctly*/
    Rltos_task_sleep(1U);
+   CHECK_TEXT(!Task_is_in_list(&running_task_list, l_prev_cur_task, state_list), "Task placed in running list when it shouldn't be");
+   CHECK_TEXT(Task_is_in_list(&idle_task_list, l_prev_cur_task, state_list), "Task not placed in idle list when it should be");
+   CHECK_TEXT(!Task_is_in_list(&stopped_task_list, l_prev_cur_task, state_list), "Task placed in stopped list when it shouldn't be");
+}
+/* END OF TEST*/
+
+TEST(Task, Test_task_sleep_zero_maximum_ticks)
+{
+   p_task_ctl_t l_prev_cur_task = p_current_task_ctl;
+
+   /* Check maximum u_integer value changes task state list correctly*/
+   Rltos_task_sleep(RLTOS_UINT_MAX);
    CHECK_TEXT(!Task_is_in_list(&running_task_list, l_prev_cur_task, state_list), "Task placed in running list when it shouldn't be");
    CHECK_TEXT(Task_is_in_list(&idle_task_list, l_prev_cur_task, state_list), "Task not placed in idle list when it should be");
    CHECK_TEXT(!Task_is_in_list(&stopped_task_list, l_prev_cur_task, state_list), "Task placed in stopped list when it shouldn't be");
@@ -131,7 +257,7 @@ TEST(TaskTestGroup, RltosTaskSleep_InTheCorrectList)
 
 
 /** Test group for dummy struct sizes*/
-TEST_GROUP(RltosSizesTestGroup){
+TEST_GROUP(Task_sizes){
     void setup(void){
         /* Do Nothing*/
     }
@@ -143,7 +269,7 @@ TEST_GROUP(RltosSizesTestGroup){
     /* END OF FUNCTION*/
 };
 
-TEST(RltosSizesTestGroup, Test_RltosSizes_DummyEqualToReal)
+TEST(Task_sizes, Test_dummy_task_sizes_equal_to_real)
 {
    CHECK_TEXT((sizeof(struct task_ctl_t) == sizeof(dummy_task_t)), "Dummy task struct is not the same size as the real task control struct");
    CHECK_TEXT((sizeof(struct task_list_t) == sizeof(dummy_task_list_t)), "Dummy task list struct is not the same size as the real task list struct");

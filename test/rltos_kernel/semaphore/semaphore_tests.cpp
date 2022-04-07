@@ -20,7 +20,7 @@ extern "C" {
 
 
 /** Test group for dummy struct sizes*/
-TEST_GROUP(RltosSemaphoreTests)
+TEST_GROUP(Semaphore)
 {
    void setup(void)
    {
@@ -35,7 +35,7 @@ TEST_GROUP(RltosSemaphoreTests)
    /* END OF FUNCTION*/
 };
 
-TEST(RltosSemaphoreTests, WriteFirstTestSemaphore)
+TEST(Semaphore, Placeholder)
 {
    CHECK_TEXT(true, "No Code To Test");
 }

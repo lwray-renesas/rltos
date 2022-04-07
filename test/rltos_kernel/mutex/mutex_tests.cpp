@@ -20,7 +20,7 @@ extern "C" {
 
 
 /** Test group for dummy struct sizes*/
-TEST_GROUP(RltosMutexTests)
+TEST_GROUP(Mutex)
 {
    void setup(void)
    {
@@ -35,7 +35,7 @@ TEST_GROUP(RltosMutexTests)
    /* END OF FUNCTION*/
 };
 
-TEST(RltosMutexTests, WriteFirstTestMutex)
+TEST(Mutex, Placeholder)
 {
    CHECK_TEXT(true, "No Code To Test");
 }

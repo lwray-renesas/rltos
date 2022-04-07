@@ -61,7 +61,8 @@ void Rltos_kernel_kill(void);
 void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task);
 
 /** @brief Deinitialises task control structure, and removes from any lists.
- * @param[inout] task_to_destroy - pointer to dummy task structure which represents the task to destroy.*/
+ * @param[inout] task_to_destroy - pointer to dummy task structure which represents the task to destroy.
+ * @note Never call this function on the currently running task - the behaviour is undefined.*/
 void Rltos_task_destroy(p_dummy_task_t const task_to_destroy);
 
 /** @brief Stops the targetted task indefinitely.

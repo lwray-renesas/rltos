@@ -20,7 +20,7 @@ extern "C" {
 
 
 /** Test group for dummy struct sizes*/
-TEST_GROUP(RltosQueueTests)
+TEST_GROUP(Queue)
 {
    void setup(void)
    {
@@ -35,7 +35,7 @@ TEST_GROUP(RltosQueueTests)
    /* END OF FUNCTION*/
 };
 
-TEST(RltosQueueTests, WriteFirstTestQueue)
+TEST(Queue, Placeholder)
 {
    CHECK_TEXT(true, "No Code To Test");
 }

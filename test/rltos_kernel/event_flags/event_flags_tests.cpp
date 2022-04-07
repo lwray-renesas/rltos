@@ -20,7 +20,7 @@ extern "C" {
 
 
 /** Test group for dummy struct sizes*/
-TEST_GROUP(RltosEventFlagsTests)
+TEST_GROUP(Event_flags)
 {
    void setup(void)
    {
@@ -35,7 +35,7 @@ TEST_GROUP(RltosEventFlagsTests)
    /* END OF FUNCTION*/
 };
 
-TEST(RltosEventFlagsTests, WriteFirstTestEventFlags)
+TEST(Event_flags, Placeholder)
 {
    CHECK_TEXT(true, "No Code To Test");
 }
