@@ -143,6 +143,8 @@ void Task_scheduler_init(void)
 
 	/* Initialise the current task ctl pointer*/
 	running_task_list.p_index = running_task_list.p_head;
+	idle_task_list.p_index = idle_task_list.p_head;
+	stopped_task_list.p_index = stopped_task_list.p_head;
 	p_current_task_ctl = running_task_list.p_index;
 
 	RLTOS_EXIT_CRITICAL_SECTION();

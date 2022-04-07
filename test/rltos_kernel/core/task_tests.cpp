@@ -86,6 +86,9 @@ TEST(Task, Test_kernel_enter)
    CHECK_TEXT(running_task_list.size != 0U, "Running task list size is zero");
    CHECK_TEXT(running_task_list.p_head != NULL, "Running task list head pointer is NULL");
    CHECK_TEXT(running_task_list.p_index != NULL, "Running task list index pointer is NULL");
+   CHECK_TEXT(running_task_list.p_head == running_task_list.p_index, "Running task list index pointer should always be at head after enterring kernel");
+   CHECK_TEXT(idle_task_list.p_head == idle_task_list.p_index, "Idle task list index pointer should always be at head after enterring kernel");
+   CHECK_TEXT(stopped_task_list.p_head == stopped_task_list.p_index, "Stopped task list index pointer should always be at head after enterring kernel");
 }
 /* END OF TEST*/
 
