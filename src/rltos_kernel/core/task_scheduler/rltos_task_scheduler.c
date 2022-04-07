@@ -195,7 +195,7 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_
 	}
 	else
 	{
-		Task_insert_in_list(&stopped_task_list, task_to_init, state_list, task_to_init->idle_time);
+		Task_append_to_list(&stopped_task_list, task_to_init, state_list);
 	}
 
 	RLTOS_EXIT_CRITICAL_SECTION();

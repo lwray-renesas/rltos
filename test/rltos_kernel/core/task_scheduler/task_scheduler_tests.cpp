@@ -199,15 +199,6 @@ TEST(Task_scheduler, Test_Task_insert)
       CHECK_TEXT(tsk_indexer->sorting_values[state_list] >= tsk_indexer->p_prev_tctl[state_list]->sorting_values[state_list], "Running list in wrong order!");
       tsk_indexer = tsk_indexer->p_next_tctl[state_list];
    }
-
-   /* Verify the idle list is ordered in priority from highest (smallest number) to lowest (largest number)*/
-   tsk_indexer = stopped_task_list.p_head->p_next_tctl[state_list];
-   while (tsk_indexer != stopped_task_list.p_head)
-   {
-      /* Checks if the current tasks sorting value is larger than or equal to the one before it*/
-      CHECK_TEXT(tsk_indexer->sorting_values[state_list] >= tsk_indexer->p_prev_tctl[state_list]->sorting_values[state_list], "Idle list in wrong order!");
-      tsk_indexer = tsk_indexer->p_next_tctl[state_list];
-   }
 }
 /* END OF TEST*/
 
