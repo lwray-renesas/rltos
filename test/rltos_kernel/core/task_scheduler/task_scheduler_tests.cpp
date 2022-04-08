@@ -150,7 +150,7 @@ TEST(Task_scheduler, Test_Scheduler_deinit)
 }
 /* END OF TEST*/
 
-TEST(Task_scheduler, Test_Task_init_on_idle_task)
+TEST(Task_scheduler, Test_Task_init_on_idle_task_in_running_list)
 {
    CHECK_TEXT((idle_task_ctl.stored_sp == idle_task_stack), "Idle task stack pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_task_func == Rltos_idle_thread), "Idle task function pointer is not initialised as expected");
@@ -159,10 +159,30 @@ TEST(Task_scheduler, Test_Task_init_on_idle_task)
    CHECK_TEXT((idle_task_ctl.p_owners[aux_list] == NULL), "Idle task should not be owned by an AUX list");
    CHECK_TEXT((idle_task_ctl.p_owners[state_list] == &running_task_list), "Idle task should be owned by the running list");
    CHECK_TEXT(Task_is_in_list(&running_task_list, &idle_task_ctl, state_list), "Idle task should be owned by the running list");
+   CHECK_TEXT(!Task_is_in_list(&idle_task_list, &idle_task_ctl, state_list), "Idle task should not be owned by the idle list");
+   CHECK_TEXT(!Task_is_in_list(&stopped_task_list, &idle_task_ctl, state_list), "Idle task should not be owned by the stopped list");
 }
 /* END OF TEST*/
 
 TEST(Task_scheduler, Test_Task_deinit_on_idle_task)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_deinit_on_task_in_aux_list)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_deinit_on_task_in_stopped_list)
+{
+   FAIL("TODO: Write Test");
+}
+/* END OF TEST*/
+
+TEST(Task_scheduler, Test_Task_deinit_on_task_in_idle_list)
 {
    FAIL("TODO: Write Test");
 }

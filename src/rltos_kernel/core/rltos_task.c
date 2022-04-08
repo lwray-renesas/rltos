@@ -46,18 +46,17 @@ void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
 
 void Rltos_task_stop(p_dummy_task_t const task_to_stop)
 {
+	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
 	Task_set_stopped((p_task_ctl_t)(task_to_stop));
 
-	/* If its the current task - force yield the task*/
-	if((p_task_ctl_t)(task_to_stop) == p_current_task_ctl)
-	{
-		Rltos_task_yield();
-	}
+	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
+	Task_yield_if_current_task((p_task_ctl_t)(task_to_stop));
 }
 /* END OF FUNCTION*/
 
 void Rltos_task_resume(p_dummy_task_t const task_to_resume)
 {
+	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
 	Task_resume((p_task_ctl_t)(task_to_resume));
 }
 /* END OF FUNCTION*/

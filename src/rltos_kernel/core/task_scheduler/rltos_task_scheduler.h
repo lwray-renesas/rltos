@@ -89,6 +89,11 @@ void Task_set_current_idle(const rltos_uint time_to_idle);
  */
 void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait);
 
+/** @brief if task_to_check is the current task - calls yield.
+ * @param[in] task_to_check - task to check if its the current task or not.
+ */
+void Task_yield_if_current_task(p_task_ctl_t const task_to_check);
+
 #endif /* RLTOS_TASK_SCHEDULER_H_ */
 
 /*! @} */

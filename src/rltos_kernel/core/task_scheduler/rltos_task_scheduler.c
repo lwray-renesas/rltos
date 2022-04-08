@@ -43,9 +43,11 @@ rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
 bool should_switch_task = true;
 /** Rltos idle task stack*/
-static stack_type idle_task_stack[32];
+static stack_type idle_task_stack[128U];
 /** Rltos idle task*/
 static struct task_ctl_t idle_task_ctl;
+const volatile size_t sz_cur_tsk = sizeof(p_current_task_ctl);
+const volatile size_t sz_run_index_tsk = sizeof(running_task_list.p_index);
 
 /** @brief Idle task function - calls hook function on each execution*/
 static void Rltos_idle_thread(void);
@@ -136,7 +138,7 @@ void Task_scheduler_init(void)
 	rltos_wrap_count = 0U;
 
 	/* Initialise the stack*/
-	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(idle_task_stack, &Rltos_idle_thread);
+	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[127], &Rltos_idle_thread);
 
 	/* Create the idle task and puit it in the running list*/
 	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);
@@ -254,10 +256,6 @@ void Task_list_init(p_task_list_t const list_to_init)
 
 void Task_set_running(p_task_ctl_t const task_to_run)
 {
-	RLTOS_PREPARE_CRITICAL_SECTION();
-
-	RLTOS_ENTER_CRITICAL_SECTION();
-
 	const bool was_head_of_idle_list = (task_to_run->p_owners[state_list] == &idle_task_list) && (task_to_run == idle_task_list.p_head);
 
 	/* If we are owned by an object -> remove from objects list*/
@@ -285,8 +283,6 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 			rltos_next_idle_ready_tick = idle_task_list.p_head->idle_ready_time;
 		}
 	}
-
-	RLTOS_EXIT_CRITICAL_SECTION();
 }
 /* END OF FUNCTION*/
 
@@ -395,6 +391,15 @@ void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint
 	Task_append_to_list(owner, p_current_task_ctl, aux_list);
 
 	RLTOS_EXIT_CRITICAL_SECTION();
+}
+/* END OF FUNCTION*/
+
+void Task_yield_if_current_task(p_task_ctl_t const task_to_check)
+{
+	if(task_to_check == p_current_task_ctl)
+	{
+		Rltos_task_yield();
+	}
 }
 /* END OF FUNCTION*/
 
@@ -528,6 +533,7 @@ static void Rltos_idle_thread(void)
 	while(1)
 	{
 		Rltos_port_idle_task_hook();
+		Rltos_task_yield();
 	}
 }
 /* END OF FUNCTION*/
