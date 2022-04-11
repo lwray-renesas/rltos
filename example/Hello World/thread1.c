@@ -1,7 +1,7 @@
 #include "rltos_task.h"
 
 dummy_task_t task1;
-stack_type task1_stack[128U];
+stack_type task1_stack[256U] = {0U};
 
 static volatile uint16_t thread1_counter = 0U;
 

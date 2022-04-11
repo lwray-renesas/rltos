@@ -38,7 +38,6 @@ struct task_ctl_t
 	struct task_ctl_t *p_next_tctl[MAX_TASK_LISTS]; /**< Pointer to the next item - can exist in two lists at once*/
 	struct task_ctl_t *p_prev_tctl[MAX_TASK_LISTS]; /**< Pointer to the previous item - can exist in two lists at once*/
 	p_task_list_t p_owners[MAX_TASK_LISTS];		   /**< Pointer to the list who owns this task - can exist in two lists at once*/
-	rltos_uint sorting_values[MAX_TASK_LISTS];		/**< Array to store the lists sorting values*/
 };
 
 /** @struct task_list_t

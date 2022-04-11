@@ -27,10 +27,10 @@
 #include <stddef.h>
 
 /** Notes for isr installation:
- * IAR:
+ * IAR & CCRL:
  *      interrupts are installed in rltos_scheduler_asm.asm
  * 
- * CLANG/GCC:
+ * CLANG:
  *      interrupts should be installed by the user application in the vector table
  *      Rltos_port_yield is the BRK isr (0x7E)
  *      Rltos_port_tick is the INTIL isr (0x38)
@@ -58,13 +58,13 @@ typedef void(*p_task_func_t)(void);
 #define RLTOS_PREPARE_CRITICAL_SECTION() uint8_t l_int_status = Rltos_get_interrupt_status()
 
 /** @brief macro used to disable interrupts*/
-#define RLTOS_ENTER_CRITICAL_SECTION()	asm("di")
+#define RLTOS_ENTER_CRITICAL_SECTION()	__DI()
 
 /** @brief macro used to enable interrupts*/
-#define RLTOS_EXIT_CRITICAL_SECTION()	if(l_int_status == 1U) { asm("ei"); }
+#define RLTOS_EXIT_CRITICAL_SECTION()	if(l_int_status == 1U) { __EI(); }
 
 /** @brief macro used to yield a task - can also be fulfilled with a void function(void)*/
-#define Rltos_task_yield()  asm("brk")
+#define Rltos_task_yield()  __brk()
 
 /** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
 extern void (*Rltos_port_start_tick_timer)(void);

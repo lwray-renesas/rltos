@@ -26,7 +26,6 @@ typedef struct
 	void * dummy1;
 	rltos_uint dummy2[4];
 	void * dummy3[6];
-	rltos_uint dummy4[2];
 }dummy_task_t;
 
 /** @struct dummy_task_list_t

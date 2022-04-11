@@ -152,7 +152,7 @@ TEST(Task_scheduler, Test_Scheduler_deinit)
 
 TEST(Task_scheduler, Test_Task_init_on_idle_task_in_running_list)
 {
-   CHECK_TEXT((idle_task_ctl.stored_sp == idle_task_stack), "Idle task stack pointer is not initialised as expected");
+   CHECK_TEXT((idle_task_ctl.stored_sp == &idle_task_stack[31]), "Idle task stack pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_task_func == Rltos_idle_thread), "Idle task function pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_next_tctl[aux_list] == NULL), "Idle task should not be owned by an AUX list");
    CHECK_TEXT((idle_task_ctl.p_prev_tctl[aux_list] == NULL), "Idle task should not be owned by an AUX list");
@@ -216,7 +216,7 @@ TEST(Task_scheduler, Test_Task_insert)
    while (tsk_indexer != running_task_list.p_head)
    {
       /* Checks if the current tasks sorting value is larger than or equal to the one before it*/
-      CHECK_TEXT(tsk_indexer->sorting_values[state_list] >= tsk_indexer->p_prev_tctl[state_list]->sorting_values[state_list], "Running list in wrong order!");
+      CHECK_TEXT(tsk_indexer->priority >= tsk_indexer->p_prev_tctl[state_list]->priority, "Running list in wrong order!");
       tsk_indexer = tsk_indexer->p_next_tctl[state_list];
    }
 }

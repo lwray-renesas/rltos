@@ -1,7 +1,7 @@
 #include "rltos_task.h"
 
 dummy_task_t task0;
-stack_type task0_stack[128U];
+stack_type task0_stack[256U] = {0U};
 
 static volatile uint16_t thread0_counter = 0U;
 
@@ -12,7 +12,7 @@ void Thread_0_main(void)
 	while(1)
 	{
 		thread0_counter += 1U;
-		if(thread0_counter == 202)
+		if(thread0_counter > 12)
 		{
 			__nop();
 		}

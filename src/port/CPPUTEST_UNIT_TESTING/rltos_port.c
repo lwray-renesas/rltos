@@ -1,17 +1,5 @@
 #include "rltos_port.h"
 
-/** @brief Dummy definition*/
-static void Rltos_port_start_tick_timer_impl(void);
-
-/** @brief Dummy definition*/
-static void Rltos_port_stop_tick_timer_impl(void);
-
-/** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
-void (*Rltos_port_start_tick_timer)(void) = Rltos_port_start_tick_timer_impl;
-
-/** @brief Stops the RLTOS tick timer (INTITL)*/
-void (*Rltos_port_stop_tick_timer)(void) = Rltos_port_stop_tick_timer_impl;
-
 /** @brief Initialises task stack
  * @param[in] p_stack_top - pointer to the top of the stack.
  * @param[in] p_task_func - function pointer to the task entry function.
@@ -24,13 +12,13 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* con
 }
 /* END OF FUNCTION*/
 
-static void Rltos_port_start_tick_timer_impl(void)
+void Rltos_port_start_tick_timer(void)
 {
 	/* Do Nothing*/
 }
 /* END OF FUNCTION*/
 
-static void Rltos_port_stop_tick_timer_impl(void)
+void Rltos_port_stop_tick_timer(void)
 {
 	/* Do Nothing*/
 }

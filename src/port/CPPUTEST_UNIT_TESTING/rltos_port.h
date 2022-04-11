@@ -54,10 +54,10 @@ typedef void(*p_task_func_t)(void);
 #define Rltos_task_yield()
 
 /** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
-extern void (*Rltos_port_start_tick_timer)(void);
+void Rltos_port_start_tick_timer(void);
 
 /** @brief Stops the RLTOS tick timer (INTITL)*/
-extern void (*Rltos_port_stop_tick_timer)(void);
+void Rltos_port_stop_tick_timer(void);
 
 /** @brief Initialises task stack
  * @param[in] p_stack_top - pointer to the top of the stack.
