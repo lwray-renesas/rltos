@@ -43,7 +43,7 @@ rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
 bool should_switch_task = true;
 /** Rltos idle task stack*/
-static stack_type idle_task_stack[32U];
+static stack_type idle_task_stack[128U];
 /** Rltos idle task*/
 static struct task_ctl_t idle_task_ctl;
 const volatile size_t sz_cur_tsk = sizeof(p_current_task_ctl);
@@ -142,7 +142,7 @@ void Task_scheduler_init(void)
 	rltos_wrap_count = 0U;
 
 	/* Initialise the stack*/
-	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[31], &Rltos_idle_thread);
+	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[127], &Rltos_idle_thread);
 
 	/* Create the idle task and puit it in the running list*/
 	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);

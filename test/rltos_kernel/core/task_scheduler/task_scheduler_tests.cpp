@@ -152,7 +152,7 @@ TEST(Task_scheduler, Test_Scheduler_deinit)
 
 TEST(Task_scheduler, Test_Task_init_on_idle_task_in_running_list)
 {
-   CHECK_TEXT((idle_task_ctl.stored_sp == &idle_task_stack[31]), "Idle task stack pointer is not initialised as expected");
+   CHECK_TEXT((idle_task_ctl.stored_sp == &idle_task_stack[127]), "Idle task stack pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_task_func == Rltos_idle_thread), "Idle task function pointer is not initialised as expected");
    CHECK_TEXT((idle_task_ctl.p_next_tctl[aux_list] == NULL), "Idle task should not be owned by an AUX list");
    CHECK_TEXT((idle_task_ctl.p_prev_tctl[aux_list] == NULL), "Idle task should not be owned by an AUX list");

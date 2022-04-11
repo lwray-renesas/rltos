@@ -12,10 +12,6 @@ void Thread_0_main(void)
 	while(1)
 	{
 		thread0_counter += 1U;
-		if(thread0_counter > 12)
-		{
-			__nop();
-		}
 		Rltos_task_sleep(10U);
 	}
 }

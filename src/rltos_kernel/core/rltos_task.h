@@ -23,7 +23,7 @@
 typedef struct
 {
 	stack_ptr_type dummy0;
-	void * dummy1;
+	void (*dummy1)(void);
 	rltos_uint dummy2[4];
 	void * dummy3[6];
 }dummy_task_t;

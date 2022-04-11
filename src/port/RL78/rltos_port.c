@@ -12,7 +12,7 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* con
 	stack_ptr_type l_p_stack_top = p_stack_top;
 
 	--l_p_stack_top;
-	*l_p_stack_top = (stack_type) (0xC600U); /* Initial PSW can be changed on MSB here*/
+	*l_p_stack_top = (stack_type) (0xC600U); /* Initial PSW*/
 	--l_p_stack_top;
 	*l_p_stack_top = (stack_type) (p_task_func);
 
