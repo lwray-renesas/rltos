@@ -7,12 +7,14 @@ The folowing assumes a port has been selected.
     - rltos_port.h for your target platform.
     - rltos_task.h which brings in all core code for RLTOS.
 
-- In the rltos_port.c file for your target platform ensure the \code void Rltos_port_start_tick_timer(void) \endcode function is populated with code to start the tick timer running.
+- Ensure the following function pointers (rltos_port.h) are runtime initialised to point to functions starting and stopping the tick timer respectively:
+ \code void (*Rltos_port_start_tick_timer)(void) \endcode
+ \code void (*Rltos_port_stop_tick_timer)(void) \endcode
 
 - Ensure the rltos_scheduler_asm.asm file for your target platform and target compiler are included in the build sources.
 
 - Ensure the Relevant ISR's are installed in the interrupt vector table of your target paltform - otherwise the ISR for tick (and yield where applicable) will never be called.
 
-\note Some ports (such as RL78 IAR) install the tick and yield interrupts for you in asm - the port filesshould mention this in the rltos_port.h file if this is the case.
+\note Some ports (such as RL78 IAR & CCRL) install the tick and yield interrupts automatically in asm - the port files should mention this in the rltos_port.h file if this is the case.
 
 */

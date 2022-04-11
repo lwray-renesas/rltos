@@ -97,12 +97,13 @@ $(document).ready(function(){initNavTree('quickstart.html',''); initResizable();
 <li><a class="el" href="rltos__task_8h.html">rltos_task.h</a> which brings in all core code for RLTOS.</li>
 </ul>
 </li>
-<li>In the rltos_port.c file for your target platform ensure the <div class="fragment"><div class="line"><span class="keywordtype">void</span> Rltos_port_start_tick_timer(<span class="keywordtype">void</span>) </div>
-</div><!-- fragment --> function is populated with code to start the tick timer running.</li>
+<li>Ensure the following function pointers (rltos_port.h) are runtime initialised to point to functions starting and stopping the tick timer respectively: <div class="fragment"><div class="line">void (*Rltos_port_start_tick_timer)(void) </div>
+</div><!-- fragment --> <div class="fragment"><div class="line">void (*Rltos_port_stop_tick_timer)(void) </div>
+</div><!-- fragment --></li>
 <li>Ensure the rltos_scheduler_asm.asm file for your target platform and target compiler are included in the build sources.</li>
 <li>Ensure the Relevant ISR's are installed in the interrupt vector table of your target paltform - otherwise the ISR for tick (and yield where applicable) will never be called.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Some ports (such as RL78 IAR) install the tick and yield interrupts for you in asm - the port filesshould mention this in the rltos_port.h file if this is the case. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some ports (such as RL78 IAR &amp; CCRL) install the tick and yield interrupts automatically in asm - the port files should mention this in the rltos_port.h file if this is the case. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
