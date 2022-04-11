@@ -46,15 +46,15 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 517;
+var viewWidth = 544;
 var viewHeight = 66;
-var sectionId = 'dynsection-4';
+var sectionId = 'dynsection-6';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>Rltos_task_sleep</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-62 513,-62 513,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-62 540,-62 540,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -82,47 +82,62 @@ var sectionId = 'dynsection-4';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
-<polygon fill="white" stroke="black" points="285,-38.5 285,-57.5 383,-57.5 383,-38.5 285,-38.5"/>
-<text text-anchor="middle" x="334" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_list</text>
+<g id="a_node3"><a xlink:href="group___rltos__task__scheduler__prv.html#ga61aab9e930d140a49708e98bf741c3dd" target="_top" xlink:title="Function used to insert a task in the idle list (sorted).">
+<polygon fill="white" stroke="black" points="276,-38.5 276,-57.5 394,-57.5 394,-38.5 276,-38.5"/>
+<text text-anchor="middle" x="335" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_idle_list</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M240.11,-36.07C251.31,-37.51 263.13,-39.03 274.44,-40.48"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="274.3,-43.99 284.66,-41.79 275.19,-37.05 274.3,-43.99"/>
-</g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
-<polygon fill="white" stroke="black" points="276,-0.5 276,-19.5 392,-19.5 392,-0.5 276,-0.5"/>
-<text text-anchor="middle" x="334" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node4 -->
-<g id="edge3" class="edge">
-<title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M240.11,-21.93C248.5,-20.85 257.23,-19.73 265.84,-18.62"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="266.39,-22.08 275.87,-17.33 265.5,-15.14 266.39,-22.08"/>
+<path fill="none" stroke="midnightblue" d="M240.06,-36.02C248.46,-37.09 257.22,-38.21 265.86,-39.31"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="265.56,-42.8 275.92,-40.59 266.44,-35.86 265.56,-42.8"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
-<polygon fill="white" stroke="black" points="428,-0.5 428,-19.5 509,-19.5 509,-0.5 428,-0.5"/>
-<text text-anchor="middle" x="468.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
+<g id="a_node5"><a xlink:href="group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
+<polygon fill="white" stroke="black" points="277,-0.5 277,-19.5 393,-19.5 393,-0.5 277,-0.5"/>
+<text text-anchor="middle" x="335" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node5 -->
+<!-- Node2&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
-<title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M392.35,-10C400.71,-10 409.26,-10 417.46,-10"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="417.62,-13.5 427.62,-10 417.62,-6.5 417.62,-13.5"/>
+<title>Node2&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M240.06,-21.98C248.73,-20.87 257.78,-19.72 266.7,-18.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="267.2,-22.05 276.67,-17.31 266.31,-15.1 267.2,-22.05"/>
+</g>
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#ga28f6d69d82ff510be23a1a401d5d42a9" target="_top" xlink:title="Function used to append task to a task list.">
+<polygon fill="white" stroke="black" points="430,-38.5 430,-57.5 536,-57.5 536,-38.5 430,-38.5"/>
+<text text-anchor="middle" x="483" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_append_to_list</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M394.12,-48C402.49,-48 411.13,-48 419.58,-48"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="419.75,-51.5 429.75,-48 419.75,-44.5 419.75,-51.5"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
+<polygon fill="white" stroke="black" points="442.5,-0.5 442.5,-19.5 523.5,-19.5 523.5,-0.5 442.5,-0.5"/>
+<text text-anchor="middle" x="483" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M393.28,-10C406.14,-10 419.68,-10 432.2,-10"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="432.45,-13.5 442.45,-10 432.45,-6.5 432.45,-13.5"/>
 </g>
 </g>
 </svg>

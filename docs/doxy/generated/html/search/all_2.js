@@ -12,7 +12,6 @@ var searchData=
   ['dummy1_9',['dummy1',['../structdummy__task__t.html#ab8f9d71f7b4021a3964d3abf724e1940',1,'dummy_task_t::dummy1()'],['../structdummy__task__list__t.html#af6e41fffd90c75ce1c9ce6003399378f',1,'dummy_task_list_t::dummy1()']]],
   ['dummy2_10',['dummy2',['../structdummy__task__t.html#a7c4d507aeb743efbc15c3b58d5a4c137',1,'dummy_task_t']]],
   ['dummy3_11',['dummy3',['../structdummy__task__t.html#adc6a5baaca2689ebe781ed4b7056615f',1,'dummy_task_t']]],
-  ['dummy4_12',['dummy4',['../structdummy__task__t.html#ad9d5a24dc52c625aeefc0319eddb8dcb',1,'dummy_task_t']]],
-  ['dummy_5ftask_5flist_5ft_13',['dummy_task_list_t',['../structdummy__task__list__t.html',1,'']]],
-  ['dummy_5ftask_5ft_14',['dummy_task_t',['../structdummy__task__t.html',1,'']]]
+  ['dummy_5ftask_5flist_5ft_12',['dummy_task_list_t',['../structdummy__task__list__t.html',1,'']]],
+  ['dummy_5ftask_5ft_13',['dummy_task_t',['../structdummy__task__t.html',1,'']]]
 ];

@@ -9,7 +9,6 @@ var group___rltos__task__scheduler__prv =
       [ "p_prev_tctl", "structtask__ctl__t.html#ab98374eaa3feb06a0e2ffca059f36f99", null ],
       [ "p_task_func", "structtask__ctl__t.html#a1a0c2cdb525ceea53ee34a53810819c3", null ],
       [ "priority", "structtask__ctl__t.html#a405dce594dfc7a29b007dfa03eebcde1", null ],
-      [ "sorting_values", "structtask__ctl__t.html#a23ec1a95b2e8bdf23966a3a09b384ee2", null ],
       [ "stored_sp", "structtask__ctl__t.html#a1585e582f0add00159fe79fee4f80a16", null ]
     ] ],
     [ "task_list_t", "structtask__list__t.html", [
@@ -22,12 +21,13 @@ var group___rltos__task__scheduler__prv =
     [ "Rltos_scheduler_switch_context", "group___rltos__task__scheduler__prv.html#ga7dad02e1630e47f423618b110c2071a4", null ],
     [ "Rltos_scheduler_tick_inc", "group___rltos__task__scheduler__prv.html#ga609bbe6d9efbe0605517cde0ba5c9f06", null ],
     [ "Task_append_to_list", "group___rltos__task__scheduler__prv.html#ga28f6d69d82ff510be23a1a401d5d42a9", null ],
-    [ "Task_insert_in_list", "group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd", null ],
+    [ "Task_insert_in_idle_list", "group___rltos__task__scheduler__prv.html#ga61aab9e930d140a49708e98bf741c3dd", null ],
+    [ "Task_insert_in_running_list", "group___rltos__task__scheduler__prv.html#ga22fda87fe06611ea2bc93aec643b60bd", null ],
     [ "Task_is_in_list", "group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf", null ],
     [ "Task_remove_from_list", "group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b", null ],
     [ "idle_task_ctl", "group___rltos__task__scheduler__prv.html#ga2ccd12cc08586d8021cbe4abfb3bf600", null ],
     [ "idle_task_list", "group___rltos__task__scheduler__prv.html#ga49f071765d856473924736dcf75f5087", null ],
-    [ "idle_task_stack", "group___rltos__task__scheduler__prv.html#gaff8dda95e4fd2e2f21c17a44ab71afcf", null ],
+    [ "idle_task_stack", "group___rltos__task__scheduler__prv.html#ga870a40df5909411a4df421f95ddf68b4", null ],
     [ "p_current_task_ctl", "group___rltos__task__scheduler__prv.html#ga09f0e5ca4af6b2f511b4ff7b280c0997", null ],
     [ "rltos_next_idle_ready_tick", "group___rltos__task__scheduler__prv.html#ga841faa3ccd9dd8b645084cf2dc99aff2", null ],
     [ "rltos_next_idle_ready_wrap_count", "group___rltos__task__scheduler__prv.html#gaa98c090225b85de59f0cfca6f649c9f8", null ],
@@ -35,5 +35,7 @@ var group___rltos__task__scheduler__prv =
     [ "rltos_wrap_count", "group___rltos__task__scheduler__prv.html#gaabcb6337e1d7773cd74f220532873594", null ],
     [ "running_task_list", "group___rltos__task__scheduler__prv.html#ga847b65da3481970d2cfd1651cd956df8", null ],
     [ "should_switch_task", "group___rltos__task__scheduler__prv.html#ga5c53ccc4e154989b577fa92779545419", null ],
-    [ "stopped_task_list", "group___rltos__task__scheduler__prv.html#ga089d3e06b5b712d0f915a142c83f3adb", null ]
+    [ "stopped_task_list", "group___rltos__task__scheduler__prv.html#ga089d3e06b5b712d0f915a142c83f3adb", null ],
+    [ "sz_cur_tsk", "group___rltos__task__scheduler__prv.html#ga0b99fa5328d05d1cf77130e29fff729c", null ],
+    [ "sz_run_index_tsk", "group___rltos__task__scheduler__prv.html#ga183f45ec1356f2de34bb0518aec95455", null ]
 ];

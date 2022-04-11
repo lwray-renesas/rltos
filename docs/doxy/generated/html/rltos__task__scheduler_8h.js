@@ -15,5 +15,6 @@ var rltos__task__scheduler_8h =
     [ "Task_set_current_idle", "group___rltos__task__scheduler__api.html#gaef14e9b4eac09dd868feb5c3b2b4442f", null ],
     [ "Task_set_current_wait_on_object", "group___rltos__task__scheduler__api.html#ga90ce1a0329edc828e765740fce4e29cb", null ],
     [ "Task_set_running", "group___rltos__task__scheduler__api.html#gae2e9ba76398ba904d0c32071d3512a2b", null ],
-    [ "Task_set_stopped", "group___rltos__task__scheduler__api.html#gaa65328e4b21083ff31b9ab00088bba47", null ]
+    [ "Task_set_stopped", "group___rltos__task__scheduler__api.html#gaa65328e4b21083ff31b9ab00088bba47", null ],
+    [ "Task_yield_if_current_task", "group___rltos__task__scheduler__api.html#ga4648697c86601dd2628cdd3fd173d583", null ]
 ];

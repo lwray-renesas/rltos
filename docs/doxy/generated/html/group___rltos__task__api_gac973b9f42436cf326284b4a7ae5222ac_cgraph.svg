@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 618;
+var viewWidth = 636;
 var viewHeight = 66;
 var sectionId = 'dynsection-5';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-5';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>Rltos_task_resume</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-62 614,-62 614,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-62 632,-62 632,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -97,47 +97,47 @@ var sectionId = 'dynsection-5';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#gab915c720a9360b7be5bb388002b6ebcd" target="_top" xlink:title="Function used to insert a task in a sorted task list.">
-<polygon fill="white" stroke="black" points="386,-38.5 386,-57.5 484,-57.5 484,-38.5 386,-38.5"/>
-<text text-anchor="middle" x="435" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_list</text>
+<g id="a_node4"><a xlink:href="group___rltos__task__scheduler__prv.html#ga22fda87fe06611ea2bc93aec643b60bd" target="_top" xlink:title="Function used to insert a task in the running list (sorted).">
+<polygon fill="white" stroke="black" points="377,-38.5 377,-57.5 511,-57.5 511,-38.5 377,-38.5"/>
+<text text-anchor="middle" x="444" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_insert_in_running_list</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M341.23,-35.27C352.33,-36.8 364.33,-38.44 375.91,-40.03"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="375.55,-43.51 385.94,-41.41 376.51,-36.58 375.55,-43.51"/>
+<path fill="none" stroke="midnightblue" d="M341.36,-34.91C349.45,-35.95 358.05,-37.06 366.71,-38.17"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="366.5,-41.67 376.86,-39.48 367.39,-34.73 366.5,-41.67"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="group___rltos__task__scheduler__prv.html#ga421dbb81487cd2fdc1fd06b1407eae5b" target="_top" xlink:title="Function used to remove task from a task list.">
-<polygon fill="white" stroke="black" points="377,-0.5 377,-19.5 493,-19.5 493,-0.5 377,-0.5"/>
-<text text-anchor="middle" x="435" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
+<polygon fill="white" stroke="black" points="386,-0.5 386,-19.5 502,-19.5 502,-0.5 386,-0.5"/>
+<text text-anchor="middle" x="444" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_remove_from_list</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M341.23,-22.73C349.39,-21.61 358.04,-20.42 366.65,-19.24"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="367.27,-22.69 376.7,-17.86 366.32,-15.75 367.27,-22.69"/>
+<path fill="none" stroke="midnightblue" d="M341.36,-23.09C352.28,-21.69 364.16,-20.16 375.82,-18.65"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="376.51,-22.09 385.98,-17.34 375.62,-15.15 376.51,-22.09"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="group___rltos__task__scheduler__prv.html#ga6f098dd7382a94e001bdeeadd29ae7bf" target="_top" xlink:title="Function used to check if a task is contained within the task list or not.">
-<polygon fill="white" stroke="black" points="529,-0.5 529,-19.5 610,-19.5 610,-0.5 529,-0.5"/>
-<text text-anchor="middle" x="569.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
+<polygon fill="white" stroke="black" points="547,-0.5 547,-19.5 628,-19.5 628,-0.5 547,-0.5"/>
+<text text-anchor="middle" x="587.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Task_is_in_list</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M493.35,-10C501.71,-10 510.26,-10 518.46,-10"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="518.62,-13.5 528.62,-10 518.62,-6.5 518.62,-13.5"/>
+<path fill="none" stroke="midnightblue" d="M502.15,-10C513.66,-10 525.67,-10 536.89,-10"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="536.95,-13.5 546.95,-10 536.95,-6.5 536.95,-13.5"/>
 </g>
 </g>
 </svg>
