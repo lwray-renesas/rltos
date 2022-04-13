@@ -53,6 +53,9 @@ typedef void(*p_task_func_t)(void);
 /** @brief macro used to yield a task - can also be fulfilled with a void function(void)*/
 #define Rltos_task_yield()
 
+/** @brief macros used to set the idle task stack size (in stack_types chunks)*/
+#define RLTOS_IDLE_TASK_STACK_SIZE	(64U)
+
 /** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
 void Rltos_port_start_tick_timer(void);
 

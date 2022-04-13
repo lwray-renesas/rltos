@@ -6,7 +6,7 @@ void (*Rltos_port_start_tick_timer)(void) = NULL;
 /** @brief Stops the RLTOS tick timer (INTITL)*/
 void (*Rltos_port_stop_tick_timer)(void) = NULL;
 
-stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* const p_task_func)
+stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, p_task_func_t const p_task_func)
 {
 	/* local variable to navigate the stack*/
 	stack_ptr_type l_p_stack_top = p_stack_top;

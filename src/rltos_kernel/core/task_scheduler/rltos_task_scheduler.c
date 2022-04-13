@@ -43,7 +43,7 @@ rltos_uint rltos_next_idle_ready_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
 bool should_switch_task = true;
 /** Rltos idle task stack*/
-static stack_type idle_task_stack[128U];
+static stack_type idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE];
 /** Rltos idle task*/
 static struct task_ctl_t idle_task_ctl;
 const volatile size_t sz_cur_tsk = sizeof(p_current_task_ctl);
@@ -72,11 +72,10 @@ static inline void Task_insert_in_idle_list(p_task_ctl_t const task_to_insert);
 static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_t const task_to_append, const list_index_t list_index);
 
 /** @brief Function used to remove task from a task list
- * @param[inout] list_for_remove - pointer to a task list from which the task should be removed.
  * @param[inout] task_to_remove - task to remove from list.
  * @param[in] list_index - index of the list to in which to remove the task.
  */
-static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index);
+static void Task_remove_from_list(p_task_ctl_t const task_to_remove, const list_index_t list_index);
 
 void Rltos_scheduler_tick_inc(void)
 {
@@ -142,7 +141,7 @@ void Task_scheduler_init(void)
 	rltos_wrap_count = 0U;
 
 	/* Initialise the stack*/
-	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[127], &Rltos_idle_thread);
+	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE-1], &Rltos_idle_thread);
 
 	/* Create the idle task and puit it in the running list*/
 	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);
@@ -221,8 +220,8 @@ void Task_deinit(p_task_ctl_t const task_to_deinit)
 	task_to_deinit->stored_sp = NULL;
 
 	/* Remove from any lists*/
-	Task_remove_from_list(task_to_deinit->p_owners[state_list], task_to_deinit, state_list);
-	Task_remove_from_list(task_to_deinit->p_owners[aux_list], task_to_deinit, aux_list);
+	Task_remove_from_list(task_to_deinit, state_list);
+	Task_remove_from_list(task_to_deinit, aux_list);
 
 	if (was_head_of_idle_list)
 	{
@@ -269,11 +268,11 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 	/* If we are owned by an object -> remove from objects list*/
 	if (NULL != task_to_run->p_owners[aux_list])
 	{
-		Task_remove_from_list(task_to_run->p_owners[aux_list], task_to_run, aux_list);
+		Task_remove_from_list(task_to_run, aux_list);
 	}
 
 	/* Move task from idle state to running state*/
-	Task_remove_from_list(task_to_run->p_owners[state_list], task_to_run, state_list);
+	Task_remove_from_list(task_to_run, state_list);
 	Task_insert_in_running_list(task_to_run);
 
 	if (was_head_of_idle_list)
@@ -313,7 +312,7 @@ void Task_set_stopped(p_task_ctl_t const task_to_stop)
 	RLTOS_ENTER_CRITICAL_SECTION();
 
 	/* Move task into stopped task list - don't care about stop list order*/
-	Task_remove_from_list(task_to_stop->p_owners[state_list], task_to_stop, state_list);
+	Task_remove_from_list(task_to_stop, state_list);
 	Task_append_to_list(&stopped_task_list, task_to_stop, state_list);
 
 	/* by stopping the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
@@ -371,7 +370,7 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 		}
 	}
 
-	Task_remove_from_list(p_current_task_ctl->p_owners[state_list], p_current_task_ctl, state_list);
+	Task_remove_from_list(p_current_task_ctl, state_list);
 	Task_insert_in_idle_list(p_current_task_ctl);
 
 	/* If we have just idled the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
@@ -489,7 +488,7 @@ static inline void Task_insert_in_idle_list(p_task_ctl_t const task_to_insert)
 		 * OR
 		 * this tasks wrap count is equal to the head idle tasks wrap count AND this tasks next idle ready tick time is less than the head idle tasks idle ready tick time.
 		 */
-		bool belongs_at_head = (task_to_insert->idle_wrap_count < idle_task_list.p_head->idle_wrap_count) ||
+		const bool belongs_at_head = (task_to_insert->idle_wrap_count < idle_task_list.p_head->idle_wrap_count) ||
 						((task_to_insert->idle_wrap_count == idle_task_list.p_head->idle_wrap_count) &&
 						 (task_to_insert->idle_ready_time < idle_task_list.p_head->idle_ready_time));
 
@@ -512,7 +511,7 @@ static inline void Task_insert_in_idle_list(p_task_ctl_t const task_to_insert)
 			 * OR
 			 * this tasks wrap count is equal to the wrap count of the current back of the list AND this tasks ready tick count is larger than or equal to the current back of the lists ready tick count.
 			 */
-			bool belongs_at_back = (task_to_insert->idle_wrap_count > idle_task_list.p_head->p_prev_tctl[state_list]->idle_wrap_count) ||
+			const bool belongs_at_back = (task_to_insert->idle_wrap_count > idle_task_list.p_head->p_prev_tctl[state_list]->idle_wrap_count) ||
 							((task_to_insert->idle_wrap_count == idle_task_list.p_head->p_prev_tctl[state_list]->idle_wrap_count) &&
 							 (task_to_insert->idle_ready_time >= idle_task_list.p_head->p_prev_tctl[state_list]->idle_ready_time));
 
@@ -592,19 +591,19 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
 }
 /* END OF FUNCTION*/
 
-static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ctl_t const task_to_remove, const list_index_t list_index)
+static void Task_remove_from_list(p_task_ctl_t const task_to_remove, const list_index_t list_index)
 {
 	/* Only operate on a list where the task is garuanteed to be owned by that list*/
-	if (Task_is_in_list(list_for_remove, task_to_remove, list_index))
+	if (task_to_remove->p_owners[list_index] != NULL)
 	{
-		list_for_remove->size -= 1U;
+		task_to_remove->p_owners[list_index]->size -= 1U;
 
 		/* If last task in list*/
-		if (list_for_remove->size == 0U)
+		if (task_to_remove->p_owners[list_index]->size == 0U)
 		{
 			/* Reset the list*/
-			list_for_remove->p_head = NULL;
-			list_for_remove->p_index = NULL;
+			task_to_remove->p_owners[list_index]->p_head = NULL;
+			task_to_remove->p_owners[list_index]->p_index = NULL;
 		}
 		else
 		{
@@ -612,14 +611,14 @@ static void Task_remove_from_list(p_task_list_t const list_for_remove, p_task_ct
 			task_to_remove->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_remove->p_next_tctl[list_index];
 			task_to_remove->p_next_tctl[list_index]->p_prev_tctl[list_index] = task_to_remove->p_prev_tctl[list_index];
 
-			if (list_for_remove->p_head == task_to_remove)
+			if (task_to_remove->p_owners[list_index]->p_head == task_to_remove)
 			{
-				list_for_remove->p_head = task_to_remove->p_next_tctl[list_index];
+				task_to_remove->p_owners[list_index]->p_head = task_to_remove->p_next_tctl[list_index];
 			}
 
-			if (list_for_remove->p_index == task_to_remove)
+			if (task_to_remove->p_owners[list_index]->p_index == task_to_remove)
 			{
-				list_for_remove->p_index = task_to_remove->p_next_tctl[list_index];
+				task_to_remove->p_owners[list_index]->p_index = task_to_remove->p_next_tctl[list_index];
 			}
 		}
 

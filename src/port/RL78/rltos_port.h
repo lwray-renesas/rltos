@@ -57,14 +57,29 @@ typedef void(*p_task_func_t)(void);
 /** @brief macro used to prepare for disabling interrupts*/
 #define RLTOS_PREPARE_CRITICAL_SECTION() uint8_t l_int_status = Rltos_get_interrupt_status()
 
+#if defined(__ICCRL78__) || (defined(__clang__) && defined(__RL78__))
+#define RLTOS_DI()	asm("di")
+#define RLTOS_EI()	asm("ei")
+#define RLTOS_BRK()	asm("brk")
+#elif defined(__CCRL__)
+#define RLTOS_DI()	__DI()
+#define RLTOS_EI()	__EI()
+#define RLTOS_BRK()	__brk()
+#else
+#error "Unsupported compiler!"
+#endif
+
 /** @brief macro used to disable interrupts*/
-#define RLTOS_ENTER_CRITICAL_SECTION()	__DI()
+#define RLTOS_ENTER_CRITICAL_SECTION()	RLTOS_DI()
 
 /** @brief macro used to enable interrupts*/
-#define RLTOS_EXIT_CRITICAL_SECTION()	if(l_int_status == 1U) { __EI(); }
+#define RLTOS_EXIT_CRITICAL_SECTION()	if(l_int_status == 1U) { RLTOS_EI(); }
 
 /** @brief macro used to yield a task - can also be fulfilled with a void function(void)*/
-#define Rltos_task_yield()  __brk()
+#define Rltos_task_yield()  RLTOS_BRK()
+
+/** @brief macros used to set the idle task stack size (in stack_types chunks)*/
+#define RLTOS_IDLE_TASK_STACK_SIZE	(64U)
 
 /** @brief Initialises & starts running the RLTOS tick timer (INTITL)*/
 extern void (*Rltos_port_start_tick_timer)(void);
@@ -77,7 +92,7 @@ extern void (*Rltos_port_stop_tick_timer)(void);
  * @param[in] p_task_func - function pointer to the task entry function.
  * @return The value of the stack pointer post initialisation (used to restore context).
  */
-stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* const p_task_func);
+stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, p_task_func_t const p_task_func);
 
 /** @brief The hook called by the idle thread constantly in a while 1 loop - typically used to enter low power state.*/
 void Rltos_port_idle_task_hook(void);

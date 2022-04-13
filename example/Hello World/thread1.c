@@ -1,7 +1,7 @@
 #include "rltos_task.h"
 
 dummy_task_t task1;
-stack_type task1_stack[256U] = {0U};
+stack_type task1_stack[64U] = {0U};
 
 static volatile uint16_t thread1_counter = 0U;
 
@@ -12,7 +12,7 @@ void Thread_1_main(void)
 	while(1)
 	{
 		thread1_counter += 1U;
-		Rltos_task_sleep(100U);
+		Rltos_task_sleep(10U);
 	}
 }
 /* END OF THREAD*/
