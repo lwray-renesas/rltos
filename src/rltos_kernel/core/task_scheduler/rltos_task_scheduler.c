@@ -42,8 +42,6 @@ bool should_switch_task = true;
 static stack_type idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE];
 /** Rltos idle task*/
 static struct task_ctl_t idle_task_ctl;
-const volatile size_t sz_cur_tsk = sizeof(p_current_task_ctl);
-const volatile size_t sz_run_index_tsk = sizeof(running_task_list.p_index);
 
 /** @brief Idle task function - calls hook function on each execution*/
 static void Rltos_idle_thread(void);
@@ -60,6 +58,13 @@ static inline void Task_insert_in_idle_list(p_task_ctl_t const task_to_insert);
  * @param[in] list_index - index of the list to in which to append the task.
  */
 static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_t const task_to_append, const list_index_t list_index);
+
+/** @brief Function used to insert a task into a list directly after the index.
+ * @param[inout] list_for_append - pointer to a task list for which the task should be inserted.
+ * @param[inout] task_to_append - task to insert in the list.
+ * @param[in] list_index - index of the list to in which to append the task.
+ */
+static void Task_insert_in_list_after_index(p_task_list_t const list_for_append, p_task_ctl_t const task_to_append, const list_index_t list_index);
 
 /** @brief Function used to remove task from a task list
  * @param[inout] task_to_remove - task to remove from list.
@@ -241,9 +246,9 @@ void Task_set_running(p_task_ctl_t const task_to_run)
 		Task_remove_from_list(task_to_run, aux_list);
 	}
 
-	/* Move task from idle state to running state*/
+	/* Move task from idle state to running state and make it the next task to run*/
 	Task_remove_from_list(task_to_run, state_list);
-	Task_append_to_list(&running_task_list, task_to_run, state_list);
+	Task_insert_in_list_after_index(&running_task_list, task_to_run, state_list);
 
 	RLTOS_EXIT_CRITICAL_SECTION();
 }
@@ -265,12 +270,12 @@ void Task_set_stopped(p_task_ctl_t const task_to_stop)
 
 	RLTOS_ENTER_CRITICAL_SECTION();
 
+	/* If the task to stop is the current task - ensure the scheduler doesn't update the index on next run - it will be done automatically*/
+	should_switch_task = !(running_task_list.p_index == task_to_stop);
+
 	/* Move task into stopped task list - don't care about stop list order*/
 	Task_remove_from_list(task_to_stop, state_list);
 	Task_append_to_list(&stopped_task_list, task_to_stop, state_list);
-
-	/* by stopping the current index task, the index has implicitly been updated - so the scheduler doesnt need to update the running list index on next run*/
-	should_switch_task = false;
 
 	RLTOS_EXIT_CRITICAL_SECTION();
 }
@@ -285,6 +290,7 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 	/* Calculate next expiration time*/
 	p_current_task_ctl->idle_ready_time = rltos_system_tick + time_to_idle;
 	p_current_task_ctl->idle_time = time_to_idle;
+
 	/* Wraparound check*/
 	if(p_current_task_ctl->idle_ready_time < rltos_system_tick)
 	{
@@ -424,6 +430,33 @@ static void Task_append_to_list(p_task_list_t const list_for_append, p_task_ctl_
 		task_to_append->p_next_tctl[list_index] = list_for_append->p_head;
 		list_for_append->p_head->p_prev_tctl[list_index]->p_next_tctl[list_index] = task_to_append;
 		list_for_append->p_head->p_prev_tctl[list_index] = task_to_append;
+	}
+
+	/* Set the new owner list*/
+	task_to_append->p_owners[list_index] = list_for_append;
+
+	/* Increment list size*/
+	list_for_append->size += 1U;
+}
+/* END OF FUNCTION*/
+
+static void Task_insert_in_list_after_index(p_task_list_t const list_for_append, p_task_ctl_t const task_to_append, const list_index_t list_index)
+{
+	/* If first task*/
+	if (0U == list_for_append->size)
+	{
+		/* Make entire list circular to single task*/
+		list_for_append->p_head = task_to_append;
+		list_for_append->p_index = task_to_append;
+		task_to_append->p_next_tctl[list_index] = task_to_append;
+		task_to_append->p_prev_tctl[list_index] = task_to_append;
+	}
+	else
+	{
+		task_to_append->p_prev_tctl[list_index] = list_for_append->p_index;
+		task_to_append->p_next_tctl[list_index] = list_for_append->p_index->p_next_tctl[list_index];
+		list_for_append->p_index->p_next_tctl[list_index]->p_prev_tctl[list_index] = task_to_append;
+		list_for_append->p_index->p_next_tctl[list_index] = task_to_append;
 	}
 
 	/* Set the new owner list*/
