@@ -31,8 +31,7 @@ struct task_ctl_t
 	p_task_func_t p_task_func;	/**< Function pointer for entry point of task*/
 	rltos_uint idle_ready_time; /**< Value representing the time this task will be ready*/
 	rltos_uint idle_time;		/**< Value representing the max time this task should remain idled*/
-	rltos_uint idle_wrap_count; /**< Value to detect when wrap around is required*/
-	rltos_uint priority;		/**< Value representing the tasks priority*/
+	rltos_uint idle_ready_wrap_count; /**< Value to detect when wrap around is required*/
 
 	/* List specific data*/
 	struct task_ctl_t *p_next_tctl[MAX_TASK_LISTS]; /**< Pointer to the next item - can exist in two lists at once*/

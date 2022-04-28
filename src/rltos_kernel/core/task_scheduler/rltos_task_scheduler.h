@@ -48,10 +48,9 @@ void Task_scheduler_deinit(void);
  * @param[inout] task_to_init - pointer to a task for initialisation.
  * @param[in] init_sp - initial stack pointer value (after stack initialisation).
  * @param[in] init_task_func - function pointer to tasks entry function.
- * @param[in] priority - priority of task, lower is better.
  * @param[in] task_is_running - if true - task placed in running list - otherwise placed in idle list.
  */
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running);
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, bool const task_is_running);
 
 /** @brief Function used to set deinit a task and removes from both state and aux lists.
  * @param[inout] task_to_deinit - pointer to a task for deinitialisation.

@@ -24,7 +24,7 @@ typedef struct
 {
 	stack_ptr_type dummy0;
 	void (*dummy1)(void);
-	rltos_uint dummy2[4];
+	rltos_uint dummy2[3];
 	void * dummy3[6];
 }dummy_task_t;
 
@@ -55,9 +55,8 @@ void Rltos_kernel_kill(void);
  * @param[inout] task_to_create - pointer to dummy task structure from which to create the task.
  * @param[in] p_stack_top - pointer to the top of the stack.
  * @param[in] p_task_f - function pointer to the task entry function.
- * @param[in] task_priority - function pointer to the task entry function.
  * @param[in] run_task - flag indicating whether to initialise the task to running or let it idle.*/
-void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, rltos_uint const task_priority, bool const run_task);
+void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, bool const run_task);
 
 /** @brief Deinitialises task control structure, and removes from any lists.
  * @param[inout] task_to_destroy - pointer to dummy task structure which represents the task to destroy.

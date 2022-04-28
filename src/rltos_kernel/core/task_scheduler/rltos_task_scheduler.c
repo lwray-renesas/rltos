@@ -96,7 +96,7 @@ void Rltos_scheduler_switch_context(void)
 	 * system tick count has expired the next idles tasks expiry time.]
 	 */
 	if ((idle_task_list.size > 0U) &&
-			((rltos_wrap_count == idle_task_list.p_head->idle_wrap_count) &&
+			((rltos_wrap_count == idle_task_list.p_head->idle_ready_wrap_count) &&
 			(rltos_system_tick >= idle_task_list.p_head->idle_ready_time)))
 	{
 		/* Head of list is always first, list is ordered such that the next expiration time is at the head */
@@ -139,7 +139,7 @@ void Task_scheduler_init(void)
 	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE-1], &Rltos_idle_thread);
 
 	/* Create the idle task and puit it in the running list*/
-	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, RLTOS_UINT_MAX, true);
+	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, true);
 
 	/* Initialise the current task ctl pointer*/
 	running_task_list.p_index = running_task_list.p_head;
@@ -167,7 +167,7 @@ void Task_scheduler_deinit(void)
 }
 /* END OF FUNCTION*/
 
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, rltos_uint const priority, bool const task_is_running)
+void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, bool const task_is_running)
 {
 	RLTOS_PREPARE_CRITICAL_SECTION();
 
@@ -183,10 +183,9 @@ void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_
 	task_to_init->p_owners[state_list] = NULL;
 	task_to_init->p_owners[aux_list] = NULL;
 
-	task_to_init->priority = priority;
 	task_to_init->idle_ready_time = RLTOS_UINT_MAX;
 	task_to_init->idle_time = RLTOS_UINT_MAX;
-	task_to_init->idle_wrap_count = 0U;
+	task_to_init->idle_ready_wrap_count = 0U;
 
 	/* Set the state list ownership*/
 	if (task_is_running)
@@ -294,11 +293,11 @@ void Task_set_current_idle(const rltos_uint time_to_idle)
 	/* Wraparound check*/
 	if(p_current_task_ctl->idle_ready_time < rltos_system_tick)
 	{
-		p_current_task_ctl->idle_wrap_count = rltos_wrap_count + 1U;
+		p_current_task_ctl->idle_ready_wrap_count = rltos_wrap_count + 1U;
 	}
 	else
 	{
-		p_current_task_ctl->idle_wrap_count = rltos_wrap_count;
+		p_current_task_ctl->idle_ready_wrap_count = rltos_wrap_count;
 	}
 
 	Task_remove_from_list(p_current_task_ctl, state_list);
