@@ -38,8 +38,11 @@ typedef enum
     aux_list            /**< Index of list where the item exists waiting on an object*/
 }list_index_t;
 
-/** @brief Function to initialise the current task on entry to the scheduler & create + add the idle task to the running list.*/
-void Task_scheduler_init(void);
+/** @brief Function to initialise the current task on entry to the scheduler & create + add the idle task to the running list.
+ * @return RLTOS_SUCCESS if everything is OK.
+ * RLTOS_MEMORY_ERR if dummy types do not match real types.
+*/
+rltos_err_t Task_scheduler_init(void);
 
 /** @brief Function to deinitialise the current task and remove the idle task from the running list.*/
 void Task_scheduler_deinit(void);

@@ -12,9 +12,11 @@
 
 void Rltos_kernel_enter(void)
 {
-	Task_scheduler_init();
-	Rltos_port_start_tick_timer();
-	Rltos_port_enter_first_task();
+	if(RLTOS_SUCCESS == Task_scheduler_init())
+	{
+		Rltos_port_start_tick_timer();
+		Rltos_port_enter_first_task();
+	}
 }
 /* END OF FUNCTION*/
 

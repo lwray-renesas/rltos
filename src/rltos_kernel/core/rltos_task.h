@@ -39,13 +39,25 @@ typedef struct
 	rltos_uint dummy0;
 }dummy_task_list_t;
 
+/** @enum rltos_err_t
+ * @brief Enumerated type to store RLTOS error code
+ */
+typedef enum
+{
+	RLTOS_SUCCESS = 0U, /**< Success*/
+	RLTOS_MEMORY_ERR,	/**< Memory Error has occured/been detected*/
+}rltos_err_t;
+
 /** @brief pointer to dummy task structure*/
 typedef dummy_task_t * p_dummy_task_t;
 
 /** @brief  pointer to dummy task list structure*/
 typedef dummy_task_list_t * p_dummy_task_list_t;
 
-/** @brief Enters RLTOS kernel and starts scheduler timer. */
+/** @brief Enters RLTOS kernel and starts scheduler timer. 
+ * Should not return from this function, if we do the only possible reason for it is:
+ * 1. The dummy types sizes do not match the real types internally.
+*/
 void Rltos_kernel_enter(void);
 
 /** @brief Cleanup of RLTOS kernel and stops scheduler timer. */

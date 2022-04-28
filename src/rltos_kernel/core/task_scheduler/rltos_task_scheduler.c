@@ -114,7 +114,7 @@ void Rltos_scheduler_switch_context(void)
 	}
 
 	/* If we are ever about to enter to idle task - try switch to the next active task - if the idle task is the only one available, the next item in the list will be the idle task anyway and we will enter it*/
-	if(running_task_list.p_index == &idle_task_ctl)
+	if (running_task_list.p_index == &idle_task_ctl)
 	{
 		running_task_list.p_index = running_task_list.p_index->p_next_tctl[state_list];
 	}
@@ -125,29 +125,37 @@ void Rltos_scheduler_switch_context(void)
 
 /*! @} */
 
-void Task_scheduler_init(void)
+rltos_err_t Task_scheduler_init(void)
 {
-	RLTOS_PREPARE_CRITICAL_SECTION();
+	rltos_err_t err = (sizeof(dummy_task_t) == sizeof(task_ctl_t) && 
+						sizeof(dummy_task_list_t) == sizeof(task_list_t)) ? RLTOS_SUCCESS : RLTOS_MEMORY_ERR;
 
-	RLTOS_ENTER_CRITICAL_SECTION();
+	if (RLTOS_SUCCESS == err)
+	{
+		RLTOS_PREPARE_CRITICAL_SECTION();
 
-	/* Manually reset system tick and wrap counters*/
-	rltos_system_tick = 0U;
-	rltos_wrap_count = 0U;
+		RLTOS_ENTER_CRITICAL_SECTION();
 
-	/* Initialise the stack*/
-	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE-1], &Rltos_idle_thread);
+		/* Manually reset system tick and wrap counters*/
+		rltos_system_tick = 0U;
+		rltos_wrap_count = 0U;
 
-	/* Create the idle task and puit it in the running list*/
-	Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, true);
+		/* Initialise the stack*/
+		stack_ptr_type l_p_stack_top = Rltos_port_stack_init(&idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE - 1], &Rltos_idle_thread);
 
-	/* Initialise the current task ctl pointer*/
-	running_task_list.p_index = running_task_list.p_head;
-	idle_task_list.p_index = idle_task_list.p_head;
-	stopped_task_list.p_index = stopped_task_list.p_head;
-	p_current_task_ctl = running_task_list.p_index;
+		/* Create the idle task and puit it in the running list*/
+		Task_init(&idle_task_ctl, l_p_stack_top, &Rltos_idle_thread, true);
 
-	RLTOS_EXIT_CRITICAL_SECTION();
+		/* Initialise the current task ctl pointer*/
+		running_task_list.p_index = running_task_list.p_head;
+		idle_task_list.p_index = idle_task_list.p_head;
+		stopped_task_list.p_index = stopped_task_list.p_head;
+		p_current_task_ctl = running_task_list.p_index;
+
+		RLTOS_EXIT_CRITICAL_SECTION();
+	}
+
+	return err;
 }
 /* END OF FUNCTION*/
 
