@@ -55,20 +55,12 @@ TEST_GROUP(Task_scheduler)
 
    void setup(void)
    {
-      /* Create random number generation function*/
-      std::random_device rd;
-      std::mt19937 g(rd());
-      std::uniform_int_distribution<> distrib(0);
-
       /* Initialise every task - half the tasks in the running state and half in the idle state - with random priorities*/
       for(uint32_t init_index = 0U; init_index < (tasks_to_add-1U); ++init_index)
       {
          const bool task_running = (init_index % 2) == 0;
-         Rltos_task_create(&(group_tasks_under_test[init_index]), group_stacks_under_test[init_index], &Dummy_task_func, static_cast<rltos_uint>(distrib(g)), task_running);
+         Rltos_task_create(&(group_tasks_under_test[init_index]), group_stacks_under_test[init_index], &Dummy_task_func, task_running);
       }
-      
-      /* Garuntee there is always two tasks with the same priority - satisfy testing of same priority task handling*/
-      Rltos_task_create(&(group_tasks_under_test[tasks_to_add-1U]), group_stacks_under_test[tasks_to_add-1U], &Dummy_task_func, ((p_task_ctl_t)(&(group_tasks_under_test[0])))->priority, false);
 
       Rltos_kernel_enter();
 
@@ -205,20 +197,6 @@ TEST(Task_scheduler, Test_Task_append)
 TEST(Task_scheduler, Test_Task_remove)
 {
    FAIL("TODO: Write Test");
-}
-/* END OF TEST*/
-
-TEST(Task_scheduler, Test_Task_insert)
-{
-   /* Test performed on created running and stopped lists*/
-   /* Verify the running list is ordered in priority from highest (smallest number) to lowest (largest number)*/
-   p_task_ctl_t tsk_indexer = running_task_list.p_head->p_next_tctl[state_list];
-   while (tsk_indexer != running_task_list.p_head)
-   {
-      /* Checks if the current tasks sorting value is larger than or equal to the one before it*/
-      CHECK_TEXT(tsk_indexer->priority >= tsk_indexer->p_prev_tctl[state_list]->priority, "Running list in wrong order!");
-      tsk_indexer = tsk_indexer->p_next_tctl[state_list];
-   }
 }
 /* END OF TEST*/
 

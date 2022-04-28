@@ -38,20 +38,12 @@ TEST_GROUP(Task)
 
    void setup(void)
    {
-      /* Create random number generation function*/
-      std::random_device rd;
-      std::mt19937 g(rd());
-      std::uniform_int_distribution<> distrib(0);
-
       /* Initialise every task - half the tasks in the running state and half in the idle state - with random priorities*/
       for(uint32_t init_index = 0U; init_index < (tasks_to_add-1U); ++init_index)
       {
          const bool task_running = (init_index % 2) == 0;
-         Rltos_task_create(&(group_tasks_under_test[init_index]), group_stacks_under_test[init_index], &Dummy_task_func, static_cast<rltos_uint>(distrib(g)), task_running);
+         Rltos_task_create(&(group_tasks_under_test[init_index]), group_stacks_under_test[init_index], &Dummy_task_func, task_running);
       }
-      
-      /* Garuntee there is always two tasks with the same priority - satisfy testing of same priority task handling*/
-      Rltos_task_create(&(group_tasks_under_test[tasks_to_add-1U]), group_stacks_under_test[tasks_to_add-1U], &Dummy_task_func, ((p_task_ctl_t)(&(group_tasks_under_test[0])))->priority, false);
 
       Rltos_kernel_enter();
 
