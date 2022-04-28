@@ -7,6 +7,7 @@ Contents:
     - \subpage doxygen
     - \subpage unit_testing
     - \subpage ports
+    - \subpage porting_guide
 */
 
 /**
@@ -84,14 +85,20 @@ This port exists to satisfy the unit testing environment.
 
 \section rl78 RL78
 Port for the Renesas RL78 Microcontroller.
-Must verify the core and compiler settings are OK with the SAVE and RESTORE context macros - i.e. register banks 0, 1, 2, 3.
 
 \subsection clang CLANG
-Port using the CLANG compiler
-
-\note CLANG is only currently supported in the near data model (default) 
+Port using the CLANG/LLVM compiler
 
 \subsection iar IAR
 Port using the IAR compiler
+
+\subsection ccrl CCRL
+Port using the CCRL compiler
+
+*/
+
+/**
+\page porting_guide Porting Guide
+The following section serves as a guide for creating a port if RLTOS for another architecture.
 
 */

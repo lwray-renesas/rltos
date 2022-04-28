@@ -29,7 +29,7 @@
 /** Notes for isr installation:
  * IAR & CCRL:
  *      interrupts are installed in rltos_scheduler_asm.asm
- * 
+ *
  * CLANG:
  *      interrupts should be installed by the user application in the vector table
  *      Rltos_port_yield is the BRK isr (0x7E)
