@@ -72,8 +72,6 @@ extern struct task_list_t stopped_task_list;
 extern p_task_ctl_t p_current_task_ctl;
 extern volatile rltos_uint rltos_system_tick;
 extern volatile rltos_uint rltos_wrap_count;
-extern rltos_uint rltos_next_idle_ready_tick;
-extern rltos_uint rltos_next_idle_ready_wrap_count;
 extern bool should_switch_task;
 
 /** @brief implementation of rltos tick increment - called from rltos_scheduler_asm.asm */

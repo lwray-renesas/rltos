@@ -47,7 +47,7 @@
 ; START OF FUNCTION - void Rltos_get_interrupt_status(void)
 	.global _Rltos_get_interrupt_status
 	.type	_Rltos_get_interrupt_status,STT_FUNC
-	.text
+	.section .text
 _Rltos_get_interrupt_status:
 	MOV 	A, PSW
 	SHR		A, #7
@@ -58,7 +58,7 @@ _Rltos_get_interrupt_status:
 ; START OF FUNCTION - void Rltos_port_enter_first_task(void)
 	.global _Rltos_port_enter_first_task
 	.type	_Rltos_port_enter_first_task,STT_FUNC
-	.text
+	.section .text
 _Rltos_port_enter_first_task:
 	RESTORE_CONTEXT
 	reti
@@ -69,7 +69,7 @@ _Rltos_port_enter_first_task:
 	.global _Rltos_port_yield
 	.type	_Rltos_port_yield,STT_FUNC
 	.extern _Rltos_scheduler_switch_context
-	.text
+	.section .text,#alloc,#execinstr
 _Rltos_port_yield:
 	SAVE_CONTEXT
 	CALL	!!_Rltos_scheduler_switch_context ; Runs RLTOS scheduling algorithm
@@ -83,7 +83,7 @@ _Rltos_port_yield:
 	.type	_Rltos_port_tick,STT_FUNC
 	.extern _Rltos_scheduler_tick_inc
 	.extern _Rltos_scheduler_switch_context
-	.text
+	.section .text,#alloc,#execinstr
 _Rltos_port_tick:
 	SAVE_CONTEXT
 	CALL	!!_Rltos_scheduler_tick_inc ; Runs RLTOS tick increment and task monitor
