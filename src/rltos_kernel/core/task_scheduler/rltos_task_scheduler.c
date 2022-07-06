@@ -127,8 +127,8 @@ void Rltos_scheduler_switch_context(void)
 
 rltos_err_t Task_scheduler_init(void)
 {
-	rltos_err_t err = (sizeof(dummy_task_t) == sizeof(task_ctl_t) && 
-						sizeof(dummy_task_list_t) == sizeof(task_list_t)) ? RLTOS_SUCCESS : RLTOS_MEMORY_ERR;
+	rltos_err_t err = (sizeof(dummy_task_t) == sizeof(struct task_ctl_t) && 
+						sizeof(dummy_task_list_t) == sizeof(struct task_list_t)) ? RLTOS_SUCCESS : RLTOS_MEMORY_ERR;
 
 	if (RLTOS_SUCCESS == err)
 	{
