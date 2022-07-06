@@ -43,14 +43,14 @@ RESTORE_CONTEXT MACRO
     ENDM
 ; END OF MACRO - restores target CPU context
 
-; START OF FUNCTION - void Rltos_get_interrupt_status(void)
+; START OF FUNCTION - uint8_t Rltos_get_interrupt_status(void)
 	PUBLIC _Rltos_get_interrupt_status
 	SECTION CODE:CODE
 _Rltos_get_interrupt_status:
 	MOV 	A, PSW
 	SHR		A, #7
 	ret
-; END OF FUNCTION - void Rltos_get_interrupt_status(void)
+; END OF FUNCTION - uint8_t Rltos_get_interrupt_status(void)
 
 ; START OF FUNCTION - void Rltos_port_enter_first_task(void)
 	PUBLIC _Rltos_port_enter_first_task
