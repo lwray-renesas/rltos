@@ -1,4 +1,3 @@
-/**
  * @addtogroup Rltos_task_scheduler_prv Task Scheduler Private
  * The private data (implementation) of the RLTOS task list.
  * @ingroup Rltos_task_scheduler_api
@@ -89,11 +88,9 @@ void Rltos_scheduler_switch_context(void)
 {
 	/* [If idle tasks are present in idle task list.]
 	 * AND
-	 * [next idle tasks wrap counter is smaller than the system wrap counter]
-	 * OR
 	 * [next idle tasks wrap counter matches system wrap counter.
 	 * AND
-	 * system tick count has expired the next idles tasks expiry time.]
+	 * system tick count has expired the next idle tasks expiry time.]
 	 */
 	if ((idle_task_list.size > 0U) &&
 			((rltos_wrap_count == idle_task_list.p_head->idle_ready_wrap_count) &&
@@ -127,7 +124,7 @@ void Rltos_scheduler_switch_context(void)
 
 rltos_err_t Task_scheduler_init(void)
 {
-	rltos_err_t err = (sizeof(dummy_task_t) == sizeof(struct task_ctl_t) && 
+	rltos_err_t err = (sizeof(dummy_task_t) == sizeof(struct task_ctl_t) &&
 						sizeof(dummy_task_list_t) == sizeof(struct task_list_t)) ? RLTOS_SUCCESS : RLTOS_MEMORY_ERR;
 
 	if (RLTOS_SUCCESS == err)
