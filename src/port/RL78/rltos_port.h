@@ -46,6 +46,13 @@ typedef uint16_t * stack_ptr_type;
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint16_t rltos_uint;
 
+/** @brief binary flag, usage is such that the only allowable values are 1 or 0*/
+typedef enum
+{
+    RLTOS_FALSE = 0,
+    RLTOS_TRUE
+}rltos_flag_t;
+
 /** @brief pointer type for task functions.
  * @note In the event the target application in an RL78 grows beyond 64k boundary 
 */
@@ -55,7 +62,7 @@ typedef void(*p_task_func_t)(void);
 #define RLTOS_UINT_MAX	(0xFFFFU)
 
 /** @brief macro used to prepare for disabling interrupts*/
-#define RLTOS_PREPARE_CRITICAL_SECTION() uint8_t l_int_status = Rltos_get_interrupt_status()
+#define RLTOS_PREPARE_CRITICAL_SECTION() rltos_flag_t l_int_status = Rltos_interrupts_enabled()
 
 #if defined(__ICCRL78__) || (defined(__clang__) && defined(__RL78__))
 #define RLTOS_DI()	asm("di")
@@ -98,10 +105,10 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, p_task_fu
 void Rltos_port_idle_task_hook(void);
 
 /** @brief Function to be provided for returning interrupt status - provided in ASM.
- * @return 0 = interrupt disabled
- * 1 = interrupt enabled
+ * @return RLTOS_FALSE = interrupt disabled
+ * RLTOS_TRUE = interrupt enabled
 */
-extern uint8_t Rltos_get_interrupt_status(void);
+extern rltos_flag_t Rltos_interrupts_enabled(void);
 
 /** @brief Function to be provided for enterring first task of kernel - provided in ASM.
  * @details Does not save context, only restores it and returns as though from interrupt.

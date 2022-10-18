@@ -35,6 +35,13 @@ typedef uint32_t * stack_ptr_type;
 /** @brief architectures unsigned integer type (explicit bit width)*/
 typedef uint32_t rltos_uint;
 
+/** @brief binary flag, usage is such that the only allowable values are 1 or 0*/
+typedef enum
+{
+    RLTOS_FALSE = 0,
+    RLTOS_TRUE
+}rltos_flag_t;
+
 /** @brief pointer type for task functions*/
 typedef void(*p_task_func_t)(void);
 
@@ -73,10 +80,10 @@ stack_ptr_type Rltos_port_stack_init(stack_ptr_type const p_stack_top, void* con
 void Rltos_port_idle_task_hook(void);
 
 /** @brief Function to be provided for returning interrupt status - provided in ASM.
- * @return 0 = interrupt disabled
- * 1 = interrupt enabled
+ * @return RLTOS_FALSE = interrupt disabled
+ * RLTOS_TRUE = interrupt enabled
 */
-uint8_t Rltos_get_interrupt_status(void);
+rltos_flag_t Rltos_interrupts_enabled(void);
 
 /** @brief Function to be provided for enterring first task of kernel - restores context and returns as though fom ISR.*/
 void Rltos_port_enter_first_task(void);

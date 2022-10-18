@@ -44,15 +44,15 @@
 ; END OF MACRO - restores target CPU context
 
 
-; START OF FUNCTION - uint8_t Rltos_get_interrupt_status(void)
-	.global _Rltos_get_interrupt_status
-	.type	_Rltos_get_interrupt_status,STT_FUNC
+; START OF FUNCTION - rltos_flag_t Rltos_interrupts_enabled(void)
+	.global _Rltos_interrupts_enabled
+	.type	_Rltos_interrupts_enabled,STT_FUNC
 	.section .text
-_Rltos_get_interrupt_status:
+_Rltos_interrupts_enabled:
 	MOV 	A, PSW
 	SHR		A, #7
 	ret
-; END OF FUNCTION - uint8_t Rltos_get_interrupt_status(void)
+; END OF FUNCTION - rltos_flag_t Rltos_interrupts_enabled(void)
 
 
 ; START OF FUNCTION - void Rltos_port_enter_first_task(void)

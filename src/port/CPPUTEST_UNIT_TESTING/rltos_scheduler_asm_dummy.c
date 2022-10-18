@@ -17,9 +17,9 @@ static void Save_context(void);
 /** @brief empty function used to emulate the dummy functions*/
 static void Restore_context(void);
 
-uint8_t Rltos_get_interrupt_status(void)
+rltos_flag_t Rltos_interrupts_enabled(void)
 {
-	return 1;
+	return RLTOS_TRUE;
 }
 
 void Rltos_port_enter_first_task(void)
