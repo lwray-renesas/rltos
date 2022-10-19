@@ -9,12 +9,12 @@
  */
 
 /* Task 0 Components - defined in thread0.c*/
-dummy_task_t task0;
+rltos_task_t task0;
 stack_type task0_stack[64U] = {0U};
 extern void Thread_0_main(void);
 
 /* Task 1 Components - defined in thread1.c*/
-dummy_task_t task1;
+rltos_task_t task1;
 stack_type task1_stack[64U] = {0U};
 extern void Thread_1_main(void);
 

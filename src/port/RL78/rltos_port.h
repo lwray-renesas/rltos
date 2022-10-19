@@ -49,7 +49,7 @@ typedef uint16_t rltos_uint;
 /** @brief binary flag, usage is such that the only allowable values are 1 or 0*/
 typedef enum
 {
-    RLTOS_FALSE = 0,
+    RLTOS_FALSE = 0U,
     RLTOS_TRUE
 }rltos_flag_t;
 

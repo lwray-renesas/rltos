@@ -49,9 +49,9 @@ TEST_GROUP(Task_scheduler)
    static const size_t stack_size_units = 32;
 
    /* Create testable tasks*/
-   std::array<dummy_task_t, tasks_to_add> group_tasks_under_test;
+   std::array<rltos_task_t, tasks_to_add> group_tasks_under_test;
    stack_type group_stacks_under_test[tasks_to_add][stack_size_units];
-   struct task_list_t l_aux_list_under_test;
+   rltos_task_list_t l_aux_list_under_test;
 
    void setup(void)
    {

@@ -12,11 +12,9 @@
 
 void Rltos_kernel_enter(void)
 {
-	if(RLTOS_SUCCESS == Task_scheduler_init())
-	{
-		Rltos_port_start_tick_timer();
-		Rltos_port_enter_first_task();
-	}
+	Task_scheduler_init();
+	Rltos_port_start_tick_timer();
+	Rltos_port_enter_first_task();
 }
 /* END OF FUNCTION*/
 
@@ -27,39 +25,39 @@ void Rltos_kernel_kill(void)
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_create(p_dummy_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, bool const run_task)
+void Rltos_task_create(p_rltos_task_t const task_to_create, stack_ptr_type const p_stack_top, p_task_func_t const p_task_func, bool const run_task)
 {
 	/* Initialise the stack*/
 	stack_ptr_type l_p_stack_top = Rltos_port_stack_init(p_stack_top, p_task_func);
 
 	/* Initialise the task*/
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
-	Task_init((p_task_ctl_t)(task_to_create), l_p_stack_top, p_task_func, run_task);
+	Task_init((p_rltos_task_t)(task_to_create), l_p_stack_top, p_task_func, run_task);
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_destroy(p_dummy_task_t const task_to_destroy)
+void Rltos_task_destroy(p_rltos_task_t const task_to_destroy)
 {
 	/* Denitialise the task*/
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
-	Task_deinit((p_task_ctl_t)(task_to_destroy));
+	Task_deinit((p_rltos_task_t)(task_to_destroy));
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_stop(p_dummy_task_t const task_to_stop)
+void Rltos_task_stop(p_rltos_task_t const task_to_stop)
 {
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
-	Task_set_stopped((p_task_ctl_t)(task_to_stop));
+	Task_set_stopped((p_rltos_task_t)(task_to_stop));
 
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
-	Task_yield_if_current_task((p_task_ctl_t)(task_to_stop));
+	Task_yield_if_current_task((p_rltos_task_t)(task_to_stop));
 }
 /* END OF FUNCTION*/
 
-void Rltos_task_resume(p_dummy_task_t const task_to_resume)
+void Rltos_task_resume(p_rltos_task_t const task_to_resume)
 {
 	/* cppcheck-suppress misra-c2012-11.3 - Only way to allow for static allocation of objects while still hiding implementation - sizes gauranteed to be same*/
-	Task_resume((p_task_ctl_t)(task_to_resume));
+	Task_resume((p_rltos_task_t)(task_to_resume));
 }
 /* END OF FUNCTION*/
 

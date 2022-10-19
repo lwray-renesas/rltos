@@ -21,12 +21,6 @@
 #error "Must include rltos_task.h before including this file in any source file"
 #endif
 
-/** @brief pointer to task control structure*/
-typedef struct task_ctl_t * p_task_ctl_t;
-
-/** @brief pointer to task list control structure*/
-typedef struct task_list_t * p_task_list_t;
-
 /** @enum list_index_t
  * @brief Provides enumerated type to index task item lists,
  * This is used to index between a tasks state list (running or idle) and an 
@@ -38,11 +32,8 @@ typedef enum
     aux_list            /**< Index of list where the item exists waiting on an object*/
 }list_index_t;
 
-/** @brief Function to initialise the current task on entry to the scheduler & create + add the idle task to the running list.
- * @return RLTOS_SUCCESS if everything is OK.
- * RLTOS_MEMORY_ERR if dummy types do not match real types.
-*/
-rltos_err_t Task_scheduler_init(void);
+/** @brief Function to initialise the current task on entry to the scheduler & create + add the idle task to the running list.*/
+void Task_scheduler_init(void);
 
 /** @brief Function to deinitialise the current task and remove the idle task from the running list.*/
 void Task_scheduler_deinit(void);
@@ -53,32 +44,32 @@ void Task_scheduler_deinit(void);
  * @param[in] init_task_func - function pointer to tasks entry function.
  * @param[in] task_is_running - if true - task placed in running list - otherwise placed in idle list.
  */
-void Task_init(p_task_ctl_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, bool const task_is_running);
+void Task_init(p_rltos_task_t const task_to_init, const stack_ptr_type init_sp, p_task_func_t const init_task_func, bool const task_is_running);
 
 /** @brief Function used to set deinit a task and removes from both state and aux lists.
  * @param[inout] task_to_deinit - pointer to a task for deinitialisation.
  */
-void Task_deinit(p_task_ctl_t const task_to_deinit);
+void Task_deinit(p_rltos_task_t const task_to_deinit);
 
 /** @brief Function used to initialise a task list - 0's size and sets HEAD & INDEX to NULL.
  * @param[inout] list_to_init - pointer to a list for initialisation.
  */
-void Task_list_init(p_task_list_t const list_to_init);
+void Task_list_init(p_rltos_task_list_t const list_to_init);
 
 /** @brief Function used to insert the task to the running list
  * @param[inout] task_to_run - task to set running.
  */
-void Task_set_running(p_task_ctl_t const task_to_run);
+void Task_set_running(p_rltos_task_t const task_to_run);
 
 /** @brief Function used to set a task running - only if it is stopped (not waiting on an object or idled)
  * @param[inout] task_to_run - task to resume.
  */
-void Task_resume(p_task_ctl_t const task_to_resume);
+void Task_resume(p_rltos_task_t const task_to_resume);
 
 /** @brief Function used to append the task to the stopped list
  * @param[in] task_to_stop - task to stop.
  */
-void Task_set_stopped(p_task_ctl_t const task_to_stop);
+void Task_set_stopped(p_rltos_task_t const task_to_stop);
 
 /** @brief Function used to append task to the idle list
  * @param[in] time_to_idle - number of ticks to idle task.
@@ -89,12 +80,12 @@ void Task_set_current_idle(const rltos_uint time_to_idle);
  * @param[inout] owner - object to register waiting on.
  * @param[in] time_to_wait - number of ticks to wait.
  */
-void Task_set_current_wait_on_object(p_task_list_t const owner, const rltos_uint time_to_wait);
+void Task_set_current_wait_on_object(p_rltos_task_list_t const owner, const rltos_uint time_to_wait);
 
 /** @brief if task_to_check is the current task - calls yield.
  * @param[in] task_to_check - task to check if its the current task or not.
  */
-void Task_yield_if_current_task(p_task_ctl_t const task_to_check);
+void Task_yield_if_current_task(p_rltos_task_t const task_to_check);
 
 #endif /* RLTOS_TASK_SCHEDULER_H_ */
 
