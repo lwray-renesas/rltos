@@ -1,14 +1,14 @@
 /**
- * @defgroup Rltos_event_flags Event flags
+ * @defgroup Rltos_events Event flags
  * The group defining the RLTOS event flags.
  * @addtogroup Rltos_event_flags_api Event Flags API
  * The public API (interface) to the RLTOS event flags module.
- * @ingroup Rltos_event_flags
+ * @ingroup Rltos_events
  * @{
  */
 
-#ifndef RLTOS_EVENT_FLAGS_H_
-#define RLTOS_EVENT_FLAGS_H_
+#ifndef RLTOS_EVENTS_H_
+#define RLTOS_EVENTS_H_
 
 #ifndef RLTOS_TASK_H_
 #error "Must include rltos_task.h before including this file in any source file"
@@ -64,6 +64,6 @@ rltos_err_t Rltos_events_set(p_rltos_events_t events_to_set, const rltos_event_f
  */
 rltos_err_t Rltos_events_get(p_rltos_events_t events_to_get, const rltos_event_flag_t flags, rltos_event_flag_t * output_flags, const rltos_flag_t clear_flags, const rltos_flag_t all_flags, const rltos_uint timeout);
 
-#endif /* RLTOS_EVENT_FLAGS_H_ */
+#endif /* RLTOS_EVENTS_H_ */
 
 /*! @} */
