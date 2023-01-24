@@ -505,6 +505,12 @@ static void Task_remove_from_list(p_rltos_task_t const task_to_remove, const lis
 }
 /* END OF FUNCTION*/
 
+p_rltos_task_t Task_get_current(void)
+{
+	return p_current_task_ctl;
+}
+/* END OF FUNCTION*/
+
 static void Rltos_idle_thread(void)
 {
 	while (1)

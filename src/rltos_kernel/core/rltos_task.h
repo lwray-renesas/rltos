@@ -65,7 +65,12 @@ typedef struct rltos_task_list
 typedef enum
 {
 	RLTOS_SUCCESS = 0U, /**< Success*/
-	RLTOS_MEMORY_ERR,	/**< Memory Error has occured/been detected*/
+	RLTOS_TIMEOUT, /**< Indicates an RTOS operation has timed out*/
+	RLTOS_LOCKED, /**< Indicates a resource is currently locked*/
+	RLTOS_RELEASED, /**< Indicates a resource is currently released*/
+	RLTOS_INVALID_CONTEXT, /**< Indicates a function has been called in an invalid context*/
+	RLTOS_ALREADY_SET, /**< Indicates a value is already set*/
+	RLTOS_MAXIMUM, /**< Indicates a value is at the maximum threshold*/
 }rltos_err_t;
 
 /** @brief Enters RLTOS kernel and starts scheduler timer. 
@@ -97,7 +102,7 @@ void Rltos_task_stop(p_rltos_task_t const task_to_stop);
  * @param[in] task_to_resume - Pointer to the task to resume.*/
 void Rltos_task_resume(p_rltos_task_t const task_to_resume);
 
-/** @brief Puts the current thread to sleep for a minimum of the given number of ticks
+/** @brief Puts the current thread to SLEEP for a minimum of the given number of ticks
  * @param[in] tick_count - The number of RLTOS ticks which the task will be placed in the idle list. If this value is 0 - this function call resolves to a yield.*/
 void Rltos_task_sleep(const rltos_uint tick_count);
 

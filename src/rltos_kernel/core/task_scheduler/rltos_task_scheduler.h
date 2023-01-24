@@ -87,6 +87,10 @@ void Task_set_current_wait_on_object(p_rltos_task_list_t const owner, const rlto
  */
 void Task_yield_if_current_task(p_rltos_task_t const task_to_check);
 
+/** @brief Gets the current running task.
+ * @return Pointer to the current task*/
+p_rltos_task_t Task_get_current(void);
+
 #endif /* RLTOS_TASK_SCHEDULER_H_ */
 
 /*! @} */
