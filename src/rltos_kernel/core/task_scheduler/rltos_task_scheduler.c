@@ -29,8 +29,8 @@ static rltos_task_list_t stopped_task_list = {
 	0U	  /* Size*/
 };
 
-/** Pointer to current running task*/
-static p_rltos_task_t p_current_task_ctl = NULL;
+/** Pointer to current running task - requires external linkage to plug into asm porting files*/
+extern p_rltos_task_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
 static volatile rltos_uint rltos_system_tick = 0U;
