@@ -15,9 +15,8 @@
     <paths>
         <dir name="src/rltos_kernel/core"/>
         <dir name="src/rltos_kernel/core/task_scheduler"/>
-        <dir name="src/rltos_kernel/event_flags"/>
+        <dir name="src/rltos_kernel/events"/>
         <dir name="src/rltos_kernel/mutex"/>
-        <dir name="src/rltos_kernel/queue"/>
         <dir name="src/rltos_kernel/semaphore"/>
     </paths>
     <addons>

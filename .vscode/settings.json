@@ -2,6 +2,7 @@
     "cmake.sourceDirectory": "${workspaceFolder}/test",
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
+        "*.dox": "c",
         "memory": "cpp",
         "array": "cpp",
         "istream": "cpp",
@@ -54,6 +55,7 @@
         "list": "cpp",
         "unordered_map": "cpp",
         "xhash": "cpp",
-        "rltos_port.h": "c"
+        "rltos_port.h": "c",
+        "rltos_task_scheduler_prv.h": "c"
     }
 }

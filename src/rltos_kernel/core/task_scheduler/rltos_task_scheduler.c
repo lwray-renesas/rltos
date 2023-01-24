@@ -6,38 +6,38 @@
  */
 
 #include "rltos_task.h"
-#include "rltos_task_scheduler_prv.h"
+#include "rltos_task_scheduler.h"
 
 /** List containing all running taks*/
-rltos_task_list_t running_task_list = {
+static rltos_task_list_t running_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U	  /* Size*/
 };
 
 /** List containing all temporarily blocked tasks*/
-rltos_task_list_t idle_task_list = {
+static rltos_task_list_t idle_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U	  /* Size*/
 };
 
 /** List containing all permanently blocked tasks*/
-rltos_task_list_t stopped_task_list = {
+static rltos_task_list_t stopped_task_list = {
 	NULL, /* Head*/
 	NULL, /* Index*/
 	0U	  /* Size*/
 };
 
 /** Pointer to current running task*/
-p_rltos_task_t p_current_task_ctl = NULL;
+static p_rltos_task_t p_current_task_ctl = NULL;
 
 /** Rltos system tick counter*/
-volatile rltos_uint rltos_system_tick = 0U;
+static volatile rltos_uint rltos_system_tick = 0U;
 /** Rltos wrap around tracker*/
-volatile rltos_uint rltos_wrap_count = 0U;
+static volatile rltos_uint rltos_wrap_count = 0U;
 /** Rltos next time to remove task from idle list*/
-bool should_switch_task = true;
+static bool should_switch_task = true;
 /** Rltos idle task stack*/
 static stack_type idle_task_stack[RLTOS_IDLE_TASK_STACK_SIZE];
 /** Rltos idle task*/
@@ -46,11 +46,18 @@ static rltos_task_t idle_task_ctl;
 /** @brief Idle task function - calls hook function on each execution*/
 static void Rltos_idle_thread(void);
 
+/** @brief Function used to check if a task is contained within the task list or not.
+ * @param[in] lst - pointer to a task list to check for tasks existence.
+ * @param[in] tsk - task to check whether contained in (owned by) list.
+ * @param[in] list_index - index of the list to check.
+ */
+static bool Task_is_in_list(p_rltos_task_list_t const lst, p_rltos_task_t const tsk, const list_index_t ind);
+
 /** @brief Function used to insert a task in the idle list (sorted).
  * @details sorts in order from head to last, the tasks with shortest time till running.
  * @param[inout] task_to_insert - task to insert in list.
  */
-static inline void Task_insert_in_idle_list(p_rltos_task_t const task_to_insert);
+static void Task_insert_in_idle_list(p_rltos_task_t const task_to_insert);
 
 /** @brief Function used to append task to a task list
  * @param[inout] list_for_append - pointer to a task list for which the task should be appended.
@@ -340,7 +347,13 @@ void Task_yield_if_current_task(p_rltos_task_t const task_to_check)
 }
 /* END OF FUNCTION*/
 
-static inline void Task_insert_in_idle_list(p_rltos_task_t const task_to_insert)
+static bool Task_is_in_list(p_rltos_task_list_t const lst, p_rltos_task_t const tsk, const list_index_t ind)
+{
+	return (lst != NULL) && (tsk->p_owners[ind] == lst);
+}
+/* END OF FUNCTION*/
+
+static void Task_insert_in_idle_list(p_rltos_task_t const task_to_insert)
 {
 	/* If first task*/
 	if (0U == idle_task_list.size)
